@@ -1,6 +1,4 @@
-﻿
-
-namespace BeastConsole
+﻿namespace URSA
 {
 
     using UnityEngine;
@@ -8,8 +6,34 @@ namespace BeastConsole
     using System;
     using System.Collections.Generic;
 
-    public static class ConfigSystem
+    public class ConfigSystem : MonoBehaviour
     {
+
+
+        #region SINGLETON
+        private static ConfigSystem _instance;
+        public static ConfigSystem instance
+        {
+            get
+            {
+                if (!_instance) _instance = GameObject.FindObjectOfType<ConfigSystem>();
+                return _instance;
+            }
+        }
+        #endregion
+
+        public enum DataPath
+        {
+            persistent,
+            inRootFolder
+        }
+
+        public bool singleFile;
+        public DataPath datapath;
+        public string singleFilePath = "game";
+        public string folderPath = "Configs";
+        public string extension = ".cfg";
+
         static Dictionary<string, IrVar> current = new Dictionary<string, IrVar>();
         static Dictionary<Type, List<string>> cached = new Dictionary<Type, List<string>>();
 

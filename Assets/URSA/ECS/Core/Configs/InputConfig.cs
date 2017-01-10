@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-using BeastConsole;
+using URSA;
 
 public class InputConfig : ConfigBase {
 

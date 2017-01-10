@@ -1,5 +1,5 @@
 ﻿
-namespace BeastConsole
+namespace URSA
 {
     using UnityEngine;
     using System;

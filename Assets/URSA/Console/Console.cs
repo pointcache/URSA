@@ -1,6 +1,6 @@
 ﻿#define BEAST_CONSOLE
 
-namespace BeastConsole
+namespace URSA
 {
     using UnityEngine;
     using System;
@@ -11,8 +11,6 @@ namespace BeastConsole
 
     public class Console : MonoBehaviour
     {
-        string cfgpath { get { return Application.dataPath + "/" + configOptions.config_path; } }
-
 
         #region SINGLETON
         private static Console _instance;
@@ -28,8 +26,7 @@ namespace BeastConsole
 
         [Header("Console")]
         public SmartConsole.Options consoleOptions;
-        [Header("Config")]
-        public ConfigOptions configOptions;
+
         GameObject consoleRoot;
         void OnEnable()
         {
@@ -57,21 +54,6 @@ namespace BeastConsole
             Destroy(consoleRoot.gameObject);
         }
 
-        [Serializable]
-        public class ConfigOptions
-        {
-            public string config_path = "game.cfg";
-        }
-
-        public void SaveConfigs()
-        {
-            ConfigSystem.Save(cfgpath);
-        }
-
-        public void LoadConfigs()
-        {
-            ConfigSystem.Load(cfgpath);
-        }
     }
     public static class TransformDeepChildExtension
     {
@@ -89,7 +71,5 @@ namespace BeastConsole
             }
             return null;
         }
-
-
     }
 }

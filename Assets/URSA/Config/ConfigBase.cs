@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
-using BeastConsole;
+using URSA;
 
 public class ConfigBase : ComponentBase
 {
