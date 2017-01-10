@@ -5,14 +5,14 @@ using FullSerializer;
 
 public class CompRefSerializationProcessor : fsObjectProcessor {
 
-    public static List<CompRef> initializationList = new List<CompRef>();
+    public static List<CompRef> injectionList;
 
     public override bool CanProcess(Type type) {
         return type == typeof(CompRef); // process only ints
     }
 
     public override void OnAfterDeserialize(Type storageType, object instance) {
-        initializationList.Add(instance as CompRef);
+        injectionList.Add(instance as CompRef);
     }
 
     public override void OnBeforeSerialize(Type storageType, object instance) {

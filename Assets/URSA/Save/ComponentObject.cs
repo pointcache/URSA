@@ -7,7 +7,7 @@
     using System.Collections.Generic;
 
     [Serializable]
-    public class ComponentObject : MonoBehaviour
+    public class ComponentObject 
     {
         public string entity_ID;
         public string component_ID;

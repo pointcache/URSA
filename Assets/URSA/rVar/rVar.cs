@@ -156,7 +156,7 @@ public class r_Color : rVar<Color>
     }
 }
 
-[Serializable]
+[Serializable, fsObject(Processor = typeof(CompRefSerializationProcessor))]
 public class CompRef : rVar<ComponentBase> {
 
     public string entity_ID;

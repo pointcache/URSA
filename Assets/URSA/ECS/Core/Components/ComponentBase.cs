@@ -17,6 +17,16 @@ public class ComponentBase : MonoBehaviour
         ComponentPoolSystem.Unregister(this);
         _entity = null;
     }
+
+    public virtual ComponentData GetData()
+    {
+        return null;
+    }
+
+    public virtual void SetData(object _data)
+    {
+    }
+
     Entity _entity;
     public Entity Entity
     {

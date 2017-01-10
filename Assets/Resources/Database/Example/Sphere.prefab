@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: 
+  database_ID: Example\Sphere
   instance_ID: 
 --- !u!114 &114000011397158222
 MonoBehaviour:
@@ -120,11 +120,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f858d2a5179945b4ca68f7e4b4fbaaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 123123
+  ID: e28315f1-73a3-4076-b169-821a8240dc18
   data:
     testReference:
-      value: {fileID: 114000011397158222}
+      value: {fileID: 0}
+      entity_ID: 
       component_ID: 
+    testFloat:
+      value: 100
+    testFloat2:
+      value: 200
+    testFloat3:
+      value: 3100
+    testFloat4:
+      value: 1400
+    testbool:
+      value: 1
+    Ptestbool:
+      value: 1
+    asdasd: 88888
+    kxzjckzxc: 999
+    color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!135 &135000012664939414
 SphereCollider:
   m_ObjectHideFlags: 1

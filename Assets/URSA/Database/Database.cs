@@ -26,10 +26,9 @@ public class Database : MonoBehaviour
         assign_ids_components();
     }
     
-    //scans the database 
-    public void RebuildIDs()
+    public static GameObject GetPrefab(string id)
     {
-
+        return Resources.Load(databaseFolder + id) as GameObject;
     }
 
     static void assign_ids_entities()
@@ -55,8 +54,6 @@ public class Database : MonoBehaviour
 
     static void assign_ids_components()
     {
-        
-
         var allData = Resources.LoadAll("Database/");
         prefabObjects = new List<GameObject>(1000);
         foreach (var item in allData)

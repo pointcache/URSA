@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4000011080903674
 Transform:
   m_ObjectHideFlags: 1
@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: 
+  database_ID: Example\Cube
   instance_ID: 

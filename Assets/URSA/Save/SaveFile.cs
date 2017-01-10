@@ -5,7 +5,7 @@
     using System.Collections.Generic;
 
     [Serializable]
-    public class SaveFile
+    public class SaveObject
     {
         public List<EntityObject> entities = new List<EntityObject>();
         /// <summary>
