@@ -6,16 +6,17 @@ public class Entity : MonoBehaviour
 {
     [NotEditableString]
     public string database_ID;
-    private string _ID;
+    [NotEditableString]
+    public string instance_ID;
     public string ID
     {
         get
         {
-            if (String.IsNullOrEmpty(_ID))
+            if (String.IsNullOrEmpty(instance_ID))
             {
-                _ID = EntityManager.get_id();
+                instance_ID = EntityManager.get_id();
             }
-            return _ID;
+            return instance_ID;
         }
     }
 

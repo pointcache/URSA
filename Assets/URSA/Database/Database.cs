@@ -10,15 +10,20 @@ public class Database : MonoBehaviour
     const string databaseAdress = "/Resources/Database/";
     const string databaseFolder = "Database/";
 
-    List<GameObject> prefabObjects = new List<GameObject>(1000);
-    Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
-    Dictionary<string, List<string>> components = new Dictionary<string, List<string>>(10000);
-    Dictionary<string, string> manifest = new Dictionary<string, string>(10000);
+    static List<GameObject> prefabObjects = new List<GameObject>(1000);
 
-    [MenuItem("test/test")]
-    public static void Test()
+    static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
+    static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
+
+    [MenuItem("URSA/Database/Rebuild")]
+    public static void Rebuild()
     {
-        assign_ids();
+        prefabObjects = new List<GameObject>(1000);
+        entities = new Dictionary<string, Entity>(1000);
+        Components = new Dictionary<string, HashSet<string>>(10000);
+
+        assign_ids_entities();
+        assign_ids_components();
     }
     
     //scans the database 
@@ -27,7 +32,7 @@ public class Database : MonoBehaviour
 
     }
 
-    static void assign_ids()
+    static void assign_ids_entities()
     {
         var files = Directory.GetFiles(Application.dataPath + "/Resources/Database/", "*.prefab", SearchOption.AllDirectories);
         foreach (var f in files)
@@ -48,9 +53,9 @@ public class Database : MonoBehaviour
         }
     }
 
-    void scan_database()
+    static void assign_ids_components()
     {
-        assign_ids();
+        
 
         var allData = Resources.LoadAll("Database/");
         prefabObjects = new List<GameObject>(1000);
@@ -63,14 +68,36 @@ public class Database : MonoBehaviour
                 Debug.LogError("Database: GameObject without entity found, skipping.", go);
                 continue;
             }
+
             prefabObjects.Add(go);
             entities.Add(entity.database_ID, entity);
 
-            var components = go.GetComponentsInChildren(typeof(ComponentBase));
+            ComponentBase[] components = go.GetComponentsInChildren<ComponentBase>();
+            HashSet<string> comps_in_entity = null;
+            Components.TryGetValue(entity.database_ID, out comps_in_entity);
+
+            if (comps_in_entity == null)
+                comps_in_entity = new HashSet<string>();
+
             foreach (var c in components)
             {
-
+                if(c.ID == string.Empty || c.ID == null)
+                {
+                    c.ID = get_unique_id(comps_in_entity);
+                }
+                comps_in_entity.Add(c.ID);
             }
         }
+    }
+
+
+    static string get_unique_id(HashSet<string> set)
+    {
+        Guid guid = Guid.NewGuid();
+        string id = guid.ToString();
+        if (set.Contains(id))
+            return get_unique_id(set);
+        else
+            return id;
     }
 }

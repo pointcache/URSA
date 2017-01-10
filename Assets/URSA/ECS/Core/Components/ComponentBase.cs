@@ -5,14 +5,8 @@ using System.Collections.Generic;
 
 public class ComponentBase : MonoBehaviour
 {
-    [Header("ID")]
     [NotEditableString]
     public string ID;
-
-    private void Reset()
-    {
-        ID = "123123";
-    }
 
     public virtual void OnEnable()
     {

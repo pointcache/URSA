@@ -8,7 +8,7 @@ public class TestComponent : ComponentBase {
     [Serializable]
     public class Data : ComponentData
     {
-
+        public CompRef testReference = new CompRef();
     }
 
     public override void OnEnable()

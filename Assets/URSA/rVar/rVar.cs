@@ -52,6 +52,11 @@ public class rVar<T> : rVar, IrVar
         return Value;
     }
 
+    public void setValueDirectly(object val)
+    {
+        value = (T)val;
+    }
+
     public void setValue(object val)
     {
         Value = (T)val;
@@ -149,4 +154,17 @@ public class r_Color : rVar<Color>
     {
         return var.Value;
     }
+}
+
+[Serializable]
+public class CompRef : rVar<ComponentBase> {
+
+    public string entity_ID;
+    public string component_ID;
+	public CompRef() : base() { }
+    public CompRef(ComponentBase initialValue) : base(initialValue) { }
+    public static implicit operator ComponentBase(CompRef var)
+    {
+        return var.Value;
+    }   
 }

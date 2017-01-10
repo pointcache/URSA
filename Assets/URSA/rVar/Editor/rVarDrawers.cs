@@ -54,6 +54,7 @@
     // If you want to customize other specialized ReactiveProperty
     // [UnityEditor.CustomPropertyDrawer(typeof(YourSpecializedReactiveProperty))]
     // public class ExtendInspectorDisplayDrawer : InspectorDisplayDrawer { } 
+    [UnityEditor.CustomPropertyDrawer(typeof(CompRef))]
     [UnityEditor.CustomPropertyDrawer(typeof(r_bool))]
     [UnityEditor.CustomPropertyDrawer(typeof(r_double))]
     [UnityEditor.CustomPropertyDrawer(typeof(r_float))]
