@@ -8,6 +8,7 @@
     {
         public string database_ID;
         public string instance_ID;
+        public string parentName;
 
         public Vector3 position;
         public Vector3 rotation;
