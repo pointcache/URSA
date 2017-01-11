@@ -12,6 +12,6 @@
         public string entity_ID;
         public string component_ID;
 
-        public ComponentData data;
+        public SerializedData data;
     }
 }

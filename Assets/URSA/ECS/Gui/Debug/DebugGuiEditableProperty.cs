@@ -7,7 +7,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
 {
     public Text Name, value;
     public InputField inputfield;
-    ComponentData comp;
+    SerializedData comp;
     FieldInfo field;
     PropertyInfo prop;
     object rvar;
@@ -18,7 +18,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
         field, prop, rvar
     }
 
-    public void Initialize(ComponentData _comp, FieldInfo _field, PropertyInfo _prop, object _rvar, string _Name)
+    public void Initialize(SerializedData _comp, FieldInfo _field, PropertyInfo _prop, object _rvar, string _Name)
     {
         if (_rvar != null)
             _type = type.rvar;

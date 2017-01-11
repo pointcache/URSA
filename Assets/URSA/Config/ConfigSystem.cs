@@ -23,8 +23,8 @@
         #endregion
 
         public enum DataPath {
-            persistent,
             inRootFolder,
+            persistent,
             custom
         }
 

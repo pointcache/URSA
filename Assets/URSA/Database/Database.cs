@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 public class Database : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class Database : MonoBehaviour
 
         assign_ids_entities();
         assign_ids_components();
+
+        var scene = EditorSceneManager.GetActiveScene();
+        EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
     }
     
     public static GameObject GetPrefab(string id)

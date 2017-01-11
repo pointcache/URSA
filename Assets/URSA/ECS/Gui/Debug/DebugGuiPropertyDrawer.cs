@@ -9,7 +9,7 @@ public class DebugGuiPropertyDrawer : MonoBehaviour
     public GameObject property_generic_prefab;
     private RectTransform _tr;
     public RectTransform tr { get { if (!_tr) _tr = GetComponent<RectTransform>(); return _tr; } }
-    ComponentData currentData;
+    SerializedData currentData;
 
     public void DrawComponent(ComponentBase comp)
     {
@@ -17,7 +17,7 @@ public class DebugGuiPropertyDrawer : MonoBehaviour
         Type type = comp.GetType();
         var data = type.GetField("data");
         var datatype = data.FieldType;
-        currentData = data.GetValue(comp) as ComponentData;
+        currentData = data.GetValue(comp) as SerializedData;
         var fields = datatype.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         foreach (var f in fields)
         {

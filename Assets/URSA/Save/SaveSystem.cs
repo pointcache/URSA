@@ -82,7 +82,6 @@ public class SaveSystem : MonoBehaviour
                 var cobj = cobjects[component.ID];
                 component.SetData(cobj.data);
 
-
                 //Storing for later reference injection
                 Dictionary<string, ComponentBase> injectionDict = null;
                 compRefInjection.TryGetValue(entity.ID, out injectionDict);

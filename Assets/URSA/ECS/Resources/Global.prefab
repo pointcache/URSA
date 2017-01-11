@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012373901602
 GameObject:
   m_ObjectHideFlags: 1
@@ -210,8 +210,25 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013315893962}
+  - 114: {fileID: 114000014123433306}
   m_Layer: 0
   m_Name: Configs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000014202724530
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011100568528}
+  - 114: {fileID: 114000011959844046}
+  m_Layer: 0
+  m_Name: ConfigSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +275,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012852827966}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &4000010830491362
 Transform:
   m_ObjectHideFlags: 1
@@ -287,6 +304,19 @@ Transform:
   - {fileID: 4000012372573138}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &4000011100568528
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014202724530}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012852827966}
+  m_RootOrder: 2
 --- !u!4 &4000011962575344
 Transform:
   m_ObjectHideFlags: 1
@@ -329,6 +359,7 @@ Transform:
   m_Children:
   - {fileID: 4000011962575344}
   - {fileID: 4000014050978060}
+  - {fileID: 4000011100568528}
   - {fileID: 4000010804861830}
   - {fileID: 4000013202490198}
   m_Father: {fileID: 4000012372573138}
@@ -345,7 +376,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012852827966}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &4000013235791064
 Transform:
   m_ObjectHideFlags: 1
@@ -467,6 +498,23 @@ MonoBehaviour:
   ID: 
   debugMode:
     value: 282
+--- !u!114 &114000011959844046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014202724530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26fd18e9e2c3604188c0396819025cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleFile: 0
+  datapath: 0
+  customDataPath: 
+  singleFilePath: configuration
+  folderPath: Configs
+  extension: .cfg
 --- !u!114 &114000012717650768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -566,8 +614,6 @@ MonoBehaviour:
     ConsoleKey: 96
     tweenTime: 0.4
     maxConsoleLines: 120
-  configOptions:
-    config_path: game.cfg
 --- !u!114 &114000013320229470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,6 +625,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16931ed73d8f32b409193ae3c98d9bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000014123433306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013089368442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26fd18e9e2c3604188c0396819025cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleFile: 0
+  datapath: 1
+  customDataPath: 
+  singleFilePath: configuration
+  folderPath: Configs
+  extension: .cfg
 --- !u!114 &114000014238504428
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,7 +18,7 @@ public class ComponentBase : MonoBehaviour
         _entity = null;
     }
 
-    public virtual ComponentData GetData()
+    public virtual SerializedData GetData()
     {
         return null;
     }
@@ -52,7 +52,7 @@ public class ComponentBase : MonoBehaviour
             return getEntityRecursive(tr.parent);
     }
 }
-public class ComponentData { }
+public class SerializedData { }
 public class ECSConfigAttribute : Attribute
 {
 }

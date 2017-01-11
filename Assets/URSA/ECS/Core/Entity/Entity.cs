@@ -4,10 +4,17 @@ using System.Collections.Generic;
 
 public class Entity : MonoBehaviour
 {
+    public EntityType entityType;
     [NotEditableString]
     public string database_ID;
     [NotEditableString]
     public string instance_ID;
+
+    public enum EntityType {
+        standard,
+        constructed
+    }
+
     public string ID
     {
         get
@@ -33,6 +40,10 @@ public class Entity : MonoBehaviour
     public T GetEntityComponent<T>() where T : ComponentBase
     {
         return Pool<T>.getComponent(ID);
+    }
+
+    public void MakePersistent() {
+        PersistentDataSystem.MakePersistent(this);
     }
 
     //Dictionary<Type, List<ComponentBase>> components = new Dictionary<Type, List<ComponentBase>>();
