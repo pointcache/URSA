@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 0
   database_ID: Items\Weapons\Axe
   instance_ID: 
 --- !u!114 &114000013727982258

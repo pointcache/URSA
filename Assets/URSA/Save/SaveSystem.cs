@@ -31,6 +31,7 @@ public class SaveSystem : MonoBehaviour
     [MenuItem("Test/Load")]
     public static void LoadFile()
     {
+        ClearScene();
         LoadFromSaveFile(Application.dataPath + instance.savePath);
     }
 
@@ -107,7 +108,7 @@ public class SaveSystem : MonoBehaviour
     {
         SaveObject file = new SaveObject();
 
-        foreach (var pair in EntityManager.all)
+        foreach (var pair in EntityManager.scene)
         {
             EntityObject eobj = new EntityObject();
             Entity entity = pair.Value;

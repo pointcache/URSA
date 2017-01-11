@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1227f483971e1b4eb84e087058d460f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
+  ID: aaa57719-6938-4397-9f50-5f3780cfdacf
   data:
     name:
       value: sword
@@ -70,5 +70,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 0
-  database_ID: 
+  database_ID: Items\Weapons\Sword
   instance_ID: 

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013950462802}
   - 114: {fileID: 114000013024097452}
+  - 114: {fileID: 114000010609942900}
   m_Layer: 0
   m_Name: PlayerInventory
   m_TagString: Untagged
@@ -40,6 +41,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &114000010609942900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010858655832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71dae2c926b57424ba07df0bdc5b26d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: d365bf84-569f-4f19-91c1-9ce443f2eee8
+  data:
+    weapon1:
+      value: {fileID: 0}
+      entity_ID: 
+      component_ID: 
+    weapon2:
+      value: {fileID: 0}
+      entity_ID: 
+      component_ID: 
+    weapon3:
+      value: {fileID: 0}
+      entity_ID: 
+      component_ID: 
 --- !u!114 &114000013024097452
 MonoBehaviour:
   m_ObjectHideFlags: 1
