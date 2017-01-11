@@ -1,163 +1,209 @@
-﻿namespace URSA
-{
+﻿namespace URSA {
 
     using UnityEngine;
     using UnityEngine.UI;
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using UnityEditor;
 
-    public class ConfigSystem : MonoBehaviour
-    {
+    public class ConfigSystem : MonoBehaviour {
 
 
         #region SINGLETON
         private static ConfigSystem _instance;
         public static ConfigSystem instance
         {
-            get
-            {
+            get {
                 if (!_instance) _instance = GameObject.FindObjectOfType<ConfigSystem>();
                 return _instance;
             }
         }
         #endregion
 
-        public enum DataPath
-        {
+        public enum DataPath {
             persistent,
-            inRootFolder
+            inRootFolder,
+            custom
         }
 
         public bool singleFile;
         public DataPath datapath;
-        public string singleFilePath = "game";
+        public string customDataPath;
+        public string singleFilePath = "configuration";
         public string folderPath = "Configs";
         public string extension = ".cfg";
 
-        static Dictionary<string, IrVar> current = new Dictionary<string, IrVar>();
-        static Dictionary<Type, List<string>> cached = new Dictionary<Type, List<string>>();
+        static Dictionary<string, ConfigInfo> current = new Dictionary<string, ConfigInfo>();
 
-        public static void Save(string path)
-        {
-            SerializationHelper.Serialize(current, path, true);
+        static string getSystemPath() {
+            var sys = ConfigSystem.instance;
+            string path = String.Empty;
+            switch (sys.datapath) {
+                case DataPath.persistent: {
+                        path = Application.persistentDataPath;
+                    }
+                    break;
+                case DataPath.inRootFolder: {
+                        path = Application.dataPath;
+                    }
+                    break;
+                case DataPath.custom: {
+                        path = sys.customDataPath;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return path;
         }
 
-        public static void Load(string path)
-        {
-            var dict = SerializationHelper.Load<Dictionary<string, IrVar>>(path);
+        [MenuItem("Test/SaveConfig")]
+        public static void Save() {
+            var sys = ConfigSystem.instance;
+            string path = getSystemPath();
 
-            foreach (var item in current)
-            {
-                IrVar cur = item.Value;
+            if (sys.singleFile) {
+                path = path + "/" + sys.singleFilePath + sys.extension;
+                SerializationHelper.Serialize(current, path, true);
+            } else {
+                path = path + "/" + sys.folderPath;
+                if (!Directory.Exists(path)) {
+                    Directory.CreateDirectory(path);
+                }
+                foreach (var pair in current) {
+                    SerializationHelper.Serialize(pair.Value, path + "/" + pair.Value.filename + instance.extension, true);
 
-                IrVar loaded = null;
-                dict.TryGetValue(item.Key, out loaded);
-                if (loaded == null)
-                    continue;
-                cur.setValue(loaded.getValue());
+                }
             }
         }
 
-        public static void RegisterConfig(ConfigBase cfg)
-        {
-            Type t = cfg.GetType();
-            var fields = t.GetFields();
-            if (fields.Length > 0)
-            {
-                List<string> cache = null;
+        [MenuItem("Test/LoadConfig")]
+        public static void Load() {
+            
+            var sys = ConfigSystem.instance;
+            string path = getSystemPath();
+            Dictionary<string, ConfigInfo> loadedDict = null;
+            if (sys.singleFile) {
+                loadedDict = SerializationHelper.Load<Dictionary<string, ConfigInfo>>(path + "/" + sys.singleFilePath + sys.extension);
+            } else {
+                if (Directory.Exists(path + "/" + sys.folderPath)) {
+                    loadedDict = new Dictionary<string, ConfigInfo>();
+                    var Files = Directory.GetFiles(path + "/" + sys.folderPath, "*.cfg");
+                    foreach (var file in Files) {
+                        var loadedFile = SerializationHelper.Load<ConfigInfo>(file);
+                        if(loadedFile == null) {
+                            Debug.LogError("Error on config deserialization: " + file);
+                            continue;
+                        }
+                        loadedDict.Add(loadedFile.name, loadedFile);
+                    }
+                }
+            }
 
-                cached.TryGetValue(t, out cache);
+            if (loadedDict == null) {
+                Debug.LogError("Saved Configs were not found");
+                return;
+            }
 
-                if (cache == null)
-                {
-                    cache = new List<string>();
-                    cached.Add(t, cache);
+            foreach (var pair in current) {
+
+                ConfigInfo info = pair.Value;
+                ConfigInfo loadedInfo;
+                loadedDict.TryGetValue(pair.Key, out loadedInfo);
+                if (loadedInfo == null) {
+                    Debug.LogError("Matching config was not found in loaded config file:" + pair.Key);
+                    continue;
                 }
 
-                foreach (var f in fields)
-                {
-                    if (f.FieldType.BaseType.BaseType == typeof(rVar))
-                    {
-                        var attr = f.GetCustomAttributes(typeof(ConfigVarAttribute), false);
-                        if (attr.Length == 1)
-                        {
-                            ConfigVarAttribute cattr = attr[0] as ConfigVarAttribute;
+                foreach (var item in info.vars) {
+                    IrVar cur = item.Value;
+                    IrVar loaded = null;
 
-                            if (current.ContainsKey(cattr.Name))
-                            {
-                                Debug.LogError("<color=red> You can't have config variables with same name. </color>");
-                                Debug.LogError("Variable in class " + t.Name + " with name " + cattr.Name);
-                                continue;
-                            }
-                            IrVar ivar = f.GetValue(cfg) as IrVar;
-                            current.Add(cattr.Name, ivar);
-                            cache.Add(cattr.Name);
+                    loadedInfo.vars.TryGetValue(item.Key, out loaded);
+                    if (loaded == null) {
+                        Debug.LogError("Matching variable:" + item.Key + " was not found in loaded config :" + pair.Key);
+                        continue;
+                    }
 
-                            if (cattr.Console)
-                            {
-                                ivar.registerInConsole(cattr.Name, cattr.Description);
-                            }
-                        }
+                    cur.setValue(loaded.getValue());
+                }
+            }
+
+        }
+
+        public static void RegisterConfig(ConfigBase cfg) {
+            Type t = cfg.GetType();
+
+            var attrs = t.GetCustomAttributes(typeof(ConfigAttribute), false);
+
+            if (attrs.Length == 0) {
+                Debug.LogError("A config file without ConfigAttribute is not allowed, add [Config()] to your config class.");
+                Debug.Break();
+                return;
+            }
+
+            var cfgattr = attrs[0] as ConfigAttribute;
+
+            ConfigInfo info = null;
+
+            current.TryGetValue(t.Name, out info);
+            if (info == null) {
+                info = new ConfigInfo();
+                info.description = cfgattr.Description;
+                info.filename = cfgattr.FileName;
+                info.name = t.Name;
+            }
+            info.vars.Clear();
+            current.Add(t.Name, info);
+            var fields = t.GetFields();
+            if (fields.Length > 0) {
+
+
+                foreach (var f in fields) {
+                    if (f.FieldType.BaseType.BaseType == typeof(rVar)) {
+                        IrVar ivar = f.GetValue(cfg) as IrVar;
+
+                        Console.RegisterVar(ivar, f);
+                        string name = f.Name;
+                        info.vars.Add(name, ivar);
+
                     }
                 }
             }
         }
 
-        public static void UnregisterConfig(ConfigBase cfg)
-        {
+        public static void UnregisterConfig(ConfigBase cfg) {
             Type t = cfg.GetType();
-
-            List<string> cache = null;
-            cached.TryGetValue(t, out cache);
-
-            foreach (var s in cache)
-            {
-                IrVar rv = null;
-                current.TryGetValue(s, out rv);
-                if (rv != null)
-                {
-                    rv.unregisterInConsole(s);
-                    current.Remove(s);
-                }
-                else
-                    Debug.Log("When unregistering config, config variable " + s + " was not found is the list of tracked variables.");
+            ConfigInfo info = null;
+            current.TryGetValue(t.Name, out info);
+            if (info != null) {
+                current.Remove(t.Name);
             }
+        }
+
+        [Serializable]
+        class ConfigInfo {
+            public string name;
+            public string filename;
+            public string description;
+            public Dictionary<string, IrVar> vars = new Dictionary<string, IrVar>();
         }
     }
 
-    public class ConfigVarAttribute : Attribute
-    {
-        public string Name;
+    public class ConfigAttribute : Attribute {
+        public string FileName;
         public string Description;
-        public bool Console;
 
-        public ConfigVarAttribute(string name)
-        {
-            Name = name;
+        public ConfigAttribute(string filename) {
+            FileName = filename;
             Description = "nondescript";
-            Console = true;
         }
 
-        public ConfigVarAttribute(string name, bool console)
-        {
-            Name = name;
-            Description = "nondescript";
-            Console = console;
-        }
-
-        public ConfigVarAttribute(string name, string description)
-        {
-            Name = name;
+        public ConfigAttribute(string filename, string description) {
+            FileName = filename;
             Description = description;
-            Console = true;
         }
-        public ConfigVarAttribute(string name, string description, bool console)
-        {
-            Name = name;
-            Description = description;
-            Console = console;
-        }
-
-
     }
 }

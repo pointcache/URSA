@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using FullSerializer;
 using URSA;
 
+[Config("Graphics")]
 public class GraphicsConfig : ConfigBase
 {
-    [ConfigVar("gfx.targetframerate")]
+    [ConsoleVar("gfx.targetframerate")]
     public r_int TargetFramerate = new r_int(300);
 
 

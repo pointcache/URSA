@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using URSA;
 
+[Config("Input")]
 public class InputConfig : ConfigBase {
 
-    [ConfigVar("input.debugModeKey", "key used to enable debug mode")]
+    [ConsoleVar("input.debugModeKey", "key used to enable debug mode")]
     public r_KeyCode debugMode = new r_KeyCode(KeyCode.F1);
 
     public override void OnEnable()

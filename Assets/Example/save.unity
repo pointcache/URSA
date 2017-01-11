@@ -1047,7 +1047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleFile: 0
   datapath: 1
-  singleFilePath: game
+  customDataPath: 
+  singleFilePath: configuration
   folderPath: Configs
   extension: .cfg
 --- !u!1 &2074352695
