@@ -19,11 +19,12 @@ public class CompRefSerializationProcessor : fsObjectProcessor {
 
         CompRef cref = instance as CompRef;
         ComponentBase comp = cref.Value;
-        if (comp != null)
-        {
+        if (comp != null) {
+            cref.isNull = false;
             cref.entity_ID = comp.Entity.ID;
             cref.component_ID = comp.ID;
-        }
+        } else
+            cref.isNull = true;
         cref.setValueDirectly(null);
     }
 }

@@ -1,38 +1,18 @@
 {
     "entities": [
         {
-            "database_ID": "Example\\Cube",
-            "instance_ID": "fbb6ce1f-1de0-48b2-b5dc-b9ec4ed1dc98",
-            "parentName": null,
-            "position": {
-                "x": -2.86135,
-                "y": 1.784081,
-                "z": -1.056612
-            },
-            "rotation": {
-                "x": 1.472752,
-                "y": 28.10693,
-                "z": 327.7417
-            },
-            "scale": {
-                "x": 2.534155,
-                "y": 2.534155,
-                "z": 2.534154
-            }
-        },
-        {
             "database_ID": "Example\\Sphere",
-            "instance_ID": "f78308a2-c67e-404e-b9fb-e29c6a0a1c14",
+            "instance_ID": "3457cc55-6019-4e30-8f5c-61f35d48caeb",
             "parentName": null,
             "position": {
-                "x": -0.04847842,
-                "y": 3.672758,
-                "z": -0.0741909
+                "x": -0.09953842,
+                "y": 1.699798,
+                "z": 2.805733
             },
             "rotation": {
-                "x": 2.756277,
-                "y": 358.7424,
-                "z": 352.4044
+                "x": 30.66933,
+                "y": 90.45253,
+                "z": 295.1281
             },
             "scale": {
                 "x": 3.399596,
@@ -41,48 +21,48 @@
             }
         },
         {
-            "database_ID": "testPrefab",
-            "instance_ID": "67cbc629-2748-4ab6-b495-9ac5561ff920",
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "abd277fe-3f80-4b09-9e96-58a063ad583b",
             "parentName": null,
             "position": {
-                "x": 1.157046,
-                "y": 6.086629,
-                "z": 3.418234
+                "x": -6.647831,
+                "y": 1.699777,
+                "z": -0.2722624
             },
             "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 52.89994,
+                "y": 83.04087,
+                "z": 349.4682
             },
             "scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
             }
         },
         {
             "database_ID": "Example\\Cube",
-            "instance_ID": "dced4f48-b980-4236-9fbd-68dedd7e3f7c",
+            "instance_ID": "f96a5d99-1436-4a70-b1b8-77399b572ca6",
             "parentName": null,
             "position": {
-                "x": 2.374236,
-                "y": 1.858887,
-                "z": -0.9782997
+                "x": 6.181928,
+                "y": 1.290133,
+                "z": -2.736533
             },
             "rotation": {
-                "x": 4.988258,
-                "y": 27.22675,
-                "z": 326.7019
+                "x": 0.02099515,
+                "y": 12.44302,
+                "z": 271.0684
             },
             "scale": {
-                "x": 2.534155,
+                "x": 2.534156,
                 "y": 2.534155,
                 "z": 2.534154
             }
         },
         {
             "database_ID": "Items\\Weapons\\Axe",
-            "instance_ID": "1e6a44d2-fb13-4d50-ace4-99a9df4fadb2",
+            "instance_ID": "fab1be30-7829-42e1-b9b1-0d41c083535e",
             "parentName": null,
             "position": {
                 "x": -14.72,
@@ -102,37 +82,57 @@
         },
         {
             "database_ID": "Example\\Cube",
-            "instance_ID": "ee30971d-2213-4bc1-b06a-d1e13195feb0",
+            "instance_ID": "b6609a5c-68cb-43df-a19e-2c51a43c596b",
             "parentName": null,
             "position": {
-                "x": 2.81,
-                "y": 7.262728,
-                "z": -0.6960993
+                "x": 3.554875,
+                "y": 1.267262,
+                "z": -1.946931
             },
             "rotation": {
-                "x": 16.02537,
-                "y": 26.54117,
-                "z": 322.9584
+                "x": 359.9874,
+                "y": 21.12342,
+                "z": 270.0068
             },
             "scale": {
-                "x": 2.534155,
+                "x": 2.534156,
                 "y": 2.534155,
                 "z": 2.534154
             }
         },
         {
-            "database_ID": "Example\\Sphere",
-            "instance_ID": "e7911a14-9c5e-4221-85e7-5a6e02bfbbb8",
+            "database_ID": "testPrefab",
+            "instance_ID": "36fdddc7-a289-45c9-8b35-e92e5f45f9f2",
             "parentName": null,
             "position": {
-                "x": -3.04,
-                "y": 6.962729,
-                "z": -0.07
+                "x": 1.157046,
+                "y": 6.086629,
+                "z": 3.418234
             },
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "8374e89e-79ce-4b3b-b834-fb00361b86ff",
+            "parentName": null,
+            "position": {
+                "x": -7.032633,
+                "y": 1.699778,
+                "z": 3.856271
+            },
+            "rotation": {
+                "x": 346.8891,
+                "y": 327.5298,
+                "z": 20.38421
             },
             "scale": {
                 "x": 3.399596,
@@ -141,35 +141,36 @@
             }
         },
         {
-            "database_ID": "Example\\Sphere",
-            "instance_ID": "11935fa3-14d6-4f7d-a8a2-13390ab8c800",
+            "database_ID": "Example\\Cube",
+            "instance_ID": "2c07cbc7-b7a3-447e-81f0-74df96ee4427",
             "parentName": null,
             "position": {
-                "x": -0.17,
-                "y": 10.29273,
-                "z": -0.07
+                "x": -3.586292,
+                "y": 1.267078,
+                "z": -1.06953
             },
             "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -2.132239E-05,
+                "y": 31.85933,
+                "z": -2.540816E-06
             },
             "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
+                "x": 2.534156,
+                "y": 2.534155,
+                "z": 2.534154
             }
         }
     ],
     "components": {
-        "f78308a2-c67e-404e-b9fb-e29c6a0a1c14": {
+        "3457cc55-6019-4e30-8f5c-61f35d48caeb": {
             "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "entity_ID": "f78308a2-c67e-404e-b9fb-e29c6a0a1c14",
+                "entity_ID": "3457cc55-6019-4e30-8f5c-61f35d48caeb",
                 "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                 "data": {
                     "testReference": {
-                        "entity_ID": "e7911a14-9c5e-4221-85e7-5a6e02bfbbb8",
+                        "entity_ID": "abd277fe-3f80-4b09-9e96-58a063ad583b",
                         "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
                         "Value": null
                     },
                     "testFloat": {
@@ -179,14 +180,40 @@
                 }
             }
         },
-        "67cbc629-2748-4ab6-b495-9ac5561ff920": {
+        "abd277fe-3f80-4b09-9e96-58a063ad583b": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "abd277fe-3f80-4b09-9e96-58a063ad583b",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "",
+                        "component_ID": "",
+                        "isNull": true,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "fab1be30-7829-42e1-b9b1-0d41c083535e": {
+            "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8": {
+                "entity_ID": "fab1be30-7829-42e1-b9b1-0d41c083535e",
+                "component_ID": "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8",
+                "data": null
+            }
+        },
+        "36fdddc7-a289-45c9-8b35-e92e5f45f9f2": {
             "2e5007ec-6225-4e31-8c92-373e12a6edd2": {
-                "entity_ID": "67cbc629-2748-4ab6-b495-9ac5561ff920",
+                "entity_ID": "36fdddc7-a289-45c9-8b35-e92e5f45f9f2",
                 "component_ID": "2e5007ec-6225-4e31-8c92-373e12a6edd2",
                 "data": {
                     "testReference": {
                         "entity_ID": "",
                         "component_ID": "",
+                        "isNull": true,
                         "Value": null
                     },
                     "testFloat": {
@@ -196,38 +223,15 @@
                 }
             }
         },
-        "1e6a44d2-fb13-4d50-ace4-99a9df4fadb2": {
-            "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8": {
-                "entity_ID": "1e6a44d2-fb13-4d50-ace4-99a9df4fadb2",
-                "component_ID": "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8",
-                "data": null
-            }
-        },
-        "e7911a14-9c5e-4221-85e7-5a6e02bfbbb8": {
+        "8374e89e-79ce-4b3b-b834-fb00361b86ff": {
             "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "entity_ID": "e7911a14-9c5e-4221-85e7-5a6e02bfbbb8",
+                "entity_ID": "8374e89e-79ce-4b3b-b834-fb00361b86ff",
                 "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                 "data": {
                     "testReference": {
-                        "entity_ID": "",
-                        "component_ID": "",
-                        "Value": null
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "11935fa3-14d6-4f7d-a8a2-13390ab8c800": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "entity_ID": "11935fa3-14d6-4f7d-a8a2-13390ab8c800",
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "entity_ID": "e7911a14-9c5e-4221-85e7-5a6e02bfbbb8",
+                        "entity_ID": "abd277fe-3f80-4b09-9e96-58a063ad583b",
                         "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
                         "Value": null
                     },
                     "testFloat": {

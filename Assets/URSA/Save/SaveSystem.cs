@@ -20,23 +20,32 @@ public class SaveSystem : MonoBehaviour
     }
     #endregion
     public string savePath = "/GameSave.sav";
+    public string entitiesRoot = "Entities";
 
-    [MenuItem("Test/Save")]
-    public static void SaveFile()
+    [MenuItem("URSA/Save/SaveFile")]
+    public static void SaveFromEditor() {
+        instance.SaveFile();
+    }
+
+    public void SaveFile()
     {
         SaveObject save = CreateSaveFileFromScene();
         SerializationHelper.Serialize(save,Application.dataPath + instance.savePath, true);
     }
 
-    [MenuItem("Test/Load")]
-    public static void LoadFile()
+    [MenuItem("URSA/Save/LoadFile")]
+    public static void LoadFromEditor() {
+        instance.LoadFile();
+    }
+
+    public void LoadFile()
     {
         ClearScene();
-        LoadFromSaveFile(Application.dataPath + instance.savePath);
+        this.OneFrameDelay(() => LoadFromSaveFile(Application.dataPath + instance.savePath));
     }
 
     [MenuItem("Test/Clear")]
-    public static void ClearScene()
+    public void ClearScene()
     {
         var entities = GameObject.FindObjectsOfType<Entity>();
 
@@ -46,12 +55,19 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    public static void LoadFromSaveFile(string path)
+    public void LoadFromSaveFile(string path)
     {
         CompRefSerializationProcessor.injectionList = new List<CompRef>();
         SaveObject save = SerializationHelper.Load<SaveObject>(path);
         //entity id, comp id
         Dictionary<string, Dictionary<string,ComponentBase>> compRefInjection = new Dictionary<string,Dictionary<string,ComponentBase>>();
+
+        var rootGO =GameObject.Find(entitiesRoot);
+
+        Transform root = null;
+
+        if (rootGO)
+            root = rootGO.transform;
 
         foreach (var eobj in save.entities)
         {
@@ -65,6 +81,7 @@ public class SaveSystem : MonoBehaviour
             tr.position = eobj.position;
             tr.rotation = Quaternion.Euler(eobj.rotation);
             tr.localScale = eobj.scale;
+            tr.parent = root;
 
             var entity = gameobj.GetComponent<Entity>();
             entity.instance_ID = eobj.instance_ID;
@@ -99,12 +116,13 @@ public class SaveSystem : MonoBehaviour
 
         foreach (var compref in CompRefSerializationProcessor.injectionList)
         {
-            compref.setValueDirectly(compRefInjection[compref.entity_ID][compref.component_ID]);
+            if(!compref.isNull)
+                compref.setValueDirectly(compRefInjection[compref.entity_ID][compref.component_ID]);
         }
     }
 
     //creates a file containing all entities in scene, ignoring any scene specifics
-    public static SaveObject CreateSaveFileFromScene()
+    public SaveObject CreateSaveFileFromScene()
     {
         SaveObject file = new SaveObject();
 

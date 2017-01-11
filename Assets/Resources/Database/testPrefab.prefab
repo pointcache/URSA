@@ -87,6 +87,7 @@ MonoBehaviour:
       value: {fileID: 0}
       entity_ID: 
       component_ID: 
+      isNull: 0
     testFloat:
       value: 100
   testFloat2:
