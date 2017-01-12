@@ -58,10 +58,11 @@
                 default:
                     break;
             }
-            return path+ "/" + SaveSystem.instance.GlobalRootFoder;
+            return path + "/" + SaveSystem.instance.GlobalRootFoder;
         }
 
-        [MenuItem("Test/SaveConfig")]
+
+        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_SAVE)]
         public static void Save() {
             var sys = ConfigSystem.instance;
             string path = getSystemPath();
@@ -81,7 +82,8 @@
             }
         }
 
-        [MenuItem("Test/LoadConfig")]
+
+        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_LOAD)]
         public static void Load() {
 
             var sys = ConfigSystem.instance;

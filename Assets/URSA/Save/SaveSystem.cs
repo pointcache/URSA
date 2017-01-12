@@ -29,7 +29,7 @@ public class SaveSystem : MonoBehaviour {
     public string folderPath = "Saves";
     public string extension = ".sav";
 
-    [MenuItem("URSA/Save/SaveFile")]
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_SAVESTATE + URSAConstants.MENUITEM_SAVESTATE_SAVE)]
     public static void SaveFromEditor() {
         instance.SaveFile();
     }
@@ -74,7 +74,8 @@ public class SaveSystem : MonoBehaviour {
         return path+ "/" + SaveSystem.instance.GlobalRootFoder;
     }
 
-    [MenuItem("URSA/Save/LoadFile")]
+    
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_SAVESTATE + URSAConstants.MENUITEM_SAVESTATE_LOAD)]
     public static void LoadFromEditor() {
         instance.LoadFile();
     }

@@ -32,13 +32,15 @@ public class PersistentDataSystem : MonoBehaviour {
         entity.transform.parent = instance.transform;
     }
 
-    [MenuItem("URSA/Save/SavePersistentData")]
+
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_SAVE)]
     public static void Save() {
         instance.SaveTo();
     }
 
-    
-    [MenuItem("URSA/Save/LoadPersistentData")]
+
+
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_LOAD)]
     public static void Load() {
         instance.LoadFrom();
     }
@@ -62,7 +64,7 @@ public class PersistentDataSystem : MonoBehaviour {
             default:
                 break;
         }
-        return path+ "/" + SaveSystem.instance.GlobalRootFoder;
+        return path + "/" + SaveSystem.instance.GlobalRootFoder;
     }
 
     public void SaveTo() {
@@ -74,7 +76,7 @@ public class PersistentDataSystem : MonoBehaviour {
 
         string path = getSystemPath() + "/" + folderPath;
 
-        if(!Directory.Exists(path)) {
+        if (!Directory.Exists(path)) {
             Directory.CreateDirectory(path);
         }
 

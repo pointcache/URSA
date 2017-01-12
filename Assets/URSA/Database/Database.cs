@@ -6,8 +6,7 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
-public class Database : MonoBehaviour
-{
+public class Database : MonoBehaviour {
     const string databaseAdress = "/Resources/Database/";
     const string databaseFolder = "Database/";
 
@@ -16,9 +15,8 @@ public class Database : MonoBehaviour
     static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
     static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
 
-    [MenuItem("URSA/Database/Rebuild")]
-    public static void Rebuild()
-    {
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)]
+    public static void Rebuild() {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
         Components = new Dictionary<string, HashSet<string>>(10000);
@@ -29,24 +27,20 @@ public class Database : MonoBehaviour
         var scene = EditorSceneManager.GetActiveScene();
         EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
     }
-    
-    public static GameObject GetPrefab(string id)
-    {
+
+    public static GameObject GetPrefab(string id) {
         return Resources.Load(databaseFolder + id) as GameObject;
     }
 
-    static void assign_ids_entities()
-    {
+    static void assign_ids_entities() {
         var files = Directory.GetFiles(Application.dataPath + "/Resources/Database/", "*.prefab", SearchOption.AllDirectories);
-        foreach (var f in files)
-        {
-            string id = f.Remove(0, f.IndexOf(databaseAdress)+ databaseAdress.Length);
+        foreach (var f in files) {
+            string id = f.Remove(0, f.IndexOf(databaseAdress) + databaseAdress.Length);
             id = id.Replace(".prefab", string.Empty);
 
             var prefab = Resources.Load(databaseFolder + id) as GameObject;
             var entity = prefab.GetComponent<Entity>();
-            if(!entity)
-            {
+            if (!entity) {
                 Debug.LogError("Database: GameObject without entity found, skipping.", prefab);
                 continue;
             }
@@ -56,16 +50,13 @@ public class Database : MonoBehaviour
         }
     }
 
-    static void assign_ids_components()
-    {
+    static void assign_ids_components() {
         var allData = Resources.LoadAll("Database/");
         prefabObjects = new List<GameObject>(1000);
-        foreach (var item in allData)
-        {
+        foreach (var item in allData) {
             GameObject go = item as GameObject;
             var entity = go.GetComponent<Entity>();
-            if(!entity)
-            {
+            if (!entity) {
                 Debug.LogError("Database: GameObject without entity found, skipping.", go);
                 continue;
             }
@@ -80,10 +71,8 @@ public class Database : MonoBehaviour
             if (comps_in_entity == null)
                 comps_in_entity = new HashSet<string>();
 
-            foreach (var c in components)
-            {
-                if(c.ID == string.Empty || c.ID == null)
-                {
+            foreach (var c in components) {
+                if (c.ID == string.Empty || c.ID == null) {
                     c.ID = get_unique_id(comps_in_entity);
                 }
                 comps_in_entity.Add(c.ID);
@@ -92,8 +81,7 @@ public class Database : MonoBehaviour
     }
 
 
-    static string get_unique_id(HashSet<string> set)
-    {
+    static string get_unique_id(HashSet<string> set) {
         Guid guid = Guid.NewGuid();
         string id = guid.ToString();
         if (set.Contains(id))
