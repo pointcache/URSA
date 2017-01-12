@@ -143,6 +143,11 @@ Prefab:
       propertyPath: serializedData.testReference.value
       value: 
       objectReference: {fileID: 175477673}
+    - target: {fileID: 114000011397158222, guid: f04ad50bdafe44841a5554fe722df6be,
+        type: 2}
+      propertyPath: SerializedData.testReference.value
+      value: 
+      objectReference: {fileID: 856700810}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f04ad50bdafe44841a5554fe722df6be, type: 2}
   m_IsPrefabParent: 0
@@ -215,6 +220,11 @@ Prefab:
       propertyPath: NotAPrefab
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011397158222, guid: f04ad50bdafe44841a5554fe722df6be,
+        type: 2}
+      propertyPath: SerializedData.testReference.value
+      value: 
+      objectReference: {fileID: 856700810}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f04ad50bdafe44841a5554fe722df6be, type: 2}
   m_IsPrefabParent: 0
@@ -232,11 +242,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011080903674, guid: 9156a55b4c0c8b14ab41748fbdeda416, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.81
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000011080903674, guid: 9156a55b4c0c8b14ab41748fbdeda416, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 12.67
+      value: 12.588
       objectReference: {fileID: 0}
     - target: {fileID: 4000011080903674, guid: 9156a55b4c0c8b14ab41748fbdeda416, type: 2}
       propertyPath: m_LocalPosition.z
@@ -912,39 +922,23 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010609942900, guid: 8b660c22ae38d3847ba73010bfa060d5,
+        type: 2}
+      propertyPath: data.weapon1.value
+      value: 
+      objectReference: {fileID: 544903256}
+    - target: {fileID: 114000010609942900, guid: 8b660c22ae38d3847ba73010bfa060d5,
+        type: 2}
+      propertyPath: data.weapon2.value
+      value: 
+      objectReference: {fileID: 1430225083}
+    - target: {fileID: 1000010858655832, guid: 8b660c22ae38d3847ba73010bfa060d5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b660c22ae38d3847ba73010bfa060d5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &564257722 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010858655832, guid: 8b660c22ae38d3847ba73010bfa060d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 564257721}
---- !u!114 &564257723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564257722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71dae2c926b57424ba07df0bdc5b26d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 
-  data:
-    weapon1:
-      value: {fileID: 544903256}
-      entity_ID: 
-      component_ID: 
-    weapon2:
-      value: {fileID: 1430225083}
-      entity_ID: 
-      component_ID: 
-    weapon3:
-      value: {fileID: 0}
-      entity_ID: 
-      component_ID: 
 --- !u!1001 &601324848
 Prefab:
   m_ObjectHideFlags: 0
@@ -1186,6 +1180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b3526fdbe1f4f40a3c30b75a485a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileName: persistentGameData
+  datapath: 0
+  customDataPath: 
+  folderPath: PersistenData
+  extension: .data
 --- !u!1 &1128537378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1271,11 @@ Prefab:
     - target: {fileID: 114000011397158222, guid: f04ad50bdafe44841a5554fe722df6be,
         type: 2}
       propertyPath: serializedData.testReference.value
+      value: 
+      objectReference: {fileID: 175477673}
+    - target: {fileID: 114000011397158222, guid: f04ad50bdafe44841a5554fe722df6be,
+        type: 2}
+      propertyPath: SerializedData.testReference.value
       value: 
       objectReference: {fileID: 175477673}
     m_RemovedComponents: []
@@ -1669,7 +1673,33 @@ Prefab:
       propertyPath: entitiesRoot
       value: Entities
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000011959844046, guid: 0f3c58a8f9077974dab2515979472e6c,
+        type: 2}
+      propertyPath: folderPath
+      value: Configs
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012717650768, guid: 0f3c58a8f9077974dab2515979472e6c,
+        type: 2}
+      propertyPath: savePath
+      value: CustomData/Saves/GameSave.sav
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012717650768, guid: 0f3c58a8f9077974dab2515979472e6c,
+        type: 2}
+      propertyPath: FileName
+      value: GameSave
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012717650768, guid: 0f3c58a8f9077974dab2515979472e6c,
+        type: 2}
+      propertyPath: folderPath
+      value: Saves
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012717650768, guid: 0f3c58a8f9077974dab2515979472e6c,
+        type: 2}
+      propertyPath: extension
+      value: .sav
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000014123433306, guid: 0f3c58a8f9077974dab2515979472e6c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0f3c58a8f9077974dab2515979472e6c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2007391049

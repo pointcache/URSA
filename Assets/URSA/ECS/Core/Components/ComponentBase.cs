@@ -18,15 +18,6 @@ public class ComponentBase : MonoBehaviour
         _entity = null;
     }
 
-    public virtual SerializedData GetData()
-    {
-        return null;
-    }
-
-    public virtual void SetData(object _data)
-    {
-    }
-
     Entity _entity;
     public Entity Entity
     {

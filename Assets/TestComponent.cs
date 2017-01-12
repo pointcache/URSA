@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class TestComponent : ComponentBase {
     [Header("--------------------------------------------------------------------")]
-    public Data serializedData;
+    public Data SerializedData;
     [Serializable]
     public class Data : SerializedData {
         public CompRef testReference = new CompRef();
@@ -31,11 +31,4 @@ public class TestComponent : ComponentBase {
         base.OnDisable();
     }
 
-    public override SerializedData GetData() {
-        return serializedData;
     }
-
-    public override void SetData(object _data) {
-        serializedData = _data as Data;
-    }
-}

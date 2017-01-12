@@ -15,8 +15,6 @@ public class InventoryTester : MonoBehaviour {
 
     private void init() {
         weapon1 = Pool<Inventory>.First.data.weapon1;
-
-        
     }
 
     public void MakePersistent() {

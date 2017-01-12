@@ -1,0 +1,128 @@
+{
+    "data": {
+        "entities": [
+            {
+                "database_ID": "Items\\Weapons\\Sword",
+                "instance_ID": "f49e54eb-6cba-42af-b5f0-2a5da170278a",
+                "parentName": null,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            {
+                "database_ID": "PlayerInventory",
+                "instance_ID": "8fc1577a-3839-404a-bbd3-eb21f39278ee",
+                "parentName": null,
+                "position": {
+                    "x": -2.672261,
+                    "y": 4.329214,
+                    "z": -4.397717
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            {
+                "database_ID": "Items\\Weapons\\Axe",
+                "instance_ID": "5168107b-e3cd-4102-89d3-4d16eced0a46",
+                "parentName": null,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        ],
+        "components": {
+            "f49e54eb-6cba-42af-b5f0-2a5da170278a": {
+                "aaa57719-6938-4397-9f50-5f3780cfdacf": {
+                    "entity_ID": "f49e54eb-6cba-42af-b5f0-2a5da170278a",
+                    "component_ID": "aaa57719-6938-4397-9f50-5f3780cfdacf",
+                    "data": {
+                        "name": {
+                            "Value": "sword"
+                        },
+                        "damage": {
+                            "Value": 50
+                        },
+                        "$type": "Weapon+Data"
+                    }
+                }
+            },
+            "8fc1577a-3839-404a-bbd3-eb21f39278ee": {
+                "d365bf84-569f-4f19-91c1-9ce443f2eee8": {
+                    "entity_ID": "8fc1577a-3839-404a-bbd3-eb21f39278ee",
+                    "component_ID": "d365bf84-569f-4f19-91c1-9ce443f2eee8",
+                    "data": {
+                        "weapon1": {
+                            "entity_ID": "f49e54eb-6cba-42af-b5f0-2a5da170278a",
+                            "component_ID": "aaa57719-6938-4397-9f50-5f3780cfdacf",
+                            "isNull": false,
+                            "Value": null
+                        },
+                        "weapon2": {
+                            "entity_ID": "5168107b-e3cd-4102-89d3-4d16eced0a46",
+                            "component_ID": "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8",
+                            "isNull": false,
+                            "Value": null
+                        },
+                        "weapon3": {
+                            "entity_ID": "",
+                            "component_ID": "",
+                            "isNull": true,
+                            "Value": null
+                        },
+                        "$type": "Inventory+Data"
+                    }
+                }
+            },
+            "5168107b-e3cd-4102-89d3-4d16eced0a46": {
+                "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8": {
+                    "entity_ID": "5168107b-e3cd-4102-89d3-4d16eced0a46",
+                    "component_ID": "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8",
+                    "data": {
+                        "name": {
+                            "Value": "axe"
+                        },
+                        "damage": {
+                            "Value": 100
+                        },
+                        "$type": "Weapon+Data"
+                    }
+                }
+            }
+        }
+    },
+    "profileName": "profile",
+    "creationDate": "2017-01-11T20:41:36.5061942-05:00",
+    "$type": "PersistentDataSystem+PersistentDataInfo"
+}

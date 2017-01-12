@@ -58,14 +58,17 @@ MonoBehaviour:
       value: {fileID: 0}
       entity_ID: 
       component_ID: 
+      isNull: 0
     weapon2:
       value: {fileID: 0}
       entity_ID: 
       component_ID: 
+      isNull: 0
     weapon3:
       value: {fileID: 0}
       entity_ID: 
       component_ID: 
+      isNull: 0
 --- !u!114 &114000013024097452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,6 +80,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 0
   database_ID: PlayerInventory
   instance_ID: 

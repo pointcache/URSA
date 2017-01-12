@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: e28315f1-73a3-4076-b169-821a8240dc18
-  serializedData:
+  SerializedData:
     testReference:
       value: {fileID: 0}
       entity_ID: 

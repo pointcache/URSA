@@ -8,6 +8,12 @@
     using System.Linq;
     using UnityEditor;
 
+    public enum DataPath {
+        inRootFolder,
+        persistent,
+        custom
+    }
+
     public class ConfigSystem : MonoBehaviour {
 
 
@@ -22,11 +28,7 @@
         }
         #endregion
 
-        public enum DataPath {
-            inRootFolder,
-            persistent,
-            custom
-        }
+
 
         public bool singleFile;
         public DataPath datapath;
@@ -56,7 +58,7 @@
                 default:
                     break;
             }
-            return path;
+            return path+ "/" + SaveSystem.instance.GlobalRootFoder;
         }
 
         [MenuItem("Test/SaveConfig")]
@@ -81,7 +83,7 @@
 
         [MenuItem("Test/LoadConfig")]
         public static void Load() {
-            
+
             var sys = ConfigSystem.instance;
             string path = getSystemPath();
             Dictionary<string, ConfigInfo> loadedDict = null;
@@ -93,7 +95,7 @@
                     var Files = Directory.GetFiles(path + "/" + sys.folderPath, "*.cfg");
                     foreach (var file in Files) {
                         var loadedFile = SerializationHelper.Load<ConfigInfo>(file);
-                        if(loadedFile == null) {
+                        if (loadedFile == null) {
                             Debug.LogError("Error on config deserialization: " + file);
                             continue;
                         }

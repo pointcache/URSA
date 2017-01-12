@@ -10,12 +10,6 @@ public class GraphicsConfig : ConfigBase
     [ConsoleVar("gfx.targetframerate")]
     public r_int TargetFramerate = new r_int(300);
 
-
-
-
-
-
-
     public override void OnEnable()
     {
         base.OnEnable();
