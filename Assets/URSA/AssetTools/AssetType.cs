@@ -12,12 +12,11 @@ public class AssetType : MonoBehaviour {
     public ObjType type;
 
     public enum ObjType {
-        dynamic,
+        entity,
         @static,
         light,
         volume,
         fx,
-        enemy,
         npc
     }
 }

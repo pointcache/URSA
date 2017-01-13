@@ -22,4 +22,6 @@ public static class URSAConstants  {
     public const string MENUITEM_CONFIG_LOAD = "/Load";
 
     public const string MENUITEM_LEVELS = "/Levels";
+    public const string MENUITEM_TOOLS = "/Tools";
+    public const string MENUITEM_ASSETTOOLS = "/Assets";
 }

@@ -66,7 +66,7 @@ public static class LevelsSystemEditor {
     }
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_LEVELS + "/CollectData")]
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_LEVELS + "/CollectSceneData")]
     public static void CollectLevelsData() {
         SceneDataCollector collector;
         var assets = AssetDatabase.FindAssets("t:SceneDataCollector");

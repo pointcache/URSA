@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382a7df77a1dc5248aaa022dd863e1b4, type: 3}
+  m_Name: URSASettings
+  m_EditorClassIdentifier: 
+  CustomGlobalSystemsPrefab: {fileID: 0}
+  GlobalSystemsTemplate: {fileID: 1000011637727820, guid: 0f3c58a8f9077974dab2515979472e6c,
+    type: 2}
+  CustomSceneSystemsPrefab: {fileID: 0}
+  SceneSystemsTemplate: {fileID: 1000010491598222, guid: 27182d360031cb6488178e893bdbe200,
+    type: 2}

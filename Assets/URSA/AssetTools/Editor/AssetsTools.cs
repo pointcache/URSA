@@ -10,26 +10,24 @@ public static class AssetsTools
     static AssetToolsSettings settings;
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/ParseResources", priority = 2)]
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_ASSETTOOLS + "/ParseResources", priority = 2)]
     public static void ParseResources()
     {
         settings = Helpers.FindScriptableObject<AssetToolsSettings>();
 
         var @static = Resources.LoadAll(settings.rootPath + settings.@static);
-        var dynamic = Resources.LoadAll(settings.rootPath + settings.dynamic);
+        var entity = Resources.LoadAll(settings.rootPath + settings.entity);
         var lights = Resources.LoadAll(settings.rootPath + settings.lights);
         var volumes = Resources.LoadAll(settings.rootPath + settings.volumes);
         var fx = Resources.LoadAll(settings.rootPath + settings.fx);
-        var enemy = Resources.LoadAll(settings.rootPath + settings.enemy);
         var npc = Resources.LoadAll(settings.rootPath + settings.npc);
         int count = 0;
 
         addObjectType(@static, AssetType.ObjType.@static, ref count);
-        addObjectType(dynamic, AssetType.ObjType.dynamic, ref count);
+        addObjectType(entity, AssetType.ObjType.entity, ref count);
         addObjectType(lights, AssetType.ObjType.light, ref count);
         addObjectType(volumes, AssetType.ObjType.volume, ref count);
         addObjectType(fx, AssetType.ObjType.fx, ref count);
-        addObjectType(enemy, AssetType.ObjType.enemy, ref count);
         addObjectType(npc, AssetType.ObjType.npc, ref count);
 
         Debug.Log(count + "<color=green> resources parsed</color>");

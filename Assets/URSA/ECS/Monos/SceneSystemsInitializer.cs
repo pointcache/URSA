@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class GameSystemsInitializer : MonoBehaviour
+public class SceneSystemsInitializer : MonoBehaviour
 {
 
     GameObject loaders, systems;
