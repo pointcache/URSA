@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: Items\Weapons\spheres_thing
+  database_ID: ddd73c53-ac88-405e-aae8-d35eda391700
   instance_ID: 
 --- !u!114 &114000012950660852
 MonoBehaviour:

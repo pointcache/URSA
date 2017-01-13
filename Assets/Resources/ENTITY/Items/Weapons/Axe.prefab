@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: Items\Weapons\Axe
+  database_ID: c3d37af8-a918-44e0-a09e-bfc608f1f321
   instance_ID: 
 --- !u!114 &114000013727982258
 MonoBehaviour:

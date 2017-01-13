@@ -18,3 +18,4 @@ MonoBehaviour:
   SceneSystemsTemplate: {fileID: 1000010491598222, guid: 27182d360031cb6488178e893bdbe200,
     type: 2}
   DatabaseRootFolder: ENTITY
+  DatabaseManifest: manifest.db

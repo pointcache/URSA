@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 public static class URSAConstants  {
 
+    public const string PATH_URSASETTINGS_ROOT = "URSASettings";
+    public const string PATH_URSASETTINGS_SETTINGS = "/URSASettings";
+    public const string PATH_URSASETTINGS_ASSET_IMPORTER = "/AssetImportersSettings";
+    public const string PATH_URSASETTINGS_ASSET_TOOLS_SETTINGS = "/AssetToolsSettings";
+    public const string PATH_URSASETTINGS_SCENE_DATA_COLLECTOR = "/SceneDataCollector";
+
+
     public const string MENUITEM_ROOT = "URSA";
 
     public const string MENUITEM_DATABASE = "/Database";

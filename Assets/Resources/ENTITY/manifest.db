@@ -1,0 +1,32 @@
+{
+    "GameVersion": 0.0,
+    "entity_id_adress": {
+        "a1aa5101-935b-459b-81c7-3b99a27e58e2": "Axe",
+        "41f6fea9-d169-4aba-81da-fef8be621771": "PlayerInventory",
+        "e2ae5d48-d59e-4382-ad7a-debe2696d1ab": "testObject",
+        "54a23190-bff4-489b-a13a-3fbd9d8bdedb": "testPrefab",
+        "32c7fb6b-9942-49be-af6e-ae5d2bb901d2": "Buildings/testObject 1",
+        "4ca77bf1-eea6-432f-860f-432196021c9a": "Example/Cube",
+        "3043326d-0346-4d3b-8dd1-716c5c0378b4": "Example/Sphere",
+        "139008c9-e798-4095-abe6-2c453828ae20": "Items/Sphere",
+        "c3d37af8-a918-44e0-a09e-bfc608f1f321": "Items/Weapons/Axe",
+        "ddd73c53-ac88-405e-aae8-d35eda391700": "Items/Weapons/spheres_thing",
+        "d3101f65-85ed-4733-8651-74e52f73c779": "Items/Weapons/Sword",
+        "106f18cd-9c40-40ec-8a6c-8477555a99b4": "Items/Weapons/testObject 1"
+    },
+    "entity_adress_id": {
+        "Axe": "a1aa5101-935b-459b-81c7-3b99a27e58e2",
+        "PlayerInventory": "41f6fea9-d169-4aba-81da-fef8be621771",
+        "testObject": "e2ae5d48-d59e-4382-ad7a-debe2696d1ab",
+        "testPrefab": "54a23190-bff4-489b-a13a-3fbd9d8bdedb",
+        "Buildings/testObject 1": "32c7fb6b-9942-49be-af6e-ae5d2bb901d2",
+        "Example/Cube": "4ca77bf1-eea6-432f-860f-432196021c9a",
+        "Example/Sphere": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
+        "Items/Sphere": "139008c9-e798-4095-abe6-2c453828ae20",
+        "Items/Weapons/Axe": "c3d37af8-a918-44e0-a09e-bfc608f1f321",
+        "Items/Weapons/spheres_thing": "ddd73c53-ac88-405e-aae8-d35eda391700",
+        "Items/Weapons/Sword": "d3101f65-85ed-4733-8651-74e52f73c779",
+        "Items/Weapons/testObject 1": "106f18cd-9c40-40ec-8a6c-8477555a99b4"
+    },
+    "$type": "DatabaseManifest"
+}

@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: Items\Weapons\Sword
+  database_ID: d3101f65-85ed-4733-8651-74e52f73c779
   instance_ID: 
 --- !u!114 &114000013162657426
 MonoBehaviour:

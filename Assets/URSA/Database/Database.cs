@@ -7,28 +7,45 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 
 public class Database : MonoBehaviour {
-   // const string databaseAdress = "/Resources/Database/";
-    //const string databaseFolder = "Database/";
+
+
+    #region SINGLETON
+    private static Database _instance;
+    public static Database instance
+    {
+        get {
+            if (!_instance) _instance = GameObject.FindObjectOfType<Database>();
+            return _instance;
+        }
+    }
+    #endregion
 
     static List<GameObject> prefabObjects = new List<GameObject>(1000);
     static URSASettings _settings;
     static URSASettings settings
     {
         get {
-            if(_settings == null)
-                _settings = Helpers.FindScriptableObject<URSASettings>();
+            if (_settings == null)
+                _settings = Resources.Load(URSAConstants.PATH_URSASETTINGS_ROOT + URSAConstants.PATH_URSASETTINGS_SETTINGS) as URSASettings;
             return _settings;
         }
     }
     static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
     static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
 
+    DatabaseManifest manifest;
+
+    private void OnEnable() {
+        manifest = SerializationHelper.Load<DatabaseManifest>(Application.dataPath + "/Resources/" + settings.DatabaseRootFolder + "/" + settings.DatabaseManifest);
+    }
+
+
     [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)]
     public static void Rebuild() {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
         Components = new Dictionary<string, HashSet<string>>(10000);
-        
+
         assign_ids_entities();
         assign_ids_components();
 
@@ -45,6 +62,20 @@ public class Database : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Very careful with this one
+    /// </summary>
+    [MenuItem("temp/clear ids")]
+    public static void clear_all_entity_IDs() {
+        var prefabs = Resources.LoadAll(settings.DatabaseRootFolder + "/");
+
+        foreach (var p in prefabs) {
+            var ent = ((GameObject)p).GetComponent<Entity>();
+            if (ent) {
+                ent.database_ID = "";
+            }
+        }
+    }
 
     static string dbPath
     {
@@ -54,26 +85,51 @@ public class Database : MonoBehaviour {
     }
 
     public static GameObject GetPrefab(string id) {
-        string path = settings.DatabaseRootFolder + "/" + id.Replace("\\", "/");
-        return Resources.Load(path ) as GameObject;
+        string path = "";
+        string idPath = "";
+        instance.manifest.entity_id_adress.TryGetValue(id, out idPath);
+        if (idPath != "")
+            path = settings.DatabaseRootFolder + "/" + idPath;
+        else
+            return null;
+        return Resources.Load(path) as GameObject;
     }
 
     static void assign_ids_entities() {
-        var files = Directory.GetFiles(Application.dataPath + dbPath , "*.prefab", SearchOption.AllDirectories);
-        foreach (var f in files) {
-            string id = f.Remove(0, f.IndexOf(dbPath) + dbPath.Length);
-            id = id.Replace(".prefab", string.Empty);
 
-            var prefab = Resources.Load(settings.DatabaseRootFolder + "/" + id) as GameObject;
+        HashSet<string> ids = new HashSet<string>();
+
+        DatabaseManifest manifest = new DatabaseManifest();
+
+        var files = Directory.GetFiles(Application.dataPath + dbPath, "*.prefab", SearchOption.AllDirectories);
+        var prefabs = Resources.LoadAll(settings.DatabaseRootFolder + "/");
+
+        foreach (var p in prefabs) {
+            var ent = ((GameObject)p).GetComponent<Entity>();
+            if (ent)
+                ids.Add(ent.database_ID);
+        }
+
+        foreach (var f in files) {
+            string adress = f.Remove(0, f.IndexOf(dbPath) + dbPath.Length);
+            adress = adress.Replace(".prefab", string.Empty);
+
+            var prefab = Resources.Load(settings.DatabaseRootFolder + "/" + adress) as GameObject;
             var entity = prefab.GetComponent<Entity>();
             if (!entity) {
                 Debug.LogError("Database: GameObject without entity found, skipping.", prefab);
                 continue;
             }
 
-
-            prefab.GetComponent<Entity>().database_ID = id;
+            if (entity.database_ID == "") {
+                entity.database_ID = get_unique_id(ids);
+            }
+            adress = adress.Replace("\\", "/");
+            manifest.entity_id_adress.Add(entity.database_ID, adress);
+            manifest.entity_adress_id.Add(adress, entity.database_ID);
         }
+
+        SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + settings.DatabaseRootFolder + "/" + settings.DatabaseManifest, true);
     }
 
     static void assign_ids_components() {

@@ -64,5 +64,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: Items\Weapons\testObject 1
+  database_ID: 106f18cd-9c40-40ec-8a6c-8477555a99b4
   instance_ID: 
