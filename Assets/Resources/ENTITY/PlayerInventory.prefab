@@ -9,65 +9,60 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000011902159432}
+  m_RootGameObject: {fileID: 1000010858655832}
   m_IsPrefabParent: 1
---- !u!1 &1000011902159432
+--- !u!1 &1000010858655832
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000013219192728}
-  - 114: {fileID: 114000013041770700}
-  - 114: {fileID: 114000010010034294}
+  - 4: {fileID: 4000013950462802}
+  - 114: {fileID: 114000013024097452}
+  - 114: {fileID: 114000011877234260}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: PlayerInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000013219192728
+--- !u!4 &4000013950462802
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011902159432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1000010858655832}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.6722612, y: 4.3292136, z: -4.3977165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010010034294
+--- !u!114 &114000011877234260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011902159432}
+  m_GameObject: {fileID: 1000010858655832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1227f483971e1b4eb84e087058d460f, type: 3}
+  m_Script: {fileID: 11500000, guid: a797421b741851346bdaa0346479599f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: aaa57719-6938-4397-9f50-5f3780cfdacf
-  data:
-    name:
-      value: sword
-    damage:
-      value: 50
---- !u!114 &114000013041770700
+  type: 0
+--- !u!114 &114000013024097452
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011902159432}
+  m_GameObject: {fileID: 1000010858655832}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: Items\Weapons\Sword
+  database_ID: PlayerInventory
   instance_ID: 

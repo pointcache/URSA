@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEditor.SceneManagement;
 
 public static class LevelsSystemEditor {
 
@@ -13,6 +14,87 @@ public static class LevelsSystemEditor {
     private const string LEVELDATA_NEW = "New Data";
 
 
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_LEVELS + "/OrganizeLevel")]
+    public static void LevelOrganizer() {
+
+        var settings = Helpers.FindScriptableObject<AssetToolsSettings>();
+        GameObject npc = null;
+        GameObject entity = null;
+        GameObject light = null;
+        GameObject fx = null;
+        GameObject volume = null;
+        GameObject @static = null;
+
+        var entities = GameObject.Find(settings.lv_entities_root) as GameObject;
+        if (entities) {
+
+            npc = GameObject.Find(settings.lv_npc) as GameObject;
+            if (!npc) {
+                Debug.LogError(settings.lv_npc + " not found ");
+            }
+
+            entity = GameObject.Find(settings.lv_entity) as GameObject;
+            if (!entity) {
+                Debug.LogError(settings.lv_entity + " not found ");
+            }
+
+        } else
+            Debug.LogError(settings.lv_entities_root + " not found ");
+
+        var stat = GameObject.Find(settings.lv_static_root) as GameObject;
+        if (stat) {
+            light = GameObject.Find(settings.lv_lights) as GameObject;
+            if (!light) {
+                Debug.LogError(settings.lv_lights + " not found ");
+            }
+            fx = GameObject.Find(settings.lv_fx) as GameObject;
+            if (!fx) {
+                Debug.LogError(settings.lv_fx + " not found ");
+            }
+            volume = GameObject.Find(settings.lv_volumes) as GameObject;
+            if (!volume) {
+                Debug.LogError(settings.lv_volumes + " not found ");
+            }
+            @static = GameObject.Find(settings.lv_static) as GameObject;
+            if (!@static) {
+                Debug.LogError(settings.lv_static + " not found ");
+            }
+        } else
+            Debug.LogError(settings.lv_static_root + " not found ");
+
+
+        var all = GameObject.FindObjectsOfType<AssetType>();
+
+        foreach (var obj in all) {
+            switch (obj.type) {
+                case AssetType.ObjType.entity:
+                    obj.transform.SetParent(entity.transform);
+                    break;
+                case AssetType.ObjType.@static:
+                    obj.transform.SetParent(@static.transform);
+                    break;
+                case AssetType.ObjType.light:
+                    obj.transform.SetParent(light.transform);
+                    break;
+                case AssetType.ObjType.volume:
+                    obj.transform.SetParent(volume.transform);
+                    break;
+                case AssetType.ObjType.fx:
+                    obj.transform.SetParent(fx.transform);
+                    break;
+                case AssetType.ObjType.npc:
+                    obj.transform.SetParent(npc.transform);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        Debug.Log(all.Length + " objects organized.");
+
+        EditorSceneManager.MarkAllScenesDirty();
+        EditorSceneManager.SaveOpenScenes();
+    }
 
     [MenuItem(SaveSystem_MENU + LEVELDATA_NEW)]
     public static void CreateLevelData() {

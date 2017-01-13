@@ -12,6 +12,18 @@ public static class URSAEditorTools {
         EditorApplication.ExecuteMenuItem("Edit/Play");
     }
 
+    [MenuItem(URSAConstants.MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
+    public static void UpdateEverything() {
+        Database.RebuildWithoutReloadOfTheScene();
+        AssetsTools.ParseResources();
+
+        EditorSceneManager.MarkAllScenesDirty();
+        EditorSceneManager.SaveOpenScenes();
+        var scene = EditorSceneManager.GetActiveScene();
+        EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
+        LevelOrganizer();
+    }
+
     [MenuItem("GameObject/CreateParent")]
     public static void CreateParent() {
         var go = Selection.activeGameObject;
@@ -45,7 +57,7 @@ public static class URSAEditorTools {
         }
     }
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/AddSystems", priority = 1)]
+    [MenuItem(URSAConstants.MENUITEM_ROOT + "/AddSystems", priority = 2)]
     public static void AddSystems() {
         LevelStructureConstructor();
 
@@ -125,6 +137,9 @@ public static class URSAEditorTools {
 
         entities.transform.SetAsFirstSibling();
         stat.transform.SetAsFirstSibling();
+
+        EditorSceneManager.MarkAllScenesDirty();
+        EditorSceneManager.SaveOpenScenes();
     }
 
     public static void LevelOrganizer() {
@@ -132,9 +147,9 @@ public static class URSAEditorTools {
         var settings = Helpers.FindScriptableObject<AssetToolsSettings>();
         GameObject npc = null;
         GameObject entity = null;
-        GameObject lights = null;
+        GameObject light = null;
         GameObject fx = null;
-        GameObject volumes = null;
+        GameObject volume = null;
         GameObject @static = null;
 
         var entities = GameObject.Find(settings.lv_entities_root) as GameObject;
@@ -155,16 +170,16 @@ public static class URSAEditorTools {
 
         var stat = GameObject.Find(settings.lv_static_root) as GameObject;
         if (stat) {
-            lights = GameObject.Find(settings.lv_lights) as GameObject;
-            if (!lights) {
+            light = GameObject.Find(settings.lv_lights) as GameObject;
+            if (!light) {
                 Debug.LogError(settings.lv_lights + " not found ");
             }
             fx = GameObject.Find(settings.lv_fx) as GameObject;
             if (!fx) {
                 Debug.LogError(settings.lv_fx + " not found ");
             }
-            volumes = GameObject.Find(settings.lv_volumes) as GameObject;
-            if (!volumes) {
+            volume = GameObject.Find(settings.lv_volumes) as GameObject;
+            if (!volume) {
                 Debug.LogError(settings.lv_volumes + " not found ");
             }
             @static = GameObject.Find(settings.lv_static) as GameObject;
@@ -175,7 +190,37 @@ public static class URSAEditorTools {
             Debug.LogError(settings.lv_static_root + " not found ");
 
 
+        var all = GameObject.FindObjectsOfType<AssetType>();
 
+        foreach (var obj in all) {
+            switch (obj.type) {
+                case AssetType.ObjType.entity:
+                    obj.transform.SetParent(entity.transform);
+                    break;
+                case AssetType.ObjType.@static:
+                    obj.transform.SetParent(@static.transform);
+                    break;
+                case AssetType.ObjType.light:
+                    obj.transform.SetParent(light.transform);
+                    break;
+                case AssetType.ObjType.volume:
+                    obj.transform.SetParent(volume.transform);
+                    break;
+                case AssetType.ObjType.fx:
+                    obj.transform.SetParent(fx.transform);
+                    break;
+                case AssetType.ObjType.npc:
+                    obj.transform.SetParent(npc.transform);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        Debug.Log(all.Length + " objects organized.");
+
+        EditorSceneManager.MarkAllScenesDirty();
+        EditorSceneManager.SaveOpenScenes();
     }
 }
 #endif

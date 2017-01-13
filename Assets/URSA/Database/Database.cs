@@ -7,11 +7,11 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 
 public class Database : MonoBehaviour {
-    const string databaseAdress = "/Resources/Database/";
-    const string databaseFolder = "Database/";
+   // const string databaseAdress = "/Resources/Database/";
+    //const string databaseFolder = "Database/";
 
     static List<GameObject> prefabObjects = new List<GameObject>(1000);
-
+    static URSASettings settings;
     static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
     static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
 
@@ -20,7 +20,7 @@ public class Database : MonoBehaviour {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
         Components = new Dictionary<string, HashSet<string>>(10000);
-
+        settings = Helpers.FindScriptableObject<URSASettings>();
         assign_ids_entities();
         assign_ids_components();
 
@@ -28,17 +28,35 @@ public class Database : MonoBehaviour {
         EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
     }
 
+    public static void RebuildWithoutReloadOfTheScene() {
+        prefabObjects = new List<GameObject>(1000);
+        entities = new Dictionary<string, Entity>(1000);
+        Components = new Dictionary<string, HashSet<string>>(10000);
+        settings = Helpers.FindScriptableObject<URSASettings>();
+        assign_ids_entities();
+        assign_ids_components();
+
+    }
+
+
+    static string dbPath
+    {
+        get {
+            return "/Resources/" + settings.DatabaseRootFolder + "/";
+        }
+    }
+
     public static GameObject GetPrefab(string id) {
-        return Resources.Load(databaseFolder + id) as GameObject;
+        return Resources.Load( dbPath + id) as GameObject;
     }
 
     static void assign_ids_entities() {
-        var files = Directory.GetFiles(Application.dataPath + "/Resources/Database/", "*.prefab", SearchOption.AllDirectories);
+        var files = Directory.GetFiles(Application.dataPath + dbPath , "*.prefab", SearchOption.AllDirectories);
         foreach (var f in files) {
-            string id = f.Remove(0, f.IndexOf(databaseAdress) + databaseAdress.Length);
+            string id = f.Remove(0, f.IndexOf(dbPath) + dbPath.Length);
             id = id.Replace(".prefab", string.Empty);
 
-            var prefab = Resources.Load(databaseFolder + id) as GameObject;
+            var prefab = Resources.Load(settings.DatabaseRootFolder + "/" + id) as GameObject;
             var entity = prefab.GetComponent<Entity>();
             if (!entity) {
                 Debug.LogError("Database: GameObject without entity found, skipping.", prefab);
@@ -51,7 +69,7 @@ public class Database : MonoBehaviour {
     }
 
     static void assign_ids_components() {
-        var allData = Resources.LoadAll("Database/");
+        var allData = Resources.LoadAll(settings.DatabaseRootFolder);
         prefabObjects = new List<GameObject>(1000);
         foreach (var item in allData) {
             GameObject go = item as GameObject;

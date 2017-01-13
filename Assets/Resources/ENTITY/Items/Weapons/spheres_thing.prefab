@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013201870390}
   - 114: {fileID: 114000010601001366}
+  - 114: {fileID: 114000012950660852}
   m_Layer: 0
   m_Name: spheres_thing
   m_TagString: Untagged
@@ -344,7 +345,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f858d2a5179945b4ca68f7e4b4fbaaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
+  ID: 638350c5-58c6-4daf-a257-27bb01ae41b5
+  SerializedData:
+    testReference:
+      value: {fileID: 0}
+      entity_ID: 
+      component_ID: 
+      isNull: 0
+    testFloat:
+      value: 100
+  testFloat2:
+    value: 200
+  testFloat3:
+    value: 3100
+  testFloat4:
+    value: 1400
+  testbool:
+    value: 1
+  Ptestbool:
+    value: 1
+  asdasd: 88888
+  kxzjckzxc: 999
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114000010411577082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,7 +378,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f858d2a5179945b4ca68f7e4b4fbaaf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
+  ID: 0e07d1ae-61dc-45da-98a5-880bec3510cf
+  SerializedData:
+    testReference:
+      value: {fileID: 0}
+      entity_ID: 
+      component_ID: 
+      isNull: 0
+    testFloat:
+      value: 100
+  testFloat2:
+    value: 200
+  testFloat3:
+    value: 3100
+  testFloat4:
+    value: 1400
+  testbool:
+    value: 1
+  Ptestbool:
+    value: 1
+  asdasd: 88888
+  kxzjckzxc: 999
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &114000010601001366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,6 +412,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   database_ID: Items\Weapons\spheres_thing
+  instance_ID: 
+--- !u!114 &114000012950660852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011619207676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a797421b741851346bdaa0346479599f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!135 &135000010407473892
 SphereCollider:
   m_ObjectHideFlags: 1

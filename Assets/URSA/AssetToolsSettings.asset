@@ -11,12 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f57dd6b616d61c44805fce79d4589fa, type: 3}
   m_Name: AssetToolsSettings
   m_EditorClassIdentifier: 
-  rootPath: GamePrefabs/
-  dynamic: DYNAMIC
+  rootPath: 
+  entity: ENTITY
   static: STATIC
   lights: LIGHT
   volumes: VOLUME
   fx: FX
-  enemy: ENEMY
   npc: NPC
   defaultNavmeshArea: 1
+  lv_static_root: StaticContent
+  lv_entities_root: DynamicContent
+  lv_entity: Entities
+  lv_static: Static
+  lv_lights: Lights
+  lv_volumes: Volumes
+  lv_fx: Fx
+  lv_npc: Npcs
