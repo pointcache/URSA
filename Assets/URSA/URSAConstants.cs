@@ -20,4 +20,6 @@ public static class URSAConstants  {
     public const string MENUITEM_CONFIG = "/Config";
     public const string MENUITEM_CONFIG_SAVE = "/Save";
     public const string MENUITEM_CONFIG_LOAD = "/Load";
+
+    public const string MENUITEM_LEVELS = "/Levels";
 }
