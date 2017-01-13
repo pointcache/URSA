@@ -2279,15 +2279,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000013727982258, guid: 176a590850d264d4ab6f76bcc93fbfae, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 176a590850d264d4ab6f76bcc93fbfae, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &507450153 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013727982258, guid: 176a590850d264d4ab6f76bcc93fbfae,
-    type: 2}
-  m_PrefabInternal: {fileID: 507450152}
-  m_Script: {fileID: 11500000, guid: a1227f483971e1b4eb84e087058d460f, type: 3}
 --- !u!1001 &518684687
 Prefab:
   m_ObjectHideFlags: 0
@@ -10122,8 +10117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77017d0af49f79b4999bda329ef1aed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon1: {fileID: 507450153}
-  toMakePersistent: {fileID: 507450153}
+  weapon1: {fileID: 0}
+  toMakePersistent: {fileID: 0}
 --- !u!4 &2007391051
 Transform:
   m_ObjectHideFlags: 0

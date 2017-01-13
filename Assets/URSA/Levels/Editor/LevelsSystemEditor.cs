@@ -6,36 +6,31 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public static class LevelsSystemEditor
-{
+public static class LevelsSystemEditor {
 
-    
+
     private const string SaveSystem_MENU = "Assets/SaveSystem/";
     private const string LEVELDATA_NEW = "New Data";
 
 
 
     [MenuItem(SaveSystem_MENU + LEVELDATA_NEW)]
-    public static void CreateLevelData()
-    {
+    public static void CreateLevelData() {
         SceneAsset scene = Selection.activeObject as SceneAsset;
         if (!scene)
             return;
 
         var assets = AssetDatabase.FindAssets(scene.name + "_data");
-        if (assets.Length > 0)
-        {
+        if (assets.Length > 0) {
             Debug.LogError("Data file for this scene already exists, please use the existing one or recreate it.");
             return;
         }
-        SceneData data = makeData(scene);
-
+        makeData(scene);
         Debug.Log("Created level data for scene :" + scene.name);
     }
 
 
-    static SceneData makeData(SceneAsset scene)
-    {
+    static SceneData makeData(SceneAsset scene) {
 
         SceneData level = (SceneData)CreateAsset<SceneData>(scene.name + "_data");
         level.scene = scene.name;
@@ -49,17 +44,13 @@ public static class LevelsSystemEditor
     /// <summary>
     //	This makes it easy to create, name and place unique new ScriptableObject asset files.
     /// </summary>
-    public static ScriptableObject CreateAsset<T>(string filename) where T : ScriptableObject
-    {
+    public static ScriptableObject CreateAsset<T>(string filename) where T : ScriptableObject {
         T asset = ScriptableObject.CreateInstance<T>();
 
         string path = AssetDatabase.GetAssetPath(Selection.activeObject);
-        if (path == "")
-        {
+        if (path == "") {
             path = "Assets";
-        }
-        else if (Path.GetExtension(path) != "")
-        {
+        } else if (Path.GetExtension(path) != "") {
             path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
         }
 
@@ -75,26 +66,21 @@ public static class LevelsSystemEditor
     }
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT +  URSAConstants.MENUITEM_LEVELS + "/CollectData")]
-    public static void CollectLevelsData()
-    {
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_LEVELS + "/CollectData")]
+    public static void CollectLevelsData() {
         SceneDataCollector collector;
         var assets = AssetDatabase.FindAssets("t:SceneDataCollector");
-        if (assets.Length == 0)
-        {
+        if (assets.Length == 0) {
             Debug.LogError("ScenesData file was not found, creating");
             collector = (SceneDataCollector)CreateAsset<SceneDataCollector>("SceneDataCollector");
-        }
-        else
-        {
+        } else {
             collector = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]), typeof(SceneDataCollector)) as SceneDataCollector;
         }
         var scenedatas = AssetDatabase.FindAssets("t:SceneData");
 
         collector.scenes.Clear();
 
-        foreach (var scenedata in scenedatas)
-        {
+        foreach (var scenedata in scenedatas) {
             SceneData data = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(scenedata), typeof(SceneData)) as SceneData;
             collector.scenes.Add(data);
         }

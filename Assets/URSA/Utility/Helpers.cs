@@ -47,6 +47,17 @@ public class NotEditableStringAttribute : PropertyAttribute { }
 public static class Helpers
 {
 
+    public static T FindScriptableObject<T>() where T : ScriptableObject {
+        T so = null;
+        var assets = AssetDatabase.FindAssets("t:" + typeof(T).Name);
+        if (assets.Length == 0) {
+            Debug.LogError(typeof(T).Name + " file was not found, creating");
+        } else {
+            so = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]), typeof(T)) as T;
+        }
+        return so;
+    }
+
     public static void SetAllChildren(this Transform tr, bool state)
     {
         foreach (Transform t in tr)
