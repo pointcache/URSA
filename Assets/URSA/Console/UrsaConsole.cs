@@ -1,6 +1,4 @@
-﻿#define BEAST_CONSOLE
-
-namespace URSA {
+﻿namespace URSA {
     using UnityEngine;
     using System;
     using System.Collections.Generic;
@@ -10,14 +8,14 @@ namespace URSA {
     using System.Reflection;
     using SmartConsole;
 
-    public class Console : MonoBehaviour {
+    public class UrsaConsole : MonoBehaviour {
 
         #region SINGLETON
-        private static Console _instance;
-        public static Console instance
+        private static UrsaConsole _instance;
+        public static UrsaConsole instance
         {
             get {
-                if (!_instance) _instance = GameObject.FindObjectOfType<Console>();
+                if (!_instance) _instance = GameObject.FindObjectOfType<UrsaConsole>();
                 return _instance;
             }
         }
@@ -65,13 +63,27 @@ namespace URSA {
                 irvar.registerInConsole(cattr.Name, cattr.Description);
             }
         }
+
+        public static void WriteLine(string line) {
+            SmartConsole.WriteLine(line);
+        }
+        
         /// <summary>
         /// Provide parameters as string
         /// </summary>
         /// <param name="name"></param>
         /// <param name="command"></param>
-        public static void RegisterCommand(string name, Action<string> command) {
-            SmartConsole.RegisterCommand(name, command);
+        public static void RegisterCommand(string name, Action command) {
+            SmartConsole.RegisterCommand(name, "no description", "no example", command);
+        }
+
+        /// <summary>
+        /// Provide parameters as string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="command"></param>
+        public static void RegisterCommandWithParameters(string name, Action<string[]> command) {
+            SmartConsole.RegisterCommandWithParameters(name, "no description", "no example", command);
         }
     }
     public static class TransformDeepChildExtension {

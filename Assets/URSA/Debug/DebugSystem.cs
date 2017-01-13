@@ -10,7 +10,8 @@ public class DebugSystem : MonoBehaviour {
     GameObject current;
     private void OnEnable() {
         Pool<InternalConfig>.First.DebugGUI.OnChanged += SetDebugUi;
-        URSA.Console.RegisterCommand("debug.enableDebugUi", this.EnableDebugUi);
+        UrsaConsole.RegisterCommand("debug.enableDebugUi", EnableDebugUi);
+        UrsaConsole.RegisterCommandWithParameters("test.test1", TestparamsMethod);
     }
 
     public void SetDebugUi(bool val) {
@@ -21,6 +22,12 @@ public class DebugSystem : MonoBehaviour {
     }
 
     void EnableDebugUi() {
+        SetDebugUi(true);
+    }
 
+    void TestparamsMethod(string[] parameters) {
+        int a = Convert.ToInt16(parameters[0]);
+        int b = Convert.ToInt16(parameters[1]);
+        UrsaConsole.WriteLine((a + b).ToString());
     }
 }

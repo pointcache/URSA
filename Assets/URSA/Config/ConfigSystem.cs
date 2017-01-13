@@ -169,7 +169,7 @@
                     if (f.FieldType.BaseType.BaseType == typeof(rVar)) {
                         IrVar ivar = f.GetValue(cfg) as IrVar;
 
-                        Console.RegisterVar(ivar, f);
+                        UrsaConsole.RegisterVar(ivar, f);
                         string name = f.Name;
                         info.vars.Add(name, ivar);
 

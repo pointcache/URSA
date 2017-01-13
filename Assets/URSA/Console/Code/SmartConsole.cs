@@ -121,7 +121,11 @@ namespace SmartConsole {
         /// A class representing a console command - WARNING: this is only exposed as a hack!
         /// </summary>
         public class Command {
-            public Action<string> m_callback = null;
+            public bool hasParams;
+            public bool isVariable;
+            public Action command_callback = null;
+            public Action<string[]> command_callback_parameters = null;
+            public Action<string[]> variable_callback = null;
             public string m_name = null;
             public string m_paramsExample = "";
             public string m_help = "(no description)";
@@ -144,7 +148,10 @@ namespace SmartConsole {
                 configVar = var;
                 m_name = name;
                 m_help = desc;
-                m_callback = CommandFunction;
+                command_callback = null;
+                isVariable = true;
+
+                variable_callback = CommandFunctionParameters;
             }
             public void Set(T val) // SE: I don't seem to know enough C# to provide a user friendly assignment operator solution
             {
@@ -153,8 +160,8 @@ namespace SmartConsole {
             public static implicit operator T(Variable<T> var) {
                 return var.configVar.Value;
             }
-            private static void CommandFunction(string parameters) {
-                string[] split = CVarParameterSplit(parameters);
+
+            private static void CommandFunctionParameters(string[] split) {
                 if ((split.Length != 0) && s_variableDictionary.ContainsKey(split[0])) {
                     Variable<T> variable = s_variableDictionary[split[0]] as Variable<T>;
                     string conjunction = " is set to ";
@@ -265,15 +272,36 @@ namespace SmartConsole {
             scrollBar.value = 0;
             yield break;
         }
+
+        static string[] GetParameters(string[] input) {
+            string[] parameters = new string[input.Length - 1];
+            for (int i = 0; i < input.Length - 1; i++) {
+                parameters[i] = input[i + 1];
+            }
+            return parameters;
+        }
+
         /// <summary>
         /// Execute a string as if it were a single line of input to the console
         /// </summary>
         public static void ExecuteLine(string inputLine) {
             string[] words = CComParameterSplit(inputLine);
+            string[] parameters = GetParameters(words);
+
             if (words.Length > 0) {
                 if (s_masterDictionary.ContainsKey(words[0])) {
                     WriteLine("<b>=> </b><color=lime>" + inputLine + "</color>");
-                    s_masterDictionary[words[0]].m_callback(inputLine);
+                    Command com = s_masterDictionary[words[0]];
+                    if (com.isVariable) {
+                        com.variable_callback(words);
+                    } else {
+                        if (com.hasParams)
+                            com.command_callback_parameters(parameters);
+                        else
+                            com.command_callback();
+                    }
+
+
                 } else {
                     WriteLine("<color=red>Unrecognised command or variable name: " + words[0] + "</color>");
                 }
@@ -290,29 +318,29 @@ namespace SmartConsole {
         /// Register a console command with an example of usage and a help description
         /// e.g. SmartConsole.RegisterCommand( "echo", "echo <string>", "writes <string> to the console log", SmartConsole.Echo );
         /// </summary>
-        public static void RegisterCommand(string name, string exampleUsage, string helpDescription, Action<string> callback) {
+        public static void RegisterCommandWithParameters(string name, string exampleUsage, string helpDescription, Action<string[]> callback) {
             Command command = new Command();
             command.m_name = name;
             command.m_paramsExample = exampleUsage;
             command.m_help = helpDescription;
-            command.m_callback = callback;
+            command.command_callback = null;
+            command.command_callback_parameters = callback;
+            command.hasParams = true;
             s_commandDictionary.Add(name, command);
             s_masterDictionary.Add(name, command);
         }
-        /// <summary>
-        /// Register a console command with a help description
-        /// e.g. SmartConsole.RegisterCommand( "help", "displays help information for console command where available", SmartConsole.Help );
-        /// </summary>
-        public static void RegisterCommand(string name, string helpDescription, Action<string> callback) {
-            RegisterCommand(name, "", helpDescription, callback);
+
+        public static void RegisterCommand(string name, string helpDescription, string exampleUsage, Action callback) {
+            Command command = new Command();
+            command.m_name = name;
+            command.m_paramsExample = exampleUsage;
+            command.m_help = helpDescription;
+            command.command_callback = callback;
+            command.command_callback_parameters = null;
+            s_commandDictionary.Add(name, command);
+            s_masterDictionary.Add(name, command);
         }
-        /// <summary>
-        /// Register a console command
-        /// e.g. SmartConsole.RegisterCommand( "foo", Foo );
-        /// </summary>
-        public static void RegisterCommand(string name, Action<string> callback) {
-            RegisterCommand(name, "", "(no description)", callback);
-        }
+
         public static void RegisterVariable<T>(rVar<T> var, string name, string desc) {
             if (s_variableDictionary.ContainsKey(name)) {
                 Debug.LogError("Tried to add already existing console variable!");
@@ -337,7 +365,7 @@ namespace SmartConsole {
             s_masterDictionary.Remove(variable.m_name);
         }
         // --- commands
-        private static void Help(string parameters) {
+        private static void Help(string[] parameters) {
             // try and lay it out nicely...
             const int nameLength = 25;
             const int exampleLength = 35;
@@ -357,33 +385,20 @@ namespace SmartConsole {
                 WriteLine(outputString + command.m_help);
             }
         }
-        private static void Echo(string parameters) {
-            string outputMessage = "";
-            string[] split = CComParameterSplit(parameters);
-            for (int i = 1; i < split.Length; ++i) {
-                outputMessage += split[i] + " ";
-            }
-            if (outputMessage.EndsWith(" ")) {
-                outputMessage.Substring(0, outputMessage.Length - 1);
-            }
-            WriteLine(outputMessage);
-        }
-        private static void Clear(string parameters) {
-            Clear();
-        }
-        private static void LastExceptionCallStack(string parameters) {
+
+        private static void LastExceptionCallStack() {
             DumpCallStack(s_lastExceptionCallStack);
         }
-        private static void LastErrorCallStack(string parameters) {
+        private static void LastErrorCallStack() {
             DumpCallStack(s_lastErrorCallStack);
         }
-        private static void LastWarningCallStack(string parameters) {
+        private static void LastWarningCallStack() {
             DumpCallStack(s_lastWarningCallStack);
         }
-        private static void Quit(string parameters) {
+        private static void Quit() {
             Application.Quit();
         }
-        private static void ListCvars(string parameters) {
+        private static void ListCvars() {
             // try and lay it out nicely...
             const int nameLength = 50;
             foreach (Command variable in s_variableDictionary.Values) {
@@ -426,16 +441,14 @@ namespace SmartConsole {
             }
         }
         private static void InitialiseCommands() {
-            RegisterCommand("clear", "clear the console log", Clear);
-            RegisterCommand("cls", "clear the console log (alias for Clear)", Clear);
-            RegisterCommand("echo", "echo <string>", "writes <string> to the console log (alias for echo)", Echo);
-            RegisterCommand("help", "displays help information for console command where available", Help);
-            RegisterCommand("list", "lists all currently registered console variables", ListCvars);
-            RegisterCommand("print", "print <string>", "writes <string> to the console log", Echo);
-            RegisterCommand("quit", "quit the game (not sure this works with iOS/Android)", Quit);
-            RegisterCommand("callstack.warning", "display the call stack for the last warning message", LastWarningCallStack);
-            RegisterCommand("callstack.error", "display the call stack for the last error message", LastErrorCallStack);
-            RegisterCommand("callstack.exception", "display the call stack for the last exception message", LastExceptionCallStack);
+            RegisterCommand("clear", "clear the console log", "", Clear);
+            RegisterCommand("cls", "clear the console log (alias for Clear)", "", Clear);
+            RegisterCommandWithParameters("help", "displays help information for console command where available", "", Help);
+            RegisterCommand("list", "lists all currently registered console variables", "", ListCvars);
+            RegisterCommand("quit", "quit the game (not sure this works with iOS/Android)", "", Quit);
+            RegisterCommand("callstack.warning", "display the call stack for the last warning message", "", LastWarningCallStack);
+            RegisterCommand("callstack.error", "display the call stack for the last error message", "", LastErrorCallStack);
+            RegisterCommand("callstack.exception", "display the call stack for the last exception message", "", LastExceptionCallStack);
         }
         private static void HandleTextInput(string input) {
             if (input.Length == 0)
@@ -575,13 +588,12 @@ namespace SmartConsole {
             }
             return split;
         }
-        private static string[] CVarParameterSplit(string parameters) {
-            string[] split = CComParameterSplit(parameters);
+        private static string[] CVarParameterSplit(string[] split) {
             if (split.Length == 0) {
                 WriteLine("Error: not enough parameters to set or display the value of a console variable.");
             }
-            if (split.Length > 2) {
-                int extras = (split.Length - 3);
+            if (split.Length > 1) {
+                int extras = (split.Length - 2);
                 WriteLine("Warning: " + extras + "additional parameters will be dropped:");
                 for (int i = split.Length - extras; i < split.Length; ++i) {
                     WriteLine("\"" + split[i] + "\"");

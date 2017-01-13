@@ -1209,8 +1209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61798151a84063549aeaeeed2742e49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  component_button_prefab: {fileID: 1000013428492686, guid: 59425f161cf43a54c9125e0e0602d723,
-    type: 2}
 --- !u!114 &114000012624245054
 MonoBehaviour:
   m_ObjectHideFlags: 1
