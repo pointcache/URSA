@@ -21,7 +21,6 @@ GameObject:
   - 224: {fileID: 224000013482104820}
   - 222: {fileID: 222000010906536132}
   - 114: {fileID: 114000012295843614}
-  - 114: {fileID: 114000010101104340}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -49,18 +48,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114000010101104340
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011027018146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76ddd7adfcd8d444a5430c609bfda12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &114000010353980884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,7 +79,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9381015ae5908d94d88bce63f0f97cf5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 608cbdc3995556c469626182f8faad81, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -120,11 +107,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 13f60819b0296a348a5f009c5c986148, type: 3}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: bbc94a057e0e7054fa594f7ed41899b2, type: 3}
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -146,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 35
+  m_MinHeight: 16
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1

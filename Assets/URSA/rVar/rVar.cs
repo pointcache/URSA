@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using FullSerializer;
 using System.Linq;
+using SmartConsole;
 
 [Serializable]
 public class rVar
@@ -64,12 +65,12 @@ public class rVar<T> : rVar, IrVar
 
     public void registerInConsole(string name, string description)
     {
-        SmartConsole.RegisterVariable(this, name, description);
+        SmartConsole.SmartConsole.RegisterVariable(this, name, description);
     }
 
     public void unregisterInConsole(string name)
     {
-        SmartConsole.UnregisterVariable(name);
+        SmartConsole.SmartConsole.UnregisterVariable(name);
     }
 
     public rVar<T> SetFromString(string value)

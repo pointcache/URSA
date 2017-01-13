@@ -44,6 +44,3 @@ public class ComponentBase : MonoBehaviour
     }
 }
 public class SerializedData { }
-public class ECSConfigAttribute : Attribute
-{
-}

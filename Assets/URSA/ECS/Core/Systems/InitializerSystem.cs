@@ -47,8 +47,7 @@ public class InitializerSystem : MonoBehaviour
             Debug.LogError("GlobalSystems: Systems should start DISABLED");
             return;
         }
-        Systems.SetActive(true);
-
+        
         LoadGameConfigs();
         //enable and deserialize global configs
         StartCoroutine(CoreInitializationSequence());

@@ -68,7 +68,7 @@ public class PersistentDataSystem : MonoBehaviour {
     }
 
     public void SaveTo() {
-        SaveObject file = SaveSystem.instance.CreateSaveFromPersistenData();
+        SaveObject file = SaveSystem.instance.CreateSaveObjectFromPersistenData();
         PersistentDataInfo info = new PersistentDataInfo();
         info.profileName = "profile";
         info.creationDate = DateTime.Now;

@@ -35,7 +35,7 @@ public class SaveSystem : MonoBehaviour {
     }
 
     public void SaveFile() {
-        SaveObject save = CreateSaveFromScene();
+        SaveObject save = CreateSaveObjectFromScene();
 
         string directory = getSystemPath() + "/" + folderPath;
 
@@ -119,12 +119,15 @@ public class SaveSystem : MonoBehaviour {
             prefab.SetActive(false);
 
             var gameobj = GameObject.Instantiate(prefab);
+            gameobj.name = eobj.gameObjectName;
             var tr = gameobj.transform;
 
             tr.position = eobj.position;
             tr.rotation = Quaternion.Euler(eobj.rotation);
             tr.localScale = eobj.scale;
-            tr.parent = root;
+
+            var parentGo = GameObject.Find(eobj.parentName);
+            tr.parent = eobj.parentName == "null" ? root : parentGo == null ? root : parentGo.transform;
 
             var entity = gameobj.GetComponent<Entity>();
             entity.instance_ID = eobj.instance_ID;
@@ -160,11 +163,11 @@ public class SaveSystem : MonoBehaviour {
         }
     }
 
-    public SaveObject CreateSaveFromPersistenData() {
+    public SaveObject CreateSaveObjectFromPersistenData() {
         return createSaveFrom(SaveObjectType.persistent);
     }
     //creates a file containing all entities in scene, ignoring any scene specifics
-    public SaveObject CreateSaveFromScene() {
+    public SaveObject CreateSaveObjectFromScene() {
         return createSaveFrom(SaveObjectType.scene);
     }
 
@@ -195,6 +198,8 @@ public class SaveSystem : MonoBehaviour {
             eobj.position = entity.transform.position;
             eobj.rotation = entity.transform.rotation.eulerAngles;
             eobj.scale = entity.transform.localScale;
+            eobj.parentName = entity.transform.parent.Null() ? "null" : entity.transform.parent.name ;
+            eobj.gameObjectName = entity.name;
 
             file.entities.Add(eobj);
 

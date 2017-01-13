@@ -8,6 +8,7 @@ namespace URSA {
     using UnityEngine.EventSystems;
     using System.Collections;
     using System.Reflection;
+    using SmartConsole;
 
     public class Console : MonoBehaviour {
 
@@ -63,6 +64,14 @@ namespace URSA {
                 }
                 irvar.registerInConsole(cattr.Name, cattr.Description);
             }
+        }
+        /// <summary>
+        /// Provide parameters as string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="command"></param>
+        public static void RegisterCommand(string name, Action<string> command) {
+            SmartConsole.RegisterCommand(name, command);
         }
     }
     public static class TransformDeepChildExtension {

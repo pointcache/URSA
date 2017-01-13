@@ -5,19 +5,12 @@ using System.Collections.Generic;
 public class GameSystemsInitializer : MonoBehaviour
 {
 
-    GameObject configs, initializers, systems;
+    GameObject loaders, systems;
 
     void OnEnable()
     {
-        configs = transform.Find("Configs").gameObject;
-        if (!configs)
-        {
-            Debug.LogError("GameSystems: No Configs gameobject found");
-            return;
-        }
-
-        initializers = transform.Find("Initializers").gameObject;
-        if (!initializers)
+        loaders = transform.Find("Loaders").gameObject;
+        if (!loaders)
         {
             Debug.LogError("GameSystems: No Initializers gameobject found");
             return;
@@ -30,26 +23,19 @@ public class GameSystemsInitializer : MonoBehaviour
             return;
         }
 
-        InitializerSystem.PreInitalization += PreInit;
         InitializerSystem.Initialization += Init;
         InitializerSystem.PostInitialization += PostInit;
     }
 
     void OnDisable()
     {
-        InitializerSystem.PreInitalization -= PreInit;
         InitializerSystem.Initialization -= Init;
         InitializerSystem.PostInitialization -= PostInit;
     }
 
-    void PreInit()
-    {
-        configs.SetActive(true);
-    }
-
     void Init()
     {
-        initializers.SetActive(true);
+        loaders.SetActive(true);
     }
 
     void PostInit()

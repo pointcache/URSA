@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using UnityEngine.UI;
-
+using URSA;
 public class DebugGuiContentPopulator : MonoBehaviour
 {
 
-    public GameObject component_button_prefab;
+    const string component_button_prefab = "URSA/Debug/component";
     RectTransform tr;
-    private object iterations;
 
     private void OnEnable()
     {
@@ -20,14 +19,14 @@ public class DebugGuiContentPopulator : MonoBehaviour
     {
         tr.DestroyChildren();
 
-        var components = GameObject.FindObjectsOfType<ComponentBase>();
+        var components = GameObject.FindObjectsOfType<ConfigBase>();
         foreach (var c in components)
         {
             Type type = c.GetType();
             //var atts = type.GetCustomAttributes(false);
-            if (!Attribute.IsDefined(type, typeof(ECSConfigAttribute)))
+            if (!Attribute.IsDefined(type, typeof(ConfigAttribute)))
                 continue;
-            var go = GameObject.Instantiate(component_button_prefab);
+            var go = Helpers.Spawn(component_button_prefab);
             go.transform.SetParent(tr, false);
             Text t = go.GetComponentInChildren<Text>();
             t.text = type.Name;

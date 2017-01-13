@@ -2,8 +2,2865 @@
     "entities": [
         {
             "database_ID": "Example\\Cube",
-            "instance_ID": "ad6e471f-eb6f-48fb-ae88-83bd0b8a8645",
-            "parentName": null,
+            "instance_ID": "46c2286f-3a49-41ad-9fe0-ce3ee26b2984",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (46)",
+            "position": {
+                "x": -2.47,
+                "y": 333.9996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "65cd501b-3ed8-4125-82ca-89278af9b30c",
+            "parentName": "level data",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 337.5293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "c97da50d-c979-4ada-bf06-f08b00818165",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (45)",
+            "position": {
+                "x": 2.66,
+                "y": 334.5996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "7c4866e1-e762-4ad6-bd33-af67cbdfebc3",
+            "parentName": "level data",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 341.2293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ec91323c-9dd1-4acc-8bcd-f274f0f0dde5",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (54)",
+            "position": {
+                "x": -3.04,
+                "y": 340.9996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e28dd290-375a-4212-bedb-ca7f9a2b9693",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (53)",
+            "position": {
+                "x": -0.17,
+                "y": 344.3996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e4e29c92-a676-41b2-9a71-a7916c46651a",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (52)",
+            "position": {
+                "x": -0.17,
+                "y": 330.8996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "800757d8-14fd-41ca-8276-876575a3b799",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (51)",
+            "position": {
+                "x": -3.04,
+                "y": 327.4996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "fdf2be20-094b-4cca-93d4-6e48a582a6bc",
+            "parentName": "level data",
+            "gameObjectName": "Cube (13)",
+            "position": {
+                "x": 2.9,
+                "y": 327.7293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "a61f6d5f-2e7b-4b93-99ec-6fba6bf5a7f0",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (44)",
+            "position": {
+                "x": 2.66,
+                "y": 321.0996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b5db93db-13fb-477a-afeb-6a8e649e5750",
+            "parentName": "level data",
+            "gameObjectName": "Sphere (15)",
+            "position": {
+                "x": -0.12,
+                "y": 324.0293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "30e036cf-0664-4c07-9736-107a6c97357a",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (43)",
+            "position": {
+                "x": -2.47,
+                "y": 320.4996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "638ea900-464b-4ad9-b330-a0d98bd623d3",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (42)",
+            "position": {
+                "x": -2.47,
+                "y": 306.5996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "08deebee-d45f-4591-aa72-9b0bef251518",
+            "parentName": "level data",
+            "gameObjectName": "Sphere (16)",
+            "position": {
+                "x": -0.12,
+                "y": 310.1293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "fb905828-2b9d-4eb6-8f79-459792250cf3",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (41)",
+            "position": {
+                "x": 2.66,
+                "y": 307.1996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "ee95b050-18e4-4b26-bb32-e971162cbf4d",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (18)",
+            "position": {
+                "x": 2.9,
+                "y": 313.8293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "df450826-5394-45c4-9a5c-3b89a1e52b77",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (50)",
+            "position": {
+                "x": -3.04,
+                "y": 313.5996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "9c70513d-6f19-483f-87e5-96d661382175",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (49)",
+            "position": {
+                "x": -0.17,
+                "y": 316.9996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "943df12a-89b7-441b-b9f8-e32954427e85",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (48)",
+            "position": {
+                "x": -0.17,
+                "y": 303.2996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e7c171f9-30c0-484d-b5ed-7527005d6d0e",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (47)",
+            "position": {
+                "x": -3.04,
+                "y": 299.8996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "725eca41-210d-47ea-9b32-8ff8a16a5be8",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (19)",
+            "position": {
+                "x": 2.9,
+                "y": 300.1293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "36b66e4c-1b46-447f-8254-1ef72dcd6812",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (40)",
+            "position": {
+                "x": 2.66,
+                "y": 293.4996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "995946d0-4d7b-4acb-b1a8-7bf7e9c20468",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (21)",
+            "position": {
+                "x": -0.12,
+                "y": 296.4293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "c0173e21-adbc-4487-9454-683a120b5ca3",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (39)",
+            "position": {
+                "x": -2.47,
+                "y": 292.8996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b5b5d753-1d55-4256-bce1-c82093c20c3e",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (22)",
+            "position": {
+                "x": -0.12,
+                "y": 283.2293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "56dc1a1d-0dd6-4efb-91ba-1f9e50ee92a2",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (22)",
+            "position": {
+                "x": 2.9,
+                "y": 287.0293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "06f1af43-71af-4b3e-8f77-7877566e0460",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (46)",
+            "position": {
+                "x": -3.04,
+                "y": 286.7996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e51989be-c615-4e3f-a019-497ff24a9b1d",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (45)",
+            "position": {
+                "x": -0.17,
+                "y": 290.0996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "cb1dbad7-aedd-4eb7-b43d-41ea48c23ce9",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (44)",
+            "position": {
+                "x": -0.17,
+                "y": 218.6996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ddeceac1-f860-4d01-ad70-9f6488d1f7ef",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (43)",
+            "position": {
+                "x": -3.04,
+                "y": 215.3996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "1496731b-d1a1-4658-9e2a-ce50c96e604e",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (22)",
+            "position": {
+                "x": 2.9,
+                "y": 215.6293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "5740b0e6-d82d-4166-acd8-ba925073a2e1",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (22)",
+            "position": {
+                "x": -0.12,
+                "y": 211.8293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "0ceeac2e-c15a-4ff1-b956-1a77d7327aa3",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (38)",
+            "position": {
+                "x": -2.47,
+                "y": 221.4996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e2dad8c5-d453-4a01-a3ca-6e039a048a04",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (21)",
+            "position": {
+                "x": -0.12,
+                "y": 225.0293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "f5764bbd-fef7-4a6d-aa62-5ab92d5a36c9",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (37)",
+            "position": {
+                "x": 2.66,
+                "y": 222.0996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "95b93dca-f484-4f4c-bf13-c78dd8ac2cef",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (19)",
+            "position": {
+                "x": 2.9,
+                "y": 228.7293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "48e6a418-f833-4e85-92fb-99fdf2815f41",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (42)",
+            "position": {
+                "x": -3.04,
+                "y": 228.4996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "6fece9a4-bc70-4b01-9ac8-594f8eab0b29",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (41)",
+            "position": {
+                "x": -0.17,
+                "y": 231.8996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "41293a27-35a5-4678-8cc7-f49de1cbd335",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (40)",
+            "position": {
+                "x": -0.17,
+                "y": 245.5996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "cc14ded9-f3cc-49fd-b7ef-22a8e5820c50",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (39)",
+            "position": {
+                "x": -3.04,
+                "y": 242.1996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "aed467e5-5718-45e2-a49c-5140b9786cdd",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (18)",
+            "position": {
+                "x": 2.9,
+                "y": 242.4293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "d5c9606b-718d-49c5-948e-78d748a63d37",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (36)",
+            "position": {
+                "x": 2.66,
+                "y": 235.7996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "15c38c7c-bfe0-41c4-8da3-1d07a3f928f1",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (16)",
+            "position": {
+                "x": -0.12,
+                "y": 238.7293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "5692da3b-c7c6-42b0-a75a-7327683a5447",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (35)",
+            "position": {
+                "x": -2.47,
+                "y": 235.1996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "3d4fbbdf-03d0-4420-9146-0abf1b272168",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (34)",
+            "position": {
+                "x": -2.47,
+                "y": 249.0996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b5b62513-0de0-4431-95d7-981d0e1622f3",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (15)",
+            "position": {
+                "x": -0.12,
+                "y": 252.6293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "0f84abcb-8713-4292-a208-4c4f87f6a195",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (33)",
+            "position": {
+                "x": 2.66,
+                "y": 249.6996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "01865a2a-9490-40b7-9bf6-935202c80ade",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (13)",
+            "position": {
+                "x": 2.9,
+                "y": 256.3293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "41326e6f-34bf-470f-a5cd-9a7e6bcf3ad8",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (38)",
+            "position": {
+                "x": -3.04,
+                "y": 256.0996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "53cc053e-3d10-4591-80a3-1eeb4650e360",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (37)",
+            "position": {
+                "x": -0.17,
+                "y": 259.4996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "20d28d27-da04-49b2-bf99-97e08e3592dc",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (36)",
+            "position": {
+                "x": -0.17,
+                "y": 272.9996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "49381370-579b-49ce-84c2-b8ec8a6c12cf",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (35)",
+            "position": {
+                "x": -3.04,
+                "y": 269.5996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "f0cbe928-874b-478e-b597-dbafc917e95d",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 269.8293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "5d7321cd-d03d-4ed1-895e-122773c4b2e1",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (32)",
+            "position": {
+                "x": 2.66,
+                "y": 263.1996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "dc3248e8-5908-478b-9cc7-f5bc3062af3f",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 266.1293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "3fe06700-0abd-4cb1-bc5b-498290db3ad2",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (31)",
+            "position": {
+                "x": -2.47,
+                "y": 262.5996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "db12d741-9b2e-4149-a2fc-855bf13cb599",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (30)",
+            "position": {
+                "x": -2.47,
+                "y": 195.0996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "c8077f82-7e1a-412f-8920-aa9695335336",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 198.6293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "f9cccba4-0237-436f-bb54-f5a0e601f931",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (29)",
+            "position": {
+                "x": 2.66,
+                "y": 195.6996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "61b4f7e3-06f6-4e45-9303-f3dffcd6c88d",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 202.3293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "980bd097-39ab-4824-bb63-082b363586e2",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (34)",
+            "position": {
+                "x": -3.04,
+                "y": 202.0996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "c57fb88b-e8da-477d-91d2-275aeaf188c3",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (33)",
+            "position": {
+                "x": -0.17,
+                "y": 205.4996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "28789f9b-3d8e-4379-89df-4e0b55634403",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (32)",
+            "position": {
+                "x": -0.17,
+                "y": 191.9996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b02b76ab-43ba-4c77-9377-8b10d9d75d4c",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (31)",
+            "position": {
+                "x": -3.04,
+                "y": 188.5996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "9ad332af-2bb3-421e-94a5-eb59e6af7cd4",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (13)",
+            "position": {
+                "x": 2.9,
+                "y": 188.8293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "48b44b18-623f-400f-a40d-f72c47780d99",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (28)",
+            "position": {
+                "x": 2.66,
+                "y": 182.1996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "790e3b1b-091e-430c-b4a3-f13a13cdb888",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (15)",
+            "position": {
+                "x": -0.12,
+                "y": 185.1293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "705f9046-810f-42c2-9edb-667aa4682bfd",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (27)",
+            "position": {
+                "x": -2.47,
+                "y": 181.5996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "76e013ef-35db-470b-a65d-7d59b9cd27ef",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (26)",
+            "position": {
+                "x": -2.47,
+                "y": 167.6996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "5eba0280-f181-43ca-a3e4-8f3fe1258ca7",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (16)",
+            "position": {
+                "x": -0.12,
+                "y": 171.2293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "4aed643e-4699-40fa-8395-2e69342d305a",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (25)",
+            "position": {
+                "x": 2.66,
+                "y": 168.2996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "84e52428-2968-4144-a956-38b94c094ba8",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (18)",
+            "position": {
+                "x": 2.9,
+                "y": 174.9293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ff46b106-cf93-4cce-909d-5f44128ae650",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (30)",
+            "position": {
+                "x": -3.04,
+                "y": 174.6996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ccd59282-3797-4fd5-9fce-25c364403b0f",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (29)",
+            "position": {
+                "x": -0.17,
+                "y": 178.0996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "fcace0a2-8f1a-4aa9-a374-37576eb8ae00",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (28)",
+            "position": {
+                "x": -0.17,
+                "y": 164.3996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "281b1388-2cc1-4781-b83c-01a181cb6f72",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (27)",
+            "position": {
+                "x": -3.04,
+                "y": 160.9996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "89601ce4-26e9-4277-ab6c-3a6b801e04ed",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (19)",
+            "position": {
+                "x": 2.9,
+                "y": 161.2293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "1328e8c8-41d2-40e1-9631-ed0342aaad79",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (24)",
+            "position": {
+                "x": 2.66,
+                "y": 154.5996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "3bcf2328-faa6-4bb5-b52a-2f4079201ee9",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (21)",
+            "position": {
+                "x": -0.12,
+                "y": 157.5293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "3526b71f-ac1e-44a5-b5e4-d7a8a81f4d0e",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (23)",
+            "position": {
+                "x": -2.47,
+                "y": 153.9996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "53ea1483-f43f-43a3-9e95-6bb9edf7b251",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (22)",
+            "position": {
+                "x": -0.12,
+                "y": 144.3293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "e712d4d7-d386-43de-97cf-6208351bf5f8",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (22)",
+            "position": {
+                "x": 2.9,
+                "y": 148.1293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "c9f21281-1582-427c-a9bc-4f318c8c31ba",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (26)",
+            "position": {
+                "x": -3.04,
+                "y": 147.8996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "47201cf3-4c62-4cb7-884d-09e3cf6db3bf",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (25)",
+            "position": {
+                "x": -0.17,
+                "y": 151.1996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e20dc5cd-65ee-4e52-83f4-b58f50b25861",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (24)",
+            "position": {
+                "x": -0.17,
+                "y": 81.49962,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ba38d0c9-f232-4861-b7c8-eac2386f0cd8",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (23)",
+            "position": {
+                "x": -3.04,
+                "y": 78.19962,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "2dd4838a-c7f1-4e78-896b-955267e5769e",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (22)",
+            "position": {
+                "x": 2.9,
+                "y": 78.42929,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "2db47b6e-2d1c-4553-9858-635f63577c2c",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (22)",
+            "position": {
+                "x": -0.12,
+                "y": 74.6293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "5d273a61-21f1-49b9-9b49-f62d4a2c31cc",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (21)",
+            "position": {
+                "x": -2.47,
+                "y": 84.29962,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534156,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "72f4f875-cd1f-470c-ae9a-6c81a62bcee2",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (21)",
+            "position": {
+                "x": -0.12,
+                "y": 87.82929,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "50dd7da6-e95a-49cf-a128-8e0180c42fe4",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (20)",
+            "position": {
+                "x": 2.66,
+                "y": 84.89962,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534156,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "6d328f6e-445c-4f89-a3cb-2660f1a87f46",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (19)",
+            "position": {
+                "x": 2.9,
+                "y": 91.5293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ade6578b-344d-43d3-b95c-84d51403c181",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (20)",
+            "position": {
+                "x": -3.04,
+                "y": 91.29962,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "27cc5a07-9f3e-4675-bdde-03201f7eb093",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (19)",
+            "position": {
+                "x": -0.17,
+                "y": 94.69962,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "c3fcc0ff-f10f-4c60-93b0-5c3caecc63c2",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (18)",
+            "position": {
+                "x": -0.17,
+                "y": 108.3996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "f7c1779b-975f-4e40-9df3-fdf7a1126e09",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (17)",
+            "position": {
+                "x": -3.04,
+                "y": 104.9996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "63eb8e27-e02c-4105-97fe-7796ab6132f0",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (18)",
+            "position": {
+                "x": 2.9,
+                "y": 105.2293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "5ee7128e-36c7-4564-8677-a5e4f850b60d",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (17)",
+            "position": {
+                "x": 2.66,
+                "y": 98.59962,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "5176f51b-cb2d-4d34-8571-9d94f818d2e8",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (16)",
+            "position": {
+                "x": -0.12,
+                "y": 101.5293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "385d6493-5ea1-4015-82b7-0f3b5dc458de",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (16)",
+            "position": {
+                "x": -2.47,
+                "y": 97.99962,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "43578b91-e8da-4468-93e0-83aa325a316b",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (15)",
+            "position": {
+                "x": -2.47,
+                "y": 111.8996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "9c7d56c0-bf75-4839-939a-c1f1c3e42863",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (15)",
+            "position": {
+                "x": -0.12,
+                "y": 115.4293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "82372f3c-2f7b-40a5-9e28-935a9fd5825c",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (14)",
+            "position": {
+                "x": 2.66,
+                "y": 112.4996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "dc477091-4faa-4c8a-a489-79ebfd9f7ebc",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (13)",
+            "position": {
+                "x": 2.9,
+                "y": 119.1293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "7de17f62-a93e-4ad4-85dd-d5ff838c6d9e",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (14)",
+            "position": {
+                "x": -3.04,
+                "y": 118.8996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "08d229d4-d0e3-46a4-9868-8cf351a29fc8",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (13)",
+            "position": {
+                "x": -0.17,
+                "y": 122.2996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "72995799-58c4-477d-822d-3ba80fb4cc71",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (12)",
+            "position": {
+                "x": -0.17,
+                "y": 135.7996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "e4b66447-f461-421b-bd55-9e312fbe8ef6",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (11)",
+            "position": {
+                "x": -3.04,
+                "y": 132.3996,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "9553c1d3-ca8b-4f14-b193-c879288386cb",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 132.6293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "dbd97e51-403d-4c5d-902f-f9358c17379b",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (12)",
+            "position": {
+                "x": 2.66,
+                "y": 125.9996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "ca56eef5-d720-47f1-8d4b-c511ba5a99ef",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 128.9293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "216f4a5c-bb12-4a53-868e-154123eadb32",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (11)",
+            "position": {
+                "x": -2.47,
+                "y": 125.3996,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534158,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "4b02cf43-e8ad-4611-9c4a-b7d0b7a18da0",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (10)",
+            "position": {
+                "x": -2.47,
+                "y": 58.99963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "8c1c9346-26d8-4a9f-963b-4d3cada3ae97",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 62.5293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "93843d04-636b-4763-91a2-b1483c93dcc1",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (9)",
+            "position": {
+                "x": 2.66,
+                "y": 59.59963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "5e1cbbcb-18c7-4fa5-ac46-8786ea4cce33",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 66.22929,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b6d20f3f-b8bd-4c7f-9507-1d867caa1ea9",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (10)",
+            "position": {
+                "x": -3.04,
+                "y": 65.99962,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "993e4d06-cf04-4712-951c-f0e71eb4b0a6",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (9)",
+            "position": {
+                "x": -0.17,
+                "y": 69.39962,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "d9bc49c8-f871-43d1-b046-15551d54a8fa",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (8)",
+            "position": {
+                "x": -0.17,
+                "y": 55.89963,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "f02a90a5-9aba-4c97-96f0-823f39cab47e",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (7)",
+            "position": {
+                "x": -3.04,
+                "y": 52.49963,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "f0075885-b4e9-413a-8234-2013d4eecf60",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 52.7293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "256b8f72-2ada-449c-92a2-ad0ef90de458",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (8)",
+            "position": {
+                "x": 2.66,
+                "y": 46.09963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "d75d4c98-6b5c-4a6b-b883-3ed8c533c728",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 49.0293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "4162ff68-076f-445e-9eca-beb4f3cb5309",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (7)",
+            "position": {
+                "x": -2.47,
+                "y": 45.49963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534157,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "43dfd37a-acfa-4221-b112-09717d7745f2",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (6)",
+            "position": {
+                "x": -2.47,
+                "y": 31.59963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534156,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "70a8f7a5-7565-4656-99db-32c0c5ecd35d",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 35.1293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "160394ae-a601-4c90-b523-1737dd9bc86f",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (5)",
+            "position": {
+                "x": 2.66,
+                "y": 32.19963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534156,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "fad5a510-603a-4816-a762-24202a9b9639",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 38.8293,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "4dc1830c-a690-4546-ae8b-d6e71e9a8347",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (6)",
+            "position": {
+                "x": -3.04,
+                "y": 38.59963,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "87613d5d-445c-4563-a8fb-e6d53cc77dc8",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (5)",
+            "position": {
+                "x": -0.17,
+                "y": 41.99963,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b39c8f62-a2ea-4af6-8b61-e25484e78ea8",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (4)",
+            "position": {
+                "x": -0.17,
+                "y": 28.26963,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "b559752b-e848-41cc-8e2c-496cf870803b",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (3)",
+            "position": {
+                "x": -3.04,
+                "y": 24.93963,
+                "z": -0.07
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "9b0ddc28-1af9-41f6-8606-7dd8c51e3ea6",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (4)",
+            "position": {
+                "x": 2.9,
+                "y": 25.1593,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534155,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "08ad05c0-0b68-481f-bb00-0150e53686c4",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (3)",
+            "position": {
+                "x": 2.66,
+                "y": 18.48963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534156,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Sphere",
+            "instance_ID": "58030b4e-cd8b-499a-bf42-31e17dbbc06f",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "position": {
+                "x": -0.12,
+                "y": 21.4293,
+                "z": -0.07000017
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "scale": {
+                "x": 3.399596,
+                "y": 3.399597,
+                "z": 3.399597
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "3fd18e80-db4b-451c-a02f-5d398b37598f",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (2)",
+            "position": {
+                "x": -2.47,
+                "y": 17.93963,
+                "z": -0.6960993
+            },
+            "rotation": {
+                "x": 16.02537,
+                "y": 26.54117,
+                "z": 322.9584
+            },
+            "scale": {
+                "x": 2.534155,
+                "y": 2.534156,
+                "z": 2.534154
+            }
+        },
+        {
+            "database_ID": "Example\\Cube",
+            "instance_ID": "98357c7e-85ae-4e39-a520-198a2aa6026c",
+            "parentName": "Entities",
+            "gameObjectName": "Cube",
             "position": {
                 "x": -2.47,
                 "y": 4.769628,
@@ -22,12 +2879,13 @@
         },
         {
             "database_ID": "Example\\Sphere",
-            "instance_ID": "878a6110-acee-4754-b2a0-ba4c05da76c9",
-            "parentName": null,
+            "instance_ID": "63b06e98-92b1-4dda-824b-b7de652d39d5",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
             "position": {
                 "x": -0.12,
                 "y": 8.259627,
-                "z": -0.07
+                "z": -0.07000017
             },
             "rotation": {
                 "x": 0.0,
@@ -42,8 +2900,9 @@
         },
         {
             "database_ID": "testPrefab",
-            "instance_ID": "c4eb03c2-383d-4f24-837b-6077cb891e39",
-            "parentName": null,
+            "instance_ID": "c7481bf7-b6c0-4806-8bca-a1f31689fde5",
+            "parentName": "null",
+            "gameObjectName": "testPrefab",
             "position": {
                 "x": 1.157046,
                 "y": 6.086629,
@@ -62,8 +2921,9 @@
         },
         {
             "database_ID": "Example\\Cube",
-            "instance_ID": "d7aa2d0b-d8c4-4684-806c-ac183f7e63fd",
-            "parentName": null,
+            "instance_ID": "5694a867-a1c4-4b61-be18-e421e6c49b95",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (1)",
             "position": {
                 "x": 2.66,
                 "y": 5.319628,
@@ -82,8 +2942,9 @@
         },
         {
             "database_ID": "Items\\Weapons\\Axe",
-            "instance_ID": "c6ae09b8-7c75-423f-b040-3726a3184bd9",
-            "parentName": null,
+            "instance_ID": "8c9ac5ce-608d-42c5-be30-7929f796aba7",
+            "parentName": "null",
+            "gameObjectName": "Axe",
             "position": {
                 "x": -14.72,
                 "y": 0.0,
@@ -102,8 +2963,9 @@
         },
         {
             "database_ID": "Example\\Cube",
-            "instance_ID": "79839606-bb6e-4bb3-81c1-7703b3bcbe2c",
-            "parentName": null,
+            "instance_ID": "b30606bf-4dfc-4c46-b893-5417fd6996bd",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (2)",
             "position": {
                 "x": 2.9,
                 "y": 11.98763,
@@ -122,8 +2984,9 @@
         },
         {
             "database_ID": "Example\\Sphere",
-            "instance_ID": "7c75d686-b6e2-442c-bbb9-ac05005d0bb3",
-            "parentName": null,
+            "instance_ID": "cc087c0d-1cc9-4044-90e4-9dd9b33f5324",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (1)",
             "position": {
                 "x": -3.04,
                 "y": 11.76963,
@@ -142,8 +3005,9 @@
         },
         {
             "database_ID": "Example\\Sphere",
-            "instance_ID": "ff331cf8-d4c3-4879-bcc4-535a00d2a178",
-            "parentName": null,
+            "instance_ID": "2160033d-d57b-4b00-b33f-497a43fc9b02",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (2)",
             "position": {
                 "x": -0.17,
                 "y": 15.09963,
@@ -162,13 +3026,13 @@
         }
     ],
     "components": {
-        "878a6110-acee-4754-b2a0-ba4c05da76c9": {
+        "65cd501b-3ed8-4125-82ca-89278af9b30c": {
             "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "entity_ID": "878a6110-acee-4754-b2a0-ba4c05da76c9",
+                "entity_ID": "65cd501b-3ed8-4125-82ca-89278af9b30c",
                 "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                 "data": {
                     "testReference": {
-                        "entity_ID": "7c75d686-b6e2-442c-bbb9-ac05005d0bb3",
+                        "entity_ID": "ec91323c-9dd1-4acc-8bcd-f274f0f0dde5",
                         "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                         "isNull": false,
                         "Value": null
@@ -180,9 +3044,1305 @@
                 }
             }
         },
-        "c4eb03c2-383d-4f24-837b-6077cb891e39": {
+        "ec91323c-9dd1-4acc-8bcd-f274f0f0dde5": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ec91323c-9dd1-4acc-8bcd-f274f0f0dde5",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "65cd501b-3ed8-4125-82ca-89278af9b30c",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e28dd290-375a-4212-bedb-ca7f9a2b9693": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e28dd290-375a-4212-bedb-ca7f9a2b9693",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "65cd501b-3ed8-4125-82ca-89278af9b30c",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e4e29c92-a676-41b2-9a71-a7916c46651a": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e4e29c92-a676-41b2-9a71-a7916c46651a",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b5db93db-13fb-477a-afeb-6a8e649e5750",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "800757d8-14fd-41ca-8276-876575a3b799": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "800757d8-14fd-41ca-8276-876575a3b799",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b5db93db-13fb-477a-afeb-6a8e649e5750",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b5db93db-13fb-477a-afeb-6a8e649e5750": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b5db93db-13fb-477a-afeb-6a8e649e5750",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "800757d8-14fd-41ca-8276-876575a3b799",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "08deebee-d45f-4591-aa72-9b0bef251518": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "08deebee-d45f-4591-aa72-9b0bef251518",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "df450826-5394-45c4-9a5c-3b89a1e52b77",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "df450826-5394-45c4-9a5c-3b89a1e52b77": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "df450826-5394-45c4-9a5c-3b89a1e52b77",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "08deebee-d45f-4591-aa72-9b0bef251518",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "9c70513d-6f19-483f-87e5-96d661382175": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "9c70513d-6f19-483f-87e5-96d661382175",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "08deebee-d45f-4591-aa72-9b0bef251518",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "943df12a-89b7-441b-b9f8-e32954427e85": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "943df12a-89b7-441b-b9f8-e32954427e85",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "995946d0-4d7b-4acb-b1a8-7bf7e9c20468",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e7c171f9-30c0-484d-b5ed-7527005d6d0e": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e7c171f9-30c0-484d-b5ed-7527005d6d0e",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "995946d0-4d7b-4acb-b1a8-7bf7e9c20468",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "995946d0-4d7b-4acb-b1a8-7bf7e9c20468": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "995946d0-4d7b-4acb-b1a8-7bf7e9c20468",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "e7c171f9-30c0-484d-b5ed-7527005d6d0e",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b5b5d753-1d55-4256-bce1-c82093c20c3e": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b5b5d753-1d55-4256-bce1-c82093c20c3e",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "06f1af43-71af-4b3e-8f77-7877566e0460",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "06f1af43-71af-4b3e-8f77-7877566e0460": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "06f1af43-71af-4b3e-8f77-7877566e0460",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b5b5d753-1d55-4256-bce1-c82093c20c3e",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e51989be-c615-4e3f-a019-497ff24a9b1d": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e51989be-c615-4e3f-a019-497ff24a9b1d",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b5b5d753-1d55-4256-bce1-c82093c20c3e",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "cb1dbad7-aedd-4eb7-b43d-41ea48c23ce9": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "cb1dbad7-aedd-4eb7-b43d-41ea48c23ce9",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "5740b0e6-d82d-4166-acd8-ba925073a2e1",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "ddeceac1-f860-4d01-ad70-9f6488d1f7ef": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ddeceac1-f860-4d01-ad70-9f6488d1f7ef",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "5740b0e6-d82d-4166-acd8-ba925073a2e1",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "5740b0e6-d82d-4166-acd8-ba925073a2e1": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "5740b0e6-d82d-4166-acd8-ba925073a2e1",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "ddeceac1-f860-4d01-ad70-9f6488d1f7ef",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e2dad8c5-d453-4a01-a3ca-6e039a048a04": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e2dad8c5-d453-4a01-a3ca-6e039a048a04",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "48e6a418-f833-4e85-92fb-99fdf2815f41",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "48e6a418-f833-4e85-92fb-99fdf2815f41": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "48e6a418-f833-4e85-92fb-99fdf2815f41",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "e2dad8c5-d453-4a01-a3ca-6e039a048a04",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "6fece9a4-bc70-4b01-9ac8-594f8eab0b29": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "6fece9a4-bc70-4b01-9ac8-594f8eab0b29",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "e2dad8c5-d453-4a01-a3ca-6e039a048a04",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "41293a27-35a5-4678-8cc7-f49de1cbd335": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "41293a27-35a5-4678-8cc7-f49de1cbd335",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "15c38c7c-bfe0-41c4-8da3-1d07a3f928f1",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "cc14ded9-f3cc-49fd-b7ef-22a8e5820c50": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "cc14ded9-f3cc-49fd-b7ef-22a8e5820c50",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "15c38c7c-bfe0-41c4-8da3-1d07a3f928f1",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "15c38c7c-bfe0-41c4-8da3-1d07a3f928f1": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "15c38c7c-bfe0-41c4-8da3-1d07a3f928f1",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "cc14ded9-f3cc-49fd-b7ef-22a8e5820c50",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b5b62513-0de0-4431-95d7-981d0e1622f3": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b5b62513-0de0-4431-95d7-981d0e1622f3",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "41326e6f-34bf-470f-a5cd-9a7e6bcf3ad8",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "41326e6f-34bf-470f-a5cd-9a7e6bcf3ad8": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "41326e6f-34bf-470f-a5cd-9a7e6bcf3ad8",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b5b62513-0de0-4431-95d7-981d0e1622f3",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "53cc053e-3d10-4591-80a3-1eeb4650e360": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "53cc053e-3d10-4591-80a3-1eeb4650e360",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b5b62513-0de0-4431-95d7-981d0e1622f3",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "20d28d27-da04-49b2-bf99-97e08e3592dc": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "20d28d27-da04-49b2-bf99-97e08e3592dc",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "dc3248e8-5908-478b-9cc7-f5bc3062af3f",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "49381370-579b-49ce-84c2-b8ec8a6c12cf": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "49381370-579b-49ce-84c2-b8ec8a6c12cf",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "dc3248e8-5908-478b-9cc7-f5bc3062af3f",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "dc3248e8-5908-478b-9cc7-f5bc3062af3f": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "dc3248e8-5908-478b-9cc7-f5bc3062af3f",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "49381370-579b-49ce-84c2-b8ec8a6c12cf",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "c8077f82-7e1a-412f-8920-aa9695335336": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "c8077f82-7e1a-412f-8920-aa9695335336",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "980bd097-39ab-4824-bb63-082b363586e2",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "980bd097-39ab-4824-bb63-082b363586e2": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "980bd097-39ab-4824-bb63-082b363586e2",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "c8077f82-7e1a-412f-8920-aa9695335336",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "c57fb88b-e8da-477d-91d2-275aeaf188c3": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "c57fb88b-e8da-477d-91d2-275aeaf188c3",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "c8077f82-7e1a-412f-8920-aa9695335336",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "28789f9b-3d8e-4379-89df-4e0b55634403": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "28789f9b-3d8e-4379-89df-4e0b55634403",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "790e3b1b-091e-430c-b4a3-f13a13cdb888",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b02b76ab-43ba-4c77-9377-8b10d9d75d4c": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b02b76ab-43ba-4c77-9377-8b10d9d75d4c",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "790e3b1b-091e-430c-b4a3-f13a13cdb888",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "790e3b1b-091e-430c-b4a3-f13a13cdb888": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "790e3b1b-091e-430c-b4a3-f13a13cdb888",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b02b76ab-43ba-4c77-9377-8b10d9d75d4c",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "5eba0280-f181-43ca-a3e4-8f3fe1258ca7": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "5eba0280-f181-43ca-a3e4-8f3fe1258ca7",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "ff46b106-cf93-4cce-909d-5f44128ae650",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "ff46b106-cf93-4cce-909d-5f44128ae650": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ff46b106-cf93-4cce-909d-5f44128ae650",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "5eba0280-f181-43ca-a3e4-8f3fe1258ca7",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "ccd59282-3797-4fd5-9fce-25c364403b0f": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ccd59282-3797-4fd5-9fce-25c364403b0f",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "5eba0280-f181-43ca-a3e4-8f3fe1258ca7",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "fcace0a2-8f1a-4aa9-a374-37576eb8ae00": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "fcace0a2-8f1a-4aa9-a374-37576eb8ae00",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "3bcf2328-faa6-4bb5-b52a-2f4079201ee9",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "281b1388-2cc1-4781-b83c-01a181cb6f72": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "281b1388-2cc1-4781-b83c-01a181cb6f72",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "3bcf2328-faa6-4bb5-b52a-2f4079201ee9",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "3bcf2328-faa6-4bb5-b52a-2f4079201ee9": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "3bcf2328-faa6-4bb5-b52a-2f4079201ee9",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "281b1388-2cc1-4781-b83c-01a181cb6f72",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "53ea1483-f43f-43a3-9e95-6bb9edf7b251": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "53ea1483-f43f-43a3-9e95-6bb9edf7b251",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "c9f21281-1582-427c-a9bc-4f318c8c31ba",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "c9f21281-1582-427c-a9bc-4f318c8c31ba": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "c9f21281-1582-427c-a9bc-4f318c8c31ba",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "53ea1483-f43f-43a3-9e95-6bb9edf7b251",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "47201cf3-4c62-4cb7-884d-09e3cf6db3bf": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "47201cf3-4c62-4cb7-884d-09e3cf6db3bf",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "53ea1483-f43f-43a3-9e95-6bb9edf7b251",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e20dc5cd-65ee-4e52-83f4-b58f50b25861": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e20dc5cd-65ee-4e52-83f4-b58f50b25861",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "2db47b6e-2d1c-4553-9858-635f63577c2c",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "ba38d0c9-f232-4861-b7c8-eac2386f0cd8": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ba38d0c9-f232-4861-b7c8-eac2386f0cd8",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "2db47b6e-2d1c-4553-9858-635f63577c2c",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "2db47b6e-2d1c-4553-9858-635f63577c2c": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "2db47b6e-2d1c-4553-9858-635f63577c2c",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "ba38d0c9-f232-4861-b7c8-eac2386f0cd8",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "72f4f875-cd1f-470c-ae9a-6c81a62bcee2": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "72f4f875-cd1f-470c-ae9a-6c81a62bcee2",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "ade6578b-344d-43d3-b95c-84d51403c181",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "ade6578b-344d-43d3-b95c-84d51403c181": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ade6578b-344d-43d3-b95c-84d51403c181",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "72f4f875-cd1f-470c-ae9a-6c81a62bcee2",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "27cc5a07-9f3e-4675-bdde-03201f7eb093": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "27cc5a07-9f3e-4675-bdde-03201f7eb093",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "72f4f875-cd1f-470c-ae9a-6c81a62bcee2",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "c3fcc0ff-f10f-4c60-93b0-5c3caecc63c2": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "c3fcc0ff-f10f-4c60-93b0-5c3caecc63c2",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "5176f51b-cb2d-4d34-8571-9d94f818d2e8",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "f7c1779b-975f-4e40-9df3-fdf7a1126e09": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "f7c1779b-975f-4e40-9df3-fdf7a1126e09",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "5176f51b-cb2d-4d34-8571-9d94f818d2e8",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "5176f51b-cb2d-4d34-8571-9d94f818d2e8": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "5176f51b-cb2d-4d34-8571-9d94f818d2e8",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "f7c1779b-975f-4e40-9df3-fdf7a1126e09",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "9c7d56c0-bf75-4839-939a-c1f1c3e42863": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "9c7d56c0-bf75-4839-939a-c1f1c3e42863",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "7de17f62-a93e-4ad4-85dd-d5ff838c6d9e",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "7de17f62-a93e-4ad4-85dd-d5ff838c6d9e": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "7de17f62-a93e-4ad4-85dd-d5ff838c6d9e",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "9c7d56c0-bf75-4839-939a-c1f1c3e42863",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "08d229d4-d0e3-46a4-9868-8cf351a29fc8": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "08d229d4-d0e3-46a4-9868-8cf351a29fc8",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "9c7d56c0-bf75-4839-939a-c1f1c3e42863",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "72995799-58c4-477d-822d-3ba80fb4cc71": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "72995799-58c4-477d-822d-3ba80fb4cc71",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "ca56eef5-d720-47f1-8d4b-c511ba5a99ef",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "e4b66447-f461-421b-bd55-9e312fbe8ef6": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "e4b66447-f461-421b-bd55-9e312fbe8ef6",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "ca56eef5-d720-47f1-8d4b-c511ba5a99ef",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "ca56eef5-d720-47f1-8d4b-c511ba5a99ef": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "ca56eef5-d720-47f1-8d4b-c511ba5a99ef",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "e4b66447-f461-421b-bd55-9e312fbe8ef6",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "8c1c9346-26d8-4a9f-963b-4d3cada3ae97": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "8c1c9346-26d8-4a9f-963b-4d3cada3ae97",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b6d20f3f-b8bd-4c7f-9507-1d867caa1ea9",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b6d20f3f-b8bd-4c7f-9507-1d867caa1ea9": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b6d20f3f-b8bd-4c7f-9507-1d867caa1ea9",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "8c1c9346-26d8-4a9f-963b-4d3cada3ae97",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "993e4d06-cf04-4712-951c-f0e71eb4b0a6": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "993e4d06-cf04-4712-951c-f0e71eb4b0a6",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "8c1c9346-26d8-4a9f-963b-4d3cada3ae97",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "d9bc49c8-f871-43d1-b046-15551d54a8fa": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "d9bc49c8-f871-43d1-b046-15551d54a8fa",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "d75d4c98-6b5c-4a6b-b883-3ed8c533c728",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "f02a90a5-9aba-4c97-96f0-823f39cab47e": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "f02a90a5-9aba-4c97-96f0-823f39cab47e",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "d75d4c98-6b5c-4a6b-b883-3ed8c533c728",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "d75d4c98-6b5c-4a6b-b883-3ed8c533c728": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "d75d4c98-6b5c-4a6b-b883-3ed8c533c728",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "f02a90a5-9aba-4c97-96f0-823f39cab47e",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "70a8f7a5-7565-4656-99db-32c0c5ecd35d": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "70a8f7a5-7565-4656-99db-32c0c5ecd35d",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "4dc1830c-a690-4546-ae8b-d6e71e9a8347",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "4dc1830c-a690-4546-ae8b-d6e71e9a8347": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "4dc1830c-a690-4546-ae8b-d6e71e9a8347",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "70a8f7a5-7565-4656-99db-32c0c5ecd35d",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "87613d5d-445c-4563-a8fb-e6d53cc77dc8": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "87613d5d-445c-4563-a8fb-e6d53cc77dc8",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "70a8f7a5-7565-4656-99db-32c0c5ecd35d",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b39c8f62-a2ea-4af6-8b61-e25484e78ea8": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b39c8f62-a2ea-4af6-8b61-e25484e78ea8",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "58030b4e-cd8b-499a-bf42-31e17dbbc06f",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "b559752b-e848-41cc-8e2c-496cf870803b": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "b559752b-e848-41cc-8e2c-496cf870803b",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "58030b4e-cd8b-499a-bf42-31e17dbbc06f",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "58030b4e-cd8b-499a-bf42-31e17dbbc06f": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "58030b4e-cd8b-499a-bf42-31e17dbbc06f",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "b559752b-e848-41cc-8e2c-496cf870803b",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "63b06e98-92b1-4dda-824b-b7de652d39d5": {
+            "e28315f1-73a3-4076-b169-821a8240dc18": {
+                "entity_ID": "63b06e98-92b1-4dda-824b-b7de652d39d5",
+                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                "data": {
+                    "testReference": {
+                        "entity_ID": "cc087c0d-1cc9-4044-90e4-9dd9b33f5324",
+                        "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+                        "isNull": false,
+                        "Value": null
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "c7481bf7-b6c0-4806-8bca-a1f31689fde5": {
             "2e5007ec-6225-4e31-8c92-373e12a6edd2": {
-                "entity_ID": "c4eb03c2-383d-4f24-837b-6077cb891e39",
+                "entity_ID": "c7481bf7-b6c0-4806-8bca-a1f31689fde5",
                 "component_ID": "2e5007ec-6225-4e31-8c92-373e12a6edd2",
                 "data": {
                     "testReference": {
@@ -198,9 +4358,9 @@
                 }
             }
         },
-        "c6ae09b8-7c75-423f-b040-3726a3184bd9": {
+        "8c9ac5ce-608d-42c5-be30-7929f796aba7": {
             "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8": {
-                "entity_ID": "c6ae09b8-7c75-423f-b040-3726a3184bd9",
+                "entity_ID": "8c9ac5ce-608d-42c5-be30-7929f796aba7",
                 "component_ID": "d1f1a0ef-6913-4d42-9c19-2e7205b4c6c8",
                 "data": {
                     "name": {
@@ -213,13 +4373,13 @@
                 }
             }
         },
-        "7c75d686-b6e2-442c-bbb9-ac05005d0bb3": {
+        "cc087c0d-1cc9-4044-90e4-9dd9b33f5324": {
             "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "entity_ID": "7c75d686-b6e2-442c-bbb9-ac05005d0bb3",
+                "entity_ID": "cc087c0d-1cc9-4044-90e4-9dd9b33f5324",
                 "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                 "data": {
                     "testReference": {
-                        "entity_ID": "878a6110-acee-4754-b2a0-ba4c05da76c9",
+                        "entity_ID": "63b06e98-92b1-4dda-824b-b7de652d39d5",
                         "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                         "isNull": false,
                         "Value": null
@@ -231,13 +4391,13 @@
                 }
             }
         },
-        "ff331cf8-d4c3-4879-bcc4-535a00d2a178": {
+        "2160033d-d57b-4b00-b33f-497a43fc9b02": {
             "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "entity_ID": "ff331cf8-d4c3-4879-bcc4-535a00d2a178",
+                "entity_ID": "2160033d-d57b-4b00-b33f-497a43fc9b02",
                 "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                 "data": {
                     "testReference": {
-                        "entity_ID": "878a6110-acee-4754-b2a0-ba4c05da76c9",
+                        "entity_ID": "63b06e98-92b1-4dda-824b-b7de652d39d5",
                         "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
                         "isNull": false,
                         "Value": null

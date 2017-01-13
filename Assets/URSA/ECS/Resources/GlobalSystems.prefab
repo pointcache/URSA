@@ -86,7 +86,7 @@ GameObject:
   - 4: {fileID: 4000010981018928}
   - 114: {fileID: 114000012868792096}
   m_Layer: 0
-  m_Name: Global
+  m_Name: GlobalSystems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,7 +526,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6b933960e344c4d981f1a46319c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savePath: /GameSave.sav
+  entitiesRoot: Entities
+  GlobalRootFoder: CustomData
+  FileName: persistentGameData
+  datapath: 0
+  customDataPath: 
+  folderPath: PersistenData
+  extension: .data
 --- !u!114 &114000012747120820
 MonoBehaviour:
   m_ObjectHideFlags: 1
