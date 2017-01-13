@@ -7,7 +7,7 @@ using URSA;
 public class InputConfig : ConfigBase {
 
     [ConsoleVar("input.debugModeKey", "key used to enable debug mode")]
-    public r_KeyCode debugMode = new r_KeyCode(KeyCode.F1);
+    public r_KeyCode debugUi = new r_KeyCode(KeyCode.F1);
 
     public override void OnEnable()
     {

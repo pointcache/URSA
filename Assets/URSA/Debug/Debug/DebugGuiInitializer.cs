@@ -20,7 +20,7 @@ public class DebugGuiInitializer : MonoBehaviour {
             return;
         var input = Pool<InputConfig>.First;
 
-        if (Input.GetKeyDown(input.debugMode))
+        if (Input.GetKeyDown(input.debugUi))
         {
             var ch = transform.GetChild(0);
             ch.gameObject.SetActive(!ch.gameObject.activeSelf);

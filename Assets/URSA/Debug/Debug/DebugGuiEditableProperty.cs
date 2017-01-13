@@ -7,7 +7,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
 {
     public Text Name, value;
     public InputField inputfield;
-    SerializedData comp;
+    object target;
     FieldInfo field;
     PropertyInfo prop;
     object rvar;
@@ -18,7 +18,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
         field, prop, rvar
     }
 
-    public void Initialize(SerializedData _comp, FieldInfo _field, PropertyInfo _prop, object _rvar, string _Name)
+    public void Initialize(object _target, FieldInfo _field, PropertyInfo _prop, object _rvar, string _Name)
     {
         if (_rvar != null)
             _type = type.rvar;
@@ -30,10 +30,9 @@ public class DebugGuiEditableProperty : MonoBehaviour
 
         Name.text = _Name;
 
-
         if (_type == type.field)
         {
-            comp = _comp;
+            target = _target;
             field = _field;
             if (field.FieldType == typeof(float))
                 inputfield.characterValidation = InputField.CharacterValidation.Decimal;
@@ -44,7 +43,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
         else
         if (_type == type.prop)
         {
-            comp = _comp;
+            target = _target;
             prop = _prop;
             if (prop.PropertyType == typeof(float))
                 inputfield.characterValidation = InputField.CharacterValidation.Decimal;
@@ -63,6 +62,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
                 if (prop.PropertyType == typeof(int))
                 inputfield.characterValidation = InputField.CharacterValidation.Integer;
         }
+        inputfield.text = getvalue();
 
         initialized = true;
     }
@@ -72,7 +72,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
             return;
         if (_type == type.field)
         {
-            value.text = field.GetValue(comp).ToString();
+            value.text = field.GetValue(target).ToString();
 
         }
         else
@@ -83,6 +83,17 @@ public class DebugGuiEditableProperty : MonoBehaviour
 
 
     }
+
+    string getvalue() {
+        if (_type == type.field) {
+            return field.GetValue(target).ToString();
+
+        } else
+            if (_type == type.rvar) {
+            return  prop.GetValue(rvar, null).ToString();
+        } else
+            return "";
+    }
     public void SetValue(string input)
     {
         if (input == String.Empty)
@@ -90,7 +101,7 @@ public class DebugGuiEditableProperty : MonoBehaviour
         if (_type == type.field)
         {
             Type t = field.FieldType;
-            field.SetValue(comp, Convert.ChangeType(input, t));
+            field.SetValue(target, Convert.ChangeType(input, t));
         }
         else
             if(_type == type.rvar)

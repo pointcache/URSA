@@ -8,7 +8,7 @@ namespace URSA
 
 
 
-    public static class BeastLog
+    public static class UrsaLog
     {
         const bool output_unity_log = true;
 #if !UNITY_EDITOR

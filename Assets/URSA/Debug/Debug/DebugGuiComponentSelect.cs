@@ -8,5 +8,6 @@ public class DebugGuiComponentSelect : MonoBehaviour {
 	public void Select()
     {
         GameObject.FindObjectOfType<DebugGuiPropertyDrawer>().DrawComponent(comp);
+        DebugSystem.selectedName.Value = comp.GetType().Name;
     }
 }

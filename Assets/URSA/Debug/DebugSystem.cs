@@ -6,28 +6,51 @@ using URSA;
 
 public class DebugSystem : MonoBehaviour {
 
-    public string debugUiPrefab = "URSA/Debug/DebugUi";
-    GameObject current;
+    public static rVar<string> selectedName = new rVar<string>("selected");
+
+    public static bool debugMode;
+    const string debugUiPrefab = "URSA/Debug/DebugUi";
+    const string debugOverlayPrefab = "URSA/Debug/DebugMode";
+
+    GameObject debugUi, overlay;
     private void OnEnable() {
         Pool<InternalConfig>.First.DebugGUI.OnChanged += SetDebugUi;
-        UrsaConsole.RegisterCommand("debug.enableDebugUi", EnableDebugUi);
-        UrsaConsole.RegisterCommandWithParameters("test.test1", TestparamsMethod);
+        UrsaConsole.RegisterCommand("debug.enable", EnableDebug);
+        UrsaConsole.RegisterCommand("debug.disable", DisableDebug);
+    }
+
+    private void Update() {
+        var input = Pool<InputConfig>.First;
+        var inter = Pool<InternalConfig>.First;
+        if (debugMode) {
+            if (Input.GetKeyDown(input.debugUi)) {
+                inter.DebugGUI.Value = !inter.DebugGUI;
+            }
+        }
     }
 
     public void SetDebugUi(bool val) {
-        if (!current) {
-            current = Helpers.Spawn(debugUiPrefab);
+        
+        debugUi.SetActive(val);
+    }
+
+    void EnableDebug() {
+        var inter = Pool<InternalConfig>.First;
+        if (!debugUi) {
+            debugUi = Helpers.Spawn(debugUiPrefab);
         }
-        current.SetActive(val);
+        if (!overlay) {
+            overlay = Helpers.Spawn(debugOverlayPrefab);
+        }
+        debugMode = true;
+        inter.DebugGUI.Value = false;
     }
 
-    void EnableDebugUi() {
-        SetDebugUi(true);
-    }
-
-    void TestparamsMethod(string[] parameters) {
-        int a = Convert.ToInt16(parameters[0]);
-        int b = Convert.ToInt16(parameters[1]);
-        UrsaConsole.WriteLine((a + b).ToString());
+    void DisableDebug() {
+        var inter = Pool<InternalConfig>.First;
+        inter.DebugGUI.Value = false;
+        debugMode = false;
+        Destroy(debugUi);
+        Destroy(overlay);
     }
 }
