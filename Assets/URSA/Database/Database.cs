@@ -11,7 +11,15 @@ public class Database : MonoBehaviour {
     //const string databaseFolder = "Database/";
 
     static List<GameObject> prefabObjects = new List<GameObject>(1000);
-    static URSASettings settings;
+    static URSASettings _settings;
+    static URSASettings settings
+    {
+        get {
+            if(_settings == null)
+                _settings = Helpers.FindScriptableObject<URSASettings>();
+            return _settings;
+        }
+    }
     static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
     static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
 
@@ -20,7 +28,7 @@ public class Database : MonoBehaviour {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
         Components = new Dictionary<string, HashSet<string>>(10000);
-        settings = Helpers.FindScriptableObject<URSASettings>();
+        
         assign_ids_entities();
         assign_ids_components();
 
@@ -32,7 +40,6 @@ public class Database : MonoBehaviour {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
         Components = new Dictionary<string, HashSet<string>>(10000);
-        settings = Helpers.FindScriptableObject<URSASettings>();
         assign_ids_entities();
         assign_ids_components();
 
@@ -47,7 +54,8 @@ public class Database : MonoBehaviour {
     }
 
     public static GameObject GetPrefab(string id) {
-        return Resources.Load( dbPath + id) as GameObject;
+        string path = settings.DatabaseRootFolder + "/" + id.Replace("\\", "/");
+        return Resources.Load(path ) as GameObject;
     }
 
     static void assign_ids_entities() {

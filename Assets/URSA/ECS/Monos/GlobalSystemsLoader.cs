@@ -26,7 +26,7 @@ public class GlobalSystemsLoader : MonoBehaviour {
         } else {
             current = this;
 
-            initializer = transform.GetComponent<InitializerSystem>().gameObject;
+            initializer = transform.GetComponentInChildren<InitializerSystem>().gameObject;
             if (!initializer) {
                 Debug.LogError("GlobalSystems: No Systems gameobject found");
                 return;

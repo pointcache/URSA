@@ -111,10 +111,16 @@ public class SaveSystem : MonoBehaviour {
     }
 
     public void UnboxSaveObject(SaveObject save, Transform root) {
-        Dictionary<string, Dictionary<string, ComponentBase>> compRefInjection = new Dictionary<string, Dictionary<string, ComponentBase>>();
+        Dictionary<string, Dictionary<string, ComponentBase>> allComps = new Dictionary<string, Dictionary<string, ComponentBase>>();
+        Dictionary<EntityObject, Entity> toParent = new Dictionary<EntityObject, Entity>();
 
         foreach (var eobj in save.entities) {
             var prefab = Database.GetPrefab(eobj.database_ID);
+
+            if(!prefab) {
+                Debug.LogError("When loading, database entity: " + eobj.database_ID + " was not found");
+                continue;
+            }
             bool prefabState = prefab.activeSelf;
             prefab.SetActive(false);
 
@@ -132,6 +138,10 @@ public class SaveSystem : MonoBehaviour {
             var entity = gameobj.GetComponent<Entity>();
             entity.instance_ID = eobj.instance_ID;
 
+            if (eobj.parentIsComponent) {
+                toParent.Add(eobj, entity);
+            }
+
             var comps = gameobj.GetComponentsInChildren<ComponentBase>(true);
             if (comps.Length == 0) {
                 prefab.SetActive(prefabState);
@@ -146,10 +156,10 @@ public class SaveSystem : MonoBehaviour {
 
                 //Storing for later reference injection
                 Dictionary<string, ComponentBase> injectionDict = null;
-                compRefInjection.TryGetValue(entity.ID, out injectionDict);
+                allComps.TryGetValue(entity.ID, out injectionDict);
                 if (injectionDict == null) {
                     injectionDict = new Dictionary<string, ComponentBase>();
-                    compRefInjection.Add(entity.ID, injectionDict);
+                    allComps.Add(entity.ID, injectionDict);
                 }
                 injectionDict.Add(component.ID, component);
             }
@@ -157,9 +167,17 @@ public class SaveSystem : MonoBehaviour {
             entity.gameObject.SetActive(true);
         }
 
+        foreach (var pair in toParent) {
+            Entity e = pair.Value;
+            EntityObject eobj = pair.Key;
+
+            Transform parent = allComps[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
+            e.transform.SetParent(parent);
+        }
+
         foreach (var compref in CompRefSerializationProcessor.injectionList) {
             if (!compref.isNull)
-                compref.setValueDirectly(compRefInjection[compref.entity_ID][compref.component_ID]);
+                compref.setValueDirectly(allComps[compref.entity_ID][compref.component_ID]);
         }
     }
 
@@ -192,18 +210,25 @@ public class SaveSystem : MonoBehaviour {
             Entity entity = pair.Value;
 
             string eID = entity.instance_ID;
-
+            Transform tr = entity.transform;
             eobj.database_ID = entity.database_ID;
             eobj.instance_ID = entity.instance_ID;
-            eobj.position = entity.transform.position;
-            eobj.rotation = entity.transform.rotation.eulerAngles;
-            eobj.scale = entity.transform.localScale;
-            eobj.parentName = entity.transform.parent.Null() ? "null" : entity.transform.parent.name ;
+            eobj.position = tr.position;
+            eobj.rotation = tr.rotation.eulerAngles;
+            eobj.scale = tr.lossyScale;
+            ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
+            if (parentComp) {
+                eobj.parentIsComponent = true;
+                eobj.parent_entity_ID = parentComp.Entity.ID;
+                eobj.parent_component_ID = parentComp.ID;
+            } else {
+                eobj.parentName = tr.parent.Null() ? "null" : tr.parent.name ;
+            }
             eobj.gameObjectName = entity.name;
 
             file.entities.Add(eobj);
 
-            var components = entity.GetComponentsInChildren<ComponentBase>(true);
+            var components = entity.GetAllEntityComponents();
 
             foreach (var comp in components) {
                 ComponentObject cobj = new ComponentObject();
