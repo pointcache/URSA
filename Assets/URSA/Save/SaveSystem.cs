@@ -10,6 +10,7 @@ using UnityEditor.SceneManagement;
 using System.Reflection;
 using System.IO;
 using URSA;
+using System.Linq;
 
 public class SaveSystem : MonoBehaviour {
 
@@ -157,7 +158,7 @@ public class SaveSystem : MonoBehaviour {
             prefab.SetActive(false);
             GameObject gameobj = null;
 #if UNITY_EDITOR
-            if (save.isBlueprint) {
+            if (save.isBlueprint && !Application.isPlaying) {
                 gameobj = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
                 PrefabUtility.DisconnectPrefabInstance(gameobj);
             } else
@@ -242,7 +243,7 @@ public class SaveSystem : MonoBehaviour {
             entity.gameObject.SetActive(true);
 #if UNITY_EDITOR
             PrefabUtility.ReconnectToLastPrefab(gameobj);
-            PrefabUtility.RevertPrefabInstance(gameobj);
+           
 #endif
         }
 
@@ -351,10 +352,14 @@ public class SaveSystem : MonoBehaviour {
     }
 
     static SaveObject PackBlueprint(SaveObject file, Transform root) {
-        Entity[] entities_arr = null;
+        List<Entity> entities_list = null;
         HashSet<string> bp_ids = new HashSet<string>();
-        entities_arr = root.GetComponentsInChildren<Entity>();
-        foreach (var ent in entities_arr) {
+        
+        entities_list = root.GetComponentsInChildren<Entity>().ToList();
+        var rootEntity = root.GetComponent<Entity>();
+        if (rootEntity)
+            entities_list.Remove(rootEntity);
+        foreach (var ent in entities_list) {
             ProcessEntity(file, ent, bp_ids, root);
         }
 
@@ -394,7 +399,7 @@ public class SaveSystem : MonoBehaviour {
             eobj.parent_component_ID = parentComp.ID;
         } else {
             Entity parentEntity = tr.parent.GetComponent<Entity>();
-            if (parentEntity) {
+            if (tr.parent != root && parentEntity) {
                 eobj.parentIsEntity = true;
                 if (isBlueprint)
                     eobj.parent_entity_ID = parentEntity.blueprint_ID;

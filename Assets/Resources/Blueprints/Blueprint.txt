@@ -15,7 +15,7 @@
                 "parent_entity_ID": null,
                 "parent_component_ID": null,
                 "position": {
-                    "x": 2.44,
+                    "x": 2.440001,
                     "y": 2.23,
                     "z": 0.8177176
                 },
@@ -41,9 +41,9 @@
                 "parent_entity_ID": "5b37c0fd-2f04-44ce-98d9-e34ae75958b0",
                 "parent_component_ID": null,
                 "position": {
-                    "x": 0.6120229,
+                    "x": 0.6120222,
                     "y": -0.1402135,
-                    "z": 0.8177177
+                    "z": 0.8177179
                 },
                 "rotation": {
                     "x": 0.0,
@@ -67,9 +67,9 @@
                 "parent_entity_ID": null,
                 "parent_component_ID": null,
                 "position": {
-                    "x": 4.38,
+                    "x": 4.380001,
                     "y": -0.1402135,
-                    "z": 0.8177176
+                    "z": 0.8177173
                 },
                 "rotation": {
                     "x": 0.0,
@@ -83,6 +83,7 @@
                 }
             }
         ],
+        "comprefs": [],
         "components": {
 
         }

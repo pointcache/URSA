@@ -7,8 +7,7 @@ using UnityEditor;
 public class BlueprintLoader : MonoBehaviour {
 
     public TextAsset blueprint;
-    public bool LoadOnEnable = true;
-    public bool CreateRootObject = true;
+    public bool LoadOnEnable;
 
     [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_BLUEPRINT + URSAConstants.MENUITEM_BLUEPRINT_NEW)]
     public static void New() {
@@ -19,11 +18,28 @@ public class BlueprintLoader : MonoBehaviour {
     }
 
     public Blueprint Save() {
+        if (transform.childCount == 0)
+            return null;
         Blueprint bp = new Blueprint();
         bp.saveObject = SaveSystem.CreateSaveObjectFromTransform(transform);
         bp.gameVersion = ProjectInfo.current.Version;
         bp.Name = gameObject.name;
         return bp;
+    }
+
+    public void Load() {
+        if (blueprint == null)
+            return;
+        else {
+            transform.DestroyChildren();
+            SaveSystem.LoadBlueprint(blueprint.text, transform);
+        }
+    }
+
+    public void OnEnable() {
+        if (LoadOnEnable) {
+            Load();
+        }
     }
 
     //private void OnDrawGizmos() {

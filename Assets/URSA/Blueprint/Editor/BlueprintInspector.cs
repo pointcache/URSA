@@ -13,7 +13,6 @@ public class BlueprintInspector : Editor {
     public static string LastPath = "/Resources/";
     public override void OnInspectorGUI() {
         BlueprintLoader t = target as BlueprintLoader;
-
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Save as")) {
             save_as();
@@ -24,18 +23,18 @@ public class BlueprintInspector : Editor {
             else {
                 string path = AssetDatabase.GetAssetPath(t.blueprint);
                 var bp = t.Save();
+                if (bp == null)
+                    return;
                 SerializationHelper.Serialize(bp, path, true);
                 AssetDatabase.Refresh();
             }
 
         }
         if (GUILayout.Button("Load")) {
-            if (t.blueprint == null)
-                return;
-            else {
-                t.transform.DestroyChildren();
-                SaveSystem.LoadBlueprint(t.blueprint.text, t.transform);
-            }
+            t.Load();
+        }
+        if (GUILayout.Button("Clear")) {
+            t.transform.DestroyChildren();
         }
         GUILayout.EndHorizontal();
 
