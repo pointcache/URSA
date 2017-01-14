@@ -43,6 +43,8 @@
             SmartConsole.inputField = consoleRoot.transform.FindDeepChild("InputField").GetComponent<InputField>();
             SmartConsole.scrollBar = consoleRoot.transform.FindDeepChild("Scrollbar Vertical").GetComponent<Scrollbar>();
             consoleRoot.AddComponent<SmartConsole>();
+
+            RegisterCommandWithParameters("spawn", Spawn);
         }
 
         private void OnDisable() {
@@ -84,6 +86,11 @@
         /// <param name="command"></param>
         public static void RegisterCommandWithParameters(string name, Action<string[]> command) {
             SmartConsole.RegisterCommandWithParameters(name, "no description", "no example", command);
+        }
+
+        public static void Spawn(string[] par) {
+            Helpers.Spawn(par[0]);
+            UrsaLog.Success(par[0] + " was spawned.");
         }
     }
     public static class TransformDeepChildExtension {

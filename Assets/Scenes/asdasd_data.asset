@@ -8,8 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db1bbdb2badf987428d8ee2a298ba930, type: 3}
-  m_Name: SceneDataCollector
+  m_Script: {fileID: 11500000, guid: baad01fe817022345a9531a71412788c, type: 3}
+  m_Name: asdasd_data
   m_EditorClassIdentifier: 
-  scenes:
-  - {fileID: 11400000, guid: d01f3e0d9d0127748a5e5bab60e5cad2, type: 2}
+  levelname: asdasd
+  scene: asdasd
+  NiceName: asdasd
+  entryPoints: []

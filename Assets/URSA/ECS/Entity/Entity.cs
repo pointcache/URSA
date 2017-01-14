@@ -9,6 +9,8 @@ public class Entity : MonoBehaviour
     public string database_ID;
     [NotEditableString]
     public string instance_ID;
+    [HideInInspector]
+    public string blueprint_ID;
 
     public string ID
     {

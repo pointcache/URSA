@@ -6,7 +6,9 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor; 
+#endif
 
     public enum DataPath {
         inRootFolder,
@@ -62,7 +64,9 @@
         }
 
 
-        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_SAVE)]
+#if UNITY_EDITOR
+        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_SAVE)] 
+#endif
         public static void Save() {
             var sys = ConfigSystem.instance;
             string path = getSystemPath();
@@ -83,7 +87,9 @@
         }
 
 
-        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_LOAD)]
+#if UNITY_EDITOR
+        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_LOAD)] 
+#endif
         public static void Load() {
 
             var sys = ConfigSystem.instance;

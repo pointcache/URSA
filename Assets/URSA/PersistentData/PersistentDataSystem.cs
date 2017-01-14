@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using URSA.Save;
-using UnityEditor;
+#if UNITY_EDITOR
+using UnityEditor; 
+#endif
 using URSA;
 using System.IO;
 
@@ -33,14 +35,18 @@ public class PersistentDataSystem : MonoBehaviour {
     }
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_SAVE)]
+#if     UNITY_EDITOR
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_SAVE)] 
+#endif
     public static void Save() {
         instance.SaveTo();
     }
 
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_LOAD)]
+#if UNITY_EDITOR
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_LOAD)] 
+#endif
     public static void Load() {
         instance.LoadFrom();
     }
@@ -68,7 +74,7 @@ public class PersistentDataSystem : MonoBehaviour {
     }
 
     public void SaveTo() {
-        SaveObject file = SaveSystem.instance.CreateSaveObjectFromPersistenData();
+        SaveObject file = SaveSystem.CreateSaveObjectFromPersistenData();
         PersistentDataInfo info = new PersistentDataInfo();
         info.profileName = "profile";
         info.creationDate = DateTime.Now;
@@ -91,7 +97,7 @@ public class PersistentDataSystem : MonoBehaviour {
 
         if (File.Exists(path)) {
             var info = SaveSystem.DeserializeAs<PersistentDataInfo>(path);
-            SaveSystem.instance.UnboxSaveObject(info.data, transform);
+            SaveSystem.UnboxSaveObject(info.data, transform);
         } else
             Debug.LogError("PersistentDataSystem: File at path:" + path + " was not found");
 

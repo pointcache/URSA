@@ -1,5 +1,5 @@
 {
-    "GameVersion": 0.0,
+    "GameVersion": 0.001,
     "entity_id_adress": {
         "a1aa5101-935b-459b-81c7-3b99a27e58e2": "Axe",
         "41f6fea9-d169-4aba-81da-fef8be621771": "PlayerInventory",

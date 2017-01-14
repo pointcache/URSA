@@ -16,7 +16,7 @@ public static class URSAEditorTools {
     public static void UpdateEverything() {
         Database.RebuildWithoutReloadOfTheScene();
         AssetsTools.ParseResources();
-
+        LevelsSystemEditor.CollectLevelsData();
         EditorSceneManager.MarkAllScenesDirty();
         EditorSceneManager.SaveOpenScenes();
         var scene = EditorSceneManager.GetActiveScene();

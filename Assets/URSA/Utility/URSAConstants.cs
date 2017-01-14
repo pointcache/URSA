@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public static class URSAConstants  {
 
+    public const string PATH_ADDITIONAL_DATA = "AdditionalData";
+
+
     public const string PATH_URSASETTINGS_ROOT = "URSASettings";
     public const string PATH_URSASETTINGS_SETTINGS = "/URSASettings";
     public const string PATH_URSASETTINGS_ASSET_IMPORTER = "/AssetImportersSettings";
@@ -31,4 +34,8 @@ public static class URSAConstants  {
     public const string MENUITEM_LEVELS = "/Levels";
     public const string MENUITEM_TOOLS = "/Tools";
     public const string MENUITEM_ASSETTOOLS = "/Assets";
+
+    public const string MENUITEM_BLUEPRINT = "/Blueprints";
+    public const string MENUITEM_BLUEPRINT_NEW = "/New";
+
 }

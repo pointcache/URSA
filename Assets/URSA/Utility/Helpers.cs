@@ -47,6 +47,18 @@ public class NotEditableStringAttribute : PropertyAttribute { }
 public static class Helpers
 {
 
+    public static string ClearPathToResources(this string path) {
+        int index = path.IndexOf("/Resources/");
+        return path.Remove(0, index + 11);
+    }
+
+    public static string RemoveExtension(this string path) {
+        int index = path.LastIndexOf('.');
+        return path.Remove(index,path.Length - index);
+    }
+
+#if UNITY_EDITOR
+
     public static T FindScriptableObject<T>() where T : ScriptableObject {
         T so = null;
         var assets = AssetDatabase.FindAssets("t:" + typeof(T).Name);
@@ -56,7 +68,8 @@ public static class Helpers
             so = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]), typeof(T)) as T;
         }
         return so;
-    }
+    } 
+#endif
 
     public static void SetAllChildren(this Transform tr, bool state)
     {

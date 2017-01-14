@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,8 +10,7 @@ using UnityEditorInternal;
 //stop = any other key without modifiers
 //or just use toggle button
 //remember rotation samples any last selected object, so just select and then paint and it will work.
-public class ObjectPaint : EditorWindow
-{
+public class ObjectPaint : EditorWindow {
     bool paint;
     bool prevpaint;
     bool randomrotation;
@@ -31,19 +31,16 @@ public class ObjectPaint : EditorWindow
     SerializedObject serObj;
 
 
-    // Add menu item named "My Window" to the Window menu
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_TOOLS + "/ObjectPaint")]
-    public static void ShowWindow()
-    {
-        //Show existing window instance. If one doesn't exist, make one.
-        EditorWindow.GetWindow(typeof(ObjectPaint));
-    }
+        // Add menu item named "My Window" to the Window menu
+        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_TOOLS + "/ObjectPaint")]
+        public static void ShowWindow() {
+            //Show existing window instance. If one doesn't exist, make one.
+            EditorWindow.GetWindow(typeof(ObjectPaint));
+        }
 
-    void OnGUI()
-    {
+    void OnGUI() {
         GUI.color = Color.red;
-        if (GUILayout.Button("Reset All"))
-        {
+        if (GUILayout.Button("Reset All")) {
             paint = false;
 
             randomrotation = false;
@@ -69,42 +66,27 @@ public class ObjectPaint : EditorWindow
         serObj.Update();
         EditorGUILayout.BeginHorizontal();
         prefab = EditorGUILayout.ObjectField(prefab, typeof(GameObject), false) as GameObject;
-        if (GUILayout.Button("Get selected"))
-        {
-            if (Selection.gameObjects.Length < 2)
-            {
+        if (GUILayout.Button("Get selected")) {
+            if (Selection.gameObjects.Length < 2) {
 
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance)
-                {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance) {
                     prefab = PrefabUtility.GetPrefabParent(Selection.activeGameObject) as GameObject;
-                }
-                else
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.Prefab)
-                {
+                } else
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.Prefab) {
                     prefab = Selection.activeGameObject;
-                }
-                else
-                {
+                } else {
                     Debug.LogError("Not a prefab, or prefab instance, stop screwing around.");
                 }
 
-            }
-            else
-            {
+            } else {
                 multiple.Clear();
-                foreach (var go in Selection.gameObjects)
-                {
-                    if (PrefabUtility.GetPrefabType(go) == PrefabType.PrefabInstance)
-                    {
+                foreach (var go in Selection.gameObjects) {
+                    if (PrefabUtility.GetPrefabType(go) == PrefabType.PrefabInstance) {
                         multiple.Add(PrefabUtility.GetPrefabParent(go) as GameObject);
-                    }
-                    else
-                        if (PrefabUtility.GetPrefabType(go) == PrefabType.Prefab)
-                    {
+                    } else
+                        if (PrefabUtility.GetPrefabType(go) == PrefabType.Prefab) {
                         multiple.Add(go);
-                    }
-                    else
-                    {
+                    } else {
                         Debug.LogError("Not a prefab, or prefab instance, stop screwing around.");
                     }
                 }
@@ -129,20 +111,16 @@ public class ObjectPaint : EditorWindow
 
         EditorGUILayout.BeginHorizontal();
         minScale = EditorGUILayout.FloatField("Min scale", minScale);
-        if (GUILayout.Button("Get"))
-        {
-            if (Selection.activeGameObject)
-            {
+        if (GUILayout.Button("Get")) {
+            if (Selection.activeGameObject) {
                 minScale = Selection.activeGameObject.transform.localScale.x;
             }
         }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         maxScale = EditorGUILayout.FloatField("Max scale", maxScale);
-        if (GUILayout.Button("Get"))
-        {
-            if (Selection.activeGameObject)
-            {
+        if (GUILayout.Button("Get")) {
+            if (Selection.activeGameObject) {
                 maxScale = Selection.activeGameObject.transform.localScale.x;
             }
         }
@@ -156,12 +134,9 @@ public class ObjectPaint : EditorWindow
 
         EditorGUILayout.BeginHorizontal();
         rememberLastRotation = EditorGUILayout.Toggle("Remember Rotation", rememberLastRotation);
-        if (GUILayout.Button("Reset Rotation"))
-        {
-            if (Selection.activeGameObject)
-            {
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance)
-                {
+        if (GUILayout.Button("Reset Rotation")) {
+            if (Selection.activeGameObject) {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance) {
                     Selection.activeGameObject.transform.rotation = ((GameObject)PrefabUtility.GetPrefabParent(Selection.activeGameObject)).transform.rotation;
                 }
             }
@@ -170,12 +145,9 @@ public class ObjectPaint : EditorWindow
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         rememberScale = EditorGUILayout.Toggle("Remember Scale", rememberScale);
-        if (GUILayout.Button("Reset Scale"))
-        {
-            if (Selection.activeGameObject)
-            {
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance)
-                {
+        if (GUILayout.Button("Reset Scale")) {
+            if (Selection.activeGameObject) {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance) {
                     Selection.activeGameObject.transform.localScale = ((GameObject)PrefabUtility.GetPrefabParent(Selection.activeGameObject)).transform.localScale;
                 }
             }
@@ -186,8 +158,7 @@ public class ObjectPaint : EditorWindow
         serObj.ApplyModifiedProperties();
     }
 
-    void OnEnable()
-    {
+    void OnEnable() {
         serObj = new UnityEditor.SerializedObject(this);
         SceneView.onSceneGUIDelegate += Scene;
         Selection.selectionChanged += select;
@@ -203,13 +174,11 @@ public class ObjectPaint : EditorWindow
         maxScale = EditorPrefs.GetFloat("pointcache_objectpaint_maxScale");
     }
 
-    void select()
-    {
+    void select() {
         lastSelected = Selection.activeGameObject;
     }
 
-    void OnDisable()
-    {
+    void OnDisable() {
         SceneView.onSceneGUIDelegate -= Scene;
         Selection.selectionChanged -= select;
 
@@ -225,76 +194,61 @@ public class ObjectPaint : EditorWindow
 
     }
 
-    public void Update()
-    {
+    public void Update() {
         // This is necessary to make the framerate normal for the editor window.
         Repaint();
 
     }
-    
-    int getrandommultiple()
-    {
+
+    int getrandommultiple() {
         int random = Random.Range(0, multiple.Count);
         if (multiple[random] == null)
             return getrandommultiple();
         return random;
     }
 
-    void Scene(SceneView sceneView)
-    {
-        
+    void Scene(SceneView sceneView) {
+
         string paintingnotification = EditorGUILayout.TextField("Painting");
         string stoppednotification = EditorGUILayout.TextField("Stopped painting");
-        if (paint && paint != prevpaint)
-        {
-            if (lastSelected)
-            {
+        if (paint && paint != prevpaint) {
+            if (lastSelected) {
                 lastRotation = lastSelected.transform.rotation.eulerAngles;
                 lastScale = lastSelected.transform.localScale;
             }
             sceneView.ShowNotification(new GUIContent(paintingnotification));
             prevpaint = paint;
-        }
-        else if (paint != prevpaint)
-        {
+        } else if (paint != prevpaint) {
             sceneView.RemoveNotification();
             sceneView.ShowNotification(new GUIContent(stoppednotification));
             prevpaint = paint;
         }
 
-        if (Event.current.type == EventType.KeyDown && Event.current.modifiers == EventModifiers.None)
-        {
+        if (Event.current.type == EventType.KeyDown && Event.current.modifiers == EventModifiers.None) {
             if (Event.current.keyCode != KeyCode.None)
                 paint = false;
             if (Event.current.keyCode == KeyCode.C)
                 paint = true;
         }
 
-        if (!paint)
-        {
+        if (!paint) {
             sceneView.RemoveNotification();
             return;
         }
 
         HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
-        if (Event.current != null)
-        {
-            if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && Event.current.modifiers == EventModifiers.None)
-            {
+        if (Event.current != null) {
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && Event.current.modifiers == EventModifiers.None) {
                 Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
                 RaycastHit hit = new RaycastHit();
                 LayerMask temp = customMask ? mask.value : Physics.AllLayers;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, temp, QueryTriggerInteraction.Ignore))
-                {
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, temp, QueryTriggerInteraction.Ignore)) {
                     GameObject go = null;
-                    if (!useMultiple)
-                    {
+                    if (!useMultiple) {
                         if (prefab == null)
                             return;
                         go = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-                    }
-                    else
-                    {
+                    } else {
                         if (multiple == null && multiple.Count == 0)
                             return;
                         int random = Random.Range(0, multiple.Count);
@@ -304,8 +258,7 @@ public class ObjectPaint : EditorWindow
                     go.transform.position = hit.point;
                     if (randomscale)
                         go.transform.localScale = MultiplyFloat(Vector3.one, Random.Range(minScale, maxScale));
-                    else
-                    {
+                    else {
                         if (rememberScale)
                             go.transform.localScale = lastScale;
                         else
@@ -313,14 +266,11 @@ public class ObjectPaint : EditorWindow
 
                     }
 
-                    if (randomrotation)
-                    {
+                    if (randomrotation) {
                         Vector3 vec = go.transform.rotation.eulerAngles;
                         vec.y = Random.Range(0f, 360f);
                         go.transform.rotation = Quaternion.Euler(vec);
-                    }
-                    else if (rememberLastRotation)
-                    {
+                    } else if (rememberLastRotation) {
                         go.transform.rotation = Quaternion.Euler(lastRotation);
                     }
                     lastRotation = go.transform.rotation.eulerAngles;
@@ -332,10 +282,9 @@ public class ObjectPaint : EditorWindow
                 }
             }
         }
-        }
+    }
 
-    static Vector3 MultiplyFloat(Vector3 vec, float x)
-    {
+    static Vector3 MultiplyFloat(Vector3 vec, float x) {
         vec.x *= x;
         vec.y *= x;
         vec.z *= x;
@@ -344,8 +293,7 @@ public class ObjectPaint : EditorWindow
 
     static List<int> layerNumbers = new List<int>();
 
-    static LayerMask LayerMaskField(string label, LayerMask layerMask)
-    {
+    static LayerMask LayerMaskField(string label, LayerMask layerMask) {
         var layers = InternalEditorUtility.layers;
 
         layerNumbers.Clear();
@@ -354,8 +302,7 @@ public class ObjectPaint : EditorWindow
             layerNumbers.Add(LayerMask.NameToLayer(layers[i]));
 
         int maskWithoutEmpty = 0;
-        for (int i = 0; i < layerNumbers.Count; i++)
-        {
+        for (int i = 0; i < layerNumbers.Count; i++) {
             if (((1 << layerNumbers[i]) & layerMask.value) > 0)
                 maskWithoutEmpty |= (1 << i);
         }
@@ -363,8 +310,7 @@ public class ObjectPaint : EditorWindow
         maskWithoutEmpty = UnityEditor.EditorGUILayout.MaskField(label, maskWithoutEmpty, layers);
 
         int mask = 0;
-        for (int i = 0; i < layerNumbers.Count; i++)
-        {
+        for (int i = 0; i < layerNumbers.Count; i++) {
             if ((maskWithoutEmpty & (1 << i)) > 0)
                 mask |= (1 << layerNumbers[i]);
         }
@@ -373,3 +319,5 @@ public class ObjectPaint : EditorWindow
         return layerMask;
     }
 }
+
+#endif

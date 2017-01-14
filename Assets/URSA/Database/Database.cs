@@ -3,8 +3,10 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
+#if UNITY_EDITOR
+using UnityEditor; 
 using UnityEditor.SceneManagement;
+#endif
 
 public class Database : MonoBehaviour {
 
@@ -21,26 +23,20 @@ public class Database : MonoBehaviour {
     #endregion
 
     static List<GameObject> prefabObjects = new List<GameObject>(1000);
-    static URSASettings _settings;
-    static URSASettings settings
-    {
-        get {
-            if (_settings == null)
-                _settings = Resources.Load(URSAConstants.PATH_URSASETTINGS_ROOT + URSAConstants.PATH_URSASETTINGS_SETTINGS) as URSASettings;
-            return _settings;
-        }
-    }
+
     static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
     static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
 
     DatabaseManifest manifest;
 
     private void OnEnable() {
-        manifest = SerializationHelper.Load<DatabaseManifest>(Application.dataPath + "/Resources/" + settings.DatabaseRootFolder + "/" + settings.DatabaseManifest);
+        TextAsset manifest_asset = Resources.Load( URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest) as TextAsset;
+        manifest = SerializationHelper.LoadFromString<DatabaseManifest>(manifest_asset.text);
     }
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)]
+#if UNITY_EDITOR
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)] 
     public static void Rebuild() {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
@@ -61,13 +57,16 @@ public class Database : MonoBehaviour {
         assign_ids_components();
 
     }
+#endif
 
     /// <summary>
     /// Very careful with this one
     /// </summary>
-    [MenuItem("temp/clear ids")]
+#if     UNITY_EDITOR
+    [MenuItem("temp/clear ids")] 
+#endif
     public static void clear_all_entity_IDs() {
-        var prefabs = Resources.LoadAll(settings.DatabaseRootFolder + "/");
+        var prefabs = Resources.LoadAll(URSASettings.current.DatabaseRootFolder + "/");
 
         foreach (var p in prefabs) {
             var ent = ((GameObject)p).GetComponent<Entity>();
@@ -80,7 +79,7 @@ public class Database : MonoBehaviour {
     static string dbPath
     {
         get {
-            return "/Resources/" + settings.DatabaseRootFolder + "/";
+            return "/Resources/" + URSASettings.current.DatabaseRootFolder + "/";
         }
     }
 
@@ -89,7 +88,7 @@ public class Database : MonoBehaviour {
         string idPath = "";
         instance.manifest.entity_id_adress.TryGetValue(id, out idPath);
         if (idPath != "")
-            path = settings.DatabaseRootFolder + "/" + idPath;
+            path = URSASettings.current.DatabaseRootFolder + "/" + idPath;
         else
             return null;
         return Resources.Load(path) as GameObject;
@@ -100,9 +99,9 @@ public class Database : MonoBehaviour {
         HashSet<string> ids = new HashSet<string>();
 
         DatabaseManifest manifest = new DatabaseManifest();
-
+        manifest.GameVersion = ProjectInfo.current.Version;
         var files = Directory.GetFiles(Application.dataPath + dbPath, "*.prefab", SearchOption.AllDirectories);
-        var prefabs = Resources.LoadAll(settings.DatabaseRootFolder + "/");
+        var prefabs = Resources.LoadAll(URSASettings.current.DatabaseRootFolder + "/");
 
         foreach (var p in prefabs) {
             var ent = ((GameObject)p).GetComponent<Entity>();
@@ -114,7 +113,7 @@ public class Database : MonoBehaviour {
             string adress = f.Remove(0, f.IndexOf(dbPath) + dbPath.Length);
             adress = adress.Replace(".prefab", string.Empty);
 
-            var prefab = Resources.Load(settings.DatabaseRootFolder + "/" + adress) as GameObject;
+            var prefab = Resources.Load(URSASettings.current.DatabaseRootFolder + "/" + adress) as GameObject;
             var entity = prefab.GetComponent<Entity>();
             if (!entity) {
                 Debug.LogError("Database: GameObject without entity found, skipping.", prefab);
@@ -129,11 +128,11 @@ public class Database : MonoBehaviour {
             manifest.entity_adress_id.Add(adress, entity.database_ID);
         }
 
-        SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + settings.DatabaseRootFolder + "/" + settings.DatabaseManifest, true);
+        SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest + ".json", true);
     }
 
     static void assign_ids_components() {
-        var allData = Resources.LoadAll(settings.DatabaseRootFolder);
+        var allData = Resources.LoadAll(URSASettings.current.DatabaseRootFolder);
         prefabObjects = new List<GameObject>(1000);
         foreach (var item in allData) {
             GameObject go = item as GameObject;
@@ -163,7 +162,7 @@ public class Database : MonoBehaviour {
     }
 
 
-    static string get_unique_id(HashSet<string> set) {
+    public static string get_unique_id(HashSet<string> set) {
         Guid guid = Guid.NewGuid();
         string id = guid.ToString();
         if (set.Contains(id))

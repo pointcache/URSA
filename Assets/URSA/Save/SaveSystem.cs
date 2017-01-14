@@ -3,7 +3,9 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using URSA.Save;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Reflection;
 using System.IO;
 using URSA;
@@ -29,7 +31,9 @@ public class SaveSystem : MonoBehaviour {
     public string folderPath = "Saves";
     public string extension = ".sav";
 
+#if UNITY_EDITOR
     [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_SAVESTATE + URSAConstants.MENUITEM_SAVESTATE_SAVE)]
+#endif
     public static void SaveFromEditor() {
         instance.SaveFile();
     }
@@ -49,7 +53,8 @@ public class SaveSystem : MonoBehaviour {
 
     enum SaveObjectType {
         scene,
-        persistent
+        persistent,
+        blueprint
     }
 
     static string getSystemPath() {
@@ -71,11 +76,13 @@ public class SaveSystem : MonoBehaviour {
             default:
                 break;
         }
-        return path+ "/" + SaveSystem.instance.GlobalRootFoder;
+        return path + "/" + SaveSystem.instance.GlobalRootFoder;
     }
 
-    
+
+#if     UNITY_EDITOR
     [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_SAVESTATE + URSAConstants.MENUITEM_SAVESTATE_LOAD)]
+#endif
     public static void LoadFromEditor() {
         instance.LoadFile();
     }
@@ -84,15 +91,19 @@ public class SaveSystem : MonoBehaviour {
         ClearScene();
 
         Transform root = null;
-        var rootGO = GameObject.Find(entitiesRoot);
-        if (rootGO)
-            root = rootGO.transform;
+        if (instance) {
+            var rootGO = GameObject.Find(instance.entitiesRoot);
+            if (rootGO)
+                root = rootGO.transform;
+        }
 
-        this.OneFrameDelay(() => LoadFromSaveFile(getSystemPath() + "/" + folderPath + "/" + FileName + extension , root));
+        this.OneFrameDelay(() => LoadFromSaveFile(getSystemPath() + "/" + folderPath + "/" + FileName + extension, root));
     }
 
+#if UNITY_EDITOR
     [MenuItem("Test/Clear")]
-    public void ClearScene() {
+#endif
+    static public void ClearScene() {
         var entities = GameObject.FindObjectsOfType<Entity>();
 
         for (int i = 0; i < entities.Length; i++) {
@@ -105,19 +116,20 @@ public class SaveSystem : MonoBehaviour {
         return SerializationHelper.Load<T>(path);
     }
 
-    public void LoadFromSaveFile(string path, Transform root) {
+    static public void LoadFromSaveFile(string path, Transform root) {
         SaveObject save = DeserializeAs<SaveObject>(path);
         UnboxSaveObject(save, root);
     }
 
-    public void UnboxSaveObject(SaveObject save, Transform root) {
+    static public void UnboxSaveObject(SaveObject save, Transform root) {
         Dictionary<string, Dictionary<string, ComponentBase>> allComps = new Dictionary<string, Dictionary<string, ComponentBase>>();
+        Dictionary<string, Entity> allEntities = new Dictionary<string, Entity>();
         Dictionary<EntityObject, Entity> toParent = new Dictionary<EntityObject, Entity>();
 
         foreach (var eobj in save.entities) {
             var prefab = Database.GetPrefab(eobj.database_ID);
 
-            if(!prefab) {
+            if (!prefab) {
                 Debug.LogError("When loading, database entity: " + eobj.database_ID + " was not found");
                 continue;
             }
@@ -138,7 +150,9 @@ public class SaveSystem : MonoBehaviour {
             var entity = gameobj.GetComponent<Entity>();
             entity.instance_ID = eobj.instance_ID;
 
-            if (eobj.parentIsComponent) {
+            allEntities.Add(entity.instance_ID, entity);
+
+            if (eobj.parentIsComponent || eobj.parentIsEntity) {
                 toParent.Add(eobj, entity);
             }
 
@@ -148,20 +162,25 @@ public class SaveSystem : MonoBehaviour {
                 entity.gameObject.SetActive(true);
                 continue;
             }
-            var cobjects = save.components[entity.instance_ID];
 
-            foreach (var component in comps) {
-                var cobj = cobjects[component.ID];
-                SetDataForComponent(component, cobj.data);
 
-                //Storing for later reference injection
-                Dictionary<string, ComponentBase> injectionDict = null;
-                allComps.TryGetValue(entity.ID, out injectionDict);
-                if (injectionDict == null) {
-                    injectionDict = new Dictionary<string, ComponentBase>();
-                    allComps.Add(entity.ID, injectionDict);
+            Dictionary<string, ComponentObject> cobjects = null;
+            save.components.TryGetValue(entity.instance_ID, out cobjects);
+            if (cobjects != null) {
+
+                foreach (var component in comps) {
+                    var cobj = cobjects[component.ID];
+                    SetDataForComponent(component, cobj.data);
+
+                    //Storing for later reference injection
+                    Dictionary<string, ComponentBase> injectionDict = null;
+                    allComps.TryGetValue(entity.ID, out injectionDict);
+                    if (injectionDict == null) {
+                        injectionDict = new Dictionary<string, ComponentBase>();
+                        allComps.Add(entity.ID, injectionDict);
+                    }
+                    injectionDict.Add(component.ID, component);
                 }
-                injectionDict.Add(component.ID, component);
             }
             prefab.SetActive(prefabState);
             entity.gameObject.SetActive(true);
@@ -170,8 +189,12 @@ public class SaveSystem : MonoBehaviour {
         foreach (var pair in toParent) {
             Entity e = pair.Value;
             EntityObject eobj = pair.Key;
-
-            Transform parent = allComps[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
+            Transform parent = null;
+            if (eobj.parentIsComponent) {
+                parent = allComps[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
+            } else if (eobj.parentIsEntity) {
+                parent = allEntities[eobj.parent_entity_ID].transform;
+            }
             e.transform.SetParent(parent);
         }
 
@@ -181,15 +204,20 @@ public class SaveSystem : MonoBehaviour {
         }
     }
 
-    public SaveObject CreateSaveObjectFromPersistenData() {
-        return createSaveFrom(SaveObjectType.persistent);
+    public static SaveObject CreateSaveObjectFromPersistenData() {
+        return createSaveFrom(SaveObjectType.persistent, null);
     }
     //creates a file containing all entities in scene, ignoring any scene specifics
-    public SaveObject CreateSaveObjectFromScene() {
-        return createSaveFrom(SaveObjectType.scene);
+    public static SaveObject CreateSaveObjectFromScene() {
+        return createSaveFrom(SaveObjectType.scene, null);
     }
 
-    SaveObject createSaveFrom(SaveObjectType from) {
+    //creates a file containing all entities in scene, ignoring any scene specifics
+    public static SaveObject CreateSaveObjectFromTransform(Transform tr) {
+        return createSaveFrom(SaveObjectType.blueprint, tr);
+    }
+
+    static SaveObject createSaveFrom(SaveObjectType from, Transform root) {
         SaveObject file = new SaveObject();
 
         Dictionary<string, Entity> entities = null;
@@ -197,65 +225,103 @@ public class SaveSystem : MonoBehaviour {
         switch (from) {
             case SaveObjectType.scene:
                 entities = EntityManager.scene;
+                foreach (var pair in entities) {
+                    ProcessEntity(file, pair.Value, null);
+                }
                 break;
             case SaveObjectType.persistent:
                 entities = EntityManager.persistent;
+                foreach (var pair in entities) {
+                    ProcessEntity(file, pair.Value, null);
+                }
+                break;
+            case SaveObjectType.blueprint:
+                PackBlueprint(file, root);
                 break;
             default:
                 break;
         }
 
-        foreach (var pair in entities) {
-            EntityObject eobj = new EntityObject();
-            Entity entity = pair.Value;
 
-            string eID = entity.instance_ID;
-            Transform tr = entity.transform;
-            eobj.database_ID = entity.database_ID;
-            eobj.instance_ID = entity.instance_ID;
-            eobj.position = tr.position;
-            eobj.rotation = tr.rotation.eulerAngles;
-            eobj.scale = tr.lossyScale;
-            ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
-            if (parentComp) {
-                eobj.parentIsComponent = true;
-                eobj.parent_entity_ID = parentComp.Entity.ID;
-                eobj.parent_component_ID = parentComp.ID;
-            } else {
-                eobj.parentName = tr.parent.Null() ? "null" : tr.parent.name ;
-            }
-            eobj.gameObjectName = entity.name;
+        return file;
+    }
 
-            file.entities.Add(eobj);
-
-            var components = entity.GetAllEntityComponents();
-
-            foreach (var comp in components) {
-                ComponentObject cobj = new ComponentObject();
-
-                cobj.component_ID = comp.ID;
-                cobj.entity_ID = eID;
-                cobj.data = GetDataFromComponent(comp);
-
-                Dictionary<string, ComponentObject> entityComponents = null;
-                file.components.TryGetValue(eID, out entityComponents);
-
-                if (entityComponents == null) {
-                    entityComponents = new Dictionary<string, ComponentObject>();
-                    file.components.Add(eID, entityComponents);
-                }
-
-                if (entityComponents.ContainsKey(comp.ID)) {
-                    Debug.LogError("Super fatal error with duplicate component id's on entity.", entity.gameObject);
-                }
-                entityComponents.Add(comp.ID, cobj);
-            }
+    static SaveObject PackBlueprint(SaveObject file, Transform root) {
+        Entity[] entities_arr = null;
+        HashSet<string> bp_ids = new HashSet<string>();
+        entities_arr = root.GetComponentsInChildren<Entity>();
+        foreach (var ent in entities_arr) {
+            ProcessEntity(file, ent, bp_ids);
         }
 
         return file;
     }
 
-    SerializedData GetDataFromComponent(ComponentBase comp) {
+    static void ProcessEntity(SaveObject file, Entity ent, HashSet<string> bp_ids) {
+        EntityObject eobj = new EntityObject();
+        Entity entity = ent;
+        bool isBlueprint = bp_ids != null;
+        string eID = "";
+
+        if (isBlueprint)
+            eID = Database.get_unique_id(bp_ids);
+        else
+            eID = entity.instance_ID;
+
+        Transform tr = entity.transform;
+        eobj.database_ID = entity.database_ID;
+        eobj.instance_ID = eID;
+
+        eobj.position = tr.position;
+        eobj.rotation = tr.rotation.eulerAngles;
+        eobj.scale = tr.lossyScale;
+
+        ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
+        if (parentComp) {
+            eobj.parentIsComponent = true;
+            eobj.parent_entity_ID = parentComp.Entity.ID;
+            eobj.parent_component_ID = parentComp.ID;
+        } else {
+            Entity parentEntity = tr.parent.GetComponent<Entity>();
+            if (parentEntity) {
+                eobj.parentIsEntity = true;
+                eobj.parent_entity_ID = parentEntity.ID;
+            } else
+                eobj.parentName = tr.parent.Null() ? "null" : tr.parent.name;
+        }
+        eobj.gameObjectName = entity.name;
+
+        file.entities.Add(eobj);
+
+        var components = entity.GetAllEntityComponents();
+
+        foreach (var comp in components) {
+            ComponentObject cobj = new ComponentObject();
+
+            if(isBlueprint)
+                cobj.component_ID = Database.get_unique_id(bp_ids);
+            else
+                cobj.component_ID = comp.ID;
+
+            cobj.entity_ID = eID;
+            cobj.data = GetDataFromComponent(comp);
+
+            Dictionary<string, ComponentObject> entityComponents = null;
+            file.components.TryGetValue(eID, out entityComponents);
+
+            if (entityComponents == null) {
+                entityComponents = new Dictionary<string, ComponentObject>();
+                file.components.Add(eID, entityComponents);
+            }
+
+            if (entityComponents.ContainsKey(comp.ID)) {
+                Debug.LogError("Super fatal error with duplicate component id's on entity.", entity.gameObject);
+            }
+            entityComponents.Add(comp.ID, cobj);
+        }
+    }
+
+    static SerializedData GetDataFromComponent(ComponentBase comp) {
         if (comp == null)
             return null;
         Type t = comp.GetType();
@@ -264,13 +330,13 @@ public class SaveSystem : MonoBehaviour {
         return data;
     }
 
-    void SetDataForComponent(ComponentBase comp, SerializedData data) {
+    static void SetDataForComponent(ComponentBase comp, SerializedData data) {
         Type t = comp.GetType();
         var field = findDataField(t);
         field.SetValue(comp, data);
     }
 
-    FieldInfo findDataField(Type t) {
+    static FieldInfo findDataField(Type t) {
         var fields = t.GetFields();
         foreach (var f in fields) {
             if (f.FieldType.BaseType == typeof(SerializedData))
