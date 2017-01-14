@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database_ID: a1aa5101-935b-459b-81c7-3b99a27e58e2
   instance_ID: 
+  blueprint_ID: 
 --- !u!114 &114000013091670274
 MonoBehaviour:
   m_ObjectHideFlags: 1

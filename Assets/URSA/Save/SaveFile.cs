@@ -7,6 +7,7 @@
     [Serializable]
     public class SaveObject
     {
+        public bool isBlueprint;
         public List<EntityObject> entities = new List<EntityObject>();
         /// <summary>
         /// entity id, (component persistent ID, component)

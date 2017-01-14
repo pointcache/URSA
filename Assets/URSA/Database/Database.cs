@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 #if UNITY_EDITOR
-using UnityEditor; 
+using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
 
@@ -27,16 +27,25 @@ public class Database : MonoBehaviour {
     static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
     static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
 
-    DatabaseManifest manifest;
+    static DatabaseManifest _manifest;
+    static DatabaseManifest manifest
+    {
+        get {
+            if (_manifest == null) {
+                TextAsset manifest_asset = Resources.Load(URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest) as TextAsset;
+                _manifest = SerializationHelper.LoadFromString<DatabaseManifest>(manifest_asset.text);
+            }
+            return _manifest;
+        }
+    }
 
     private void OnEnable() {
-        TextAsset manifest_asset = Resources.Load( URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest) as TextAsset;
-        manifest = SerializationHelper.LoadFromString<DatabaseManifest>(manifest_asset.text);
+
     }
 
 
 #if UNITY_EDITOR
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)] 
+    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)]
     public static void Rebuild() {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);
@@ -62,8 +71,8 @@ public class Database : MonoBehaviour {
     /// <summary>
     /// Very careful with this one
     /// </summary>
-#if     UNITY_EDITOR
-    [MenuItem("temp/clear ids")] 
+#if UNITY_EDITOR
+    [MenuItem("temp/clear ids")]
 #endif
     public static void clear_all_entity_IDs() {
         var prefabs = Resources.LoadAll(URSASettings.current.DatabaseRootFolder + "/");
@@ -86,7 +95,7 @@ public class Database : MonoBehaviour {
     public static GameObject GetPrefab(string id) {
         string path = "";
         string idPath = "";
-        instance.manifest.entity_id_adress.TryGetValue(id, out idPath);
+        manifest.entity_id_adress.TryGetValue(id, out idPath);
         if (idPath != "")
             path = URSASettings.current.DatabaseRootFolder + "/" + idPath;
         else
