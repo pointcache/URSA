@@ -11,6 +11,9 @@ public class CompRef : rVar<ComponentBase> {
     public string component_ID;
     [HideInInspector]
     public bool isNull;
+    [HideInInspector]
+    public string entityName;
+
 	public CompRef() : base() { }
     public CompRef(ComponentBase initialValue) : base(initialValue) { }
     public static implicit operator ComponentBase(CompRef var)

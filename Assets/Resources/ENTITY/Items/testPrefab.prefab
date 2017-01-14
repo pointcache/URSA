@@ -89,6 +89,7 @@ MonoBehaviour:
       entity_ID: 
       component_ID: 
       isNull: 0
+      entityName: 
     testFloat:
       value: 100
   testFloat2:

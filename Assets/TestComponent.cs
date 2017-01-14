@@ -16,8 +16,7 @@ public class TestComponent : ComponentBase {
     public r_float testFloat3 = new r_float(3100f);
     public r_float testFloat4 = new r_float(1400f);
     public r_bool testbool = new r_bool(true);
-    [SerializeField]
-    private r_bool Ptestbool = new r_bool(true);
+    public r_bool Ptestbool = new r_bool(true);
 
 
     public float asdasd = 88888f;

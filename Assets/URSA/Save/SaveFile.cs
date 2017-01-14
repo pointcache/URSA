@@ -9,6 +9,7 @@
     {
         public bool isBlueprint;
         public List<EntityObject> entities = new List<EntityObject>();
+        public List<CompRef> comprefs = new List<CompRef>();
         /// <summary>
         /// entity id, (component persistent ID, component)
         /// </summary>
