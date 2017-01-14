@@ -361,7 +361,12 @@ public static class Helpers
         int count = list.Count;
         for (int i = 0; i < count; i++)
         {
+#if UNITY_EDITOR
+            GameObject.DestroyImmediate(list[i].gameObject);
+#else
             GameObject.Destroy(list[i].gameObject);
+
+#endif
         }
     }
 

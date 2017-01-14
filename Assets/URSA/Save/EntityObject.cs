@@ -8,6 +8,7 @@
     {
         public string database_ID;
         public string instance_ID;
+        public string blueprint_ID;
         public string parentName;
         public string gameObjectName;
         public bool parentIsComponent;

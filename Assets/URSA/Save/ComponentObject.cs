@@ -9,7 +9,6 @@
     [Serializable]
     public class ComponentObject 
     {
-        public string entity_ID;
         public string component_ID;
 
         public SerializedData data;

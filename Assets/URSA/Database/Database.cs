@@ -129,7 +129,7 @@ public class Database : MonoBehaviour {
                 continue;
             }
 
-            if (entity.database_ID == "") {
+            if (entity.database_ID == "" || entity.database_ID == null) {
                 entity.database_ID = get_unique_id(ids);
             }
             adress = adress.Replace("\\", "/");

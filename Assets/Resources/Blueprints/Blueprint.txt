@@ -1,0 +1,91 @@
+{
+    "gameVersion": 0.001,
+    "Name": "Blueprint",
+    "saveObject": {
+        "isBlueprint": true,
+        "entities": [
+            {
+                "database_ID": "c2664175-2f47-4047-959f-ac43ae25677a",
+                "instance_ID": "",
+                "blueprint_ID": "5b37c0fd-2f04-44ce-98d9-e34ae75958b0",
+                "parentName": "null",
+                "gameObjectName": "Capsule",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": null,
+                "parent_component_ID": null,
+                "position": {
+                    "x": 2.44,
+                    "y": 2.23,
+                    "z": 0.8177176
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            {
+                "database_ID": "ed9e22f5-daef-4ce3-8b31-36687bc2ff0a",
+                "instance_ID": "",
+                "blueprint_ID": "d7e4e2e5-552b-4c40-a140-dd5d9aa391ab",
+                "parentName": null,
+                "gameObjectName": "Sphere",
+                "parentIsComponent": false,
+                "parentIsEntity": true,
+                "parent_entity_ID": "5b37c0fd-2f04-44ce-98d9-e34ae75958b0",
+                "parent_component_ID": null,
+                "position": {
+                    "x": 0.6120229,
+                    "y": -0.1402135,
+                    "z": 0.8177177
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            {
+                "database_ID": "3600b0c7-12de-4987-8acb-d245d4be7dd7",
+                "instance_ID": "",
+                "blueprint_ID": "da823016-69de-4732-bb02-7ebcc1b77b58",
+                "parentName": "null",
+                "gameObjectName": "Cube",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": null,
+                "parent_component_ID": null,
+                "position": {
+                    "x": 4.38,
+                    "y": -0.1402135,
+                    "z": 0.8177176
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        ],
+        "components": {
+
+        }
+    },
+    "$type": "Blueprint"
+}

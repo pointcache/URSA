@@ -33,7 +33,7 @@ public class BlueprintInspector : Editor {
             if (t.blueprint == null)
                 return;
             else {
-                //t.transform.DestroyChildren();
+                t.transform.DestroyChildren();
                 SaveSystem.LoadBlueprint(t.blueprint.text, t.transform);
             }
         }

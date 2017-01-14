@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using URSA.Save;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.SceneManagement;
 #endif
 using System.Reflection;
 using System.IO;
 using URSA;
-using UnityEditor.SceneManagement;
 
 public class SaveSystem : MonoBehaviour {
 
@@ -132,10 +132,12 @@ public class SaveSystem : MonoBehaviour {
 
     public static void UnboxSaveObject(SaveObject save, Transform root) {
 
-        Dictionary<string, Entity> bp_parent_entity = null;
+        List<GameObject> bp_relink = null;
+        Dictionary<string, Entity> bp_entity = null;
         Dictionary<string, Dictionary<string, ComponentBase>> bp_parent_component = null;
         if (save.isBlueprint) {
-            bp_parent_entity = new Dictionary<string, Entity>();
+            bp_relink = new List<GameObject>();
+            bp_entity = new Dictionary<string, Entity>();
             bp_parent_component = new Dictionary<string, Dictionary<string, ComponentBase>>();
         }
         Dictionary<string, ComponentObject> cobjects = null;
@@ -154,90 +156,107 @@ public class SaveSystem : MonoBehaviour {
             prefab.SetActive(false);
             GameObject gameobj = null;
 #if UNITY_EDITOR
-            gameobj = PrefabUtility.InstantiatePrefab(prefab, EditorSceneManager.GetActiveScene()) as GameObject;
+            gameobj = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+            PrefabUtility.DisconnectPrefabInstance(gameobj);
 #else
             gameobj = GameObject.Instantiate(prefab);
 #endif
             gameobj.name = eobj.gameObjectName;
             var tr = gameobj.transform;
 
-            tr.position = eobj.position;
-            tr.rotation = Quaternion.Euler(eobj.rotation);
-            tr.localScale = eobj.scale;
-
             GameObject parentGo = null;
             if (eobj.parentName != "null")
                 parentGo = GameObject.Find(eobj.parentName);
-#if UNITY_EDITOR
-            GameObjectUtility.SetParentAndAlign(gameobj, eobj.parentName == "null" ? root.gameObject : parentGo == null ? root.gameObject : parentGo);
-#else
-
-            tr.parent = eobj.parentName == "null" ? root : parentGo == null ? root : parentGo.transform;
-#endif
-
-            var entity = gameobj.GetComponent<Entity>();
 
             if (save.isBlueprint) {
-                if (eobj.parentIsEntity)
-                    bp_parent_entity.Add(eobj.parent_entity_ID, entity);
-                if (eobj.parentIsComponent) {
-                    Dictionary<string, ComponentBase> ecomps = null;
-                    bp_parent_component.TryGetValue(eobj.parent_entity_ID, out ecomps);
-                    if (ecomps == null) {
-                        ecomps = new Dictionary<string, ComponentBase>();
-                        bp_parent_component.Add(eobj.parent_entity_ID, ecomps);
-                    }
+                tr.parent = root;
+                tr.localPosition = eobj.position;
+                tr.localRotation = Quaternion.Euler(eobj.rotation);
+                tr.localScale = eobj.scale;
+            } else {
+                tr.position = eobj.position;
+                tr.rotation = Quaternion.Euler(eobj.rotation);
+                tr.localScale = eobj.scale;
+                tr.parent = eobj.parentName == "null" ? root : parentGo == null ? root : parentGo.transform;
+            }
+
+            var entity = gameobj.GetComponent<Entity>();
+            Dictionary<string, ComponentBase> ecomps = null;
+
+            if (save.isBlueprint) {
+                bp_entity.Add(eobj.blueprint_ID, entity);
+
+                bp_parent_component.TryGetValue(eobj.blueprint_ID, out ecomps);
+                if (ecomps == null) {
+                    ecomps = new Dictionary<string, ComponentBase>();
+                    bp_parent_component.Add(eobj.blueprint_ID, ecomps);
                 }
+
+            } else {
+                allEntities.Add(eobj.instance_ID, entity);
+
             }
 
             entity.instance_ID = eobj.instance_ID;
-            allEntities.Add(entity.instance_ID, entity);
+            entity.blueprint_ID = eobj.blueprint_ID;
+
+
 
             if (eobj.parentIsComponent || eobj.parentIsEntity) {
                 toParent.Add(eobj, entity);
             }
 
             var comps = gameobj.GetComponentsInChildren<ComponentBase>(true);
-            if (comps.Length == 0) {
-                prefab.SetActive(prefabState);
-                entity.gameObject.SetActive(true);
-                continue;
-            }
+            if (comps.Length != 0) {
+                save.components.TryGetValue(entity.instance_ID, out cobjects);
+                if (cobjects != null) {
 
-            save.components.TryGetValue(entity.instance_ID, out cobjects);
-            if (cobjects != null) {
+                    foreach (var component in comps) {
 
-                foreach (var component in comps) {
-                    var cobj = cobjects[component.ID];
-                    SetDataForComponent(component, cobj.data);
+                        if (save.isBlueprint)
+                            ecomps.Add(component.ID, component);
 
-                    //Storing for later reference injection
-                    Dictionary<string, ComponentBase> injectionDict = null;
-                    allComps.TryGetValue(entity.ID, out injectionDict);
-                    if (injectionDict == null) {
-                        injectionDict = new Dictionary<string, ComponentBase>();
-                        allComps.Add(entity.ID, injectionDict);
+                        var cobj = cobjects[component.ID];
+                        SetDataForComponent(component, cobj.data);
+
+                        //Storing for later reference injection
+                        Dictionary<string, ComponentBase> injectionDict = null;
+                        allComps.TryGetValue(entity.ID, out injectionDict);
+                        if (injectionDict == null) {
+                            injectionDict = new Dictionary<string, ComponentBase>();
+                            allComps.Add(entity.ID, injectionDict);
+                        }
+                        injectionDict.Add(component.ID, component);
                     }
-                    injectionDict.Add(component.ID, component);
                 }
             }
+
             if (save.isBlueprint)
                 entity.instance_ID = "";
             prefab.SetActive(prefabState);
             entity.gameObject.SetActive(true);
+            PrefabUtility.ReconnectToLastPrefab(gameobj);
+            PrefabUtility.RevertPrefabInstance(gameobj);
+            bp_relink.Add(gameobj);
+
         }
 
         if (save.isBlueprint) {
             foreach (var pair in toParent) {
                 Entity e = pair.Value;
+                var go = PrefabUtility.FindPrefabRoot(e.gameObject);
+                PrefabUtility.DisconnectPrefabInstance(go);
+
                 EntityObject eobj = pair.Key;
                 Transform parent = null;
                 if (eobj.parentIsComponent) {
                     parent = bp_parent_component[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
                 } else if (eobj.parentIsEntity) {
-                    parent = bp_parent_entity[eobj.parent_entity_ID].transform;
+                    parent = bp_entity[eobj.parent_entity_ID].transform;
                 }
                 e.transform.SetParent(parent);
+                PrefabUtility.ReconnectToLastPrefab(go);
+
             }
 
             foreach (var compref in CompRefSerializationProcessor.injectionList) {
@@ -263,6 +282,18 @@ public class SaveSystem : MonoBehaviour {
                     compref.setValueDirectly(allComps[compref.entity_ID][compref.component_ID]);
             }
         }
+
+#if UNITY_EDITOR
+        //foreach (var obj in bp_relink) {
+        //
+        //    //PropertyModification[] mods = PrefabUtility.GetPropertyModifications(pair.Key);
+        //    //PrefabUtility.SetPropertyModifications(pair.Key, mods);
+        //    PrefabUtility.DisconnectPrefabInstance(obj);
+        //    
+        //    
+        //}
+
+#endif
     }
 
     public static SaveObject CreateSaveObjectFromPersistenData() {
@@ -287,13 +318,13 @@ public class SaveSystem : MonoBehaviour {
             case SaveObjectType.scene:
                 entities = EntityManager.scene;
                 foreach (var pair in entities) {
-                    ProcessEntity(file, pair.Value, null);
+                    ProcessEntity(file, pair.Value, null, null);
                 }
                 break;
             case SaveObjectType.persistent:
                 entities = EntityManager.persistent;
                 foreach (var pair in entities) {
-                    ProcessEntity(file, pair.Value, null);
+                    ProcessEntity(file, pair.Value, null, null);
                 }
                 break;
             case SaveObjectType.blueprint:
@@ -312,41 +343,53 @@ public class SaveSystem : MonoBehaviour {
         HashSet<string> bp_ids = new HashSet<string>();
         entities_arr = root.GetComponentsInChildren<Entity>();
         foreach (var ent in entities_arr) {
-            ProcessEntity(file, ent, bp_ids);
+            ProcessEntity(file, ent, bp_ids, root);
         }
 
         return file;
     }
 
-    static void ProcessEntity(SaveObject file, Entity ent, HashSet<string> bp_ids) {
+    static void ProcessEntity(SaveObject file, Entity ent, HashSet<string> bp_ids, Transform root) {
         EntityObject eobj = new EntityObject();
         Entity entity = ent;
         bool isBlueprint = bp_ids != null;
         string eID = "";
         file.isBlueprint = isBlueprint;
-        if (isBlueprint)
-            eID = Database.get_unique_id(bp_ids);
-        else
-            eID = entity.instance_ID;
+        if (isBlueprint && entity.blueprint_ID == "")
+            entity.blueprint_ID = Database.get_unique_id(bp_ids);
 
+        eobj.blueprint_ID = entity.blueprint_ID;
         Transform tr = entity.transform;
         eobj.database_ID = entity.database_ID;
         eobj.instance_ID = eID;
 
-        eobj.position = tr.position;
-        eobj.rotation = tr.rotation.eulerAngles;
-        eobj.scale = tr.lossyScale;
+        if (isBlueprint) {
+            eobj.position = root.InverseTransformPoint(tr.position);
+            eobj.rotation = tr.localRotation.eulerAngles;
+            eobj.scale = tr.lossyScale;
+        } else {
+            eobj.position = tr.position;
+            eobj.rotation = tr.rotation.eulerAngles;
+            eobj.scale = tr.lossyScale;
+        }
+
 
         ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
         if (parentComp) {
             eobj.parentIsComponent = true;
-            eobj.parent_entity_ID = parentComp.Entity.ID;
+            if (isBlueprint)
+                eobj.parent_entity_ID = parentComp.Entity.blueprint_ID;
+            else
+                eobj.parent_entity_ID = parentComp.Entity.ID;
             eobj.parent_component_ID = parentComp.ID;
         } else {
             Entity parentEntity = tr.parent.GetComponent<Entity>();
             if (parentEntity) {
                 eobj.parentIsEntity = true;
-                eobj.parent_entity_ID = parentEntity.ID;
+                if (isBlueprint)
+                    eobj.parent_entity_ID = parentEntity.blueprint_ID;
+                else
+                    eobj.parent_entity_ID = parentEntity.ID;
             } else {
                 if (isBlueprint) {
                     eobj.parentName = "null";
@@ -364,12 +407,7 @@ public class SaveSystem : MonoBehaviour {
         foreach (var comp in components) {
             ComponentObject cobj = new ComponentObject();
 
-            if (isBlueprint)
-                cobj.component_ID = Database.get_unique_id(bp_ids);
-            else
-                cobj.component_ID = comp.ID;
-
-            cobj.entity_ID = eID;
+            cobj.component_ID = comp.ID;
             cobj.data = GetDataFromComponent(comp);
 
             Dictionary<string, ComponentObject> entityComponents = null;

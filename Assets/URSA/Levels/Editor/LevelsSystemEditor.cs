@@ -66,12 +66,12 @@ public static class LevelsSystemEditor {
         var all = GameObject.FindObjectsOfType<AssetType>();
 
         foreach (var obj in all) {
-            if (obj.transform.parent.GetComponentInParents<Entity>()) {
+            if (obj.transform.parent != null && (obj.transform.parent.GetComponentInParents<Entity>() || obj.transform.parent.GetComponentInParents<BlueprintLoader>())) {
                 continue;
             }
 
 
-            switch (obj.type) {
+            switch (obj.type) { 
                 case AssetType.ObjType.entity:
                     obj.transform.SetParent(entity.transform);
                     break;
