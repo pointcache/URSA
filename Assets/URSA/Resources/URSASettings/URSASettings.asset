@@ -11,6 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382a7df77a1dc5248aaa022dd863e1b4, type: 3}
   m_Name: URSASettings
   m_EditorClassIdentifier: 
+  RebuildDatabase: 1
+  ParsePrefabs: 1
+  OrganizeLevel: 1
+  CollectLevelsData: 1
+  SaveAndReloadScene: 1
   CustomGlobalSystemsPrefab: {fileID: 0}
   GlobalSystemsTemplate: {fileID: 1000011637727820, guid: 0f3c58a8f9077974dab2515979472e6c,
     type: 2}

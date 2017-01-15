@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class InitializerSystem : MonoBehaviour
-{
+public class InitializerSystem : MonoBehaviour {
 
     public static bool FullyInitialized { get; private set; }
 
@@ -17,62 +16,65 @@ public class InitializerSystem : MonoBehaviour
     //switch, right before it happens, so core systems have a chance to clean up in preparation for new scene
     public static event Action OnReload = delegate { };
 
-
-    public static event Action PreInitalization = delegate { };
-    public static event Action Initialization = delegate { };
-    public static event Action PostInitialization = delegate { };
-    public static event Action UiInitialization = delegate { };
+    /// <summary>
+    /// Hook your config loading here, it will happen before global systems are initialized
+    /// </summary>
+    public static event Action OnGlobalLoadConfigs = delegate { };
+    /// <summary>
+    /// Hook your configuration events that use configs, happens after configs were deserialized
+    /// </summary>
+    public static event Action OnApplicationConfiguration = delegate { };
+    /// <summary>
+    /// Hook your save loading here, it will happen before local systems and loaders are initialized
+    /// </summary>
+    public static event Action OnLoadLocalData = delegate { };
+    /// <summary>
+    /// Hook your level creation/generation/object spawning here
+    /// </summary>
+    public static event Action OnLoadersEnabled = delegate { };
+    /// <summary>
+    /// Will enable LocalSystems stack
+    /// </summary>
+    public static event Action OnSystemsEnabled = delegate { };
+    /// <summary>
+    /// Hook your ui here
+    /// </summary>
+    public static event Action OnUiEnabled = delegate { };
 
     bool globalInitialized;
 
-    void OnEnable()
-    {
-        Configs = transform.Find("Configs").gameObject;
-        if (!Configs)
-        {
-            Debug.LogError("GlobalSystems: No Configs gameobject found");
-            return;
-        }
-        Configs.SetActive(true);
-
+    void OnEnable() {
         Systems = transform.Find("Systems").gameObject;
-        if (!Systems)
-        {
+        if (!Systems) {
             Debug.LogError("GlobalSystems: No Systems gameobject found");
             return;
         }
 
-        if(Systems.activeSelf)
-        {
+        if (Systems.activeSelf) {
             Debug.LogError("GlobalSystems: Systems should start DISABLED");
             return;
         }
-        
-        LoadGameConfigs();
-        //enable and deserialize global configs
-        StartCoroutine(CoreInitializationSequence());
+
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        StartCoroutine(GlobalInitializationSequence());
+
     }
 
-    void LoadGameConfigs()
-    {
-        // TODO : deserialization
-    }
-
-    public static void SwitchScene(string name)
-    {
+    public static void SwitchScene(string name) {
         OnReload();
         FullyInitialized = false;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    { StartCoroutine(LevelInitializationSequence()); }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        StartCoroutine(LocalInitializationSequence());
+    }
 
-    IEnumerator CoreInitializationSequence()
-    {
-        for (;;)
-        {
+    IEnumerator GlobalInitializationSequence() {
+        for (;;) {
+            OnGlobalLoadConfigs();
             yield return null;
+            OnApplicationConfiguration();
             yield return null;
             Systems.SetActive(true);
             globalInitialized = true;
@@ -81,33 +83,21 @@ public class InitializerSystem : MonoBehaviour
         }
     }
 
-    IEnumerator LevelInitializationSequence()
-    {
-        for (;;)
-        {
+    IEnumerator LocalInitializationSequence() {
+        for (;;) {
             while (!globalInitialized)
                 yield return null;
             yield return null;
-            //Enable level configs
-            PreInitalization();
-            //Deserialize level configs and data 
-            LoadSaveFile();
+            OnLoadLocalData();
             yield return null;
-            //When we are fully ready to start, launch our systems
-            Initialization();
+            OnLoadersEnabled();
             yield return null;
-            //Initialize  other systems that require the rest to be already working
-            PostInitialization();
-            //Launch game loop
+            OnSystemsEnabled();
+            //Launch game loop 
             Pool<InternalConfig>.First.UpdateAllowed.Value = true;
             FullyInitialized = true;
-            UiInitialization();
+            OnUiEnabled();
             yield break;
         }
-    }
-
-    void LoadSaveFile()
-    {
-        // TODO : level data deserialization
     }
 }

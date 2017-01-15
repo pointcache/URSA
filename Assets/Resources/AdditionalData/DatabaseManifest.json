@@ -3,7 +3,6 @@
     "entity_id_adress": {
         "c2664175-2f47-4047-959f-ac43ae25677a": "Capsule",
         "3600b0c7-12de-4987-8acb-d245d4be7dd7": "Cube",
-        "ed9e22f5-daef-4ce3-8b31-36687bc2ff0a": "Sphere",
         "32c7fb6b-9942-49be-af6e-ae5d2bb901d2": "Buildings/testObject 1",
         "4ca77bf1-eea6-432f-860f-432196021c9a": "Example/Cube",
         "3043326d-0346-4d3b-8dd1-716c5c0378b4": "Example/Sphere",
@@ -20,7 +19,6 @@
     "entity_adress_id": {
         "Capsule": "c2664175-2f47-4047-959f-ac43ae25677a",
         "Cube": "3600b0c7-12de-4987-8acb-d245d4be7dd7",
-        "Sphere": "ed9e22f5-daef-4ce3-8b31-36687bc2ff0a",
         "Buildings/testObject 1": "32c7fb6b-9942-49be-af6e-ae5d2bb901d2",
         "Example/Cube": "4ca77bf1-eea6-432f-860f-432196021c9a",
         "Example/Sphere": "3043326d-0346-4d3b-8dd1-716c5c0378b4",

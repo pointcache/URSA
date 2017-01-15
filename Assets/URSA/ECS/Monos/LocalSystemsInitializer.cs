@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 
-public class SceneSystemsInitializer : MonoBehaviour
+public class LocalSystemsInitializer : MonoBehaviour
 {
 
     GameObject loaders, systems;
 
-    void OnEnable()
+    void Awake()
     {
         loaders = transform.Find("Loaders").gameObject;
         if (!loaders)
@@ -22,23 +22,14 @@ public class SceneSystemsInitializer : MonoBehaviour
             Debug.LogError("GameSystems: No Systems gameobject found");
             return;
         }
-
-        InitializerSystem.Initialization += Init;
-        InitializerSystem.PostInitialization += PostInit;
     }
 
-    void OnDisable()
-    {
-        InitializerSystem.Initialization -= Init;
-        InitializerSystem.PostInitialization -= PostInit;
-    }
-
-    void Init()
+    void OnLoadersEnabled()
     {
         loaders.SetActive(true);
     }
 
-    void PostInit()
+    void OnSystemsEnabled()
     {
         systems.SetActive(true);
     }

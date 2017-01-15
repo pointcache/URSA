@@ -15,6 +15,14 @@ public class URSASettings : ScriptableObject {
         }
     }
 
+    [Header("UpdateEverything Sequence")]
+    public bool RebuildDatabase = true;
+    public bool ParsePrefabs;
+    public bool OrganizeLevel;
+    public bool CollectLevelsData = true;
+    public bool SaveAndReloadScene = true;
+
+
     [Header("Systems")]
     public GameObject CustomGlobalSystemsPrefab;
     public GameObject GlobalSystemsTemplate;

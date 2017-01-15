@@ -11,14 +11,23 @@ public static class URSAEditorTools {
     }
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
     public static void UpdateEverything() {
-        Database.RebuildWithoutReloadOfTheScene();
-        PrefabTools.ParseResources();
-        LevelsSystemEditor.CollectLevelsData();
-        EditorSceneManager.MarkAllScenesDirty();
-        EditorSceneManager.SaveOpenScenes();
-        var scene = EditorSceneManager.GetActiveScene();
-        EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
-        LevelsSystemEditor.LevelOrganizer();
+        var settings = URSASettings.current;
+
+        if (settings.RebuildDatabase)
+            Database.RebuildWithoutReloadOfTheScene();
+        if (settings.ParsePrefabs)
+            PrefabTools.ParseResources();
+        if (settings.CollectLevelsData)
+            LevelsSystemEditor.CollectLevelsData();
+        if (settings.OrganizeLevel)
+            LevelsSystemEditor.LevelOrganizer();
+        if (settings.SaveAndReloadScene) {
+
+            EditorSceneManager.MarkAllScenesDirty();
+            EditorSceneManager.SaveOpenScenes();
+            var scene = EditorSceneManager.GetActiveScene();
+            EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
+        }
     }
     [MenuItem("GameObject/CreateParent")]
     public static void CreateParent() {
@@ -80,9 +89,8 @@ public static class URSAEditorTools {
         var stat = GameObject.Find(settings.lv_static_root) as GameObject;
         if (stat) {
             Debug.LogError(settings.lv_static_root + " already exists ");
-        } else
+        } else {
             stat = new GameObject(settings.lv_static_root);
-        {
             var lights = new GameObject(settings.lv_lights);
             lights.transform.SetParent(stat.transform);
             var fx = new GameObject(settings.lv_fx);
@@ -95,9 +103,8 @@ public static class URSAEditorTools {
         var entities = GameObject.Find(settings.lv_entities_root) as GameObject;
         if (entities) {
             Debug.LogError(settings.lv_entities_root + " object already exists ");
-        } else
+        } else {
             entities = new GameObject(settings.lv_entities_root);
-        {
             var npcs = new GameObject(settings.lv_npc);
             npcs.transform.SetParent(entities.transform);
             var other = new GameObject(settings.lv_entity);

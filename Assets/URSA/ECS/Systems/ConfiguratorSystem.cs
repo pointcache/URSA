@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class ConfiguratorSystem : MonoBehaviour {
 
-    void OnEnable()
+    void Awake()
     {
-       InitializerSystem.UiInitialization += ConfigureGraphics;
+       InitializerSystem.OnApplicationConfiguration += ConfigureGraphics;
     }
 
     void ConfigureGraphics()

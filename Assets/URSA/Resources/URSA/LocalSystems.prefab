@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011279501742}
+  - 114: {fileID: 114000012796063668}
   - 114: {fileID: 114000010396308692}
   m_Layer: 0
   m_Name: LocalSystems
@@ -107,5 +108,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b160b286fd791c46a759bef43fca485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000012796063668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010491598222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a358484d00a5e4b97bdf6235983b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
