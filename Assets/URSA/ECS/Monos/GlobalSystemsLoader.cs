@@ -26,12 +26,19 @@ public class GlobalSystemsLoader : MonoBehaviour {
         } else {
             current = this;
 
-            initializer = transform.GetComponentInChildren<InitializerSystem>().gameObject;
-            if (!initializer) {
-                Debug.LogError("GlobalSystems: No Systems gameobject found");
-                return;
+            foreach (Transform tr in transform) {
+                if (tr.gameObject.activeSelf) {
+                    Debug.LogError("No direct children of GlobalSystemsLoader can be active before runtime.");
+                    Debug.Break();
+                }
+                tr.gameObject.SetActive(true);
             }
-            initializer.SetActive(true);
+            //initializer = transform.GetComponentInChildren<InitializerSystem>().gameObject;
+            //if (!initializer) {
+            //    Debug.LogError("GlobalSystems: No Systems gameobject found");
+            //    return;
+            //}
+            //initializer.SetActive(true);
             DontDestroyOnLoad(gameObject);
         }
     }

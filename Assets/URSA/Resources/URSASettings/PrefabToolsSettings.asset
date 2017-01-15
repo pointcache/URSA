@@ -9,15 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f57dd6b616d61c44805fce79d4589fa, type: 3}
-  m_Name: AssetToolsSettings
+  m_Name: PrefabToolsSettings
   m_EditorClassIdentifier: 
-  rootPath: 
+  rootPath: GamePrefabs/
   entity: ENTITY
   static: STATIC
   lights: LIGHT
   volumes: VOLUME
   fx: FX
-  npc: NPC
+  npc: ENTITY/NPC
   defaultNavmeshArea: 1
   lv_static_root: StaticContent
   lv_entities_root: DynamicContent

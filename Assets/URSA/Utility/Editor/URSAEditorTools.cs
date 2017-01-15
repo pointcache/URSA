@@ -4,18 +4,15 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-
 public static class URSAEditorTools {
-
     [MenuItem("Edit/Run _F5")] // shortcut key F5 to Play (and exit playmode also)
     static void PlayGame() {
         EditorApplication.ExecuteMenuItem("Edit/Play");
     }
-
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
     public static void UpdateEverything() {
         Database.RebuildWithoutReloadOfTheScene();
-        AssetsTools.ParseResources();
+        PrefabTools.ParseResources();
         LevelsSystemEditor.CollectLevelsData();
         EditorSceneManager.MarkAllScenesDirty();
         EditorSceneManager.SaveOpenScenes();
@@ -23,7 +20,6 @@ public static class URSAEditorTools {
         EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Single);
         LevelsSystemEditor.LevelOrganizer();
     }
-
     [MenuItem("GameObject/CreateParent")]
     public static void CreateParent() {
         var go = Selection.activeGameObject;
@@ -32,7 +28,6 @@ public static class URSAEditorTools {
             Undo.RegisterCreatedObjectUndo(parent, "Created parent");
             parent.transform.SetParent(go.transform.parent);
             var rect = go.GetComponent<RectTransform>();
-
             if (rect) {
                 var goparentrect = go.transform.parent.GetComponent<RectTransform>();
                 var parentCanvas = go.transform.parent.GetComponent<Canvas>();
@@ -43,7 +38,6 @@ public static class URSAEditorTools {
                     parentRect.position = goparentrect.transform.position;
                 else
                     parentRect.position = parentCanvas.transform.position;
-
                 parentRect.anchorMax = new Vector2(1f, 1f);
                 parentRect.anchorMin = Vector2.zero;
                 parentRect.offsetMax = Vector2.zero;
@@ -56,86 +50,61 @@ public static class URSAEditorTools {
             Undo.SetTransformParent(go.transform, parent.transform, "reparent");
         }
     }
-
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/AddSystems", priority = 2)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/AddSystems", priority = 2)]
     public static void AddSystems() {
-        LevelStructureConstructor();
-
-
-        var gl = GameObject.Find("GlobalSystems") as GameObject;
-        if (gl) {
-            Debug.LogError("GlobalSystems already exists ");
-            return;
-        }
-        var settings = Helpers.FindScriptableObject<URSASettings>();
-        if (settings.CustomGlobalSystemsPrefab) {
-            gl = GameObject.Instantiate(settings.CustomGlobalSystemsPrefab);
+        var settings = URSASettings.current;
+        var gl = GameObject.Find(URSAConstants.SYSTEMS_GLOBAL_NAME) as GameObject;
+        if (!gl) {
+            if (settings.CustomGlobalSystemsPrefab) {
+                gl = GameObject.Instantiate(settings.CustomGlobalSystemsPrefab);
+            } else
+                gl = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_GLOBAL_NAME);
+            Debug.Log(URSAConstants.SYSTEMS_GLOBAL_NAME + " spawned");
         } else
-            gl = Helpers.SpawnEditor("URSA/GlobalSystems");
-        Debug.Log("Global systems spawned");
-
-        var sc = GameObject.Find("SceneSystems") as GameObject;
-        if (sc) {
-            Debug.LogError("SceneSystems already exists ");
-            return;
-        }
-        if (settings.CustomSceneSystemsPrefab) {
-            sc = GameObject.Instantiate(settings.CustomSceneSystemsPrefab);
+            Debug.LogError(URSAConstants.SYSTEMS_GLOBAL_NAME + " already exists ");
+        var sc = GameObject.Find(URSAConstants.SYSTEMS_LOCAL_NAME) as GameObject;
+        if (!sc) {
+            if (settings.CustomSceneSystemsPrefab) {
+                sc = GameObject.Instantiate(settings.CustomSceneSystemsPrefab);
+            } else
+                sc = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_LOCAL_NAME);
+            Debug.Log(URSAConstants.SYSTEMS_LOCAL_NAME + " spawned");
         } else
-            sc = Helpers.SpawnEditor("URSA/SceneSystems");
-        Debug.Log("Scene systems spawned");
-
-
-
+            Debug.LogError(URSAConstants.SYSTEMS_LOCAL_NAME + " already exists ");
         EditorSceneManager.MarkAllScenesDirty();
         EditorSceneManager.SaveOpenScenes();
     }
-
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_LEVELS + "/Create Level Structure")]
     public static void LevelStructureConstructor() {
-
-        var settings = Helpers.FindScriptableObject<AssetToolsSettings>();
-
+        var settings = Helpers.FindScriptableObject<PrefabToolsSettings>();
         var stat = GameObject.Find(settings.lv_static_root) as GameObject;
         if (stat) {
             Debug.LogError(settings.lv_static_root + " already exists ");
         } else
             stat = new GameObject(settings.lv_static_root);
         {
-
-
             var lights = new GameObject(settings.lv_lights);
             lights.transform.SetParent(stat.transform);
-
             var fx = new GameObject(settings.lv_fx);
             fx.transform.SetParent(stat.transform);
-
             var volumes = new GameObject(settings.lv_volumes);
             volumes.transform.SetParent(stat.transform);
-
             var @static = new GameObject(settings.lv_static);
             @static.transform.SetParent(stat.transform);
-
         }
-
         var entities = GameObject.Find(settings.lv_entities_root) as GameObject;
         if (entities) {
             Debug.LogError(settings.lv_entities_root + " object already exists ");
         } else
             entities = new GameObject(settings.lv_entities_root);
-
         {
             var npcs = new GameObject(settings.lv_npc);
             npcs.transform.SetParent(entities.transform);
-
             var other = new GameObject(settings.lv_entity);
             other.transform.SetParent(entities.transform);
         }
-
-
         EditorSceneManager.MarkAllScenesDirty();
         EditorSceneManager.SaveOpenScenes();
     }
-
-   
 }
 #endif

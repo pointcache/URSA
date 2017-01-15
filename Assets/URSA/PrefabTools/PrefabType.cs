@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// Used to id objects, MAKE ABSOLUTELY SURE THAT THIS COMPONENT IS ATTACHED TO THE ROOT OF THE PREFAB OR OBJECT
 /// </summary>
 [DisallowMultipleComponent]
-public class AssetType : MonoBehaviour {
+public class PrefabType : MonoBehaviour {
 
     public ObjType type;
 
@@ -19,6 +19,7 @@ public class AssetType : MonoBehaviour {
         fx,
         npc
     }
+
 }
 
 #endif

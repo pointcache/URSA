@@ -45,7 +45,7 @@ public class Database : MonoBehaviour {
 
 
 #if UNITY_EDITOR
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_DATABASE + URSAConstants.MENUITEM_DATABASE_REBUILD)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_DATABASE + URSAConstants.PATH_MENUITEM_DATABASE_REBUILD)]
     public static void Rebuild() {
         prefabObjects = new List<GameObject>(1000);
         entities = new Dictionary<string, Entity>(1000);

@@ -14,10 +14,10 @@ public static class LevelsSystemEditor {
     private const string LEVELDATA_NEW = "New Data";
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_LEVELS + "/OrganizeLevel")]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_LEVELS + "/OrganizeLevel")]
     public static void LevelOrganizer() {
 
-        var settings = Helpers.FindScriptableObject<AssetToolsSettings>();
+        var settings = Helpers.FindScriptableObject<PrefabToolsSettings>();
         GameObject npc = null;
         GameObject entity = null;
         GameObject light = null;
@@ -63,7 +63,7 @@ public static class LevelsSystemEditor {
             Debug.LogError(settings.lv_static_root + " not found ");
 
 
-        var all = GameObject.FindObjectsOfType<AssetType>();
+        var all = GameObject.FindObjectsOfType<PrefabType>();
 
         foreach (var obj in all) {
             if (obj.transform.parent != null && (obj.transform.parent.GetComponentInParents<Entity>() || obj.transform.parent.GetComponentInParents<BlueprintLoader>())) {
@@ -72,22 +72,22 @@ public static class LevelsSystemEditor {
 
 
             switch (obj.type) { 
-                case AssetType.ObjType.entity:
+                case PrefabType.ObjType.entity:
                     obj.transform.SetParent(entity.transform);
                     break;
-                case AssetType.ObjType.@static:
+                case PrefabType.ObjType.@static:
                     obj.transform.SetParent(@static.transform);
                     break;
-                case AssetType.ObjType.light:
+                case PrefabType.ObjType.light:
                     obj.transform.SetParent(light.transform);
                     break;
-                case AssetType.ObjType.volume:
+                case PrefabType.ObjType.volume:
                     obj.transform.SetParent(volume.transform);
                     break;
-                case AssetType.ObjType.fx:
+                case PrefabType.ObjType.fx:
                     obj.transform.SetParent(fx.transform);
                     break;
-                case AssetType.ObjType.npc:
+                case PrefabType.ObjType.npc:
                     obj.transform.SetParent(npc.transform);
                     break;
                 default:
@@ -153,7 +153,7 @@ public static class LevelsSystemEditor {
     }
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_LEVELS + "/CollectSceneData")]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_LEVELS + "/CollectSceneData")]
     public static void CollectLevelsData() {
         SceneDataCollector collector;
         var assets = AssetDatabase.FindAssets("t:SceneDataCollector");

@@ -36,7 +36,7 @@ public class PersistentDataSystem : MonoBehaviour {
 
 
 #if     UNITY_EDITOR
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_SAVE)] 
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PERSISTENT + URSAConstants.PATH_MENUITEM_PERSISTENT_SAVE)] 
 #endif
     public static void Save() {
         instance.SaveTo();
@@ -45,7 +45,7 @@ public class PersistentDataSystem : MonoBehaviour {
 
 
 #if UNITY_EDITOR
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_PERSISTENT + URSAConstants.MENUITEM_PERSISTENT_LOAD)] 
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PERSISTENT + URSAConstants.PATH_MENUITEM_PERSISTENT_LOAD)] 
 #endif
     public static void Load() {
         instance.LoadFrom();

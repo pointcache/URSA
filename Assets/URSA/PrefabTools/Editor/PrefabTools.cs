@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using URSA;
-public static class AssetsTools
+public static class PrefabTools
 {
 
-    static AssetToolsSettings settings;
+    static PrefabToolsSettings settings;
 
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_ASSETTOOLS + "/ParseResources", priority = 2)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS_PARSE, priority = 2)]
     public static void ParseResources()
     {
-        settings = Helpers.FindScriptableObject<AssetToolsSettings>();
+        settings = Helpers.FindScriptableObject<PrefabToolsSettings>();
 
         var @static = Resources.LoadAll(settings.rootPath + settings.@static);
         var entity = Resources.LoadAll(settings.rootPath + settings.entity);
@@ -23,29 +23,29 @@ public static class AssetsTools
         var npc = Resources.LoadAll(settings.rootPath + settings.npc);
         int count = 0;
 
-        addObjectType(@static, AssetType.ObjType.@static, ref count);
-        addObjectType(entity, AssetType.ObjType.entity, ref count);
-        addObjectType(lights, AssetType.ObjType.light, ref count);
-        addObjectType(volumes, AssetType.ObjType.volume, ref count);
-        addObjectType(fx, AssetType.ObjType.fx, ref count);
-        addObjectType(npc, AssetType.ObjType.npc, ref count);
+        addObjectType(@static, PrefabType.ObjType.@static, ref count);
+        addObjectType(entity, PrefabType.ObjType.entity, ref count);
+        addObjectType(lights, PrefabType.ObjType.light, ref count);
+        addObjectType(volumes, PrefabType.ObjType.volume, ref count);
+        addObjectType(fx, PrefabType.ObjType.fx, ref count);
+        addObjectType(npc, PrefabType.ObjType.npc, ref count);
 
         Debug.Log(count + "<color=green> resources parsed</color>");
     }
 
-    static void addObjectType(UnityEngine.Object[] objs, AssetType.ObjType type, ref int count)
+    static void addObjectType(UnityEngine.Object[] objs, PrefabType.ObjType type, ref int count)
     {
         foreach (var obj in objs)
         {
             count++;
             GameObject go = obj as GameObject;
 
-            var objtype = go.GetComponent<AssetType>();
+            var objtype = go.GetComponent<PrefabType>();
             if (!objtype)
-                objtype = go.AddComponent<AssetType>();
+                objtype = go.AddComponent<PrefabType>();
             objtype.type = type;
 
-            if (objtype.type == AssetType.ObjType.@static)
+            if (objtype.type == PrefabType.ObjType.@static)
             {
                 set_static(objtype.transform);
             }
@@ -58,7 +58,7 @@ public static class AssetsTools
         }
     }
 
-    static void process_for_modifiers(Transform tr, AssetType.ObjType type)
+    static void process_for_modifiers(Transform tr, PrefabType.ObjType type)
     {
         if (tr.GetComponent<NavmeshArea>())
         {
@@ -67,7 +67,7 @@ public static class AssetsTools
         }
         else
         {
-            if (type == AssetType.ObjType.@static)
+            if (type == PrefabType.ObjType.@static)
                 GameObjectUtility.SetNavMeshArea(tr.gameObject, (int)settings.defaultNavmeshArea);
         }
         foreach (Transform t in tr)
@@ -121,7 +121,7 @@ public static class AssetsTools
         }
     }
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/Assets/MoveColliderToParent")]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/MoveColliderToParent")]
     public static void MoveColliderToParent()
     {
         var sel = Selection.activeGameObject;
@@ -180,7 +180,7 @@ public static class AssetsTools
         }
     }
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/Assets/FindAndApplyCollider")]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/FindAndApplyCollider")]
     public static void FindApplyCollider()
     {
         GameObject selected = Selection.activeGameObject;
@@ -216,7 +216,7 @@ public static class AssetsTools
     }
 
     
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/DANGER/Prefabs/DumpPrefabsFromFolder")]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/Danger/DumpPrefabsFromFolder")]
     public static void DumpPrefabsFromFolder()
     {
         string path = Helpers.GetSelectedPathOrFallback();
@@ -236,7 +236,7 @@ public static class AssetsTools
         }
     }
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + "/DANGER/Prefabs/ApplyChangesToSelectedPrefabs")]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT +  URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/Danger/ApplyChangesToSelectedPrefabs")]
     public static void ApplyChangesToSelectedPrefabs()
     {
         var all = Selection.gameObjects;
@@ -253,8 +253,6 @@ public static class AssetsTools
         }
     }
 
-
-    [MenuItem(URSAConstants.MENUITEM_ROOT +  "/Assets/SlightlyOffsetChildren")]
     public static void SlightlyOffsetChildren()
     {
         var sel = Selection.gameObjects;

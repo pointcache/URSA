@@ -22,6 +22,6 @@ public class URSASettings : ScriptableObject {
     public GameObject SceneSystemsTemplate;
 
     [Header("Database")]
-    public string DatabaseRootFolder = "ENTITY";
+    public string DatabaseRootFolder = "GamePrefabs/ENTITY";
     public string DatabaseManifest = "manifest.db";
 }

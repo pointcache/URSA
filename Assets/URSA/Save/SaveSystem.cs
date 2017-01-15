@@ -37,7 +37,7 @@ public class SaveSystem : MonoBehaviour {
 
 
 #if UNITY_EDITOR
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_SAVESTATE + URSAConstants.MENUITEM_SAVESTATE_SAVE)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_SAVESTATE + URSAConstants.PATH_MENUITEM_SAVESTATE_SAVE)]
 #endif
     public static void SaveFromEditor() {
         instance.SaveFile();
@@ -86,7 +86,7 @@ public class SaveSystem : MonoBehaviour {
 
 
 #if     UNITY_EDITOR
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_SAVESTATE + URSAConstants.MENUITEM_SAVESTATE_LOAD)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_SAVESTATE + URSAConstants.PATH_MENUITEM_SAVESTATE_LOAD)]
 #endif
     public static void LoadFromEditor() {
         instance.LoadFile();
@@ -243,7 +243,7 @@ public class SaveSystem : MonoBehaviour {
             entity.gameObject.SetActive(true);
 #if UNITY_EDITOR
             PrefabUtility.ReconnectToLastPrefab(gameobj);
-           
+
 #endif
         }
 
@@ -297,18 +297,6 @@ public class SaveSystem : MonoBehaviour {
 
             }
         }
-
-#if UNITY_EDITOR
-        //foreach (var obj in bp_relink) {
-        //
-        //    //PropertyModification[] mods = PrefabUtility.GetPropertyModifications(pair.Key);
-        //    //PrefabUtility.SetPropertyModifications(pair.Key, mods);
-        //    PrefabUtility.DisconnectPrefabInstance(obj);
-        //    
-        //    
-        //}
-
-#endif
     }
 
     public static SaveObject CreateSaveObjectFromPersistenData() {
@@ -354,7 +342,7 @@ public class SaveSystem : MonoBehaviour {
     static SaveObject PackBlueprint(SaveObject file, Transform root) {
         List<Entity> entities_list = null;
         HashSet<string> bp_ids = new HashSet<string>();
-        
+
         entities_list = root.GetComponentsInChildren<Entity>().ToList();
         var rootEntity = root.GetComponent<Entity>();
         if (rootEntity)

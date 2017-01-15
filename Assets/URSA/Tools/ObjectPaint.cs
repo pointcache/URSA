@@ -32,7 +32,7 @@ public class ObjectPaint : EditorWindow {
 
 
         // Add menu item named "My Window" to the Window menu
-        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_TOOLS + "/ObjectPaint")]
+        [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_TOOLS + "/ObjectPaint")]
         public static void ShowWindow() {
             //Show existing window instance. If one doesn't exist, make one.
             EditorWindow.GetWindow(typeof(ObjectPaint));
@@ -69,10 +69,10 @@ public class ObjectPaint : EditorWindow {
         if (GUILayout.Button("Get selected")) {
             if (Selection.gameObjects.Length < 2) {
 
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance) {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == UnityEditor.PrefabType.PrefabInstance) {
                     prefab = PrefabUtility.GetPrefabParent(Selection.activeGameObject) as GameObject;
                 } else
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.Prefab) {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == UnityEditor.PrefabType.Prefab) {
                     prefab = Selection.activeGameObject;
                 } else {
                     Debug.LogError("Not a prefab, or prefab instance, stop screwing around.");
@@ -81,10 +81,10 @@ public class ObjectPaint : EditorWindow {
             } else {
                 multiple.Clear();
                 foreach (var go in Selection.gameObjects) {
-                    if (PrefabUtility.GetPrefabType(go) == PrefabType.PrefabInstance) {
+                    if (PrefabUtility.GetPrefabType(go) == UnityEditor.PrefabType.PrefabInstance) {
                         multiple.Add(PrefabUtility.GetPrefabParent(go) as GameObject);
                     } else
-                        if (PrefabUtility.GetPrefabType(go) == PrefabType.Prefab) {
+                        if (PrefabUtility.GetPrefabType(go) == UnityEditor.PrefabType.Prefab) {
                         multiple.Add(go);
                     } else {
                         Debug.LogError("Not a prefab, or prefab instance, stop screwing around.");
@@ -136,7 +136,7 @@ public class ObjectPaint : EditorWindow {
         rememberLastRotation = EditorGUILayout.Toggle("Remember Rotation", rememberLastRotation);
         if (GUILayout.Button("Reset Rotation")) {
             if (Selection.activeGameObject) {
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance) {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == UnityEditor.PrefabType.PrefabInstance) {
                     Selection.activeGameObject.transform.rotation = ((GameObject)PrefabUtility.GetPrefabParent(Selection.activeGameObject)).transform.rotation;
                 }
             }
@@ -147,7 +147,7 @@ public class ObjectPaint : EditorWindow {
         rememberScale = EditorGUILayout.Toggle("Remember Scale", rememberScale);
         if (GUILayout.Button("Reset Scale")) {
             if (Selection.activeGameObject) {
-                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == PrefabType.PrefabInstance) {
+                if (PrefabUtility.GetPrefabType(Selection.activeGameObject) == UnityEditor.PrefabType.PrefabInstance) {
                     Selection.activeGameObject.transform.localScale = ((GameObject)PrefabUtility.GetPrefabParent(Selection.activeGameObject)).transform.localScale;
                 }
             }

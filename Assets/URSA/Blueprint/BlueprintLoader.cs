@@ -9,7 +9,7 @@ public class BlueprintLoader : MonoBehaviour {
     public TextAsset blueprint;
     public bool LoadOnEnable;
 
-    [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_BLUEPRINT + URSAConstants.MENUITEM_BLUEPRINT_NEW)]
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_BLUEPRINT + URSAConstants.PATH_MENUITEM_BLUEPRINT_NEW)]
     public static void New() {
         GameObject root = new GameObject("Blueprint");
         Selection.activeGameObject = root;

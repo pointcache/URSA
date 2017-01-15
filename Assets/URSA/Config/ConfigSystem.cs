@@ -65,7 +65,7 @@
 
 
 #if UNITY_EDITOR
-        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_SAVE)] 
+        [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_SAVE)] 
 #endif
         public static void Save() {
             var sys = ConfigSystem.instance;
@@ -88,7 +88,7 @@
 
 
 #if UNITY_EDITOR
-        [MenuItem(URSAConstants.MENUITEM_ROOT + URSAConstants.MENUITEM_CONFIG + URSAConstants.MENUITEM_CONFIG_LOAD)] 
+        [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_LOAD)] 
 #endif
         public static void Load() {
 
