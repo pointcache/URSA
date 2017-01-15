@@ -5,7 +5,7 @@ It doesn't use a separate backend, and works on top of unity components in a ver
 URSA streamlines typically complex gamedev tasks like managing initialization sequences and serialization, as
 well as being a fully fledged ECS it completely decouples systems and forces data driven approach.
 
-Current list of components:
+Current list of features:
 
 * AssetImporters
 * AssetTools
