@@ -51,7 +51,7 @@
                 default:
                     break;
             }
-            return path + "/" + SaveSystem.instance.GlobalRootFoder;
+            return path + "/" + URSASettings.current.CustomDataFolder;
         }
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_SAVE)]
@@ -145,7 +145,7 @@
                 foreach (var f in fields) {
                     if (f.FieldType.BaseType.BaseType == typeof(rVar)) {
                         IrVar ivar = f.GetValue(cfg) as IrVar;
-                        UrsaConsole.RegisterVar(ivar, f);
+                        Console.RegisterVar(ivar, f);
                         string name = f.Name;
                         info.vars.Add(name, ivar);
                     }

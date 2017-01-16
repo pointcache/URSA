@@ -8,14 +8,14 @@
     using System.Reflection;
     using SmartConsole;
 
-    public class UrsaConsole : MonoBehaviour {
+    public class Console : MonoBehaviour {
 
         #region SINGLETON
-        private static UrsaConsole _instance;
-        public static UrsaConsole instance
+        private static Console _instance;
+        public static Console instance
         {
             get {
-                if (!_instance) _instance = GameObject.FindObjectOfType<UrsaConsole>();
+                if (!_instance) _instance = GameObject.FindObjectOfType<Console>();
                 return _instance;
             }
         }
@@ -90,7 +90,7 @@
 
         public static void Spawn(string[] par) {
             Helpers.Spawn(par[0]);
-            UrsaLog.Success(par[0] + " was spawned.");
+            Log.Success(par[0] + " was spawned.");
         }
     }
     public static class TransformDeepChildExtension {

@@ -14,9 +14,12 @@ public class DebugSystem : MonoBehaviour {
 
     GameObject debugUi, overlay;
     private void OnEnable() {
-        Pool<InternalConfig>.First.DebugGUI.OnChanged += SetDebugUi;
-        UrsaConsole.RegisterCommand("debug.enable", EnableDebug);
-        UrsaConsole.RegisterCommand("debug.disable", DisableDebug);
+        var icfg = Pool<InternalConfig>.First;
+        icfg.DebugGUI.OnChanged += SetDebugUi;
+        icfg.rtLogging.OnChanged += x => Log.realtime = x;
+        URSA.Console.RegisterCommand("debug.enable", this.EnableDebug);
+        URSA.Console.RegisterCommand("debug.dumpLog", Log.DumpLog);
+        URSA.Console.RegisterCommand("debug.disable", this.DisableDebug);
     }
 
     private void Update() {

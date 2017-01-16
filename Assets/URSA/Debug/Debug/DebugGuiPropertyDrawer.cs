@@ -22,7 +22,6 @@ public class DebugGuiPropertyDrawer : MonoBehaviour
     void drawConfig(ConfigBase comp)
     {
         tr.DestroyChildren();
-        UrsaLog.Log("drawing config");
         Type type = comp.GetType();
         
         var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);

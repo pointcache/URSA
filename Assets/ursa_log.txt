@@ -1,0 +1,20 @@
+{
+    "$content": [
+        "You can't have unboxed blueprints on the start of the game, make sure blueprints are cleared before the launch.",
+        "NullReferenceException: Object reference not set to an instance of an object",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "When loading, database entity: ed9e22f5-daef-4ce3-8b31-36687bc2ff0a was not found",
+        "Console> Unrecognised command or variable name: print",
+        "Console> debug.enable ",
+        "Console> debug.dumpLog "
+    ],
+    "$type": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+}

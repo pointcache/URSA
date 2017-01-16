@@ -32,4 +32,7 @@ public class URSASettings : ScriptableObject {
     [Header("Database")]
     public string DatabaseRootFolder = "GamePrefabs/ENTITY";
     public string DatabaseManifest = "manifest.db";
+
+    [Header("Serialization")]
+    public string CustomDataFolder = "CustomData";
 }

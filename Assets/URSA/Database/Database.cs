@@ -72,7 +72,7 @@ public class Database : MonoBehaviour {
     /// Very careful with this one
     /// </summary>
 #if UNITY_EDITOR
-    [MenuItem("temp/clear ids")]
+    //[MenuItem("temp/clear ids")]
 #endif
     public static void clear_all_entity_IDs() {
         var prefabs = Resources.LoadAll(URSASettings.current.DatabaseRootFolder + "/");
@@ -132,6 +132,13 @@ public class Database : MonoBehaviour {
             if (entity.database_ID == "" || entity.database_ID == null) {
                 entity.database_ID = get_unique_id(ids);
             }
+            if (entity.instance_ID != "" || entity.instance_ID != null) {
+                entity.instance_ID = string.Empty;
+            }
+            if (entity.blueprint_ID != "" || entity.blueprint_ID != null) {
+                entity.blueprint_ID = string.Empty;
+            }
+
             adress = adress.Replace("\\", "/");
             manifest.entity_id_adress.Add(entity.database_ID, adress);
             manifest.entity_adress_id.Add(adress, entity.database_ID);

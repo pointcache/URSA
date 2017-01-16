@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor;
+using System.Linq;
 
 public class DatabaseTools : EditorWindow {
 
@@ -15,6 +16,7 @@ public class DatabaseTools : EditorWindow {
 
     string id_search = "paste id";
     string scene_search = "paste id";
+    string name_search = "paste name";
 
     void OnGUI() {
         GUILayout.Label("Search entity by id");
@@ -40,11 +42,34 @@ public class DatabaseTools : EditorWindow {
             List<GameObject> selection = new List<GameObject>();
             var entities = GameObject.FindObjectsOfType<Entity>();
             foreach (var e in entities) {
-                if(e.database_ID == scene_search) {
+                if (e.database_ID == scene_search) {
                     selection.Add(e.gameObject);
                 }
             }
-            Selection.objects = selection.ToArray(); 
+            Selection.objects = selection.ToArray();
+
+        }
+        GUILayout.EndHorizontal();
+
+
+        GUILayout.Label("Regex search by name");
+        GUILayout.BeginHorizontal();
+        name_search = GUILayout.TextArea(name_search);
+        if (GUILayout.Button("Paste")) {
+            name_search = GUIUtility.systemCopyBuffer;
+        }
+        if (GUILayout.Button("Find")) {
+            List<GameObject> selection = new List<GameObject>();
+            var entities = Resources.LoadAll<Entity>(URSASettings.current.DatabaseRootFolder + "/");
+
+            var names = entities.Select(x => x.name).ToArray();
+
+            for (int i = 0; i < names.Length; i++) {
+                if (System.Text.RegularExpressions.Regex.IsMatch(names[i], name_search, System.Text.RegularExpressions.RegexOptions.IgnoreCase)) {
+                    selection.Add(entities[i].gameObject);
+                }
+            }
+            Selection.objects = selection.ToArray();
 
         }
         GUILayout.EndHorizontal();

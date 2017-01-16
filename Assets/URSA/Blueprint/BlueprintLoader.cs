@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
-
+using URSA;
 public class BlueprintLoader : MonoBehaviour {
 
     public TextAsset blueprint;
@@ -38,6 +38,14 @@ public class BlueprintLoader : MonoBehaviour {
     }
 
     public void OnEnable() {
+
+        if(transform.childCount > 0) {
+            URSA.Log.Error("You can't have unboxed blueprints on the start of the game, make sure blueprints are cleared before the launch.");
+            GetComponent<Entity>().log();
+            Debug.Break();
+            
+        }
+
         if (LoadOnEnableAndSelfDestruct) {
             Load();
             Destroy(this);

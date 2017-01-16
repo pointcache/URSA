@@ -25,7 +25,6 @@ public class SaveSystem : MonoBehaviour {
     }
     #endregion
     public string entitiesRoot = "Entities";
-    public string GlobalRootFoder = "CustomData";
     public string FileName = "GameSave";
     public DataPath datapath;
     public string customDataPath;
@@ -78,7 +77,7 @@ public class SaveSystem : MonoBehaviour {
             default:
                 break;
         }
-        return path + "/" + SaveSystem.instance.GlobalRootFoder;
+        return path + "/" + URSASettings.current.CustomDataFolder;
     }
 
 

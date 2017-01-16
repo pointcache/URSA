@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013219192728}
   - 114: {fileID: 114000013041770700}
-  - 114: {fileID: 114000010010034294}
   - 114: {fileID: 114000013162657426}
   m_Layer: 0
   m_Name: Sword
@@ -42,23 +41,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010010034294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011902159432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1227f483971e1b4eb84e087058d460f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: aaa57719-6938-4397-9f50-5f3780cfdacf
-  data:
-    name:
-      value: sword
-    damage:
-      value: 50
 --- !u!114 &114000013041770700
 MonoBehaviour:
   m_ObjectHideFlags: 1

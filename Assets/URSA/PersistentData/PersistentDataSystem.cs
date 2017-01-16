@@ -72,7 +72,7 @@ public class PersistentDataSystem : MonoBehaviour {
             default:
                 break;
         }
-        return path + "/" + SaveSystem.instance.GlobalRootFoder;
+        return path + "/" + URSASettings.current.CustomDataFolder;
     }
 
     public void SaveTo() {

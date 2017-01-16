@@ -13,6 +13,16 @@ public class BlueprintInspector : Editor {
     public static string LastPath = "/Resources/";
     public override void OnInspectorGUI() {
         BlueprintLoader t = target as BlueprintLoader;
+
+        if (t.transform.childCount > 0) {
+            GUIStyle style = GUI.skin.GetStyle("Label");
+            Color c = style.normal.textColor;
+            style.normal.textColor = Color.red;
+
+            GUILayout.Label("CLEAR CHILDREN BEFORE LAUNCHING THE GAME", style);
+            style.normal.textColor = c;
+        }
+
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Save as")) {
             save_as();

@@ -291,6 +291,7 @@ namespace SmartConsole {
             if (words.Length > 0) {
                 if (s_masterDictionary.ContainsKey(words[0])) {
                     WriteLine("<b>=> </b><color=lime>" + inputLine + "</color>");
+                    URSA.Log.record("Console> " +inputLine);
                     Command com = s_masterDictionary[words[0]];
                     if (com.isVariable) {
                         com.variable_callback(words);
@@ -303,7 +304,9 @@ namespace SmartConsole {
 
 
                 } else {
-                    WriteLine("<color=red>Unrecognised command or variable name: " + words[0] + "</color>");
+                    string msg = "Unrecognised command or variable name: " + words[0];
+                    URSA.Log.record("Console> " + msg);
+                    WriteLine("<color=red>" + msg + "</color>");
                 }
                 s_commandHistory.Add(inputLine);
                 s_currentEXECUTIONhistoryIndex = s_commandHistory.Count - 1;
@@ -541,6 +544,7 @@ namespace SmartConsole {
             WriteLine(prefix + msg + "</color>");
         }
         private static void LogHandler(string message, string stack, LogType type) {
+            URSA.Log.record(message);
             switch (type) {
                 case LogType.Assert: {
                         Log(message, myLogType.warning);
