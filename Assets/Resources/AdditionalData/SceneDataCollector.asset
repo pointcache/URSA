@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Name: SceneDataCollector
   m_EditorClassIdentifier: 
   scenes:
-  - {fileID: 11400000, guid: e226ab625d85fd8498753818d551224d, type: 2}
-  - {fileID: 11400000, guid: bb0c3ec3ed0ef0a4683d28caa7089984, type: 2}
   - {fileID: 11400000, guid: d01f3e0d9d0127748a5e5bab60e5cad2, type: 2}

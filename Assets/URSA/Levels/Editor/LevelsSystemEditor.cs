@@ -119,19 +119,24 @@ public static class LevelsSystemEditor {
         Debug.Log("Created level data for scene :" + scene.name);
     }
 
-    static SceneData makeData(SceneAsset scene) {
+    static SceneData makeData(SceneAsset asset) {
 
-        SceneData data = (SceneData)CreateAsset<SceneData>(scene.name + "_data");
+        SceneData data = (SceneData)CreateAsset<SceneData>(asset.name + "_data");
+        processData(data, asset);
+        return data;
+    }
 
-        
-
-        data.scene = scene.name;
-        data.levelname = scene.name;
-        data.NiceName = scene.name;
-        OnSceneDataCreated(scene, data);
+    static void processData(SceneData data, SceneAsset asset) {
+        data.scene = asset.name;
+        data.levelname = asset.name;
+        data.NiceName = asset.name;
+        OnSceneDataCreated(asset, data);
         EditorUtility.SetDirty(data);
         AssetDatabase.SaveAssets();
-        return data;
+    }
+
+    public static void RelinkDataToScene(SceneData data, SceneAsset asset) {
+        processData(data, asset);
     }
 
     /// <summary>
@@ -191,9 +196,6 @@ public static class LevelsSystemEditor {
 
             EditorUtility.SetDirty(scenedata);
         }
-
-        var scenes = EditorBuildSettings.scenes;
-        //SceneData current = collector.scenes.FirstOrDefault(x => x.ID )
 
         EditorUtility.SetDirty(collector);
         AssetDatabase.SaveAssets();

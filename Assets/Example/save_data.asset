@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: save_data
   m_EditorClassIdentifier: 
   ID: 0b7e4e22-3d56-4133-9e6a-e668c4505812
-  scene: save
+  scene: save_example
   scenePath: Example/save
-  levelname: save
-  NiceName: save
+  levelname: save_example
+  NiceName: save_example
   entryPoints: []
