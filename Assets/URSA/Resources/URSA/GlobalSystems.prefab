@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000010803548036
 GameObject:
   m_ObjectHideFlags: 1
@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000011407369490
 GameObject:
   m_ObjectHideFlags: 1
@@ -75,7 +75,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000011452670102
 GameObject:
   m_ObjectHideFlags: 1
@@ -91,7 +91,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000011637727820
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012277904006
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012373901602
 GameObject:
   m_ObjectHideFlags: 1
@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012740753940
 GameObject:
   m_ObjectHideFlags: 1
@@ -179,13 +179,15 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012852827966}
+  - 114: {fileID: 114000010223944678}
+  - 114: {fileID: 114000012458373148}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000012854377274
 GameObject:
   m_ObjectHideFlags: 1
@@ -242,6 +244,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013315893962}
+  - 114: {fileID: 114000010111869592}
   m_Layer: 0
   m_Name: Configs
   m_TagString: Untagged
@@ -257,14 +260,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011100568528}
-  - 114: {fileID: 114000011959844046}
   m_Layer: 0
   m_Name: ConfigSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000014205234476
 GameObject:
   m_ObjectHideFlags: 1
@@ -518,6 +520,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000012372573138}
   m_RootOrder: 0
+--- !u!114 &114000010111869592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013089368442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26fd18e9e2c3604188c0396819025cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singleFile: 0
+  datapath: 0
+  customDataPath: 
+  singleFilePath: configuration
+  folderPath: Configs
+  extension: .cfg
 --- !u!114 &114000010123644968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +551,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &114000010223944678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012740753940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a358484d00a5e4b97bdf6235983b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IncludeChildren: 0
 --- !u!114 &114000010857831456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -584,23 +615,17 @@ MonoBehaviour:
   customDataPath: 
   folderPath: PersistenData
   extension: .data
---- !u!114 &114000011959844046
+--- !u!114 &114000012458373148
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014202724530}
+  m_GameObject: {fileID: 1000012740753940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26fd18e9e2c3604188c0396819025cb, type: 3}
+  m_Script: {fileID: 11500000, guid: ecd304520fe815b49891ebe6ea5d4ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singleFile: 0
-  datapath: 0
-  customDataPath: 
-  singleFilePath: configuration
-  folderPath: Configs
-  extension: .cfg
 --- !u!114 &114000012717650768
 MonoBehaviour:
   m_ObjectHideFlags: 1

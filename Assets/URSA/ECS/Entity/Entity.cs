@@ -25,6 +25,15 @@ public class Entity : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
+    private void Reset() {
+        for (int i = 0; i < 50; i++) {
+            UnityEditorInternal.ComponentUtility.MoveComponentUp(this);  
+
+        }
+    }
+#endif
+
     void OnEnable()
     {
         EntityManager.RegisterEntity(this);

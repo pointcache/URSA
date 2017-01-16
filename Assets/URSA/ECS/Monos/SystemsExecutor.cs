@@ -7,18 +7,18 @@ public class SystemsExecutor : MonoBehaviour
 {
     void OnEnable()
     {
-        sendMessageRecursive("orderedOnEnable", transform);
+        sendMessageRecursive("OrderedOnEnable", transform);
     }
     void FixedUpdate()
     {
         if(Pool<InternalConfig>.First.UpdateAllowed)
-            sendMessageRecursive("orderedFixedUpdate", transform);
+            sendMessageRecursive("OrderedFixedUpdate", transform);
     }
 
     void Update()
     {
         if(Pool<InternalConfig>.First.UpdateAllowed)
-            sendMessageRecursive("orderedUpdate", transform);
+            sendMessageRecursive("OrderedUpdate", transform);
     }
 
     void sendMessageRecursive(string message, Transform tr)

@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 114000010522660552}
   - 114: {fileID: 114000010415753858}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1

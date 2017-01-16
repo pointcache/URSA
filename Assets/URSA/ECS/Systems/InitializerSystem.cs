@@ -8,13 +8,11 @@ public class InitializerSystem : MonoBehaviour {
 
     public static bool FullyInitialized { get; private set; }
 
-    GameObject Configs;
-    GameObject Systems;
 
     //Used when we are switching scenes/maps and we need to get notified when this happens, its different from 
     //OnSceneLoaded in that onscene fires every time you hit play, while this fires only when you manually force scene
     //switch, right before it happens, so core systems have a chance to clean up in preparation for new scene
-    public static event Action OnReload = delegate { };
+    public static event Action OnManualSceneSwitch = delegate { };
 
     /// <summary>
     /// Hook your config loading here, it will happen before global systems are initialized
@@ -24,6 +22,14 @@ public class InitializerSystem : MonoBehaviour {
     /// Hook your configuration events that use configs, happens after configs were deserialized
     /// </summary>
     public static event Action OnApplicationConfiguration = delegate { };
+    /// <summary>
+    /// Deserialize your initial player profiles, etc
+    /// </summary>
+    public static event Action OnInitialLoadPersistentData = delegate { };
+    /// <summary>
+    /// Hook your configuration events that use configs, happens after configs were deserialized
+    /// </summary>
+    public static event Action OnGlobalSystemsEnabled = delegate { };
     /// <summary>
     /// Hook your save loading here, it will happen before local systems and loaders are initialized
     /// </summary>
@@ -44,16 +50,6 @@ public class InitializerSystem : MonoBehaviour {
     bool globalInitialized;
 
     void OnEnable() {
-        Systems = transform.Find("Systems").gameObject;
-        if (!Systems) {
-            Debug.LogError("GlobalSystems: No Systems gameobject found");
-            return;
-        }
-
-        if (Systems.activeSelf) {
-            Debug.LogError("GlobalSystems: Systems should start DISABLED");
-            return;
-        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -62,7 +58,7 @@ public class InitializerSystem : MonoBehaviour {
     }
 
     public static void SwitchScene(string name) {
-        OnReload();
+        OnManualSceneSwitch();
         FullyInitialized = false;
     }
 
@@ -76,7 +72,9 @@ public class InitializerSystem : MonoBehaviour {
             yield return null;
             OnApplicationConfiguration();
             yield return null;
-            Systems.SetActive(true);
+            OnInitialLoadPersistentData();
+            yield return null;
+            OnGlobalSystemsEnabled();
             globalInitialized = true;
             yield break;
 

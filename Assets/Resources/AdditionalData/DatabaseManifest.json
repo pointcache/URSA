@@ -14,7 +14,8 @@
         "c3d37af8-a918-44e0-a09e-bfc608f1f321": "Items/Weapons/Axe",
         "ddd73c53-ac88-405e-aae8-d35eda391700": "Items/Weapons/spheres_thing",
         "d3101f65-85ed-4733-8651-74e52f73c779": "Items/Weapons/Sword",
-        "106f18cd-9c40-40ec-8a6c-8477555a99b4": "Items/Weapons/testObject 1"
+        "106f18cd-9c40-40ec-8a6c-8477555a99b4": "Items/Weapons/testObject 1",
+        "3c75858a-eb86-41e4-a052-169a82801e3d": "Weapons/Crossbow_2h_1"
     },
     "entity_adress_id": {
         "Capsule": "c2664175-2f47-4047-959f-ac43ae25677a",
@@ -30,7 +31,8 @@
         "Items/Weapons/Axe": "c3d37af8-a918-44e0-a09e-bfc608f1f321",
         "Items/Weapons/spheres_thing": "ddd73c53-ac88-405e-aae8-d35eda391700",
         "Items/Weapons/Sword": "d3101f65-85ed-4733-8651-74e52f73c779",
-        "Items/Weapons/testObject 1": "106f18cd-9c40-40ec-8a6c-8477555a99b4"
+        "Items/Weapons/testObject 1": "106f18cd-9c40-40ec-8a6c-8477555a99b4",
+        "Weapons/Crossbow_2h_1": "3c75858a-eb86-41e4-a052-169a82801e3d"
     },
     "$type": "DatabaseManifest"
 }
