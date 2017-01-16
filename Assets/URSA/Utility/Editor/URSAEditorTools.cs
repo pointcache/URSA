@@ -17,7 +17,7 @@ public static class URSAEditorTools {
             Database.RebuildWithoutReloadOfTheScene();
         if (settings.ParsePrefabs)
             PrefabTools.ParseResources();
-        if (settings.CollectLevelsData)
+        if (settings.CollectSceneData)
             LevelsSystemEditor.CollectLevelsData();
         if (settings.OrganizeLevel)
             LevelsSystemEditor.LevelOrganizer();

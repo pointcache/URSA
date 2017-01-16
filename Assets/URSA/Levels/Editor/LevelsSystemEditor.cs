@@ -127,10 +127,14 @@ public static class LevelsSystemEditor {
     }
 
     static void processData(SceneData data, SceneAsset asset) {
+        var dataasset = AssetDatabase.GetAssetPath(data);
+        AssetDatabase.RenameAsset(dataasset, asset.name + "_data");
+        data.name = asset.name;
         data.scene = asset.name;
         data.levelname = asset.name;
         data.NiceName = asset.name;
         OnSceneDataCreated(asset, data);
+        CollectLevelsData();
         EditorUtility.SetDirty(data);
         AssetDatabase.SaveAssets();
     }
@@ -199,6 +203,6 @@ public static class LevelsSystemEditor {
 
         EditorUtility.SetDirty(collector);
         AssetDatabase.SaveAssets();
-        Debug.Log("success");
+
     }
 }

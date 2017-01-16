@@ -19,7 +19,7 @@ public class URSASettings : ScriptableObject {
     public bool RebuildDatabase = true;
     public bool ParsePrefabs;
     public bool OrganizeLevel;
-    public bool CollectLevelsData = true;
+    public bool CollectSceneData = true;
     public bool SaveAndReloadScene = true;
 
 
