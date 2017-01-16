@@ -25,7 +25,6 @@ public class SaveSystem : MonoBehaviour {
     }
     #endregion
     public string entitiesRoot = "Entities";
-
     public string GlobalRootFoder = "CustomData";
     public string FileName = "GameSave";
     public DataPath datapath;
@@ -104,7 +103,7 @@ public class SaveSystem : MonoBehaviour {
     }
 
 #if UNITY_EDITOR
-    [MenuItem("Test/Clear")]
+    //[MenuItem("Test/Clear")]
 #endif
     static public void ClearScene() {
         var entities = GameObject.FindObjectsOfType<Entity>();
@@ -201,8 +200,6 @@ public class SaveSystem : MonoBehaviour {
             entity.instance_ID = eobj.instance_ID;
             entity.blueprint_ID = eobj.blueprint_ID;
 
-
-
             if (eobj.parentIsComponent || eobj.parentIsEntity) {
                 toParent.Add(eobj, entity);
             }
@@ -238,7 +235,6 @@ public class SaveSystem : MonoBehaviour {
             entity.gameObject.SetActive(true);
 #if UNITY_EDITOR
             PrefabUtility.ReconnectToLastPrefab(gameobj);
-
 #endif
         }
 
@@ -257,7 +253,6 @@ public class SaveSystem : MonoBehaviour {
                 }
                 e.transform.SetParent(parent);
                 PrefabUtility.ReconnectToLastPrefab(go);
-
             }
 
         } else {
@@ -273,8 +268,6 @@ public class SaveSystem : MonoBehaviour {
                 }
                 e.transform.SetParent(parent);
             }
-
-
         }
         foreach (var compref in save.comprefs) {
             if (!compref.isNull) {
@@ -289,7 +282,6 @@ public class SaveSystem : MonoBehaviour {
                         Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);
                 } else
                     Debug.LogError("CompRef linker could not find entity with id: " + compref.entity_ID + " on entity: " + compref.entityName);
-
             }
         }
     }
@@ -372,7 +364,7 @@ public class SaveSystem : MonoBehaviour {
         }
 
         ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
-        if (parentComp) {
+        if (tr.parent != root && parentComp) {
             eobj.parentIsComponent = true;
             if (isBlueprint)
                 eobj.parent_entity_ID = parentComp.Entity.blueprint_ID;

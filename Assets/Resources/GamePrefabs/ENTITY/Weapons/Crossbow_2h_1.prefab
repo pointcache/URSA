@@ -23,6 +23,7 @@ GameObject:
   - 114: {fileID: 114000012393845168}
   - 114: {fileID: 114000013982913992}
   - 114: {fileID: 114000013350841490}
+  - 114: {fileID: 114000013136141686}
   m_Layer: 0
   m_Name: Crossbow_2h_1
   m_TagString: Untagged
@@ -58,7 +59,21 @@ MonoBehaviour:
   gfx3d: {fileID: 1000010089606018, guid: 1321fa466872f1d4186c3e552baf3165, type: 2}
   gfxInventoryIcon: {fileID: 1000010075007394, guid: ee9beb33e1880d14d8764252996f35c3,
     type: 2}
+  spriteInventoryIcon: {fileID: 0}
   prefabWorldDrop: {fileID: 0}
+--- !u!114 &114000013136141686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012098671558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a797421b741851346bdaa0346479599f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  OrganizerIgnore: 0
 --- !u!114 &114000013350841490
 MonoBehaviour:
   m_ObjectHideFlags: 1

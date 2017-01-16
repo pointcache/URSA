@@ -2,821 +2,442 @@
     "isBlueprint": false,
     "entities": [
         {
-            "database_ID": "ed9e22f5-daef-4ce3-8b31-36687bc2ff0a",
-            "instance_ID": "cd393246-6353-4fd6-98bf-926e2003d535",
-            "blueprint_ID": "",
-            "parentName": null,
-            "gameObjectName": "Sphere",
-            "parentIsComponent": false,
-            "parentIsEntity": true,
-            "parent_entity_ID": "aa887351-b0a9-48cc-97ff-ac819e3893d9",
-            "parent_component_ID": null,
-            "position": {
-                "x": -1.147977,
-                "y": -0.1402135,
-                "z": -17.13228
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        {
-            "database_ID": "c2664175-2f47-4047-959f-ac43ae25677a",
-            "instance_ID": "aa887351-b0a9-48cc-97ff-ac819e3893d9",
-            "blueprint_ID": "",
-            "parentName": "Blueprint",
-            "gameObjectName": "Capsule",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": 0.6800001,
-                "y": 2.23,
-                "z": -17.13228
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "71be1c6f-6636-47a3-b740-fb4681ea3088",
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "b1473a1b-aa33-4c66-9e81-02d5c92d2818",
             "blueprint_ID": "",
             "parentName": "Entities",
             "gameObjectName": "Sphere (5)",
+            "prefabPath": "Items/Sphere",
             "parentIsComponent": false,
             "parentIsEntity": false,
             "parent_entity_ID": null,
             "parent_component_ID": null,
             "position": {
-                "x": -0.17,
-                "y": 15.62342,
-                "z": -0.07
+                "x": -4.27,
+                "y": 19.21723,
+                "z": 1.46
             },
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
             }
         },
         {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "bc54803f-67f3-4373-bc50-e04ecb8dff1f",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (14)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.04,
-                "y": 45.92342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "ac0478d4-c126-4893-b423-df8e59682e10",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (23)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.045015,
-                "y": 28.62656,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 2.362456E-06
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "40659212-da5b-4f64-bb93-cb4bae7dbea6",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (17)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.04,
-                "y": 40.32342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "4f39644a-5ed0-46f6-8188-92f7f833280a",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (10)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.045015,
-                "y": 23.42657,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 1.484001E-05
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "4f25a49a-7c3a-423f-b675-6d9000840f07",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (19)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -0.17,
-                "y": 38.02342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "019c4a0e-237c-41c9-8457-8387089fa671",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (4)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -0.17,
-                "y": 8.92342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "b33a5a63-be99-47a4-8624-24e5948bec6d",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (8)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -0.1649853,
-                "y": 21.62028,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 1.525002E-05
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "eb1481b7-0c56-45e4-bb1a-4258cd6ff7b0",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (20)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.04,
-                "y": 34.62342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "8bcdcb84-59f6-4294-8050-f2ddf7223481",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (9)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -0.1649849,
-                "y": 26.82027,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 2.388212E-06
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "af477fa7-6876-4dc1-80dc-145160a43f6a",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (12)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -0.17,
-                "y": 54.92342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "2b0c99f6-5a6b-447d-82dc-64f092ac6354",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (6)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.04,
-                "y": 12.22342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "3e7dc240-fcfd-4eaa-b13a-04aa36f14ea3",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (13)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -0.17,
-                "y": 49.32342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "57dde415-f9e4-4a44-9e11-ad957846d271",
-            "blueprint_ID": "",
-            "parentName": "Entities",
-            "gameObjectName": "Sphere (11)",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -3.04,
-                "y": 51.52342,
-                "z": -0.07
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
-            }
-        },
-        {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "1d2913fe-c57e-40c7-a3ba-1d410ac2426b",
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "cacec7bb-31b3-4985-a101-e3e7e57c13ad",
             "blueprint_ID": "",
             "parentName": "Entities",
             "gameObjectName": "Sphere (7)",
+            "prefabPath": "Items/Sphere",
             "parentIsComponent": false,
             "parentIsEntity": false,
             "parent_entity_ID": null,
             "parent_component_ID": null,
             "position": {
-                "x": -3.04,
-                "y": 18.22342,
-                "z": -0.07
+                "x": -4.31,
+                "y": 10.25723,
+                "z": 1.46
             },
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
-            },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
             }
         },
         {
-            "database_ID": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-            "instance_ID": "1bf1128b-e372-4983-900f-d34a3a2463e4",
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "1f278516-e33f-45fb-bec9-e671faa4910b",
             "blueprint_ID": "",
             "parentName": "Entities",
-            "gameObjectName": "Sphere (18)",
+            "gameObjectName": "Sphere (8)",
+            "prefabPath": "Items/Sphere",
             "parentIsComponent": false,
             "parentIsEntity": false,
             "parent_entity_ID": null,
             "parent_component_ID": null,
             "position": {
-                "x": -0.17,
-                "y": 43.72342,
-                "z": -0.07
+                "x": 1.16,
+                "y": 5.057229,
+                "z": 1.46
             },
             "rotation": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
+            }
+        },
+        {
+            "database_ID": "3c75858a-eb86-41e4-a052-169a82801e3d",
+            "instance_ID": "f6a2e438-c261-437a-9530-8b911b2027b6",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Crossbow_2h_1",
+            "prefabPath": "Weapons/Crossbow_2h_1",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
-            "scale": {
-                "x": 3.399596,
-                "y": 3.399597,
-                "z": 3.399597
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "10f27e48-5b71-4871-813d-9210cd05196b",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (3)",
+            "prefabPath": "Items/Sphere",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": 1.74,
+                "y": 14.67723,
+                "z": -3.44
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "74ef359d-37b8-437b-966c-eb1cda6bfbe9",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere",
+            "prefabPath": "Items/Sphere",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": -5.18,
+                "y": 2.2897,
+                "z": -3.330123
+            },
+            "rotation": {
+                "x": 5.177359,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "1394f3d9-228c-4687-8a06-7c7ac3c44314",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (4)",
+            "prefabPath": "Items/Sphere",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": -4.27,
+                "y": 19.21723,
+                "z": -3.44
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "f3cd441d-00bc-4f02-87f3-6c2959955358",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (1)",
+            "prefabPath": "Items/Sphere",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": 1.16,
+                "y": 5.057229,
+                "z": -3.44
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "16a5fb0b-b52d-427c-bc75-748000cc5acb",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (6)",
+            "prefabPath": "Items/Sphere",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": 1.74,
+                "y": 14.67723,
+                "z": 1.46
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "database_ID": "139008c9-e798-4095-abe6-2c453828ae20",
+            "instance_ID": "8920c18a-fc2f-4cfa-ab87-e2d974749367",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Sphere (2)",
+            "prefabPath": "Items/Sphere",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": -4.31,
+                "y": 10.25723,
+                "z": -3.44
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             }
         }
     ],
     "comprefs": [
         {
-            "entity_ID": "71be1c6f-6636-47a3-b740-fb4681ea3088",
-            "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-            "isNull": false,
-            "entityName": "Sphere (5)",
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "13"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "14"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "15"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "16"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "17"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "18"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "19"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
+            "Value": null,
+            "$id": "20"
+        },
+        {
+            "entity_ID": "",
+            "component_ID": "",
+            "isNull": true,
+            "entityName": "",
             "Value": null,
             "$id": "21"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "22"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "23"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "24"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "25"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "26"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "27"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "28"
-        },
-        {
-            "entity_ID": "71be1c6f-6636-47a3-b740-fb4681ea3088",
-            "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-            "isNull": false,
-            "entityName": "Sphere (5)",
-            "Value": null,
-            "$id": "29"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "30"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "31"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "32"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "33"
-        },
-        {
-            "entity_ID": "af477fa7-6876-4dc1-80dc-145160a43f6a",
-            "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-            "isNull": false,
-            "entityName": "Sphere (12)",
-            "Value": null,
-            "$id": "34"
-        },
-        {
-            "entity_ID": "",
-            "component_ID": "",
-            "isNull": true,
-            "entityName": "",
-            "Value": null,
-            "$id": "35"
-        },
-        {
-            "entity_ID": "bc54803f-67f3-4373-bc50-e04ecb8dff1f",
-            "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-            "isNull": false,
-            "entityName": "Sphere (14)",
-            "Value": null,
-            "$id": "36"
         }
     ],
     "components": {
-        "71be1c6f-6636-47a3-b740-fb4681ea3088": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
+        "b1473a1b-aa33-4c66-9e81-02d5c92d2818": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "13"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "cacec7bb-31b3-4985-a101-e3e7e57c13ad": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "14"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "1f278516-e33f-45fb-bec9-e671faa4910b": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "15"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "f6a2e438-c261-437a-9530-8b911b2027b6": {
+            "ad02003e-de84-4bae-abc7-ba43e1c207da": {
+                "component_ID": "ad02003e-de84-4bae-abc7-ba43e1c207da",
+                "data": {
+                    "$type": "LinkedResources+Data"
+                }
+            },
+            "3685f27d-5505-4bb5-a503-5c3de536a254": {
+                "component_ID": "3685f27d-5505-4bb5-a503-5c3de536a254",
+                "data": {
+                    "durability": {
+                        "Value": 100.0
+                    },
+                    "$type": "Weapon+Data"
+                }
+            },
+            "1551f34b-afcb-4aae-a0eb-8332595f5d52": {
+                "component_ID": "1551f34b-afcb-4aae-a0eb-8332595f5d52",
+                "data": {
+                    "$type": "Crossbow+Data"
+                }
+            }
+        },
+        "10f27e48-5b71-4871-813d-9210cd05196b": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "16"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "74ef359d-37b8-437b-966c-eb1cda6bfbe9": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "17"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "1394f3d9-228c-4687-8a06-7c7ac3c44314": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "18"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "f3cd441d-00bc-4f02-87f3-6c2959955358": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "19"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "16a5fb0b-b52d-427c-bc75-748000cc5acb": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
+                "data": {
+                    "testReference": {
+                        "$ref": "20"
+                    },
+                    "testFloat": {
+                        "Value": 100.0
+                    },
+                    "$type": "TestComponent+Data"
+                }
+            }
+        },
+        "8920c18a-fc2f-4cfa-ab87-e2d974749367": {
+            "94880eac-9710-4b33-95c2-09ee34c33143": {
+                "component_ID": "94880eac-9710-4b33-95c2-09ee34c33143",
                 "data": {
                     "testReference": {
                         "$ref": "21"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "bc54803f-67f3-4373-bc50-e04ecb8dff1f": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "22"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "ac0478d4-c126-4893-b423-df8e59682e10": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "23"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "40659212-da5b-4f64-bb93-cb4bae7dbea6": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "24"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "4f39644a-5ed0-46f6-8188-92f7f833280a": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "25"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "4f25a49a-7c3a-423f-b675-6d9000840f07": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "26"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "019c4a0e-237c-41c9-8457-8387089fa671": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "27"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "b33a5a63-be99-47a4-8624-24e5948bec6d": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "28"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "eb1481b7-0c56-45e4-bb1a-4258cd6ff7b0": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "29"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "8bcdcb84-59f6-4294-8050-f2ddf7223481": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "30"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "af477fa7-6876-4dc1-80dc-145160a43f6a": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "31"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "2b0c99f6-5a6b-447d-82dc-64f092ac6354": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "32"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "3e7dc240-fcfd-4eaa-b13a-04aa36f14ea3": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "33"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "57dde415-f9e4-4a44-9e11-ad957846d271": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "34"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "1d2913fe-c57e-40c7-a3ba-1d410ac2426b": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "35"
-                    },
-                    "testFloat": {
-                        "Value": 100.0
-                    },
-                    "$type": "TestComponent+Data"
-                }
-            }
-        },
-        "1bf1128b-e372-4983-900f-d34a3a2463e4": {
-            "e28315f1-73a3-4076-b169-821a8240dc18": {
-                "component_ID": "e28315f1-73a3-4076-b169-821a8240dc18",
-                "data": {
-                    "testReference": {
-                        "$ref": "36"
                     },
                     "testFloat": {
                         "Value": 100.0

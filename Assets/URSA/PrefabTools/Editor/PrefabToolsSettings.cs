@@ -19,6 +19,8 @@ public class PrefabToolsSettings : ScriptableObject {
     public string volumes = "VOLUME";
     public string fx = "FX";
     public string npc = "ENTITY/NPC";
+    [Tooltip("Paths containing these words will be marked as Ignore")]
+    public string[] Ignore = new string[] { "Persistent" };
 
     [Header("Settings"), Tooltip("Static assets by default will be marked as")]
     public NavmeshArea.Area defaultNavmeshArea = NavmeshArea.Area.notWalkable;

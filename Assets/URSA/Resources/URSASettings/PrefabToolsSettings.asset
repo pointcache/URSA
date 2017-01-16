@@ -18,6 +18,8 @@ MonoBehaviour:
   volumes: VOLUME
   fx: FX
   npc: ENTITY/NPC
+  Ignore:
+  - Persistent
   defaultNavmeshArea: 1
   lv_static_root: StaticContent
   lv_entities_root: DynamicContent

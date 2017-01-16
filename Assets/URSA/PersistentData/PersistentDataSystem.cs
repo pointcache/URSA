@@ -29,6 +29,8 @@ public class PersistentDataSystem : MonoBehaviour {
     public string folderPath = "PersistenData";
     public string extension = ".data";
 
+    public static event Action OnPersistentDataLoaded = delegate { };
+
     public static void MakePersistent(Entity entity) {
         UnityEngine.Object.DontDestroyOnLoad(entity.gameObject);
         entity.transform.parent = instance.transform;
@@ -92,15 +94,18 @@ public class PersistentDataSystem : MonoBehaviour {
     public void LoadFrom() {
 
         transform.DestroyChildren();
+        this.OneFrameDelay(completeLoad);
+    }
 
+    void completeLoad() {
         string path = getSystemPath() + "/" + folderPath + "/" + FileName + extension;
 
         if (File.Exists(path)) {
             var info = SaveSystem.DeserializeAs<PersistentDataInfo>(path);
             SaveSystem.UnboxSaveObject(info.data, transform);
+            OnPersistentDataLoaded();
         } else
             Debug.LogError("PersistentDataSystem: File at path:" + path + " was not found");
-
     }
 
     [Serializable]

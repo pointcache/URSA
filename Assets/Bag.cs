@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class LinkedResources : ComponentBase {
+public class Bag : ComponentBase {
 
     public Data data;
     [Serializable]
@@ -11,10 +11,9 @@ public class LinkedResources : ComponentBase {
 
     }
 
-    public GameObject gfx3d;
-    public GameObject gfxInventoryIcon;
-    public Sprite spriteInventoryIcon;
-    public GameObject prefabWorldDrop;
+    public int Capacity = 10;
+    public string Name = "Small Bag";
+    
 
     public override void OnEnable()
     {

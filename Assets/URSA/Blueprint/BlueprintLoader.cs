@@ -7,7 +7,7 @@ using UnityEditor;
 public class BlueprintLoader : MonoBehaviour {
 
     public TextAsset blueprint;
-    public bool LoadOnEnable;
+    public bool LoadOnEnableAndSelfDestruct;
     public bool DontParent;
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_BLUEPRINT + URSAConstants.PATH_MENUITEM_BLUEPRINT_NEW)]
@@ -38,8 +38,9 @@ public class BlueprintLoader : MonoBehaviour {
     }
 
     public void OnEnable() {
-        if (LoadOnEnable) {
+        if (LoadOnEnableAndSelfDestruct) {
             Load();
+            Destroy(this);
         }
     }
 

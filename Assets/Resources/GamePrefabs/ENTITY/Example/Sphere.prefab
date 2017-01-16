@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  OrganizerIgnore: 0
 --- !u!135 &135000012664939414
 SphereCollider:
   m_ObjectHideFlags: 1

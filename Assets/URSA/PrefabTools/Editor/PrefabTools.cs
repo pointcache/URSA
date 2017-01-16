@@ -33,6 +33,14 @@ public static class PrefabTools
         Debug.Log(count + "<color=green> resources parsed</color>");
     }
 
+    static bool check_path_for_ignore(string path, string[] ignores) {
+        foreach (var i in ignores) {
+            if (path.Contains("/" + i + "/"))
+                return true;
+        }
+        return false;
+    }
+
     static void addObjectType(UnityEngine.Object[] objs, PrefabType.ObjType type, ref int count)
     {
         foreach (var obj in objs)
@@ -40,11 +48,14 @@ public static class PrefabTools
             count++;
             GameObject go = obj as GameObject;
 
+            string path = AssetDatabase.GetAssetPath(go);
+
+
             var objtype = go.GetComponent<PrefabType>();
             if (!objtype)
                 objtype = go.AddComponent<PrefabType>();
             objtype.type = type;
-
+            objtype.OrganizerIgnore = check_path_for_ignore(path, settings.Ignore);
             if (objtype.type == PrefabType.ObjType.@static)
             {
                 set_static(objtype.transform);

@@ -1,0 +1,94 @@
+{
+    "gameVersion": 0.001,
+    "Name": "PlayerInventory",
+    "saveObject": {
+        "isBlueprint": true,
+        "entities": [
+            {
+                "database_ID": "d85ef8d3-b8f2-480b-b7d3-577d89729e2e",
+                "instance_ID": "",
+                "blueprint_ID": "c66b8924-ffa8-4a1f-a475-50fe562286b6",
+                "parentName": "null",
+                "gameObjectName": "SmallBag",
+                "prefabPath": "Items/Bags/SmallBag",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": null,
+                "parent_component_ID": null,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": "3c75858a-eb86-41e4-a052-169a82801e3d",
+                "instance_ID": "",
+                "blueprint_ID": "add3a9ef-2484-4e11-ad7c-2577d458edbd",
+                "parentName": "null",
+                "gameObjectName": "Crossbow_2h_1",
+                "prefabPath": "Weapons/Crossbow_2h_1",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": null,
+                "parent_component_ID": null,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            }
+        ],
+        "comprefs": [],
+        "components": {
+            "c66b8924-ffa8-4a1f-a475-50fe562286b6": {
+                "a3f95bb6-07d3-4746-a3e1-c70cc021eb4f": {
+                    "component_ID": "a3f95bb6-07d3-4746-a3e1-c70cc021eb4f",
+                    "data": {
+                        "$type": "Bag+Data"
+                    }
+                },
+                "798b1611-eae8-4842-983e-ca7ac58ebb3c": {
+                    "component_ID": "798b1611-eae8-4842-983e-ca7ac58ebb3c",
+                    "data": {
+                        "$type": "LinkedResources+Data"
+                    }
+                }
+            },
+            "add3a9ef-2484-4e11-ad7c-2577d458edbd": {
+                "ad02003e-de84-4bae-abc7-ba43e1c207da": {
+                    "component_ID": "ad02003e-de84-4bae-abc7-ba43e1c207da",
+                    "data": {
+                        "$type": "LinkedResources+Data"
+                    }
+                },
+                "3685f27d-5505-4bb5-a503-5c3de536a254": {
+                    "component_ID": "3685f27d-5505-4bb5-a503-5c3de536a254",
+                    "data": {
+                        "durability": {
+                            "Value": 100.0
+                        },
+                        "$type": "Weapon+Data"
+                    }
+                },
+                "1551f34b-afcb-4aae-a0eb-8332595f5d52": {
+                    "component_ID": "1551f34b-afcb-4aae-a0eb-8332595f5d52",
+                    "data": {
+                        "$type": "Crossbow+Data"
+                    }
+                }
+            }
+        }
+    },
+    "$type": "Blueprint"
+}

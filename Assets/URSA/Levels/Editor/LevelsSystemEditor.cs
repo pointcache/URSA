@@ -66,7 +66,7 @@ public static class LevelsSystemEditor {
         var all = GameObject.FindObjectsOfType<PrefabType>();
 
         foreach (var obj in all) {
-            if (obj.transform.parent != null && (obj.transform.parent.GetComponentInParents<Entity>() || obj.transform.parent.GetComponentInParents<BlueprintLoader>())) {
+            if (obj.transform.parent != null && (obj.transform.parent.GetComponentInParents<Entity>() || obj.transform.parent.GetComponentInParents<BlueprintLoader>()) || obj.OrganizerIgnore) {
                 continue;
             }
 

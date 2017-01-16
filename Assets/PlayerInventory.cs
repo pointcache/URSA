@@ -2,19 +2,17 @@
 using System;
 using System.Collections.Generic;
 
-public class LinkedResources : ComponentBase {
+public class PlayerInventory : ComponentBase {
 
     public Data data;
     [Serializable]
     public class Data : SerializedData
     {
+        public CompRef Weapon = new CompRef();
+        public CompRef Armor = new CompRef();
 
+        public CompRef Bag = new CompRef();
     }
-
-    public GameObject gfx3d;
-    public GameObject gfxInventoryIcon;
-    public Sprite spriteInventoryIcon;
-    public GameObject prefabWorldDrop;
 
     public override void OnEnable()
     {

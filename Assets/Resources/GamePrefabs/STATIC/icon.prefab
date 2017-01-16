@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  OrganizerIgnore: 0
 --- !u!114 &114000010522660552
 MonoBehaviour:
   m_ObjectHideFlags: 1

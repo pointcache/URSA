@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class PrefabType : MonoBehaviour {
 
     public ObjType type;
-
+    public bool OrganizerIgnore;
     public enum ObjType {
         entity,
         @static,
