@@ -5,8 +5,14 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 public class SceneData : ScriptableObject
 {
-    public string levelname;
+    [NotEditableString]
+    public string ID;
+    [NotEditableString]
     public string scene;
+    [NotEditableString]
+    public string scenePath;
+
+    public string levelname;
     public string NiceName;
 
     public List<string> entryPoints = new List<string>();

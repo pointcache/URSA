@@ -6,9 +6,12 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEditor.SceneManagement;
+using System.Linq;
 
 public static class LevelsSystemEditor {
 
+    public static event Action<SceneAsset, SceneData> OnSceneDataCreated = delegate { };
+    public static event Action<SceneData> OnSceneDataCollected = delegate { };
 
     private const string SaveSystem_MENU = "Assets/SaveSystem/";
     private const string LEVELDATA_NEW = "New Data";
@@ -116,16 +119,19 @@ public static class LevelsSystemEditor {
         Debug.Log("Created level data for scene :" + scene.name);
     }
 
-
     static SceneData makeData(SceneAsset scene) {
 
-        SceneData level = (SceneData)CreateAsset<SceneData>(scene.name + "_data");
-        level.scene = scene.name;
-        level.levelname = scene.name;
-        level.NiceName = scene.name;
-        EditorUtility.SetDirty(level);
+        SceneData data = (SceneData)CreateAsset<SceneData>(scene.name + "_data");
+
+        
+
+        data.scene = scene.name;
+        data.levelname = scene.name;
+        data.NiceName = scene.name;
+        OnSceneDataCreated(scene, data);
+        EditorUtility.SetDirty(data);
         AssetDatabase.SaveAssets();
-        return level;
+        return data;
     }
 
     /// <summary>
@@ -155,22 +161,40 @@ public static class LevelsSystemEditor {
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_LEVELS + "/CollectSceneData")]
     public static void CollectLevelsData() {
-        SceneDataCollector collector;
-        var assets = AssetDatabase.FindAssets("t:SceneDataCollector");
-        if (assets.Length == 0) {
-            Debug.LogError("ScenesData file was not found, creating");
-            collector = (SceneDataCollector)CreateAsset<SceneDataCollector>("SceneDataCollector");
-        } else {
-            collector = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]), typeof(SceneDataCollector)) as SceneDataCollector;
-        }
-        var scenedatas = AssetDatabase.FindAssets("t:SceneData");
-
+        SceneDataCollector collector = Resources.Load(URSAConstants.PATH_ADDITIONAL_DATA + "/SceneDataCollector") as SceneDataCollector;
         collector.scenes.Clear();
 
-        foreach (var scenedata in scenedatas) {
-            SceneData data = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(scenedata), typeof(SceneData)) as SceneData;
-            collector.scenes.Add(data);
+        HashSet<string> set = new HashSet<string>();
+
+        var scenedatas = AssetDatabase.FindAssets("t:SceneData");
+        foreach (var s in scenedatas) {
+            SceneData scenedata = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(SceneData)) as SceneData;
+            if(scenedata.ID == "" || scenedata.ID == null) {
+                scenedata.ID = Database.get_unique_id(set);
+            }
+            set.Add(scenedata.ID);
+            collector.scenes.Add(scenedata);
+            string path = AssetDatabase.GetAssetPath(scenedata);
+            path = Directory.GetParent(path).ToString();
+            scenedata.scenePath = path.Replace("Assets/", "") + "/" + scenedata.scene ;
+            string absolutepath = Application.dataPath + "/" + scenedata.scenePath + ".unity";
+            var scene = File.Exists(absolutepath);
+ 
+            if(!scene) {
+                URSA.Log.Error("Target scene was not found.", scenedata);
+            }
+
+            Scene editorScene = EditorSceneManager.GetActiveScene();
+            if(scenedata.scenePath == editorScene.path.Replace("Assets/", "").RemoveExtension()) {
+                OnSceneDataCollected(scenedata);
+            }
+
+            EditorUtility.SetDirty(scenedata);
         }
+
+        var scenes = EditorBuildSettings.scenes;
+        //SceneData current = collector.scenes.FirstOrDefault(x => x.ID )
+
         EditorUtility.SetDirty(collector);
         AssetDatabase.SaveAssets();
         Debug.Log("success");

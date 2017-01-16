@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baad01fe817022345a9531a71412788c, type: 3}
   m_Name: save_data
   m_EditorClassIdentifier: 
-  levelname: save
+  ID: 0b7e4e22-3d56-4133-9e6a-e668c4505812
   scene: save
+  scenePath: Example/save
+  levelname: save
   NiceName: save
   entryPoints: []

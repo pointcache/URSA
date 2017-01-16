@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baad01fe817022345a9531a71412788c, type: 3}
   m_Name: asdasd_data
   m_EditorClassIdentifier: 
-  levelname: asdasd
+  ID: 51e5144a-60bb-409e-b732-99fe3e88697b
   scene: asdasd
+  scenePath: Example/asdasd
+  levelname: asdasd
   NiceName: asdasd
   entryPoints: []

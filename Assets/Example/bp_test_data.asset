@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baad01fe817022345a9531a71412788c, type: 3}
   m_Name: bp_test_data
   m_EditorClassIdentifier: 
-  levelname: bp_test
+  ID: a726c061-3dde-4a04-a266-0a067d45ca08
   scene: bp_test
+  scenePath: Example/bp_test
+  levelname: bp_test
   NiceName: bp_test
   entryPoints: []

@@ -47,6 +47,14 @@ public class NotEditableStringAttribute : PropertyAttribute { }
 public static class Helpers
 {
 
+    public static string dataPathWithoutAssets {
+        get {
+            string datapath = Application.dataPath;
+            int index = datapath.IndexOf("/Assets");
+            return datapath.Remove(index, 7);
+        }
+    }
+
     public static string ClearPathToResources(this string path) {
         int index = path.IndexOf("/Resources/");
         return path.Remove(0, index + 11);
