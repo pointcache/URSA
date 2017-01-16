@@ -8,6 +8,7 @@ public class BlueprintLoader : MonoBehaviour {
 
     public TextAsset blueprint;
     public bool LoadOnEnable;
+    public bool DontParent;
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_BLUEPRINT + URSAConstants.PATH_MENUITEM_BLUEPRINT_NEW)]
     public static void New() {
@@ -32,7 +33,7 @@ public class BlueprintLoader : MonoBehaviour {
             return;
         else {
             transform.DestroyChildren();
-            SaveSystem.LoadBlueprint(blueprint.text, transform);
+            SaveSystem.LoadBlueprint(blueprint.text, DontParent ? null : transform);
         }
     }
 

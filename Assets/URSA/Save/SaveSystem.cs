@@ -33,8 +33,6 @@ public class SaveSystem : MonoBehaviour {
     public string folderPath = "Saves";
     public string extension = ".sav";
 
-    public static List<CompRef> injectionList;
-
 
 #if UNITY_EDITOR
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_SAVESTATE + URSAConstants.PATH_MENUITEM_SAVESTATE_SAVE)]
@@ -117,7 +115,6 @@ public class SaveSystem : MonoBehaviour {
     }
 
     public static T DeserializeAs<T>(string path) {
-        injectionList = new List<CompRef>();
         return SerializationHelper.Load<T>(path);
     }
 
@@ -128,7 +125,6 @@ public class SaveSystem : MonoBehaviour {
     }
 
     public static void LoadBlueprint(string json, Transform root) {
-        injectionList = new List<CompRef>();
         Blueprint bp = SerializationHelper.LoadFromString<Blueprint>(json);
         UnboxSaveObject(bp.saveObject, root);
     }
@@ -178,11 +174,10 @@ public class SaveSystem : MonoBehaviour {
                 tr.parent = root;
                 tr.localPosition = eobj.position;
                 tr.localRotation = Quaternion.Euler(eobj.rotation);
-                tr.localScale = eobj.scale;
+
             } else {
                 tr.position = eobj.position;
                 tr.rotation = Quaternion.Euler(eobj.rotation);
-                tr.localScale = eobj.scale;
                 tr.parent = eobj.parentName == "null" ? root : parentGo == null ? root : parentGo.transform;
             }
 
@@ -366,15 +361,14 @@ public class SaveSystem : MonoBehaviour {
         Transform tr = entity.transform;
         eobj.database_ID = entity.database_ID;
         eobj.instance_ID = entity.instance_ID;
+        eobj.prefabPath = Database.GetPrefabPath(entity.database_ID);
 
         if (isBlueprint) {
             eobj.position = root.InverseTransformPoint(tr.position);
             eobj.rotation = tr.localRotation.eulerAngles;
-            eobj.scale = tr.lossyScale;
         } else {
             eobj.position = tr.position;
             eobj.rotation = tr.rotation.eulerAngles;
-            eobj.scale = tr.lossyScale;
         }
 
         ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
@@ -413,11 +407,18 @@ public class SaveSystem : MonoBehaviour {
             cobj.data = GetDataFromComponent(comp);
 
             Dictionary<string, ComponentObject> entityComponents = null;
-            file.components.TryGetValue(entity.instance_ID, out entityComponents);
+            if (isBlueprint)
+                file.components.TryGetValue(entity.blueprint_ID, out entityComponents);
+            else
+                file.components.TryGetValue(entity.instance_ID, out entityComponents);
 
             if (entityComponents == null) {
                 entityComponents = new Dictionary<string, ComponentObject>();
-                file.components.Add(entity.instance_ID, entityComponents);
+                if (isBlueprint)
+                    file.components.Add(entity.blueprint_ID, entityComponents);
+                else
+                    file.components.Add(entity.instance_ID, entityComponents);
+
             }
 
             if (entityComponents.ContainsKey(comp.ID)) {

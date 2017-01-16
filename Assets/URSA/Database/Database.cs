@@ -179,4 +179,12 @@ public class Database : MonoBehaviour {
         else
             return id;
     }
+
+    internal static string GetPrefabPath(string database_ID) {
+        string result = "";
+        manifest.entity_id_adress.TryGetValue(database_ID, out result);
+        if (result == "")
+            Debug.LogError("Entity by id: " + database_ID + " not found in manifest.");
+        return result;
+    }
 }

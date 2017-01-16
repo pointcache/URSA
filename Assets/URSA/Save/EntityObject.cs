@@ -11,6 +11,7 @@
         public string blueprint_ID;
         public string parentName;
         public string gameObjectName;
+        public string prefabPath;
         public bool parentIsComponent;
         public bool parentIsEntity;
         public string parent_entity_ID;
@@ -18,6 +19,5 @@
 
         public Vector3 position;
         public Vector3 rotation;
-        public Vector3 scale;
     }
 }

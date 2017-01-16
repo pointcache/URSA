@@ -5,15 +5,6 @@ using FullSerializer;
 
 public class CompRefSerializationProcessor : fsObjectProcessor {
 
-
-    //public override bool CanProcess(Type type) {
-    //    return type == typeof(CompRef); // process only ints
-    //}
-
-    //public override void OnAfterDeserialize(Type storageType, object instance) {
-    //    SaveSystem.injectionList.Add(instance as CompRef);
-    //}
-
     public override void OnBeforeSerialize(Type storageType, object instance) {
 
         CompRef cref = instance as CompRef;
