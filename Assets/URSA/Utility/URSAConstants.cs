@@ -44,4 +44,9 @@ public static class URSAConstants  {
     public const string PATH_MENUITEM_BLUEPRINT = "/Blueprints";
     public const string PATH_MENUITEM_BLUEPRINT_NEW = "/New";
 
+
+
+    public const float editor_gui_label_height = 25f;
+    public const float editor_gui_label_width = 256f;
+
 }

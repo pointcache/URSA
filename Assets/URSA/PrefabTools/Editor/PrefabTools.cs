@@ -30,7 +30,7 @@ public static class PrefabTools
         addObjectType(fx, PrefabType.ObjType.fx, ref count);
         addObjectType(npc, PrefabType.ObjType.npc, ref count);
 
-        Debug.Log(count + "<color=green> resources parsed</color>");
+        Debug.Log(count + "<color=green> prefabs parsed</color>");
     }
 
     static bool check_path_for_ignore(string path, string[] ignores) {
