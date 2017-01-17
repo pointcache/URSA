@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using URSA;
 
-public class Ball : ComponentBase {
+[Config("Pong config", "")]
+public class GameConfig : ConfigBase {
 
-    public Data data;
-    [Serializable]
-    public class Data : SerializedData
-    {
-
-    }
 
     public override void OnEnable()
     {
