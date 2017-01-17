@@ -1,0 +1,14 @@
+﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
+
+public class #SCRIPTNAME# : SystemBase {
+
+	void OrderedOnEnable(){
+	
+	}
+
+	void OrderedUpdate(){
+	
+	}
+}

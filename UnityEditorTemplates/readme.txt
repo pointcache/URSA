@@ -1,0 +1,1 @@
+Put those in Unity/Editor\Data\Resources\ScriptTemplates
