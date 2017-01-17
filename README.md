@@ -34,3 +34,7 @@ Every feature is built around the usage of the same classes, minimizing complexi
 URSA dependencies:
 * FullSerializer
 * Smart Console (beast console)
+
+## Some things people did with URSA
+
+![https://github.com/pointcache/URSA/wiki/Home/](http://i.imgur.com/ghfjxNb.gifv)
