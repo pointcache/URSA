@@ -1,4 +1,5 @@
-# URSA
+# URSA  
+(altname Thermal Underpants)
 # Please proceed to Wiki to learn more.
 URSA is a ECS framework integrated into Unity.
 It doesn't use a separate backend, and works on top of unity components in a very simple manner.
