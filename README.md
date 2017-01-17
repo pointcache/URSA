@@ -35,6 +35,5 @@ URSA dependencies:
 * FullSerializer
 * Smart Console (beast console)
 
-## Some things people did with URSA
 
-![https://github.com/pointcache/URSA/wiki/Home/](http://i.imgur.com/ghfjxNb.gifv)
+
