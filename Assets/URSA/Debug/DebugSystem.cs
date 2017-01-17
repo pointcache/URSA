@@ -56,4 +56,8 @@ public class DebugSystem : MonoBehaviour {
         Destroy(debugUi);
         Destroy(overlay);
     }
+
+    private void OnApplicationQuit() {
+        Log.DumpLog();
+    }
 }

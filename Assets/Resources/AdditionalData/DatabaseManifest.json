@@ -1,40 +1,10 @@
 {
     "GameVersion": 0.001,
     "entity_id_adress": {
-        "c2664175-2f47-4047-959f-ac43ae25677a": "Capsule",
-        "3600b0c7-12de-4987-8acb-d245d4be7dd7": "Cube",
-        "32c7fb6b-9942-49be-af6e-ae5d2bb901d2": "Buildings/testObject 1",
-        "4ca77bf1-eea6-432f-860f-432196021c9a": "Example/Cube",
-        "3043326d-0346-4d3b-8dd1-716c5c0378b4": "Example/Sphere",
-        "139008c9-e798-4095-abe6-2c453828ae20": "Items/Sphere",
-        "106f18cd-9c40-40ec-8a6c-8477555a99b4": "Items/testObject 1",
-        "e2ae5d48-d59e-4382-ad7a-debe2696d1ab": "Items/testObject",
-        "54a23190-bff4-489b-a13a-3fbd9d8bdedb": "Items/testPrefab",
-        "d85ef8d3-b8f2-480b-b7d3-577d89729e2e": "Items/Bags/SmallBag",
-        "a1aa5101-935b-459b-81c7-3b99a27e58e2": "Items/Weapons/Axe",
-        "ddd73c53-ac88-405e-aae8-d35eda391700": "Items/Weapons/spheres_thing",
-        "d3101f65-85ed-4733-8651-74e52f73c779": "Items/Weapons/Sword",
-        "29c04440-4a9f-4992-baaa-2c5f97df4bae": "Persistent/PlayerInventory",
-        "e7d8feca-8452-4ab7-bc85-d0919340765e": "Persistent/PlayerStatus",
-        "3c75858a-eb86-41e4-a052-169a82801e3d": "Weapons/Crossbow_2h_1"
+        "8856ea99-3c8c-47fb-8031-7c371aa543a1": "Ball"
     },
     "entity_adress_id": {
-        "Capsule": "c2664175-2f47-4047-959f-ac43ae25677a",
-        "Cube": "3600b0c7-12de-4987-8acb-d245d4be7dd7",
-        "Buildings/testObject 1": "32c7fb6b-9942-49be-af6e-ae5d2bb901d2",
-        "Example/Cube": "4ca77bf1-eea6-432f-860f-432196021c9a",
-        "Example/Sphere": "3043326d-0346-4d3b-8dd1-716c5c0378b4",
-        "Items/Sphere": "139008c9-e798-4095-abe6-2c453828ae20",
-        "Items/testObject 1": "106f18cd-9c40-40ec-8a6c-8477555a99b4",
-        "Items/testObject": "e2ae5d48-d59e-4382-ad7a-debe2696d1ab",
-        "Items/testPrefab": "54a23190-bff4-489b-a13a-3fbd9d8bdedb",
-        "Items/Bags/SmallBag": "d85ef8d3-b8f2-480b-b7d3-577d89729e2e",
-        "Items/Weapons/Axe": "a1aa5101-935b-459b-81c7-3b99a27e58e2",
-        "Items/Weapons/spheres_thing": "ddd73c53-ac88-405e-aae8-d35eda391700",
-        "Items/Weapons/Sword": "d3101f65-85ed-4733-8651-74e52f73c779",
-        "Persistent/PlayerInventory": "29c04440-4a9f-4992-baaa-2c5f97df4bae",
-        "Persistent/PlayerStatus": "e7d8feca-8452-4ab7-bc85-d0919340765e",
-        "Weapons/Crossbow_2h_1": "3c75858a-eb86-41e4-a052-169a82801e3d"
+        "Ball": "8856ea99-3c8c-47fb-8031-7c371aa543a1"
     },
     "$type": "DatabaseManifest"
 }
