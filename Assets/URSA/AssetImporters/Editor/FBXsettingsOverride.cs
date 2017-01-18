@@ -9,9 +9,10 @@ public class FBXScaleOverride : AssetPostprocessor {
 
     void OnPreprocessModel() {
         ModelImporter importer = assetImporter as ModelImporter;
-        if (settings == null)
+        if (!settings)
             settings = Helpers.FindScriptableObject<AssetImportersSettings>();
-
+         if (!settings)
+            return;
         if (importer.assetPath.Contains(settings.modelRulesApplyToFolder)) {
             string name = importer.assetPath.ToLower();
 
@@ -30,6 +31,10 @@ public class FBXScaleOverride : AssetPostprocessor {
     }
 
     void OnPostprocessModel(GameObject g) {
+        if (!settings)
+            settings = Helpers.FindScriptableObject<AssetImportersSettings>();
+        if (!settings)
+            return;
         AssetImporter importer = assetImporter as AssetImporter;
         if (!importer.assetPath.Contains(settings.modelRulesApplyToFolder))
             return;

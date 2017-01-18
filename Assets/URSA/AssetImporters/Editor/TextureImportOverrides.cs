@@ -7,9 +7,10 @@ class TextureImportOverrides : AssetPostprocessor
 
     void OnPreprocessTexture()
     {
-        if (settings == null)
+        if (!settings)
             settings = Helpers.FindScriptableObject<AssetImportersSettings>();
-
+        if (!settings)
+            return;
         TextureImporter textureImporter = (TextureImporter)assetImporter;
 
         if (assetPath.Contains(settings.textureRulesApplyToFolder))

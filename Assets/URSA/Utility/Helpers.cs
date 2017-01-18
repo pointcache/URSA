@@ -71,7 +71,7 @@ public static class Helpers
         T so = null;
         var assets = AssetDatabase.FindAssets("t:" + typeof(T).Name);
         if (assets.Length == 0) {
-            Debug.LogError(typeof(T).Name + " file was not found, creating");
+            Debug.LogError(typeof(T).Name + " file was not found. (If you see this message on project import, and the scriptable object exists, it means it was not yet imported, rerun parsers and updaters.)");
         } else {
             so = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]), typeof(T)) as T;
         }
