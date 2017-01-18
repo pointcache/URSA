@@ -26,8 +26,8 @@ public class URSASettings : ScriptableObject {
     [Header("Systems")]
     public GameObject CustomGlobalSystemsPrefab;
     public GameObject GlobalSystemsTemplate;
-    public GameObject CustomSceneSystemsPrefab;
-    public GameObject SceneSystemsTemplate;
+    public GameObject CustomLocalSystemsPrefab;
+    public GameObject LocalSystemsTemplate;
 
     [Header("Database")]
     public string DatabaseRootFolder = "GamePrefabs/ENTITY";

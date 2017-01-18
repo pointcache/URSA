@@ -302,6 +302,19 @@ public static class Helpers
     }
 
 #if UNITY_EDITOR
+    public static GameObject SpawnEditor(GameObject pref)
+    {
+        if (pref)
+        {
+            var go = PrefabUtility.InstantiatePrefab(pref) as GameObject;
+            Selection.activeGameObject = go;
+            SceneView.lastActiveSceneView.FrameSelected();
+            return go;
+        }
+        else
+            return null;
+    }
+
     public static GameObject SpawnEditor(string path)
     {
         var pref = Resources.Load(path) as GameObject;

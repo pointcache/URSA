@@ -65,18 +65,23 @@ public static class URSAEditorTools {
         var gl = GameObject.Find(URSAConstants.SYSTEMS_GLOBAL_NAME) as GameObject;
         if (!gl) {
             if (settings.CustomGlobalSystemsPrefab) {
-                gl = GameObject.Instantiate(settings.CustomGlobalSystemsPrefab);
-            } else
+                gl = Helpers.SpawnEditor(settings.CustomGlobalSystemsPrefab);
+            } else if (settings.GlobalSystemsTemplate)
+                gl = Helpers.SpawnEditor(settings.GlobalSystemsTemplate);
+            else
                 gl = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_GLOBAL_NAME);
             Debug.Log(URSAConstants.SYSTEMS_GLOBAL_NAME + " spawned");
         } else
             Debug.LogError(URSAConstants.SYSTEMS_GLOBAL_NAME + " already exists ");
         var sc = GameObject.Find(URSAConstants.SYSTEMS_LOCAL_NAME) as GameObject;
         if (!sc) {
-            if (settings.CustomSceneSystemsPrefab) {
-                sc = GameObject.Instantiate(settings.CustomSceneSystemsPrefab);
-            } else
+            if (settings.CustomLocalSystemsPrefab) {
+                sc = Helpers.SpawnEditor(settings.CustomLocalSystemsPrefab);
+            } else if(settings.LocalSystemsTemplate)
+                sc = Helpers.SpawnEditor(settings.LocalSystemsTemplate);
+            else
                 sc = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_LOCAL_NAME);
+
             Debug.Log(URSAConstants.SYSTEMS_LOCAL_NAME + " spawned");
         } else
             Debug.LogError(URSAConstants.SYSTEMS_LOCAL_NAME + " already exists ");

@@ -14,13 +14,14 @@ MonoBehaviour:
   RebuildDatabase: 1
   ParsePrefabs: 1
   OrganizeLevel: 1
-  CollectLevelsData: 1
+  CollectSceneData: 1
   SaveAndReloadScene: 1
   CustomGlobalSystemsPrefab: {fileID: 0}
   GlobalSystemsTemplate: {fileID: 1000011637727820, guid: 0f3c58a8f9077974dab2515979472e6c,
     type: 2}
-  CustomSceneSystemsPrefab: {fileID: 0}
-  SceneSystemsTemplate: {fileID: 1000010491598222, guid: 27182d360031cb6488178e893bdbe200,
+  CustomLocalSystemsPrefab: {fileID: 0}
+  LocalSystemsTemplate: {fileID: 1000010491598222, guid: 27182d360031cb6488178e893bdbe200,
     type: 2}
   DatabaseRootFolder: GamePrefabs/ENTITY
   DatabaseManifest: DatabaseManifest
+  CustomDataFolder: CustomData
