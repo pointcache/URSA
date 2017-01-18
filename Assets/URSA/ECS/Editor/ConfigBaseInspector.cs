@@ -9,7 +9,7 @@ public class ConfigBaseInspector : Editor {
 
     public override void OnInspectorGUI() {
 
-        URSAInspectorHelper.DrawLabel("URSA/Img/ConfigBaseLabel", "https://github.com/pointcache/URSA/wiki/Component");
+        URSAInspectorHelper.DrawLabel("URSA/Img/ConfigBaseLabel", "https://github.com/pointcache/URSA/wiki/Configs");
         base.OnInspectorGUI();
     }
 }
