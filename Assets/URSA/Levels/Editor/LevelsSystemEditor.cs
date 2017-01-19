@@ -41,8 +41,10 @@ public static class LevelsSystemEditor {
                 Debug.LogError(settings.lv_entity + " not found ");
             }
 
-        } else
+        } else {
             Debug.LogError(settings.lv_entities_root + " not found ");
+            return;
+        }
 
         var stat = GameObject.Find(settings.lv_static_root) as GameObject;
         if (stat) {
@@ -62,8 +64,10 @@ public static class LevelsSystemEditor {
             if (!@static) {
                 Debug.LogError(settings.lv_static + " not found ");
             }
-        } else
+        } else {
             Debug.LogError(settings.lv_static_root + " not found ");
+            return;
+        }
 
 
         var all = GameObject.FindObjectsOfType<PrefabType>();
