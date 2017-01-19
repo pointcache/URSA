@@ -93,8 +93,26 @@ public class PersistentDataSystem : MonoBehaviour {
 
     public void LoadFrom() {
 
+        ClearAnd(completeLoad);
+    }
+
+    public void ClearAnd(Action and) {
         transform.DestroyChildren();
-        this.OneFrameDelay(completeLoad);
+        this.OneFrameDelay(and);
+    }
+
+    public void ClearAndLoadBlueprint(TextAsset blueprint, Action onLoaded) {
+        var bpLoader = GetComponent<BlueprintLoader>();
+        if (!bpLoader) {
+            Debug.LogError("Blueprint loader was not found, add it to the PersistentDataSystem");
+            return;
+        }
+        ClearAnd(() =>
+        {
+            bpLoader.blueprint = blueprint;
+            bpLoader.Load();
+            onLoaded();
+        });
     }
 
     void completeLoad() {
