@@ -4,15 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using URSA;
-public static class PrefabTools
-{
+public static class PrefabTools {
 
     static PrefabToolsSettings settings;
 
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS_PARSE, priority = 2)]
-    public static void ParseResources()
-    {
+    public static void ParseResources() {
         settings = Helpers.FindScriptableObject<PrefabToolsSettings>();
 
         var @static = Resources.LoadAll(settings.rootPath + settings.@static);
@@ -41,10 +39,8 @@ public static class PrefabTools
         return false;
     }
 
-    static void addObjectType(UnityEngine.Object[] objs, PrefabType.ObjType type, ref int count)
-    {
-        foreach (var obj in objs)
-        {
+    static void addObjectType(UnityEngine.Object[] objs, PrefabType.ObjType type, ref int count) {
+        foreach (var obj in objs) {
             count++;
             GameObject go = obj as GameObject;
 
@@ -56,12 +52,9 @@ public static class PrefabTools
                 objtype = go.AddComponent<PrefabType>();
             objtype.type = type;
             objtype.OrganizerIgnore = check_path_for_ignore(path, settings.Ignore);
-            if (objtype.type == PrefabType.ObjType.@static)
-            {
+            if (objtype.type == PrefabType.ObjType.@static) {
                 set_static(objtype.transform);
-            }
-            else
-            {
+            } else {
                 unset_static_recursive(objtype.transform);
             }
 
@@ -69,37 +62,56 @@ public static class PrefabTools
         }
     }
 
-    static void process_for_modifiers(Transform tr, PrefabType.ObjType type)
-    {
-        if (tr.GetComponent<NavmeshArea>())
-        {
-            var area = tr.GetComponent<NavmeshArea>();
-            GameObjectUtility.SetNavMeshArea(tr.gameObject, (int)area.area);
+    static void process_for_modifiers(Transform tr, PrefabType.ObjType type) {
+        bool applyToChildren = false;
+        int area = -1;
+        if (tr.GetComponent<NavmeshArea>()) {
+            var areaComp = tr.GetComponent<NavmeshArea>();
+            applyToChildren = areaComp.ApplyToChildren;
+            area = (int)areaComp.area;
+            GameObjectUtility.SetNavMeshArea(tr.gameObject, area);
+        } else {
+            {
+                var parentarea = tr.GetComponentInParents<NavmeshArea>();
+                if (parentarea) {
+                    if (type == PrefabType.ObjType.@static && !parentarea.ApplyToChildren)
+                    GameObjectUtility.SetNavMeshArea(tr.gameObject, (int)settings.defaultNavmeshArea);
+                }
+                else {
+                    if (type == PrefabType.ObjType.@static)
+                    GameObjectUtility.SetNavMeshArea(tr.gameObject, (int)settings.defaultNavmeshArea);
+                }
+                
+            }
         }
-        else
-        {
-            if (type == PrefabType.ObjType.@static)
-                GameObjectUtility.SetNavMeshArea(tr.gameObject, (int)settings.defaultNavmeshArea);
-        }
-        foreach (Transform t in tr)
-        {
-            process_for_modifiers(t, type);
+        if (applyToChildren) {
+            foreach (Transform t in tr) {
+                apply_area_to_children(t, area);
+            }
+
+            foreach (Transform t in tr) {
+                process_for_modifiers(t, type);
+            }
         }
     }
 
-    static void set_navigation_static_recursive(Transform tr)
-    {
-        foreach (Transform t in tr)
-        {
+    static void apply_area_to_children(Transform tr, int area) {
+        GameObjectUtility.SetNavMeshArea(tr.gameObject, area);
+        foreach (Transform t in tr) {
+            apply_area_to_children(t, area);
+        }
+    }
+
+    static void set_navigation_static_recursive(Transform tr) {
+        foreach (Transform t in tr) {
             set_navigation_static_recursive(t);
             GameObjectUtility.SetStaticEditorFlags(t.gameObject, StaticEditorFlags.NavigationStatic);
         }
     }
 
-    static void set_static(Transform tr)
-    {
+    static void set_static(Transform tr) {
         set_static_recursive(tr);
-        
+
         if (tr.gameObject.GetComponent<NavmeshIgnore>()) //|| tr.gameObject.GetComponent<FoggyLight>())
         {
             StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(tr.gameObject);
@@ -109,60 +121,48 @@ public static class PrefabTools
         }
     }
 
-    static void set_static_recursive(Transform tr)
-    {
+    static void set_static_recursive(Transform tr) {
         tr.gameObject.isStatic = true;
         foreach (Transform t in tr)
             set_static_recursive(t);
     }
 
-    static void set_editor_flags_recursive(Transform tr, StaticEditorFlags flags)
-    {
+    static void set_editor_flags_recursive(Transform tr, StaticEditorFlags flags) {
         GameObjectUtility.SetStaticEditorFlags(tr.gameObject, flags);
         foreach (Transform t in tr)
             set_editor_flags_recursive(t, flags);
     }
 
-    static void unset_static_recursive(Transform tr)
-    {
+    static void unset_static_recursive(Transform tr) {
         tr.gameObject.isStatic = false;
-        foreach (Transform t in tr)
-        {
+        foreach (Transform t in tr) {
             unset_static_recursive(t);
         }
     }
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/MoveColliderToParent")]
-    public static void MoveColliderToParent()
-    {
+    public static void MoveColliderToParent() {
         var sel = Selection.activeGameObject;
-        if (sel)
-        {
-            if (sel.transform.parent != null)
-            {
+        if (sel) {
+            if (sel.transform.parent != null) {
                 GameObject parent = sel.transform.parent.gameObject;
                 Collider col = sel.GetComponent<Collider>();
-                if (col is BoxCollider)
-                {
+                if (col is BoxCollider) {
                     var box = col as BoxCollider;
                     var pcol = parent.AddComponent<BoxCollider>();
 
                     pcol.size = box.size;
                     pcol.center = box.center;
 
-                }
-                else
-                    if (col is SphereCollider)
-                {
+                } else
+                    if (col is SphereCollider) {
                     var sphere = col as SphereCollider;
                     var pcol = parent.AddComponent<SphereCollider>();
 
                     pcol.center = sphere.center;
                     pcol.radius = sphere.radius;
-                }
-                else
-                    if (col is CapsuleCollider)
-                {
+                } else
+                    if (col is CapsuleCollider) {
                     var capsule = col as CapsuleCollider;
                     var pcol = parent.AddComponent<CapsuleCollider>();
 
@@ -170,10 +170,8 @@ public static class PrefabTools
                     pcol.radius = capsule.radius;
                     pcol.height = capsule.height;
                     pcol.direction = capsule.direction;
-                }
-                else
-                    if (col is MeshCollider)
-                {
+                } else
+                    if (col is MeshCollider) {
                     var meshcol = col as MeshCollider;
                     var pcol = parent.AddComponent<MeshCollider>();
 
@@ -192,8 +190,7 @@ public static class PrefabTools
     }
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/FindAndApplyCollider")]
-    public static void FindApplyCollider()
-    {
+    public static void FindApplyCollider() {
         GameObject selected = Selection.activeGameObject;
         if (!selected)
             return;
@@ -211,8 +208,7 @@ public static class PrefabTools
 
         int count = 0;
 
-        foreach (var childtr in children)
-        {
+        foreach (var childtr in children) {
             var colgo = GameObject.Instantiate(childtr.gameObject, colRoot.transform) as GameObject;
             count++;
 
@@ -226,10 +222,9 @@ public static class PrefabTools
         }
     }
 
-    
+
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/Danger/DumpPrefabsFromFolder")]
-    public static void DumpPrefabsFromFolder()
-    {
+    public static void DumpPrefabsFromFolder() {
         string path = Helpers.GetSelectedPathOrFallback();
         Debug.Log(path);
         if (path == string.Empty)
@@ -241,19 +236,16 @@ public static class PrefabTools
 
         var all = Resources.LoadAll(path);
 
-        foreach (var prefab in all)
-        {
+        foreach (var prefab in all) {
             PrefabUtility.InstantiatePrefab(prefab);
         }
     }
 
-    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT +  URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/Danger/ApplyChangesToSelectedPrefabs")]
-    public static void ApplyChangesToSelectedPrefabs()
-    {
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PREFAB_TOOLS + "/Danger/ApplyChangesToSelectedPrefabs")]
+    public static void ApplyChangesToSelectedPrefabs() {
         var all = Selection.gameObjects;
 
-        foreach (var pref in all)
-        {
+        foreach (var pref in all) {
             if (pref.transform.parent != null)
                 continue;
             GameObject go = pref as GameObject;
@@ -264,15 +256,11 @@ public static class PrefabTools
         }
     }
 
-    public static void SlightlyOffsetChildren()
-    {
+    public static void SlightlyOffsetChildren() {
         var sel = Selection.gameObjects;
-        foreach (var go in sel)
-        {
-            if (go)
-            {
-                foreach (Transform c in go.transform)
-                {
+        foreach (var go in sel) {
+            if (go) {
+                foreach (Transform c in go.transform) {
                     c.position = c.position.AddFloats(0f, 0.05f, 0f);
                 }
             }
