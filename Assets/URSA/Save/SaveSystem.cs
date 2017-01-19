@@ -136,6 +136,9 @@ public class SaveSystem : MonoBehaviour {
             bp_entity = new Dictionary<string, Entity>();
             bp_parent_component = new Dictionary<string, Dictionary<string, ComponentBase>>();
         }
+
+        bool blueprintEditorMode = save.isBlueprint && !Application.isPlaying;
+
         Dictionary<string, ComponentObject> cobjects = null;
         Dictionary<string, Dictionary<string, ComponentBase>> allComps = new Dictionary<string, Dictionary<string, ComponentBase>>();
         Dictionary<string, Entity> allEntities = new Dictionary<string, Entity>();
@@ -152,7 +155,7 @@ public class SaveSystem : MonoBehaviour {
             prefab.SetActive(false);
             GameObject gameobj = null;
 #if UNITY_EDITOR
-            if (save.isBlueprint && !Application.isPlaying) {
+            if (blueprintEditorMode) {
                 gameobj = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
                 PrefabUtility.DisconnectPrefabInstance(gameobj);
             } else
@@ -233,25 +236,40 @@ public class SaveSystem : MonoBehaviour {
             prefab.SetActive(prefabState);
             entity.gameObject.SetActive(true);
 #if UNITY_EDITOR
-            PrefabUtility.ReconnectToLastPrefab(gameobj);
+            if (blueprintEditorMode)
+                PrefabUtility.ReconnectToLastPrefab(gameobj);
 #endif
         }
 
         if (save.isBlueprint) {
-            foreach (var pair in toParent) {
-                Entity e = pair.Value;
-                var go = PrefabUtility.FindPrefabRoot(e.gameObject);
-                PrefabUtility.DisconnectPrefabInstance(go);
+            if (blueprintEditorMode) {
+                foreach (var pair in toParent) {
+                    Entity e = pair.Value;
+                    var go = PrefabUtility.FindPrefabRoot(e.gameObject);
+                    PrefabUtility.DisconnectPrefabInstance(go);
 
-                EntityObject eobj = pair.Key;
-                Transform parent = null;
-                if (eobj.parentIsComponent) {
-                    parent = bp_parent_component[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
-                } else if (eobj.parentIsEntity) {
-                    parent = bp_entity[eobj.parent_entity_ID].transform;
+                    EntityObject eobj = pair.Key;
+                    Transform parent = null;
+                    if (eobj.parentIsComponent) {
+                        parent = bp_parent_component[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
+                    } else if (eobj.parentIsEntity) {
+                        parent = bp_entity[eobj.parent_entity_ID].transform;
+                    }
+                    e.transform.SetParent(parent);
+                    PrefabUtility.ReconnectToLastPrefab(go);
                 }
-                e.transform.SetParent(parent);
-                PrefabUtility.ReconnectToLastPrefab(go);
+            } else {
+                foreach (var pair in toParent) {
+                    Entity e = pair.Value;
+                    EntityObject eobj = pair.Key;
+                    Transform parent = null;
+                    if (eobj.parentIsComponent) {
+                        parent = bp_parent_component[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
+                    } else if (eobj.parentIsEntity) {
+                        parent = bp_entity[eobj.parent_entity_ID].transform;
+                    }
+                    e.transform.SetParent(parent);
+                }
             }
 
         } else {
