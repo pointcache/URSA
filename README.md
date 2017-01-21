@@ -6,9 +6,9 @@
 
 
 # Please proceed to Wiki to learn more.
-URSA is a ECS framework integrated into Unity.
+URSA is an ECS framework integrated into Unity.
 It doesn't use a separate backend, and works on top of unity components in a very simple manner.
-URSA streamlines typically complex gamedev tasks like managing initialization sequences and serialization, as
+URSA streamlines typically complex gamedev tasks like managing initialization sequences and serialization, asset workflow automations, organization, as
 well as being a fully fledged ECS it completely decouples systems and forces data driven approach.
 
 Current list of features:
