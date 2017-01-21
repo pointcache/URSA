@@ -57,9 +57,20 @@ public class InitializerSystem : MonoBehaviour {
 
     }
 
-    public static void SwitchScene(string name) {
+    public static void LoadLevel(SceneData transition) {
         OnManualSceneSwitch();
         FullyInitialized = false;
+
+        string scene = transition.scenePath;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+    }
+
+    public static void LoadLevel(LevelTransition transition) {
+        OnManualSceneSwitch();
+        FullyInitialized = false;
+
+        string scene = transition.scenedata.scenePath;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {

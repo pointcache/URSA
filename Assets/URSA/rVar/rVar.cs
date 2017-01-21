@@ -66,7 +66,18 @@ public class rVar<T> : rVar, IrVar {
         return this;
     }
 
+    public rVar<T> Subscribe(Action<T> action) {
+        OnChanged += action;
+        return this;
+    }
 
+    /// <summary>
+    /// Sets the value to itself raising OnChanged
+    /// </summary>
+    public rVar<T> Refresh() {
+        Value = Value;
+        return this;
+    }
 }
 
 [Serializable]

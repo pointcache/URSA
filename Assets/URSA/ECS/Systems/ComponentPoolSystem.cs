@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 
-public class ComponentPoolSystem : MonoBehaviour
-{
+public class ComponentPoolSystem : MonoBehaviour {
 
     #region SINGLETON
     private static ComponentPoolSystem _instance;
     public static ComponentPoolSystem instance
     {
-        get
-        {
+        get {
             if (!_instance)
                 _instance = GameObject.FindObjectOfType<ComponentPoolSystem>();
             if (!_instance)
@@ -20,8 +18,7 @@ public class ComponentPoolSystem : MonoBehaviour
     }
     #endregion
 
-    public static ComponentPoolSystem New()
-    {
+    public static ComponentPoolSystem New() {
         GameObject go = new GameObject("ComponentPool");
         var comp = go.AddComponent<ComponentPoolSystem>();
         return comp;
@@ -36,27 +33,21 @@ public class ComponentPoolSystem : MonoBehaviour
     /// Register component in corresponding pool
     /// </summary>
     /// <param name="icomp"></param>
-    public static void Register(ComponentBase comp)
-    {
+    public static void Register(ComponentBase comp) {
         Pool reg = null;
         Type t = comp.GetType();
-        if (registers.TryGetValue(t, out reg))
-        {
+        if (registers.TryGetValue(t, out reg)) {
             reg.register(comp);
-        }
-        else
-        {
+        } else {
             reg = CreatePool(t);
             reg.register(comp);
         }
     }
 
-    public static void Unregister(ComponentBase comp)
-    {
+    public static void Unregister(ComponentBase comp) {
         Pool reg = null;
         Type t = comp.GetType();
-        if (registers.TryGetValue(t, out reg))
-        {
+        if (registers.TryGetValue(t, out reg)) {
             reg.unregister(comp);
         }
     }
@@ -66,10 +57,8 @@ public class ComponentPoolSystem : MonoBehaviour
     /// </summary>
     /// <param name="t"></param>
     /// <returns></returns>
-    public static Pool CreatePool(Type t)
-    {
-        if (!typeof(ComponentBase).IsAssignableFrom(t))
-        {
+    public static Pool CreatePool(Type t) {
+        if (!typeof(ComponentBase).IsAssignableFrom(t)) {
             throw new Exception("Tried to create a pool with non Component type");
         }
         Type elementType = Type.GetType(t.ToString());
@@ -86,38 +75,32 @@ public class ComponentPoolSystem : MonoBehaviour
 }
 
 [Serializable]
-public class Pool
-{
+public class Pool {
     public string Name;
     public int count;
 
-   // public List<Component> comps = new List<Component>();
+    // public List<Component> comps = new List<Component>();
 
-    public virtual void register(ComponentBase comp)
-    { }
+    public virtual void register(ComponentBase comp) { }
 
-    public virtual void unregister(ComponentBase comp)
-    { }
+    public virtual void unregister(ComponentBase comp) { }
 }
 
 /// <summary>
 /// A concrete generic implementation of the pool, mixes static components with dynamic
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class Pool<T> : Pool where T : ComponentBase
-{
+public class Pool<T> : Pool where T : ComponentBase {
     /// <summary>
     /// all components
     /// </summary>
     public static List<T> components = new List<T>(1000);
     static Dictionary<string, List<T>> entities = new Dictionary<string, List<T>>(1000);
+    private static T first;
     public static T First
     {
-        get
-        {
-            if (components == null || components.Count == 0)
-                return null;
-            return components[0];
+        get {
+            return first;
         }
     }
 
@@ -125,15 +108,22 @@ public class Pool<T> : Pool where T : ComponentBase
     public static event Action<T> OnRemoved = delegate { };
     public static bool Empty
     {
-        get
-        {
+        get {
             return components.Count == 0 ? true : false;
         }
     }
     public static int Count { get { return components.Count; } }
-
-    public static T getComponent(string entityID)
+    public static T Random
     {
+        get {
+            if (Count > 1) {
+                return components[UnityEngine.Random.Range(0, Count)];
+            } else { 
+                return First;
+            }
+        }
+    }
+    public static T getComponent(string entityID) {
         List<T> list = null;
         entities.TryGetValue(entityID, out list);
 
@@ -144,46 +134,50 @@ public class Pool<T> : Pool where T : ComponentBase
         return list[0];
     }
 
-    public override void register(ComponentBase comp)
-    {
+    public override void register(ComponentBase comp) {
         components.Add(comp as T);
         count++;
 
         //if entity exists
         Entity e = comp.Entity;
-        if((object)e != null)
-        {
+        if ((object)e != null) {
             List<T> list = null;
             entities.TryGetValue(e.ID, out list);
-            if (list == null)
-            {
+            if (list == null) {
                 list = new List<T>(100);
                 entities.Add(e.ID, list);
             }
             list.Add(comp as T);
         }
 
-        if(OnAdded.GetInvocationList().Length > 1)
+        if (OnAdded.GetInvocationList().Length > 1)
             OnAdded(comp as T);
+
+        if (components != null && components.Count != 0)
+            first = components[0];
+        else
+            first = null;
     }
 
-    public override void unregister(ComponentBase comp)
-    {
+    public override void unregister(ComponentBase comp) {
         components.Remove(comp as T);
         count--;
 
         Entity e = comp.Entity;
-        if((object)e != null)
-        {
+        if ((object)e != null) {
             List<T> list = null;
             entities.TryGetValue(e.ID, out list);
-            if (list != null)
-            {
+            if (list != null) {
                 list.Remove(comp as T);
             }
         }
 
         if (OnRemoved.GetInvocationList().Length > 1)
             OnRemoved(comp as T);
+
+        if (components != null && components.Count > 0)
+            first = components[0];
+        else
+            first = null;
     }
 }

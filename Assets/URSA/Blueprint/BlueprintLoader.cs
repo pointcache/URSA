@@ -6,9 +6,12 @@ using UnityEditor;
 using URSA;
 public class BlueprintLoader : MonoBehaviour {
 
+    [Tooltip("Used to work with blueprints in editor")]
+    public bool disableOnStart;
     public TextAsset blueprint;
     public bool LoadOnEnableAndSelfDestruct;
     public bool DontParent;
+    public bool supressWarning;
 
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_BLUEPRINT + URSAConstants.PATH_MENUITEM_BLUEPRINT_NEW)]
     public static void New() {
@@ -38,8 +41,11 @@ public class BlueprintLoader : MonoBehaviour {
     }
 
     public void OnEnable() {
-
-        if(transform.childCount > 0) {
+        if (disableOnStart) {
+            gameObject.SetActive(false);
+            return;
+        }
+        if(transform.childCount > 0 && !supressWarning) {
             URSA.Log.Error("You can't have unboxed blueprints on the start of the game, make sure blueprints are cleared before the launch.");
             GetComponent<Entity>().log();
             Debug.Break();

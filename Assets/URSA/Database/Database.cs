@@ -140,8 +140,14 @@ public class Database : MonoBehaviour {
             }
 
             adress = adress.Replace("\\", "/");
-            manifest.entity_id_adress.Add(entity.database_ID, adress);
-            manifest.entity_adress_id.Add(adress, entity.database_ID);
+
+            if (manifest.entity_id_adress.ContainsKey(entity.database_ID)) {
+                Debug.LogError("Trying to add entity with the same id: " + entity.database_ID);
+            } else {
+                manifest.entity_id_adress.Add(entity.database_ID, adress);
+                manifest.entity_adress_id.Add(adress, entity.database_ID);
+
+            }
         }
 
         SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest + ".json", true);

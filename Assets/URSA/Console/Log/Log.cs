@@ -18,6 +18,8 @@ namespace URSA {
             return idcol + obj.GetHashCode() + "</color>";
         }
         public static void log(this Entity ent) {
+            if (!ent)
+                return;
             Print("INFO: " + ent.name);
             Print("database_ID: " + ent.database_ID);
             Print("instance_ID: " + ent.instance_ID);
