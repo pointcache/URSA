@@ -46,7 +46,14 @@ public class Entity : MonoBehaviour
 
     public T GetEntityComponent<T>() where T : ComponentBase
     {
-        return Pool<T>.getComponent(ID);
+        T c = Pool<T>.getComponent(ID);
+
+        //HACK this shit is due to the fact that some components in entity will be enabled before others,
+        //so on initialization you wont be able to get references to them through the pool, will fix later
+        if (c.Null()) {
+            c = GetComponentInChildren<T>(true);
+        }
+        return c;
     }
     
     /// <summary>

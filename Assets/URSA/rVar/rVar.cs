@@ -27,6 +27,7 @@ public class rVar<T> : rVar, IrVar {
         get { return value; }
         set {
             this.value = value;
+            evaluate(value);
             OnChanged(value);
         }
     }
@@ -36,7 +37,8 @@ public class rVar<T> : rVar, IrVar {
         Value = initval;
     }
     public event Action<T> OnChanged = delegate { };
-
+    //Used in child classes for raising specific conditional events.
+    protected Action<T> evaluate = delegate { };
     public override string ToString() {
         return value.ToString();
     }
@@ -114,11 +116,20 @@ public class r_double : rVar<double> {
 }
 [Serializable]
 public class r_bool : rVar<bool> {
-    public r_bool() : base() { }
-    public r_bool(bool initialValue) : base(initialValue) { }
+    public r_bool() : base() { InitOnTrue(); }
+    public r_bool(bool initialValue) : base(initialValue) {
+        InitOnTrue();
+    }
+
+    void InitOnTrue() {
+        evaluate += x => { if (x == true) OnTrue(); };
+    }
+
+
     public static implicit operator bool(r_bool var) {
         return var.Value;
     }
+    public event Action OnTrue = delegate { };
 }
 
 [Serializable]

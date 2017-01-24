@@ -46,6 +46,14 @@ namespace SmartConsole {
                 return _singleton;
             }
         }
+
+        public static GameObject entryTemplate;
+        public static GameObject consoleContent;
+        public static RectTransform consoleRoot;
+        public static InputField inputField;
+        public static Scrollbar scrollBar;
+        private static Queue<SmartConsoleEntry> entries = new Queue<SmartConsoleEntry>();
+
         void Awake() {
             if (!gameObject.activeSelf) {
                 return;
@@ -103,7 +111,7 @@ namespace SmartConsole {
         public static void Destroy() {
             if (!singleton)
                 return;
-            GameObject.Destroy(singleton.gameObject);
+            Clear();
             entries = new Queue<SmartConsoleEntry>();
             s_commandDictionary = new AutoCompleteDictionary<Command>();
             s_variableDictionary = new AutoCompleteDictionary<Command>();
@@ -114,6 +122,7 @@ namespace SmartConsole {
             s_lastErrorCallStack = "(none yet)";
             s_lastWarningCallStack = "(none yet)";
             s_showConsole = false;
+            GameObject.Destroy(singleton.gameObject);
         }
         // control the general layout here
         // SE: annoying having to leak this out publicly - basically to facilitate the weird and wonderful cvar implementation
@@ -130,12 +139,7 @@ namespace SmartConsole {
             public string m_paramsExample = "";
             public string m_help = "(no description)";
         };
-        public static GameObject entryTemplate;
-        public static GameObject consoleContent;
-        public static RectTransform consoleRoot;
-        public static InputField inputField;
-        public static Scrollbar scrollBar;
-        private static Queue<SmartConsoleEntry> entries = new Queue<SmartConsoleEntry>();
+
         // SE - this is a bit elaborate, needed to provide a way to do this
         // without relying on memory addresses or pointers... which has resulted in
         // a little blob of bloat and overhead for something that should be trivial... :/
@@ -291,7 +295,7 @@ namespace SmartConsole {
             if (words.Length > 0) {
                 if (s_masterDictionary.ContainsKey(words[0])) {
                     WriteLine("<b>=> </b><color=lime>" + inputLine + "</color>");
-                    URSA.Log.record("Console> " +inputLine);
+                    URSA.Log.record("Console> " + inputLine);
                     Command com = s_masterDictionary[words[0]];
                     if (com.isVariable) {
                         com.variable_callback(words);

@@ -132,9 +132,11 @@ public class SaveSystem : MonoBehaviour {
 
         Dictionary<string, Entity> bp_entity = null;
         Dictionary<string, Dictionary<string, ComponentBase>> bp_parent_component = null;
+        Dictionary<string, Dictionary<string, ComponentBase>> bp_all_comp = new Dictionary<string, Dictionary<string, ComponentBase>>();
         if (save.isBlueprint) {
             bp_entity = new Dictionary<string, Entity>();
             bp_parent_component = new Dictionary<string, Dictionary<string, ComponentBase>>();
+            bp_all_comp = new Dictionary<string, Dictionary<string, ComponentBase>>();
         }
 
         bool blueprintEditorMode = save.isBlueprint && !Application.isPlaying;
@@ -157,7 +159,7 @@ public class SaveSystem : MonoBehaviour {
 #if UNITY_EDITOR
             if (blueprintEditorMode) {
                 gameobj = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-                PrefabUtility.DisconnectPrefabInstance(gameobj);
+                
             } else
                 gameobj = GameObject.Instantiate(prefab);
 
@@ -184,10 +186,15 @@ public class SaveSystem : MonoBehaviour {
 
             var entity = gameobj.GetComponent<Entity>();
             Dictionary<string, ComponentBase> ecomps = null;
+            Dictionary<string, ComponentBase> bpcomps = null;
 
             if (save.isBlueprint) {
                 bp_entity.Add(eobj.blueprint_ID, entity);
-
+                bp_all_comp.TryGetValue(eobj.blueprint_ID, out bpcomps);
+                if (bpcomps == null) {
+                    bpcomps = new Dictionary<string, ComponentBase>();
+                    bp_parent_component.Add(eobj.blueprint_ID, bpcomps);
+                }
                 bp_parent_component.TryGetValue(eobj.blueprint_ID, out ecomps);
                 if (ecomps == null) {
                     ecomps = new Dictionary<string, ComponentBase>();
@@ -208,7 +215,11 @@ public class SaveSystem : MonoBehaviour {
 
             var comps = gameobj.GetComponentsInChildren<ComponentBase>(true);
             if (comps.Length != 0) {
-                save.components.TryGetValue(entity.instance_ID, out cobjects);
+                if (save.isBlueprint)
+                    save.components.TryGetValue(entity.blueprint_ID, out cobjects);
+                else
+                    save.components.TryGetValue(entity.instance_ID, out cobjects);
+
                 if (cobjects != null) {
 
                     foreach (var component in comps) {
@@ -235,10 +246,44 @@ public class SaveSystem : MonoBehaviour {
                 entity.instance_ID = "";
             prefab.SetActive(prefabState);
             entity.gameObject.SetActive(true);
-#if UNITY_EDITOR
-            if (blueprintEditorMode)
-                PrefabUtility.ReconnectToLastPrefab(gameobj);
-#endif
+        }
+
+        
+        foreach (var compref in save.comprefs) {
+            if (!compref.isNull) {
+                Dictionary<string, ComponentBase> comps = null;
+                ComponentBase cbase = null;
+
+                if (save.isBlueprint)
+                    bp_parent_component.TryGetValue(compref.entity_ID, out comps);
+                else
+                    allComps.TryGetValue(compref.entity_ID, out comps);
+
+                if (comps != null) {
+                    if (save.isBlueprint)
+                        bp_parent_component[compref.entity_ID].TryGetValue(compref.component_ID, out cbase);
+                    else
+                        comps.TryGetValue(compref.component_ID, out cbase);
+                    if (cbase != null) {
+
+                        if (blueprintEditorMode) {
+
+                            compref.setValueDirectly(cbase);
+                        } else
+                            compref.setValueDirectly(cbase);
+                    } else
+                        Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);
+                } else
+                    Debug.LogError("CompRef linker could not find entity with id: " + compref.entity_ID + " on entity: " + compref.entityName);
+            }
+        }
+
+        if (blueprintEditorMode) {
+            foreach (var e in bp_entity) {
+                var go = PrefabUtility.FindPrefabRoot(e.Value.gameObject);
+                PrefabUtility.DisconnectPrefabInstance(go);
+                PrefabUtility.ReconnectToLastPrefab(go);
+            }
         }
 
         if (save.isBlueprint) {
@@ -284,21 +329,6 @@ public class SaveSystem : MonoBehaviour {
                     parent = allEntities[eobj.parent_entity_ID].transform;
                 }
                 e.transform.SetParent(parent);
-            }
-        }
-        foreach (var compref in save.comprefs) {
-            if (!compref.isNull) {
-                Dictionary<string, ComponentBase> comps = null;
-                ComponentBase cbase = null;
-                allComps.TryGetValue(compref.entity_ID, out comps);
-                if (comps != null) {
-                    comps.TryGetValue(compref.component_ID, out cbase);
-                    if (cbase != null) {
-                        compref.setValueDirectly(cbase);
-                    } else
-                        Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);
-                } else
-                    Debug.LogError("CompRef linker could not find entity with id: " + compref.entity_ID + " on entity: " + compref.entityName);
             }
         }
     }
@@ -363,6 +393,7 @@ public class SaveSystem : MonoBehaviour {
         Entity entity = ent;
         bool isBlueprint = bp_ids != null;
         file.isBlueprint = isBlueprint;
+        CompRefSerializationProcessor.blueprint = isBlueprint;
         if (isBlueprint && entity.blueprint_ID == "")
             entity.blueprint_ID = Database.get_unique_id(bp_ids);
 

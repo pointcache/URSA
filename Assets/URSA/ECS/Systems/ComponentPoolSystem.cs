@@ -21,6 +21,7 @@ public class ComponentPoolSystem : MonoBehaviour {
     public static ComponentPoolSystem New() {
         GameObject go = new GameObject("ComponentPool");
         var comp = go.AddComponent<ComponentPoolSystem>();
+        GameObject.DontDestroyOnLoad(comp);
         return comp;
     }
 

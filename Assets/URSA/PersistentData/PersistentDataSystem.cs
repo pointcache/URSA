@@ -111,7 +111,7 @@ public class PersistentDataSystem : MonoBehaviour {
         {
             bpLoader.blueprint = blueprint;
             bpLoader.Load();
-            onLoaded();
+            if(onLoaded != null) onLoaded();
         });
     }
 

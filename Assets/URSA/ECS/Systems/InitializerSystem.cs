@@ -12,7 +12,7 @@ public class InitializerSystem : MonoBehaviour {
     //Used when we are switching scenes/maps and we need to get notified when this happens, its different from 
     //OnSceneLoaded in that onscene fires every time you hit play, while this fires only when you manually force scene
     //switch, right before it happens, so core systems have a chance to clean up in preparation for new scene
-    public static event Action OnManualSceneSwitch = delegate { };
+    public static event Action OnSceneSwitch = delegate { };
 
     /// <summary>
     /// Hook your config loading here, it will happen before global systems are initialized
@@ -58,7 +58,7 @@ public class InitializerSystem : MonoBehaviour {
     }
 
     public static void LoadLevel(SceneData transition) {
-        OnManualSceneSwitch();
+        OnSceneSwitch();
         FullyInitialized = false;
 
         string scene = transition.scenePath;
@@ -66,7 +66,7 @@ public class InitializerSystem : MonoBehaviour {
     }
 
     public static void LoadLevel(LevelTransition transition) {
-        OnManualSceneSwitch();
+        OnSceneSwitch();
         FullyInitialized = false;
 
         string scene = transition.scenedata.scenePath;
