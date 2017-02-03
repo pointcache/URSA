@@ -185,7 +185,12 @@ namespace SmartConsole {
                     } else
                         Set((T)System.Convert.ChangeType(value, typeof(T)));
                 } else
+                    if (typeof(T).IsEnum) {
+                    Set((T)Enum.Parse(typeof(T), value));
+                }
+                else
                     Set((T)System.Convert.ChangeType(value, typeof(T)));
+
             }
         };
         static void delete_back_to_dot() {

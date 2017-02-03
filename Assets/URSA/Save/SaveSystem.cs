@@ -227,8 +227,10 @@ public class SaveSystem : MonoBehaviour {
                         if (save.isBlueprint)
                             ecomps.Add(component.ID, component);
 
-                        var cobj = cobjects[component.ID];
-                        SetDataForComponent(component, cobj.data);
+                        ComponentObject cobj = null;
+                        cobjects.TryGetValue(component.ID, out cobj);
+                        if(cobj != null)
+                            SetDataForComponent(component, cobj.data);
 
                         //Storing for later reference injection
                         Dictionary<string, ComponentBase> injectionDict = null;

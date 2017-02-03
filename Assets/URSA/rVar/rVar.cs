@@ -73,10 +73,16 @@ public class rVar<T> : rVar, IrVar {
         return this;
     }
 
+    public rVar<T> SubAndUpdate(Action<T> action) {
+        OnChanged += action;
+        Update();
+        return this;
+    }
+
     /// <summary>
     /// Sets the value to itself raising OnChanged
     /// </summary>
-    public rVar<T> Refresh() {
+    public rVar<T> Update() {
         Value = Value;
         return this;
     }

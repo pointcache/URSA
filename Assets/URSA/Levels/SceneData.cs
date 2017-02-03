@@ -11,7 +11,8 @@ public class SceneData : ScriptableObject
     public string scene;
     [NotEditableString]
     public string scenePath;
-
+    [NotEditableString]
+    public string sceneManagerPath;
     public string levelname;
     public string NiceName;
 

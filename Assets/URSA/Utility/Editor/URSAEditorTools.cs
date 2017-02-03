@@ -77,7 +77,7 @@ public static class URSAEditorTools {
         if (!sc) {
             if (settings.CustomLocalSystemsPrefab) {
                 sc = Helpers.SpawnEditor(settings.CustomLocalSystemsPrefab);
-            } else if(settings.LocalSystemsTemplate)
+            } else if (settings.LocalSystemsTemplate)
                 sc = Helpers.SpawnEditor(settings.LocalSystemsTemplate);
             else
                 sc = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_LOCAL_NAME);
@@ -117,6 +117,21 @@ public static class URSAEditorTools {
         }
         EditorSceneManager.MarkAllScenesDirty();
         EditorSceneManager.SaveOpenScenes();
+    }
+
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_TOOLS + "/Select Missing Scripts")]
+    static void SelectMissing(MenuCommand command) {
+        Transform[] ts = GameObject.FindObjectsOfType<Transform>();
+        List<GameObject> selection = new List<GameObject>();
+        foreach (Transform t in ts) {
+            Component[] cs = t.gameObject.GetComponents<Component>();
+            foreach (Component c in cs) {
+                if (c == null) {
+                    selection.Add(t.gameObject);
+                }
+            }
+        }
+        Selection.objects = selection.ToArray();
     }
 }
 #endif

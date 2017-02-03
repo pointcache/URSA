@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using URSA.Save;
 #if UNITY_EDITOR
-using UnityEditor; 
+using UnityEditor;
 #endif
 using URSA;
 using System.IO;
@@ -38,7 +38,7 @@ public class PersistentDataSystem : MonoBehaviour {
 
 
 #if     UNITY_EDITOR
-    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PERSISTENT + URSAConstants.PATH_MENUITEM_PERSISTENT_SAVE)] 
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PERSISTENT + URSAConstants.PATH_MENUITEM_PERSISTENT_SAVE)]
 #endif
     public static void Save() {
         instance.SaveTo();
@@ -47,7 +47,7 @@ public class PersistentDataSystem : MonoBehaviour {
 
 
 #if UNITY_EDITOR
-    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PERSISTENT + URSAConstants.PATH_MENUITEM_PERSISTENT_LOAD)] 
+    [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_PERSISTENT + URSAConstants.PATH_MENUITEM_PERSISTENT_LOAD)]
 #endif
     public static void Load() {
         instance.LoadFrom();
@@ -92,8 +92,17 @@ public class PersistentDataSystem : MonoBehaviour {
     }
 
     public void LoadFrom() {
-
         ClearAnd(completeLoad);
+    }
+
+    public void LoadWithoutClear(TextAsset blueprint) {
+        var bpLoader = GetComponent<BlueprintLoader>();
+        if (!bpLoader) {
+            Debug.LogError("Blueprint loader was not found, add it to the PersistentDataSystem");
+            return;
+        }
+        bpLoader.blueprint = blueprint;
+        bpLoader.Load();
     }
 
     public void ClearAnd(Action and) {
@@ -111,7 +120,7 @@ public class PersistentDataSystem : MonoBehaviour {
         {
             bpLoader.blueprint = blueprint;
             bpLoader.Load();
-            if(onLoaded != null) onLoaded();
+            if (onLoaded != null) onLoaded();
         });
     }
 

@@ -15,8 +15,9 @@ public class InternalConfig : ConfigBase
     public r_bool DebugGUI = new r_bool();
     [ConsoleVar(debug + "realtimeLogging", "Enable realtime logging, each log message will be written to disk, this is expensive but allows to catch crash bugs.")]
     public r_bool rtLogging = new r_bool();
-    public r_string player_prefab = new r_string( "player");
-    public r_string ui_prefab = new r_string( "ui");
+    public GameObject player_prefab;
+    public GameObject gameHud;
+    public GameObject gameOverHud;
 
     public override void OnEnable()
     {

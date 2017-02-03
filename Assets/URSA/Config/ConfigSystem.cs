@@ -29,8 +29,23 @@
         public string customDataPath;
         public string singleFilePath = "configuration";
         public string folderPath = "Configs";
+
+        public List<DefaultFolder> defaultFolders = new List<DefaultFolder>();
+
+        [Serializable]
+        public class DefaultFolder {
+            public string type;
+            public string folder;
+        }
+
+        public string specialfolderPath = "/Default";
         public string extension = ".cfg";
         static Dictionary<string, ConfigInfo> current = new Dictionary<string, ConfigInfo>();
+
+        private void OnEnable() {
+            URSA.Console.RegisterCommandWithParameters("config.savegfx", SaveGraphicsConfigAs);
+            URSA.Console.RegisterCommandWithParameters("config.loadgfx", LoadGraphicsConfig);
+        }
 
         static string getSystemPath() {
             var sys = ConfigSystem.instance;
@@ -72,6 +87,46 @@
                 }
             }
         }
+
+        public static void LoadDefault<T>(string path) {
+            var sys = ConfigSystem.instance;
+
+            DefaultFolder folder = sys.defaultFolders.FirstOrDefault(x => x.type == typeof(T).Name);
+            if(folder == null) {
+                Debug.LogError("Include the folder with proper type name of the config in default folders");
+                return;
+            }
+
+            path = getSystemPath() + "/" + sys.folderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
+            var loaded = SerializationHelper.Load<ConfigInfo>(path);
+
+            ConfigInfo info = current.FirstOrDefault(x => x.Value.type == loaded.type).Value;
+
+            ApplyLoadedConfig(info, loaded);
+        }
+
+        public static void SaveDefault<T>(string path) where T : ConfigBase {
+            var sys = ConfigSystem.instance;
+            DefaultFolder folder = sys.defaultFolders.FirstOrDefault(x => x.type == typeof(T).Name);
+            if(folder == null) {
+                Debug.LogError("Include the folder with proper type name of the config in default folders");
+                return;
+            }
+
+            path = getSystemPath() + "/" + sys.folderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
+
+            ConfigInfo config = current.FirstOrDefault(x => x.Value.type == typeof(T)).Value;
+            SerializationHelper.Serialize(config, path, true);
+        }
+
+        public static void SaveGraphicsConfigAs(string[] filename) {
+            SaveDefault<GraphicsConfig>(filename[0]);
+        }
+
+        public static void LoadGraphicsConfig(string[] filename) {
+            LoadDefault<GraphicsConfig>(filename[0]);
+        }
+
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_LOAD)]
 #endif
@@ -107,18 +162,23 @@
                     Debug.LogError("Matching config was not found in loaded config file:" + pair.Key);
                     continue;
                 }
-                foreach (var item in info.vars) {
-                    IrVar cur = item.Value;
-                    IrVar loaded = null;
-                    loadedInfo.vars.TryGetValue(item.Key, out loaded);
-                    if (loaded == null) {
-                        Debug.LogError("Matching variable:" + item.Key + " was not found in loaded config :" + pair.Key);
-                        continue;
-                    }
-                    cur.setValue(loaded.getValue());
-                }
+                ApplyLoadedConfig(info, loadedInfo);
             }
         }
+
+        static void ApplyLoadedConfig(ConfigInfo info, ConfigInfo loadedInfo) {
+            foreach (var item in info.vars) {
+                IrVar cur = item.Value;
+                IrVar loaded = null;
+                loadedInfo.vars.TryGetValue(item.Key, out loaded);
+                if (loaded == null) {
+                    Debug.LogError("Matching variable:" + item.Key + " was not found in loaded config :" + loadedInfo.name);
+                    continue;
+                }
+                cur.setValue(loaded.getValue());
+            }
+        }
+
         public static void RegisterConfig(ConfigBase cfg) {
             Type t = cfg.GetType();
             var attrs = t.GetCustomAttributes(typeof(ConfigAttribute), false);
@@ -136,6 +196,7 @@
                 info.filename = cfgattr.FileName;
                 info.name = t.Name;
                 info.gameVersion = ProjectInfo.current.Version;
+                info.type = t;
             } else
                 Debug.LogError("Duplicate ConfigInfo found, are you creating duplicates?");
             info.vars.Clear();
@@ -166,6 +227,7 @@
             public string filename;
             public string description;
             public float gameVersion;
+            public Type type;
             public Dictionary<string, IrVar> vars = new Dictionary<string, IrVar>();
         }
     }

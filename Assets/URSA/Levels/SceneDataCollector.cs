@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class SceneDataCollector : ScriptableObject {
 
@@ -16,4 +18,9 @@ public class SceneDataCollector : ScriptableObject {
 
 
     public List<SceneData> scenes = new List<SceneData>();
+
+    public SceneData GetCurrent() {
+        string scene = SceneManager.GetActiveScene().path;
+        return scenes.FirstOrDefault(x => x.sceneManagerPath == scene);
+    }
 }

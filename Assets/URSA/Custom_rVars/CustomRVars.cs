@@ -1,18 +1,19 @@
-﻿//using UnityEngine;
-//using UnityEditor;
-//using System;
-//using System.Collections.Generic;
+﻿using System;
 
-//Copy this file in your own game folder and modify to add new rVar types
-//Replace TYPE with your type and then add it to CustomRVarDrawers.cs file
-
-/*
 [Serializable]
-public class r_TYPE : rVar<TYPE>
-{
-    public r_TYPE() : base() {}
-    public r_TYPE(TYPE initialValue): base(initialValue){}
-    public static implicit operator TYPE(r_TYPE var) {  return var.Value; }
-
+public class r_TAA_MODE : rVar<GraphicsConfig.TAA_MODE> {
+    public r_TAA_MODE() : base() { }
+    public r_TAA_MODE(GraphicsConfig.TAA_MODE initialValue) : base(initialValue) { }
+    public static implicit operator GraphicsConfig.TAA_MODE(r_TAA_MODE var) {
+        return var.Value;
+    }
 }
-*/
+
+[Serializable]
+public class r_Quality : rVar<Quality> {
+    public r_Quality() : base() { }
+    public r_Quality(Quality initialValue) : base(initialValue) { }
+    public static implicit operator Quality(r_Quality var) {
+        return var.Value;
+    }
+}
