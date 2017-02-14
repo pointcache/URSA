@@ -26,9 +26,9 @@ public class rVar<T> : rVar, IrVar {
     {
         get { return value; }
         set {
-            this.value = value;
             evaluate(value);
             OnChanged(value);
+            this.value = value;
         }
     }
     public rVar() {
@@ -77,6 +77,22 @@ public class rVar<T> : rVar, IrVar {
         OnChanged += action;
         Update();
         return this;
+    }
+    /// <summary>
+    /// Connected var receives OnChanged events from the one it is connected to
+    /// </summary>
+    /// <param name="other"></param>
+    public void Connect(rVar<T> to) {
+        to.OnChanged += connectedCall;
+        value = to.Value;
+    }
+
+    public void Disconnect(rVar<T> from) {
+        from.OnChanged -= connectedCall;
+    }
+
+    void connectedCall(T val) {
+        Value = val;
     }
 
     /// <summary>
@@ -156,4 +172,44 @@ public class r_Color : rVar<Color> {
     }
 }
 
+[Serializable]
+public class r_Vector3 : rVar<Vector3> {
+    public r_Vector3() : base() { }
+    public r_Vector3(Vector3 initialValue) : base(initialValue) { }
+    public static implicit operator Vector3(r_Vector3 var) {
+        return var.Value;
+    }
+}
+[Serializable]
+public class r_Vector2 : rVar<Vector2> {
+    public r_Vector2() : base() { }
+    public r_Vector2(Vector2 initialValue) : base(initialValue) { }
+    public static implicit operator Vector2(r_Vector2 var) {
+        return var.Value;
+    }
+}
+[Serializable]
+public class r_Quaternion : rVar<Quaternion> {
+    public r_Quaternion() : base() { }
+    public r_Quaternion(Quaternion initialValue) : base(initialValue) { }
+    public static implicit operator Quaternion(r_Quaternion var) {
+        return var.Value;
+    }
+}
+[Serializable]
+public class r_GameObject : rVar<GameObject> {
+    public r_GameObject() : base() { }
+    public r_GameObject(GameObject initialValue) : base(initialValue) { }
+    public static implicit operator GameObject(r_GameObject var) {
+        return var.Value;
+    }
+}
+[Serializable]
+public class r_uObject : rVar<UnityEngine.Object> {
+    public r_uObject() : base() { }
+    public r_uObject(UnityEngine.Object initialValue) : base(initialValue) { }
+    public static implicit operator UnityEngine.Object(r_uObject var) {
+        return var.Value;
+    }
+}
 

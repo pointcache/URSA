@@ -47,7 +47,12 @@ public class RangeReactivePropertyAttribute : PropertyAttribute {
 // If you want to customize other specialized ReactiveProperty
 // [UnityEditor.CustomPropertyDrawer(typeof(YourSpecializedReactiveProperty))]
 // public class ExtendInspectorDisplayDrawer : InspectorDisplayDrawer { } 
-[UnityEditor.CustomPropertyDrawer(typeof(CompRef))]
+[UnityEditor.CustomPropertyDrawer(typeof(CompRef))] 
+[UnityEditor.CustomPropertyDrawer(typeof(r_Vector2))]
+[UnityEditor.CustomPropertyDrawer(typeof(r_Vector3))]
+[UnityEditor.CustomPropertyDrawer(typeof(r_GameObject))]
+[UnityEditor.CustomPropertyDrawer(typeof(r_uObject))]
+[UnityEditor.CustomPropertyDrawer(typeof(r_Quaternion))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_bool))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_double))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_float))]

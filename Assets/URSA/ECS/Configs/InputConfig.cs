@@ -13,6 +13,9 @@ public class InputConfig : ConfigBase {
     public r_KeyCode Fire = new r_KeyCode(KeyCode.Mouse0);
     public r_KeyCode AltFire = new r_KeyCode(KeyCode.Mouse1);
     public r_KeyCode SpecialMove = new r_KeyCode(KeyCode.LeftShift);
+    public r_KeyCode WeaponHth = new r_KeyCode(KeyCode.Alpha1);
+    public r_KeyCode WeaponOne = new r_KeyCode(KeyCode.Alpha2);
+    public r_KeyCode WeaponTwo = new r_KeyCode(KeyCode.Alpha3);
 
     public override void OnEnable()
     {
