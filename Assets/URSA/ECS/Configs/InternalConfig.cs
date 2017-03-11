@@ -19,6 +19,8 @@ public class InternalConfig : ConfigBase
     public GameObject gameHud;
     public GameObject gameOverHud;
 
+    public bool PlayerSpawned;
+
     public override void OnEnable()
     {
         base.OnEnable();

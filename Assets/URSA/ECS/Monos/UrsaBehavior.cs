@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class UrsaBehavior : MonoBehaviour {
 
     Entity _entity;
-    public Entity Entity
+    public Entity entity
     {
         get
         {

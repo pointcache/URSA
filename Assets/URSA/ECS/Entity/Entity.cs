@@ -1,22 +1,19 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-public class Entity : MonoBehaviour
-{
-  
+public class Entity : MonoBehaviour {
+
     [NotEditableString]
     public string database_ID;
     [NotEditableString]
     public string instance_ID;
-    
+
     [NotEditableString]
     public string blueprint_ID;
     public string ID
     {
-        get
-        {
-            if (String.IsNullOrEmpty(instance_ID))
-            {
+        get {
+            if (String.IsNullOrEmpty(instance_ID)) {
                 instance_ID = EntityManager.get_id();
             }
             return instance_ID;
@@ -25,20 +22,17 @@ public class Entity : MonoBehaviour
 #if UNITY_EDITOR
     private void Reset() {
         for (int i = 0; i < 50; i++) {
-            UnityEditorInternal.ComponentUtility.MoveComponentUp(this);  
+            UnityEditorInternal.ComponentUtility.MoveComponentUp(this);
         }
     }
 #endif
-    void OnEnable()
-    {
+    void OnEnable() {
         EntityManager.RegisterEntity(this);
     }
-    void OnDisable()
-    {
+    void OnDisable() {
         EntityManager.UnRegisterEntity(this);
     }
-    public T GetEntityComponent<T>() where T : ComponentBase
-    {
+    public T GetEntityComponent<T>() where T : ComponentBase {
         T c = Pool<T>.getComponent(ID);
         //HACK this shit is due to the fact that some components in entity will be enabled before others,
         //so on initialization you wont be able to get references to them through the pool, will fix later
@@ -47,7 +41,12 @@ public class Entity : MonoBehaviour
         }
         return c;
     }
-  
+
+    public T GetEntityUnityComponent<T>() where T : Component {
+        T c = null;
+        c = GetComponentInChildren<T>(true);
+        return c;
+    }
 
     /// <summary>
     /// Not the most performant way but will do for now.

@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEditor;
 using System;
 
-public class FBXScaleOverride : AssetPostprocessor {
+public class FBXSettingsOverride : AssetPostprocessor {
+
     static AssetImportersSettings settings;
     int InModelCount;
 
@@ -11,7 +12,7 @@ public class FBXScaleOverride : AssetPostprocessor {
         ModelImporter importer = assetImporter as ModelImporter;
         if (!settings)
             settings = Helpers.FindScriptableObject<AssetImportersSettings>();
-         if (!settings)
+        if (!settings)
             return;
         if (importer.assetPath.Contains(settings.modelRulesApplyToFolder)) {
             string name = importer.assetPath.ToLower();
@@ -21,11 +22,9 @@ public class FBXScaleOverride : AssetPostprocessor {
             importer.materialSearch = settings.materialSearchMode;
             if (!assetPath.Contains(settings.animationImportToken))
                 importer.animationType = ModelImporterAnimationType.None;
-
             if (name.Substring(name.Length - 4, 4) == ".fbx") {
 
             }
-
             importer.generateSecondaryUV = settings.generateSecondaryUV;
         }
     }
@@ -46,8 +45,37 @@ public class FBXScaleOverride : AssetPostprocessor {
             Rename(g.transform, g.name);
         }
 
+        if (settings.setLevelGeometry && assetPath.Contains(settings.setLevelGeometryToken)) {
+            LevelGeometryProcess(g);
+        }
     }
 
+    void LevelGeometryProcess(GameObject g) {
+        var trs = g.GetComponentsInChildren<Transform>();
+        var reloader = g.GetComponent<MeshColliderReloader>();
+        if (!reloader)
+            g.AddComponent<MeshColliderReloader>();
+
+
+        foreach (Transform t in trs) {
+            var mc = t.GetComponent<MeshCollider>();
+            var mf = t.GetComponent<MeshFilter>();
+            if (!mf)
+                continue;
+            if (!mc) {
+                mc = t.gameObject.AddComponent<MeshCollider>();
+            }
+            mc.sharedMesh = mf.sharedMesh;
+        }
+        if (Application.isPlaying) {
+            var reloaders = GameObject.FindObjectsOfType<MeshColliderReloader>();
+            foreach (var r in reloaders) {
+                r.Reload();
+            }
+        }
+    }
+
+    
     void Rename(Transform transform, string name) {
         MeshFilter m = transform.GetComponent<MeshFilter>();
         if (m) {

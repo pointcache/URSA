@@ -13,13 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RebuildDatabase: 1
   ParsePrefabs: 1
-  OrganizeLevel: 1
+  OrganizeLevel: 0
   CollectSceneData: 1
   SaveAndReloadScene: 1
-  CustomGlobalSystemsPrefab: {fileID: 0}
+  CustomGlobalSystemsPrefab: {fileID: 1000011355916680, guid: da333d98d4819ce42ae026a24cf50455,
+    type: 2}
   GlobalSystemsTemplate: {fileID: 1000011637727820, guid: 0f3c58a8f9077974dab2515979472e6c,
     type: 2}
-  CustomLocalSystemsPrefab: {fileID: 0}
+  CustomLocalSystemsPrefab: {fileID: 1000010146733308, guid: 8cbc9a3aaf279f6448e0f0ad7784486e,
+    type: 2}
   LocalSystemsTemplate: {fileID: 1000010491598222, guid: 27182d360031cb6488178e893bdbe200,
     type: 2}
   DatabaseRootFolder: GamePrefabs/ENTITY

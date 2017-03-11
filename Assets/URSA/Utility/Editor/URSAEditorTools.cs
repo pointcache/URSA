@@ -9,6 +9,11 @@ public static class URSAEditorTools {
     static void PlayGame() {
         EditorApplication.ExecuteMenuItem("Edit/Play");
     }
+
+    [MenuItem("Edit/Run _F1")] // shortcut key F5 to Play (and exit playmode also)
+    static void PauseGame() {
+        EditorApplication.ExecuteMenuItem("Edit/Pause");
+    }
     [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
     public static void UpdateEverything() {
         var settings = URSASettings.current;
