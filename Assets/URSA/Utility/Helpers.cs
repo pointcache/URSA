@@ -259,6 +259,21 @@ public static class Helpers {
         }
     }
 
+    public static GameObject Spawn(GameObject prefab, bool startDisabled) {
+        bool initstate;
+          initstate = prefab.activeSelf;
+        if (startDisabled)
+            prefab.gameObject.SetActive(false);
+        if (prefab) {
+            GameObject go = GameObject.Instantiate(prefab);
+            prefab.SetActive(initstate);
+            return go;
+        } else {
+            Debug.LogError("Prefab:" + prefab + " not found.");
+            return null;
+        }
+    }
+
 #if UNITY_EDITOR
     public static GameObject SpawnEditor(GameObject pref) {
         if (pref) {

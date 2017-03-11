@@ -104,6 +104,15 @@ public class Pool<T> : Pool where T : ComponentBase {
             return first;
         }
     }
+    public static T FirstOrFindInScene
+    {
+        get {
+            T f = first;
+            if (!f)
+                f = GameObject.FindObjectOfType(typeof(T)) as T;
+            return f;
+        }
+    }
 
     public static event Action<T> OnAdded = delegate { };
     public static event Action<T> OnRemoved = delegate { };

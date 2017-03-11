@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb1ce8b17e038c48a988bb22679df49, type: 3}
   m_Name: AssetImportersSettings
   m_EditorClassIdentifier: 
-  textureRulesApplyToFolder: _Textures
+  textureRulesApplyToFolder: Assets/Textures
   convertToSprites: 1
   convertToSpriteToken: _S
   convertToNormal: 1
@@ -20,6 +20,8 @@ MonoBehaviour:
   setPointFilterToken: _PF
   setTrueColor: 1
   setTrueColorToken: _TC
+  setLevelGeometry: 1
+  setLevelGeometryToken: _LGEO
   modelRulesApplyToFolder: _Models
   tangentCalculationMode: 3
   materialImportMode: 1
