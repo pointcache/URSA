@@ -23,7 +23,7 @@ public static class CollisionHub<T> where T : ComponentBase {
     }
 
     public static void CollisionStay(T sender) {
-        CollisionEnter(sender, null);
+        CollisionStay(sender, null);
     }
 
     public static void CollisionStay(T sender, Collision collision) {
@@ -31,7 +31,7 @@ public static class CollisionHub<T> where T : ComponentBase {
     }
 
     public static void CollisionExit(T sender) {
-        CollisionEnter(sender, null);
+        CollisionExit(sender, null);
     }
 
     public static void CollisionExit(T sender, Collision collision) {
