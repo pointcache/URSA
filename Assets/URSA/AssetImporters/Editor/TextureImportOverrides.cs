@@ -24,7 +24,7 @@ class TextureImportOverrides : AssetPostprocessor
 
             if (settings.convertToNormal && assetPath.Contains(settings.convertToNormalToken))
             {
-                textureImporter.textureType = TextureImporterType.Bump;
+                textureImporter.textureType = TextureImporterType.NormalMap;
                 textureImporter.normalmap = true;
                 textureImporter.convertToNormalmap = false;
                 textureImporter.normalmapFilter = TextureImporterNormalFilter.Sobel;

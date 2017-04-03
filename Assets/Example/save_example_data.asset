@@ -14,6 +14,7 @@ MonoBehaviour:
   ID: 0b7e4e22-3d56-4133-9e6a-e668c4505812
   scene: save_example
   scenePath: Example/save_example
+  sceneManagerPath: Assets/Example/save_example.unity
   levelname: save_example
   NiceName: save_example
   entryPoints: []

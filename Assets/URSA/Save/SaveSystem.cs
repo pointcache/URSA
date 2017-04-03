@@ -19,7 +19,8 @@ public class SaveSystem : MonoBehaviour {
     public static SaveSystem instance
     {
         get {
-            if (!_instance) _instance = GameObject.FindObjectOfType<SaveSystem>();
+            if (!_instance)
+                _instance = GameObject.FindObjectOfType<SaveSystem>();
             return _instance;
         }
     }
@@ -159,8 +160,9 @@ public class SaveSystem : MonoBehaviour {
 #if UNITY_EDITOR
             if (blueprintEditorMode) {
                 gameobj = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-                
-            } else
+
+            }
+            else
                 gameobj = GameObject.Instantiate(prefab);
 
 #else
@@ -178,7 +180,8 @@ public class SaveSystem : MonoBehaviour {
                 tr.localPosition = eobj.position;
                 tr.localRotation = Quaternion.Euler(eobj.rotation);
 
-            } else {
+            }
+            else {
                 tr.position = eobj.position;
                 tr.rotation = Quaternion.Euler(eobj.rotation);
                 tr.parent = eobj.parentName == "null" ? root : parentGo == null ? root : parentGo.transform;
@@ -201,7 +204,8 @@ public class SaveSystem : MonoBehaviour {
                     bp_parent_component.Add(eobj.blueprint_ID, ecomps);
                 }
 
-            } else {
+            }
+            else {
                 allEntities.Add(eobj.instance_ID, entity);
 
             }
@@ -229,7 +233,7 @@ public class SaveSystem : MonoBehaviour {
 
                         ComponentObject cobj = null;
                         cobjects.TryGetValue(component.ID, out cobj);
-                        if(cobj != null)
+                        if (cobj != null)
                             SetDataForComponent(component, cobj.data);
 
                         //Storing for later reference injection
@@ -250,7 +254,7 @@ public class SaveSystem : MonoBehaviour {
             entity.gameObject.SetActive(true);
         }
 
-        
+
         foreach (var compref in save.comprefs) {
             if (!compref.isNull) {
                 Dictionary<string, ComponentBase> comps = null;
@@ -271,11 +275,14 @@ public class SaveSystem : MonoBehaviour {
                         if (blueprintEditorMode) {
 
                             compref.setValueDirectly(cbase);
-                        } else
+                        }
+                        else
                             compref.setValueDirectly(cbase);
-                    } else
+                    }
+                    else
                         Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);
-                } else
+                }
+                else
                     Debug.LogError("CompRef linker could not find entity with id: " + compref.entity_ID + " on entity: " + compref.entityName);
             }
         }
@@ -299,27 +306,31 @@ public class SaveSystem : MonoBehaviour {
                     Transform parent = null;
                     if (eobj.parentIsComponent) {
                         parent = bp_parent_component[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
-                    } else if (eobj.parentIsEntity) {
+                    }
+                    else if (eobj.parentIsEntity) {
                         parent = bp_entity[eobj.parent_entity_ID].transform;
                     }
                     e.transform.SetParent(parent);
                     PrefabUtility.ReconnectToLastPrefab(go);
                 }
-            } else {
+            }
+            else {
                 foreach (var pair in toParent) {
                     Entity e = pair.Value;
                     EntityObject eobj = pair.Key;
                     Transform parent = null;
                     if (eobj.parentIsComponent) {
                         parent = bp_parent_component[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
-                    } else if (eobj.parentIsEntity) {
+                    }
+                    else if (eobj.parentIsEntity) {
                         parent = bp_entity[eobj.parent_entity_ID].transform;
                     }
                     e.transform.SetParent(parent);
                 }
             }
 
-        } else {
+        }
+        else {
 
             foreach (var pair in toParent) {
                 Entity e = pair.Value;
@@ -327,7 +338,8 @@ public class SaveSystem : MonoBehaviour {
                 Transform parent = null;
                 if (eobj.parentIsComponent) {
                     parent = allComps[eobj.parent_entity_ID][eobj.parent_component_ID].transform;
-                } else if (eobj.parentIsEntity) {
+                }
+                else if (eobj.parentIsEntity) {
                     parent = allEntities[eobj.parent_entity_ID].transform;
                 }
                 e.transform.SetParent(parent);
@@ -408,12 +420,16 @@ public class SaveSystem : MonoBehaviour {
         if (isBlueprint) {
             eobj.position = root.InverseTransformPoint(tr.position);
             eobj.rotation = tr.localRotation.eulerAngles;
-        } else {
+        }
+        else {
             eobj.position = tr.position;
             eobj.rotation = tr.rotation.eulerAngles;
         }
-
-        ComponentBase parentComp = tr.parent.GetComponent<ComponentBase>();
+        bool hasParent = tr.parent != null;
+        ComponentBase parentComp = null;
+        if (hasParent) {
+            parentComp = tr.parent.GetComponent<ComponentBase>();
+        }
         if (tr.parent != root && parentComp) {
             eobj.parentIsComponent = true;
             if (isBlueprint)
@@ -421,18 +437,24 @@ public class SaveSystem : MonoBehaviour {
             else
                 eobj.parent_entity_ID = parentComp.Entity.ID;
             eobj.parent_component_ID = parentComp.ID;
-        } else {
-            Entity parentEntity = tr.parent.GetComponent<Entity>();
+        }
+        else {
+            Entity parentEntity = null;
+            if (hasParent) {
+                parentEntity = tr.parent.GetComponent<Entity>();
+            }
             if (tr.parent != root && parentEntity) {
                 eobj.parentIsEntity = true;
                 if (isBlueprint)
                     eobj.parent_entity_ID = parentEntity.blueprint_ID;
                 else
                     eobj.parent_entity_ID = parentEntity.ID;
-            } else {
+            }
+            else {
                 if (isBlueprint) {
                     eobj.parentName = "null";
-                } else
+                }
+                else
                     eobj.parentName = tr.parent.Null() ? "null" : tr.parent.name;
             }
         }

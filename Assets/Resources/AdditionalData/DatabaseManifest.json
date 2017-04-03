@@ -1,10 +1,10 @@
 {
     "GameVersion": 0.001,
     "entity_id_adress": {
-        "8856ea99-3c8c-47fb-8031-7c371aa543a1": "Ball"
+        "e6dd266d-871f-4138-a11b-648c841d0a4a": "Cube"
     },
     "entity_adress_id": {
-        "Ball": "8856ea99-3c8c-47fb-8031-7c371aa543a1"
+        "Cube": "e6dd266d-871f-4138-a11b-648c841d0a4a"
     },
     "$type": "DatabaseManifest"
 }
