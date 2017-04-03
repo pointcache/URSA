@@ -3,53 +3,9 @@
     "entities": [
         {
             "database_ID": "e6dd266d-871f-4138-a11b-648c841d0a4a",
-            "instance_ID": "1d17bea3-a6ee-4ef2-bba4-e8431c185a57",
+            "instance_ID": "090e1d9e-09a0-445f-8776-e577da766896",
             "blueprint_ID": "",
-            "parentName": "null",
-            "gameObjectName": "Cube (2)",
-            "prefabPath": "Cube",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": -13.76274,
-                "y": -1.014721,
-                "z": 18.58366
-            },
-            "rotation": {
-                "x": 320.4662,
-                "y": 124.0303,
-                "z": 123.6893
-            }
-        },
-        {
-            "database_ID": "e6dd266d-871f-4138-a11b-648c841d0a4a",
-            "instance_ID": "b2004957-55a0-4f0b-a78c-654eaa3aeb2e",
-            "blueprint_ID": "",
-            "parentName": "null",
-            "gameObjectName": "Cube (1)",
-            "prefabPath": "Cube",
-            "parentIsComponent": false,
-            "parentIsEntity": false,
-            "parent_entity_ID": null,
-            "parent_component_ID": null,
-            "position": {
-                "x": 3.833483,
-                "y": 4.633618,
-                "z": -0.1128469
-            },
-            "rotation": {
-                "x": 310.071,
-                "y": 59.23,
-                "z": 196.7619
-            }
-        },
-        {
-            "database_ID": "e6dd266d-871f-4138-a11b-648c841d0a4a",
-            "instance_ID": "fb37713f-7aa6-4b9f-8c4b-0fa8ce0b8658",
-            "blueprint_ID": "",
-            "parentName": "null",
+            "parentName": "Entities",
             "gameObjectName": "Cube",
             "prefabPath": "Cube",
             "parentIsComponent": false,
@@ -57,40 +13,87 @@
             "parent_entity_ID": null,
             "parent_component_ID": null,
             "position": {
-                "x": -5.760318,
-                "y": 3.666644,
-                "z": 8.883205
+                "x": -5.992414,
+                "y": 4.505671,
+                "z": 6.886218
             },
             "rotation": {
-                "x": 55.22966,
-                "y": 355.1584,
-                "z": 356.0196
+                "x": 6.420147,
+                "y": 7.903862,
+                "z": 0.8893763
+            }
+        },
+        {
+            "database_ID": "e6dd266d-871f-4138-a11b-648c841d0a4a",
+            "instance_ID": "7bd3f14e-f4fe-4ac7-a6d6-c4a7c98e90fa",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (2)",
+            "prefabPath": "Cube",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": -33.58677,
+                "y": -160.7926,
+                "z": 35.44215
+            },
+            "rotation": {
+                "x": 20.0519,
+                "y": 118.707,
+                "z": 104.8635
+            }
+        },
+        {
+            "database_ID": "e6dd266d-871f-4138-a11b-648c841d0a4a",
+            "instance_ID": "31a9e1fb-85e3-46b0-9ea6-d73f462aa4cd",
+            "blueprint_ID": "",
+            "parentName": "Entities",
+            "gameObjectName": "Cube (1)",
+            "prefabPath": "Cube",
+            "parentIsComponent": false,
+            "parentIsEntity": false,
+            "parent_entity_ID": null,
+            "parent_component_ID": null,
+            "position": {
+                "x": 0.2992561,
+                "y": 4.030272,
+                "z": 3.813762
+            },
+            "rotation": {
+                "x": 346.1573,
+                "y": 9.349464,
+                "z": 267.747
             }
         }
     ],
     "comprefs": [],
     "components": {
-        "1d17bea3-a6ee-4ef2-bba4-e8431c185a57": {
-            "ce94efd9-ecb9-45e3-96ca-2b6d47427a27": {
-                "component_ID": "ce94efd9-ecb9-45e3-96ca-2b6d47427a27",
+        "090e1d9e-09a0-445f-8776-e577da766896": {
+            "5a0e4ca3-c825-4547-8c88-6bac7905a341": {
+                "component_ID": "5a0e4ca3-c825-4547-8c88-6bac7905a341",
                 "data": {
-                    "$type": "TestComponent+Data"
+                    "somefloat": 5.535393,
+                    "$type": "TestChildComponent+Data"
                 }
             }
         },
-        "b2004957-55a0-4f0b-a78c-654eaa3aeb2e": {
-            "ce94efd9-ecb9-45e3-96ca-2b6d47427a27": {
-                "component_ID": "ce94efd9-ecb9-45e3-96ca-2b6d47427a27",
+        "7bd3f14e-f4fe-4ac7-a6d6-c4a7c98e90fa": {
+            "5a0e4ca3-c825-4547-8c88-6bac7905a341": {
+                "component_ID": "5a0e4ca3-c825-4547-8c88-6bac7905a341",
                 "data": {
-                    "$type": "TestComponent+Data"
+                    "somefloat": 7.232251,
+                    "$type": "TestChildComponent+Data"
                 }
             }
         },
-        "fb37713f-7aa6-4b9f-8c4b-0fa8ce0b8658": {
-            "ce94efd9-ecb9-45e3-96ca-2b6d47427a27": {
-                "component_ID": "ce94efd9-ecb9-45e3-96ca-2b6d47427a27",
+        "31a9e1fb-85e3-46b0-9ea6-d73f462aa4cd": {
+            "5a0e4ca3-c825-4547-8c88-6bac7905a341": {
+                "component_ID": "5a0e4ca3-c825-4547-8c88-6bac7905a341",
                 "data": {
-                    "$type": "TestComponent+Data"
+                    "somefloat": 1.521223,
+                    "$type": "TestChildComponent+Data"
                 }
             }
         }
