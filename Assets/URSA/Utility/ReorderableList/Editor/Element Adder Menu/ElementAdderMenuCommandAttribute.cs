@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Borodar.ReorderableList {
+namespace URSA.ReorderableList {
 
 	/// <summary>
 	/// Annotate <see cref="IElementAdderMenuCommand{TContext}"/> implementations with a

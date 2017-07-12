@@ -7,6 +7,8 @@
     using System.Linq;
 #if UNITY_EDITOR
     using UnityEditor;
+    using URSA.Internal;
+    using URSA.Utility;
 #endif
     public enum DataPath {
         inRootFolder,

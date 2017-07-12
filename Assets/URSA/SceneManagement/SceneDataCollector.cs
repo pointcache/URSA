@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using UnityEngine.SceneManagement;
     using System.Linq;
+    using URSA.Internal;
 
     public class SceneDataCollector : ScriptableObject {
 

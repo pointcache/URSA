@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using URSA.Utility;
 
     /// <summary>
     /// Enforces ordered execution of unity updates and onEnable through IOrderedBehavior interface

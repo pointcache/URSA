@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Borodar.ReorderableList {
+namespace URSA.ReorderableList {
 
 	/// <summary>
 	/// Factory methods that create <see cref="IElementAdderMenuBuilder{TContext}"/>

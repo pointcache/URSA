@@ -11,94 +11,88 @@
       <string>d:\work\ursa\assets\ursa\blueprint\blueprintloader.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\collisions\collisionhub.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\components\componentbase.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\components\componentpoolsystem.cs</string>
+      <string>d:\work\ursa\assets\ursa\serialization\componentobject.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\save\compref.cs</string>
+      <string>d:\work\ursa\assets\ursa\serialization\compref.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\save\comprefserializationprocessor.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\config\configbase.cs</string>
+      <string>d:\work\ursa\assets\ursa\serialization\comprefserializationprocessor.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\config\configsystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\custom_rvars\customrvars.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\EntityDatabase\Database.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\custom_rvars\editor\customrvarsdrawers.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\EntityDatabase\DatabaseManifest.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\database\editor\databasetools.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\EntityDatabase\Editor\DatabaseTools.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\ECS\Monos\ECSBehavior.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\ECS\Systems\ECSController.cs</string>
+      <string>d:\work\ursa\assets\ursa\ecs\systems\ecscontroller.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\entity\entity.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Database\EntityDatabase.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\EntityDatabase\EntityDatabase.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\entity\entitymanager.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\configurator\iconfiguratorsystem.cs</string>
+      <string>d:\work\ursa\assets\ursa\serialization\entityobject.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\initialization\initializedbehavior.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\reorderablelist\editor\genericlistadaptor.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\initialization\initializedcomponent.cs</string>
+      <string>d:\work\ursa\assets\ursa\scenemanagement\leveltransition.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\utility\noteditablestring\noteditablestringattribute.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\utility\noteditablestring\noteditablestringdrawer.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\persistentdata\persistentdatasystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\rvar\rvar.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\projectinfo.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\rvar\editor\rvardrawers.cs</string>
+      <string>d:\work\ursa\assets\ursa\serialization\saveobject.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\save\savesystem.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\Serialization\SaveSystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\scenemanagement\scenedata.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\scenemanagement\scenedatacollector.cs</string>
+      <string>d:\work\ursa\assets\ursa\scenemanagement\editor\scenessystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\scenemanagement\editor\scenedataeditor.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\scriptableobjectfactory\editor\scriptableobjectfactory.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\SceneManagement\Editor\ScenesSystem.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\scriptableobjectfactory\editor\scriptableobjectwindow.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Utility\SerializationHelper.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\systems\systemsexecutor.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\monos\ursabehavior.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\utility\editor\ursaeditortools.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\utility\ursasettings.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

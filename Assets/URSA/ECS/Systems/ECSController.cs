@@ -7,6 +7,9 @@
     using System.Collections;
     using URSA.SceneManagement;
     using URSA.ECS;
+    using URSA.Utility;
+    using URSA.EntityDatabase;
+    using URSA.Configurator;
 
     public class ECSController : MonoBehaviour {
 
@@ -84,7 +87,7 @@
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
 
-        public static void LoadLevel(LevelTransition transition) {
+        public static void LoadLevel(SceneTransition transition) {
             OnSceneSwitch();
             FullyInitialized = false;
 
@@ -113,7 +116,7 @@
 
             Configs.SetActive(true);
             gameObject.AddComponent<ComponentPoolSystem>();
-            gameObject.AddComponent<EntityDatabase>();
+            gameObject.AddComponent<Database>();
 
             foreach (Transform tr in transform) {
                 if (tr.gameObject == Configs)

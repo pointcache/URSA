@@ -3,6 +3,8 @@
     using UnityEngine;
     using System;
     using System.Collections.Generic;
+    using URSA.Utility;
+    using URSA.Serialization;
 
     internal static class EntityManager {
 
@@ -10,7 +12,7 @@
         internal static Dictionary<string, Entity> PersistentEntities = new Dictionary<string, Entity>(1000);
 
         internal static void RegisterEntity(Entity e) {
-            var persistent_root = e.transform.GetComponentInParents<PersistentDataSystem>();
+            var persistent_root = e.transform.GetComponentInParent<PersistentDataSystem>();
             if (persistent_root.Null())
                 SceneEntities.Add(e.ID, e);
             else

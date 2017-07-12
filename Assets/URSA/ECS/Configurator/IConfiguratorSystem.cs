@@ -1,4 +1,4 @@
-﻿namespace URSA {
+﻿namespace URSA.Configurator {
     using UnityEngine;
     using System;
     using System.Collections.Generic;

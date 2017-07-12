@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
     using URSA.ECS;
+    using URSA.Utility;
+    using URSA.Utility.NotEditableString;
+    using URSA.Serialization;
 
     public class Entity : MonoBehaviour {
 

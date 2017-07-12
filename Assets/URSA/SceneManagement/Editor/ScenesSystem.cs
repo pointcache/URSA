@@ -10,6 +10,8 @@
     using UnityEditor.SceneManagement;
     using System.Linq;
     using URSA.ECS;
+    using URSA.Internal;
+    using URSA.Utility;
 
     public static class ScenesSystem     {
 
@@ -96,7 +98,7 @@
             foreach (var s in scenedatas) {
                 SceneData scenedata = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(SceneData)) as SceneData;
                 if (scenedata.ID == "" || scenedata.ID == null) {
-                    scenedata.ID = EntityDatabase.get_unique_id(set);
+                    scenedata.ID = Helpers.GetUniqueID(set);
                 }
                 set.Add(scenedata.ID);
                 collector.scenes.Add(scenedata);

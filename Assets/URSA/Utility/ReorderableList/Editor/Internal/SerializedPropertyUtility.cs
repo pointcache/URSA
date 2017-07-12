@@ -5,7 +5,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Borodar.ReorderableList.Internal {
+namespace URSA.ReorderableList.Internal {
 
 	/// <summary>
 	/// Utility functionality for <see cref="SerializedPropertyAdaptor"/> implementations.

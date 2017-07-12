@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Borodar.ReorderableList {
+namespace URSA.ReorderableList {
 
 	/// <summary>
 	/// Interface for a menu command that can be included in an <see cref="IElementAdderMenu"/>

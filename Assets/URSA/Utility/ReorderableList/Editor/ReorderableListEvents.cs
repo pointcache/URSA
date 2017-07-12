@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace Borodar.ReorderableList {
+namespace URSA.ReorderableList {
 	
 	/// <summary>
 	/// Arguments which are passed to <see cref="AddMenuClickedEventHandler"/>.

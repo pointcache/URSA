@@ -6,7 +6,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace Borodar.ReorderableList.Internal {
+namespace URSA.ReorderableList.Internal {
 
 	/// <summary>
 	/// Utility functions to assist with GUIs.

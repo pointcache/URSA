@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Borodar.ReorderableList {
+namespace URSA.ReorderableList {
 
 	/// <summary>
 	/// Additional flags which can be passed into reorderable list field.

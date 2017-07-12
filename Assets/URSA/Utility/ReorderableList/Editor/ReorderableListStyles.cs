@@ -1,11 +1,11 @@
 // Copyright (c) Rotorz Limited. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root.
 
-using Borodar.ReorderableList.Internal;
+using URSA.ReorderableList.Internal;
 using UnityEditor;
 using UnityEngine;
 
-namespace Borodar.ReorderableList {
+namespace URSA.ReorderableList {
 	
 	/// <summary>
 	/// Styles for the <see cref="ReorderableListControl"/>.

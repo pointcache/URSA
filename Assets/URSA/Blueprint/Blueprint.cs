@@ -1,7 +1,7 @@
 ﻿namespace URSA.Blueprint {
 
     using System;
-    using URSA.Save;
+    using URSA.Serialization;
 
     [Serializable]
     public class Blueprint {

@@ -1,12 +1,8 @@
 ﻿namespace URSA.Blueprint.Editor {
 
     using UnityEngine;
-    using UnityEngine.UI;
-    using System;
-    using System.Collections.Generic;
     using UnityEditor;
-    using URSA.Save;
-    using URSA;
+    using URSA.Utility;
 
     [CustomEditor(typeof(BlueprintLoader))]
     public class BlueprintInspector : Editor {

@@ -1,4 +1,4 @@
-﻿namespace URSA.Utilities {
+﻿namespace URSA.Utility {
 #if UNITY_EDITOR
     using UnityEngine;
     using UnityEditor;
@@ -6,6 +6,8 @@
     using URSA.ECS;
     using URSA.SceneManagement.Editor;
     using System.Collections.Generic;
+    using URSA.Internal;
+    using URSA.EntityDatabase;
 
     public static class URSAEditorTools {
 
@@ -15,7 +17,7 @@
             var settings = URSASettings.current;
 
             if (settings.RebuildDatabase)
-                EntityDatabase.RebuildWithoutReloadOfTheScene();
+                Database.RebuildWithoutReloadOfTheScene();
             if (settings.CollectSceneData)
                 ScenesSystem.CollectLevelsData();
             if (settings.SaveAndReloadScene) {
