@@ -4,12 +4,12 @@
     using System;
     using System.Collections.Generic;
 
-    public static class EntityManager {
+    internal static class EntityManager {
 
-        public static Dictionary<string, Entity> SceneEntities = new Dictionary<string, Entity>(1000);
-        public static Dictionary<string, Entity> PersistentEntities = new Dictionary<string, Entity>(1000);
+        internal static Dictionary<string, Entity> SceneEntities = new Dictionary<string, Entity>(1000);
+        internal static Dictionary<string, Entity> PersistentEntities = new Dictionary<string, Entity>(1000);
 
-        public static void RegisterEntity(Entity e) {
+        internal static void RegisterEntity(Entity e) {
             var persistent_root = e.transform.GetComponentInParents<PersistentDataSystem>();
             if (persistent_root.Null())
                 SceneEntities.Add(e.ID, e);
@@ -17,12 +17,12 @@
                 PersistentEntities.Add(e.ID, e);
         }
 
-        public static void UnRegisterEntity(Entity e) {
+        internal static void UnRegisterEntity(Entity e) {
             SceneEntities.Remove(e.ID);
             PersistentEntities.Remove(e.ID);
         }
 
-        public static string GetUniqieID() {
+        internal static string GetUniqieID() {
             Guid guid = Guid.NewGuid();
             string id = guid.ToString();
             if (SceneEntities.ContainsKey(id))
@@ -31,7 +31,7 @@
                 return id;
         }
 
-        public static T GetEntityComponent<T>(this ComponentBase component) where T : ComponentBase {
+        internal static T GetEntityComponent<T>(this ComponentBase component) where T : ComponentBase {
             if ((object)component == null)
                 return null;
             if ((object)component.Entity == null)

@@ -17,16 +17,16 @@
         }
 
         public virtual void OnEnable() {
-            if (!URSAController.FullyInitialized) {
+            if (!ECSController.FullyInitialized) {
                 switch (onEvent) {
                     case InitializationEvent.OnLoadLocalData:
-                        URSAController.OnLoadLocalData += DoInitialize;
+                        ECSController.OnLoadLocalData += DoInitialize;
                         break;
                     case InitializationEvent.OnSystemsEnabled:
-                        URSAController.OnSystemsEnabled += DoInitialize;
+                        ECSController.OnSystemsEnabled += DoInitialize;
                         break;
                     case InitializationEvent.OnFullyInitialized:
-                        URSAController.OnFullyInitialized += DoInitialize;
+                        ECSController.OnFullyInitialized += DoInitialize;
                         break;
                     default:
                         break;
@@ -39,13 +39,13 @@
         public virtual void OnDisable() {
             switch (onEvent) {
                 case InitializationEvent.OnLoadLocalData:
-                    URSAController.OnLoadLocalData -= DoInitialize;
+                    ECSController.OnLoadLocalData -= DoInitialize;
                     break;
                 case InitializationEvent.OnSystemsEnabled:
-                    URSAController.OnSystemsEnabled -= DoInitialize;
+                    ECSController.OnSystemsEnabled -= DoInitialize;
                     break;
                 case InitializationEvent.OnFullyInitialized:
-                    URSAController.OnFullyInitialized -= DoInitialize;
+                    ECSController.OnFullyInitialized -= DoInitialize;
                     break;
                 default:
                     break;

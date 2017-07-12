@@ -41,6 +41,12 @@
       <string>d:\work\ursa\assets\ursa\database\editor\databasetools.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\ECS\Monos\ECSBehavior.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\ECS\Systems\ECSController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\entity\entity.cs</string>
     </ArrayOfString>
     <ArrayOfString>
@@ -60,9 +66,6 @@
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\persistentdata\persistentdatasystem.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\tools\referencecontainer\referencecontainer.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\rvar\rvar.cs</string>
@@ -86,13 +89,13 @@
       <string>D:\Work\URSA\Assets\URSA\SceneManagement\Editor\ScenesSystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\ecs\systems\systemsexecutor.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\monos\ursabehavior.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\ECS\Systems\URSAController.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Utility\Editor\URSAEditorTools.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\editor\ursaeditortools.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\utility\ursasettings.cs</string>

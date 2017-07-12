@@ -8,21 +8,21 @@
     using URSA.SceneManagement;
     using URSA.ECS;
 
-    public class URSAController : MonoBehaviour {
+    public class ECSController : MonoBehaviour {
 
         #region SINGLETON
-        private static URSAController _instance;
-        public static URSAController instance
+        private static ECSController _instance;
+        public static ECSController instance
         {
             get {
                 if (!_instance)
-                    _instance = GameObject.FindObjectOfType<URSAController>();
+                    _instance = GameObject.FindObjectOfType<ECSController>();
                 return _instance;
             }
         }
         #endregion
 
-        public static URSAController current;
+        public static ECSController current;
 
         [SerializeField]
         private GameObject Configs;

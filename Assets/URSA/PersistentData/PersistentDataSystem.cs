@@ -10,6 +10,7 @@
     using URSA;
     using System.IO;
     using URSA.Serialization;
+    using URSA.Blueprint;
 
     public class PersistentDataSystem : MonoBehaviour {
 

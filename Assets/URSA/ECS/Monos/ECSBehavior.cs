@@ -8,7 +8,7 @@
     /// Shares the same mechanism for accessing entity as ComponentBase, but is not a component. Use
     /// when you need access to entity.
     /// </summary>
-    public class UrsaBehavior : MonoBehaviour {
+    public class ECSBehavior : MonoBehaviour {
 
         Entity entity;
         public Entity Entity

@@ -15,13 +15,13 @@
 
         public override void OnEnable() {
             base.OnEnable();
-            if (!URSAController.FullyInitialized) {
+            if (!ECSController.FullyInitialized) {
                 switch (onEvent) {
                     case InitializationEvent.OnLoadLocalData:
-                        URSAController.OnLoadLocalData += Initialize;
+                        ECSController.OnLoadLocalData += Initialize;
                         break;
                     case InitializationEvent.OnSystemsEnabled:
-                        URSAController.OnSystemsEnabled += Initialize;
+                        ECSController.OnSystemsEnabled += Initialize;
                         break;
                     default:
                         break;
@@ -35,10 +35,10 @@
             base.OnDisable();
             switch (onEvent) {
                 case InitializationEvent.OnLoadLocalData:
-                    URSAController.OnLoadLocalData -= Initialize;
+                    ECSController.OnLoadLocalData -= Initialize;
                     break;
                 case InitializationEvent.OnSystemsEnabled:
-                    URSAController.OnSystemsEnabled -= Initialize;
+                    ECSController.OnSystemsEnabled -= Initialize;
                     break;
                 default:
                     break;

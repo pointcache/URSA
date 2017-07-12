@@ -1,18 +1,21 @@
 ﻿namespace URSA.Serialization {
 
-    using UnityEngine;
-    using System;
-    using System.Collections.Generic;
-    using URSA.Save;
 #if UNITY_EDITOR
     using UnityEditor;
     using UnityEditor.SceneManagement;
 #endif
+
+    using UnityEngine;
+    using System;
+    using System.Collections.Generic;
     using System.Reflection;
     using System.IO;
-    using URSA;
     using System.Linq;
+
+    using URSA;
     using URSA.ECS;
+    using URSA.Save;
+    using URSA.Blueprint;
 
     public class SaveSystem : MonoBehaviour {
 

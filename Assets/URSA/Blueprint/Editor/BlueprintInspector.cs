@@ -1,4 +1,4 @@
-﻿namespace URSA {
+﻿namespace URSA.Blueprint.Editor {
 
     using UnityEngine;
     using UnityEngine.UI;

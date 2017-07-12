@@ -1,4 +1,4 @@
-﻿namespace URSA {
+﻿namespace URSA.Blueprint {
 
     using System;
     using URSA.Save;
