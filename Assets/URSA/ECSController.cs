@@ -47,7 +47,7 @@
         /// <summary>
         /// Deserialize your initial player profiles, etc
         /// </summary>
-        public static event Action OnInitialLoadPersistentData = delegate { };
+        public static event Action OnLoadGlobalData = delegate { };
 
         public static event Action OnGlobalSystemsFullyInitialized = delegate { };
         /// <summary>
@@ -121,6 +121,7 @@
             if (Configs)
                 Configs.SetActive(true);
             gameObject.AddComponent<EntityDatabase>();
+            OnLoadGlobalData();
 
             foreach (Transform tr in transform) {
                 if (tr.gameObject == Configs)
@@ -133,11 +134,11 @@
             }
 
 
-            OnInitialLoadPersistentData();
             if (Configurator != null)
                 Configurator.ConfigureGlobal();
             globalInitialized = true;
-            var GlobalExecutor = gameObject.AddComponent<GlobalSystemsExecutor>();
+
+            gameObject.AddComponent<GlobalSystemsExecutor>();
             OnGlobalSystemsFullyInitialized();
         }
 
@@ -163,5 +164,4 @@
             SystemsExecutor.UpdateAllowed = true;
         }
     }
-
 }

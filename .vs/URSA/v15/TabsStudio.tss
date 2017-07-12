@@ -11,6 +11,9 @@
       <string>d:\work\ursa\assets\ursa\serialization\blueprint\blueprintloader.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Collisions\CollisionHub.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\componentbase.cs</string>
     </ArrayOfString>
     <ArrayOfString>
@@ -65,10 +68,10 @@
       <string>D:\Work\URSA\Assets\Example\TestConfig.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Utility\Editor\URSAEditorTools.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\editor\ursaeditortools.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Internal\URSASettings.cs</string>
+      <string>d:\work\ursa\assets\ursa\internal\ursasettings.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
