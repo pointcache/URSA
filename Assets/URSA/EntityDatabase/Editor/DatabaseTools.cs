@@ -63,7 +63,7 @@
             }
             if (GUILayout.Button("Find")) {
                 List<GameObject> selection = new List<GameObject>();
-                var entities = Resources.LoadAll<Entity>(URSASettings.current.DatabaseRootFolder + "/");
+                var entities = Resources.LoadAll<Entity>(URSASettings.Current.DatabaseRootFolder + "/");
 
                 var names = entities.Select(x => x.name).ToArray();
 

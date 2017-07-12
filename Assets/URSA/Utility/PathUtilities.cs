@@ -8,14 +8,7 @@
 
     public static class PathUtilities {
 
-        public static string GetUniqueID(HashSet<string> set) {
-            Guid guid = Guid.NewGuid();
-            string id = guid.ToString();
-            if (set.Contains(id))
-                return GetUniqueID(set);
-            else
-                return id;
-        }
+
 
         public static string DataPathWithoutAssets
         {

@@ -63,7 +63,7 @@
                 default:
                     break;
             }
-            return path + "/" + URSASettings.current.CustomDataFolder;
+            return path + "/" + URSASettings.Current.CustomDataFolder;
         }
         
         public static IRVar GetVariable(string config, string variableName) {

@@ -5,7 +5,7 @@
     public class URSASettings : ScriptableObject {
 
         static URSASettings _settings;
-        public static URSASettings current
+        public static URSASettings Current
         {
             get {
                 if (_settings == null)
@@ -19,7 +19,6 @@
         public bool CollectSceneData = true;
         public bool SaveAndReloadScene = true;
 
-
         [Header("Systems")]
         public GameObject CustomGlobalSystemsPrefab;
         public GameObject GlobalSystemsTemplate;
@@ -28,7 +27,7 @@
 
         [Header("Database")]
         public string DatabaseRootFolder = "Entities";
-        public string DatabaseManifest = "manifest.db";
+        public string DatabaseManifest = "DatabaseManifest.db";
 
         [Header("Serialization")]
         public string CustomDataFolder = "CustomData";

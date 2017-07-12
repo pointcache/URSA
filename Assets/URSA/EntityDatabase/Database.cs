@@ -36,7 +36,7 @@
         {
             get {
                 if (_manifest == null) {
-                    TextAsset manifest_asset = Resources.Load(URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest) as TextAsset;
+                    TextAsset manifest_asset = Resources.Load(URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.Current.DatabaseManifest) as TextAsset;
                     _manifest = SerializationHelper.LoadFromString<DatabaseManifest>(manifest_asset.text);
                 }
                 return _manifest;
@@ -79,7 +79,7 @@
         //[MenuItem("temp/clear ids")]
 #endif
         public static void clear_all_entity_IDs() {
-            var prefabs = Resources.LoadAll(URSASettings.current.DatabaseRootFolder + "/");
+            var prefabs = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder + "/");
 
             foreach (var p in prefabs) {
                 var ent = ((GameObject)p).GetComponent<Entity>();
@@ -92,7 +92,7 @@
         static string dbPath
         {
             get {
-                return "/Resources/" + URSASettings.current.DatabaseRootFolder + "/";
+                return "/Resources/" + URSASettings.Current.DatabaseRootFolder + "/";
             }
         }
 
@@ -105,7 +105,7 @@
             string idPath = "";
             manifest.entity_id_adress.TryGetValue(id, out idPath);
             if (idPath != "")
-                path = URSASettings.current.DatabaseRootFolder + "/" + idPath;
+                path = URSASettings.Current.DatabaseRootFolder + "/" + idPath;
             else
                 return null;
             return Resources.Load(path) as GameObject;
@@ -118,7 +118,7 @@
             DatabaseManifest manifest = new DatabaseManifest();
             manifest.GameVersion = ProjectInfo.current.Version;
             var files = Directory.GetFiles(Application.dataPath + dbPath, "*.prefab", SearchOption.AllDirectories);
-            var prefabs = Resources.LoadAll(URSASettings.current.DatabaseRootFolder + "/");
+            var prefabs = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder + "/");
 
             foreach (var p in prefabs) {
                 var ent = ((GameObject)p).GetComponent<Entity>();
@@ -130,7 +130,7 @@
                 string adress = f.Remove(0, f.IndexOf(dbPath) + dbPath.Length);
                 adress = adress.Replace(".prefab", string.Empty);
 
-                var prefab = Resources.Load(URSASettings.current.DatabaseRootFolder + "/" + adress) as GameObject;
+                var prefab = Resources.Load(URSASettings.Current.DatabaseRootFolder + "/" + adress) as GameObject;
                 var entity = prefab.GetComponent<Entity>();
                 if (!entity) {
                     Debug.LogError("Database: GameObject without entity found, skipping.", prefab);
@@ -159,11 +159,11 @@
                 }
             }
 
-            SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.current.DatabaseManifest + ".json", true);
+            SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.Current.DatabaseManifest + ".json", true);
         }
 
         static void assign_ids_components() {
-            var allData = Resources.LoadAll(URSASettings.current.DatabaseRootFolder);
+            var allData = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder);
             prefabObjects = new List<GameObject>(1000);
             foreach (var item in allData) {
                 GameObject go = item as GameObject;

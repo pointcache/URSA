@@ -14,7 +14,7 @@
 
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
         public static void UpdateEverything() {
-            var settings = URSASettings.current;
+            var settings = URSASettings.Current;
 
             if (settings.RebuildDatabase)
                 Database.RebuildWithoutReloadOfTheScene();
@@ -31,7 +31,7 @@
 
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/AddSystems", priority = 2)]
         public static void AddSystems() {
-            var settings = URSASettings.current;
+            var settings = URSASettings.Current;
             var gl = GameObject.Find(URSAConstants.SYSTEMS_GLOBAL_NAME) as GameObject;
             if (!gl) {
                 if (settings.CustomGlobalSystemsPrefab) {
