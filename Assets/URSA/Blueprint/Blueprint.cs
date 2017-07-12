@@ -1,13 +1,14 @@
-﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
-using URSA.Save;
+﻿namespace URSA {
 
-[Serializable]
-public class Blueprint  {
+    using System;
+    using URSA.Save;
 
-    public float gameVersion;
-    public string Name;
-    public SaveObject saveObject;
+    [Serializable]
+    public class Blueprint {
 
+        public float GameVersion;
+        public string Name;
+        public SaveObject SaveObject;
+
+    }
 }

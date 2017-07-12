@@ -60,4 +60,9 @@ public static class SerializationHelper {
     public static T LoadFromString<T>(string json) {
         return (T)Deserialize(typeof(T), json);
     }
+
+    public static T LoadFromTextAsset<T>(string path) {
+        var asset = Resources.Load(path) as TextAsset;
+        return LoadFromString<T>(asset.text);
+    }
 }

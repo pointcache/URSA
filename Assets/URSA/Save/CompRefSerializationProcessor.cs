@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using FullSerializer;
+using URSA;
 
 public class CompRefSerializationProcessor : fsObjectProcessor {
 

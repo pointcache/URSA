@@ -47,7 +47,8 @@ public class RangeReactivePropertyAttribute : PropertyAttribute {
 // If you want to customize other specialized ReactiveProperty
 // [UnityEditor.CustomPropertyDrawer(typeof(YourSpecializedReactiveProperty))]
 // public class ExtendInspectorDisplayDrawer : InspectorDisplayDrawer { } 
-[UnityEditor.CustomPropertyDrawer(typeof(CompRef))] 
+[UnityEditor.CustomPropertyDrawer(typeof(r_ShaderColor))]
+[UnityEditor.CustomPropertyDrawer(typeof(r_ShaderFloat))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_Vector2))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_Vector3))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_GameObject))]
@@ -159,12 +160,13 @@ public class rVarDrawer : UnityEditor.PropertyDrawer {
         }
         return height;
     }
+
     protected virtual void EmitPropertyField(Rect position, UnityEditor.SerializedProperty targetSerializedProperty, GUIContent label) {
         var multiline = GetMultilineAttribute();
         if (multiline == null) {
             var range = GetRangeAttribute();
             if (range == null) {
-                UnityEditor.EditorGUI.PropertyField(position, targetSerializedProperty, label, includeChildren: true);
+                UnityEditor.EditorGUI.PropertyField(position, targetSerializedProperty, label, includeChildren : true );
             } else {
                 if (targetSerializedProperty.propertyType == SerializedPropertyType.Float) {
                     EditorGUI.Slider(position, targetSerializedProperty, range.Min, range.Max, label);

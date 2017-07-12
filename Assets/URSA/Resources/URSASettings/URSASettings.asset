@@ -1,29 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382a7df77a1dc5248aaa022dd863e1b4, type: 3}
-  m_Name: URSASettings
-  m_EditorClassIdentifier: 
-  RebuildDatabase: 1
-  ParsePrefabs: 1
-  OrganizeLevel: 0
-  CollectSceneData: 1
-  SaveAndReloadScene: 1
-  CustomGlobalSystemsPrefab: {fileID: 1000011355916680, guid: da333d98d4819ce42ae026a24cf50455,
-    type: 2}
-  GlobalSystemsTemplate: {fileID: 1000011637727820, guid: 0f3c58a8f9077974dab2515979472e6c,
-    type: 2}
-  CustomLocalSystemsPrefab: {fileID: 1000010146733308, guid: 8cbc9a3aaf279f6448e0f0ad7784486e,
-    type: 2}
-  LocalSystemsTemplate: {fileID: 1000010491598222, guid: 27182d360031cb6488178e893bdbe200,
-    type: 2}
-  DatabaseRootFolder: GamePrefabs/ENTITY
-  DatabaseManifest: DatabaseManifest
-  CustomDataFolder: CustomData
+version https://git-lfs.github.com/spec/v1
+oid sha256:43c76103ba4adaab5cc0aaeb53f5121c5640fdb53cb75891b0ff8b5b6fba4c7a
+size 994

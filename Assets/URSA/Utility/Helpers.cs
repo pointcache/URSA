@@ -29,6 +29,10 @@ public enum Direction {
     down
 }
 
+public enum Size {
+    s8 = 8, s16 = 16, s32 = 32, s64 = 64, s128 = 128, s256 = 256, s512 = 512, s1024 = 1024, s2048 = 2048, s4096 = 4096
+}
+
 public class Enumerators {
 
     public static IEnumerator addframedelay(Action action) {
@@ -41,6 +45,30 @@ public class NotEditableStringAttribute : PropertyAttribute { }
 
 public static class Helpers {
 
+    public static List<Transform> GetTransformsInOrder(this GameObject go) {
+        var tr = go.transform;
+        List<Transform> list = new List<Transform>(tr.childCount);
+        foreach (Transform t in tr) {
+            list.Add(t);
+        }
+
+        return list;
+    }
+
+    public static void DisableCanvasGroupInteractions(this GameObject go) {
+        var cg = go.GetComponent<CanvasGroup>();
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+    }
+
+    public static V GetValueOrDefault<K, V>(this Dictionary<K, V> dic, K key) {
+        V ret;
+        bool found = dic.TryGetValue(key, out ret);
+        if (found) {
+            return ret;
+        }
+        return default(V);
+    }
 
     public static string dataPathWithoutAssets
     {
@@ -63,12 +91,14 @@ public static class Helpers {
 
 #if UNITY_EDITOR
 
+
     public static T FindScriptableObject<T>() where T : ScriptableObject {
         T so = null;
         var assets = AssetDatabase.FindAssets("t:" + typeof(T).Name);
         if (assets.Length == 0) {
             Debug.LogError(typeof(T).Name + " file was not found. (If you see this message on project import, and the scriptable object exists, it means it was not yet imported, rerun parsers and updaters.)");
-        } else {
+        }
+        else {
             so = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(assets[0]), typeof(T)) as T;
         }
         return so;
@@ -130,7 +160,8 @@ public static class Helpers {
             Debug.LogError(errorMessage, mono);
             mono.gameObject.SetActive(false);
             return true;
-        } else
+        }
+        else
             return false;
     }
 
@@ -253,7 +284,8 @@ public static class Helpers {
             GameObject go = GameObject.Instantiate(pref);
             pref.SetActive(initstate);
             return go;
-        } else {
+        }
+        else {
             Debug.LogError("Resource:" + path + " not found.");
             return null;
         }
@@ -261,14 +293,15 @@ public static class Helpers {
 
     public static GameObject Spawn(GameObject prefab, bool startDisabled) {
         bool initstate;
-          initstate = prefab.activeSelf;
+        initstate = prefab.activeSelf;
         if (startDisabled)
             prefab.gameObject.SetActive(false);
         if (prefab) {
             GameObject go = GameObject.Instantiate(prefab);
             prefab.SetActive(initstate);
             return go;
-        } else {
+        }
+        else {
             Debug.LogError("Prefab:" + prefab + " not found.");
             return null;
         }
@@ -281,7 +314,8 @@ public static class Helpers {
             Selection.activeGameObject = go;
             //SceneView.lastActiveSceneView.FrameSelected();
             return go;
-        } else
+        }
+        else
             return null;
     }
 
@@ -292,13 +326,34 @@ public static class Helpers {
             Selection.activeGameObject = go;
             SceneView.lastActiveSceneView.FrameSelected();
             return go;
-        } else
+        }
+        else
             return null;
     }
 
 #endif
     public static Color SetAlpha(this Color color, float a) {
         return new Color(color.r, color.g, color.b, a);
+    }
+
+    public static Color HexToColor(this string hex) {
+        hex = hex.Replace("0x", "");//in case the string is formatted 0xFFFFFF
+        hex = hex.Replace("#", "");//in case the string is formatted #FFFFFF
+        byte a = 255;//assume fully visible unless specified in hex
+        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        //Only use alpha if the string has enough characters
+        if (hex.Length == 8) {
+            a = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        }
+        return new Color32(r, g, b, a);
+    }
+
+    public static string ToHex(this Color color) {
+        Color32 col = color;
+        string hex = col.r.ToString("X2") + col.g.ToString("X2") + col.b.ToString("X2");
+        return hex;
     }
 
     public static void Clear<T>(this T[] arr) {
@@ -375,6 +430,19 @@ public static class Helpers {
         return s_corners;
     }
 
+    public static Vector3 GetScreenCenterV3() {
+        return new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+    }
+
+    public static Vector3 GetScreenUpV3() {
+        Vector3 upmid = new Vector3(Screen.width / 2f, Screen.height, 0f);
+        return upmid - GetScreenCenterV3();
+    }
+
+    public static Vector3 GetDirectionFromScreenCenter(Vector3 position) {
+        return position - GetScreenCenterV3();
+    }
+
     public static Vector3 WithX(this Vector3 v, float x) {
         return new Vector3(x, v.y, v.z);
     }
@@ -428,6 +496,10 @@ public static class Helpers {
         return vec;
     }
 
+    public static Vector3 GetPointBetween(Vector3 a, Vector3 b) {
+        return (a + b) / 2f;
+    }
+
     //Converts 3d direction vector into 2d, basically flattens it
     public static Vector3 ConvertTo2dCoords(this Vector3 vec) {
         float mag = vec.magnitude;
@@ -462,7 +534,8 @@ public static class Helpers {
                 _in = max;
             if (_in < min)
                 _in = min;
-        } else {
+        }
+        else {
             if (_in < max * -1)
                 _in = max * -1;
             if (_in > min * -1)

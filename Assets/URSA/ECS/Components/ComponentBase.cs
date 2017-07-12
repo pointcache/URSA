@@ -1,45 +1,41 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿namespace URSA {
 
+    using UnityEngine;
+    using System.Collections.Generic;
+    using URSA.ECS;
 
-public class ComponentBase : MonoBehaviour
-{
-    [NotEditableString]
-    public string ID;
+    public class ComponentBase : MonoBehaviour {
+        [NotEditableString]
+        public string ID;
 
-    public virtual void OnEnable()
-    {
-        ComponentPoolSystem.Register(this);
-    }
-    public virtual void OnDisable()
-    {
-        ComponentPoolSystem.Unregister(this);
-        _entity = null;
-    }
+        public virtual void OnEnable() {
+            ComponentPoolSystem.Register(this);
+        }
+        public virtual void OnDisable() {
+            ComponentPoolSystem.Unregister(this);
+            _entity = null;
+        }
 
-    Entity _entity;
-    public Entity Entity
-    {
-        get
+        Entity _entity;
+        public Entity Entity
         {
-            if ((object)_entity == null)
-                _entity = getEntityRecursive(transform);
-            return _entity;
+            get {
+                if ((object)_entity == null)
+                    _entity = getEntityRecursive(transform);
+                return _entity;
+            }
+        }
+        Entity getEntityRecursive(Transform tr) {
+            if ((object)tr == null) {
+                return null;
+            }
+            Entity ec = tr.gameObject.GetComponent<Entity>();
+            if ((object)ec != null) {
+                return ec;
+            }
+            else
+                return getEntityRecursive(tr.parent);
         }
     }
-    Entity getEntityRecursive(Transform tr)
-    {
-        if ((object)tr == null)
-        {
-            return null;
-        }
-        Entity ec = tr.gameObject.GetComponent<Entity>();
-        if ((object)ec != null)
-        {
-            return ec;
-        }
-        else
-            return getEntityRecursive(tr.parent);
-    }
+    public abstract class SerializedData { }
 }
-public class SerializedData { }
