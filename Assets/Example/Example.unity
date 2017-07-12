@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 84474799}
   - component: {fileID: 84474800}
   - component: {fileID: 84474801}
+  - component: {fileID: 84474802}
   m_Layer: 0
   m_Name: GlobalSystems
   m_TagString: Untagged
@@ -164,6 +165,20 @@ MonoBehaviour:
   FileName: GameSave
   FolderName: Saves
   Extension: .sav
+--- !u!114 &84474802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84474797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b3526fdbe1f4f40a3c30b75a485a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FileName: persistentGameData
+  FolderName: PersistenData
+  extension: .data
 --- !u!114 &254224082 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114373049226803328, guid: 764481dffa0e37d4fb068952dc2728a2,

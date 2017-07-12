@@ -25,15 +25,36 @@
         }
         #endregion
 
+        [Serializable]
+        public class PersistentDataInfo {
+            public SaveObject data;
+            //Add your custom info here
+            public string profileName;
+            public DateTime creationDate;
+        }
+
         public string FileName = "persistentGameData";
-        public string folderPath = "PersistenData";
+        public string FolderName = "PersistenData";
         public string extension = ".data";
 
         public static event Action OnPersistentDataLoaded = delegate { };
 
+        [SerializeField]
+        private Transform persistentDataRoot;
+
+        private void OnEnable() {
+            if (!persistentDataRoot) {
+                var go = transform.FindChild("PersistentData");
+                if (!go) {
+                    persistentDataRoot = new GameObject("PersistentData").transform;
+                    GameObject.DontDestroyOnLoad(persistentDataRoot);
+                }
+            }
+        }
+
         public static void MakePersistent(Entity entity) {
             UnityEngine.Object.DontDestroyOnLoad(entity.gameObject);
-            entity.transform.parent = instance.transform;
+            entity.transform.parent = instance.persistentDataRoot;
         }
 
 
@@ -60,7 +81,7 @@
             info.creationDate = DateTime.Now;
             info.data = file;
 
-            string path = PathUtilities.CustomDataPath + "/" + folderPath;
+            string path = PathUtilities.CustomDataPath + "/" + FolderName;
 
             if (!Directory.Exists(path)) {
                 Directory.CreateDirectory(path);
@@ -70,7 +91,7 @@
         }
 
         public void LoadFrom() {
-            ClearAnd(completeLoad);
+            ClearAnd(CompleteLoad);
         }
 
         public void LoadWithoutClear(TextAsset blueprint) {
@@ -84,7 +105,7 @@
         }
 
         public void ClearAnd(Action and) {
-            transform.DestroyChildren();
+            persistentDataRoot.DestroyChildren();
             this.OneFrameDelay(and);
         }
 
@@ -102,25 +123,16 @@
             });
         }
 
-        void completeLoad() {
-            string path = PathUtilities.CustomDataPath + "/" + folderPath + "/" + FileName + extension;
+        private void CompleteLoad() {
+            string path = PathUtilities.CustomDataPath + "/" + FolderName + "/" + FileName + extension;
 
             if (File.Exists(path)) {
                 var info = SaveSystem.DeserializeAs<PersistentDataInfo>(path);
-                SaveSystem.UnboxSaveObject(info.data, transform);
+                SaveSystem.UnboxSaveObject(info.data, persistentDataRoot);
                 OnPersistentDataLoaded();
             }
             else
                 Debug.LogError("PersistentDataSystem: File at path:" + path + " was not found");
         }
-
-        [Serializable]
-        public class PersistentDataInfo {
-            public SaveObject data;
-            //Add your custom info here
-            public string profileName;
-            public DateTime creationDate;
-        }
     }
-
 }

@@ -27,6 +27,8 @@
         }
         #endregion
 
+
+
         public static ECSController current;
 
         [SerializeField]
@@ -118,7 +120,6 @@
 
             if (Configs)
                 Configs.SetActive(true);
-            gameObject.AddComponent<ComponentPoolSystem>();
             gameObject.AddComponent<EntityDatabase>();
 
             foreach (Transform tr in transform) {
