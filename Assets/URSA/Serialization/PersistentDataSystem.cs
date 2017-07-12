@@ -6,7 +6,7 @@
 #endif
     using URSA;
     using System.IO;
-    using URSA.Blueprint;
+    using URSA.Serialization.Blueprints;
     using URSA.Internal;
     using URSA.Utility;
 

@@ -1,4 +1,4 @@
-﻿namespace URSA.ECS {
+﻿namespace URSA.ECS.Components {
 
     using UnityEngine;
     using System;
@@ -189,7 +189,7 @@
             count++;
 
             //if entity exists
-            Entity e = comp.Entity;
+            URSA.Entity e = comp.Entity;
             if ((object)e != null) {
                 List<T> list = null;
                 entities.TryGetValue(e.ID, out list);
@@ -213,7 +213,7 @@
             Сomponents.Remove(comp as T);
             count--;
 
-            Entity e = comp.Entity;
+            URSA.Entity e = comp.Entity;
             if ((object)e != null) {
                 List<T> list = null;
                 entities.TryGetValue(e.ID, out list);

@@ -7,9 +7,11 @@
     using System.Collections;
     using URSA.SceneManagement;
     using URSA.ECS;
+    using URSA.ECS.Systems;
     using URSA.Utility;
     using URSA.Database;
     using URSA.Configurator;
+    using URSA.ECS.Components;
 
     public class ECSController : MonoBehaviour {
 

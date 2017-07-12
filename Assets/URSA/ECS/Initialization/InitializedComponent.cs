@@ -1,4 +1,4 @@
-﻿namespace URSA {
+﻿namespace URSA.ECS.Initialization {
 
     using UnityEngine;
     using System;

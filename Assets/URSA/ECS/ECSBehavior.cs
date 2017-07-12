@@ -1,5 +1,6 @@
-﻿namespace URSA {
+﻿namespace URSA.ECS {
     using UnityEngine;
+    using URSA;
     using UnityEngine.UI;
     using System;
     using System.Collections.Generic;
@@ -10,8 +11,8 @@
     /// </summary>
     public class ECSBehavior : MonoBehaviour {
 
-        Entity entity;
-        public Entity Entity
+        URSA.Entity entity;
+        public URSA.Entity Entity
         {
             get {
                 if ((object)entity == null)
@@ -19,11 +20,11 @@
                 return entity;
             }
         }
-        Entity GetEntityRecursive(Transform tr) {
+        URSA.Entity GetEntityRecursive(Transform tr) {
             if ((object)tr == null) {
                 return null;
             }
-            Entity ec = tr.gameObject.GetComponent<Entity>();
+            URSA.Entity ec = tr.gameObject.GetComponent<URSA.Entity>();
             if ((object)ec != null) {
                 return ec;
             }

@@ -1,4 +1,4 @@
-﻿namespace URSA.Blueprint {
+﻿namespace URSA.Serialization.Blueprints {
 
     using System;
     using URSA.Serialization;

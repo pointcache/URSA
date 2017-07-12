@@ -1,4 +1,4 @@
-﻿namespace URSA.Blueprint.Editor {
+﻿namespace URSA.Serialization.Blueprints.Editor {
 
     using UnityEngine;
     using UnityEditor;

@@ -5,16 +5,22 @@
       <string>d:\work\ursa\assets\ursa\blueprint\blueprint.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Serialization\Blueprint\Blueprint.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\blueprint\editor\blueprintinspector.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\blueprint\blueprintloader.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\components\componentbase.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\ComponentBase.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\serialization\componentobject.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\ECS\Components\ComponentPoolSystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\serialization\compref.cs</string>
@@ -26,13 +32,16 @@
       <string>d:\work\ursa\assets\ursa\config\configsystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Database\Database.cs</string>
+      <string>d:\work\ursa\assets\ursa\database\editor\databasetools.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\systems\ecscontroller.cs</string>
+      <string>d:\work\ursa\assets\ursa\ecs\ecsbehavior.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\ecs\entity\entity.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\ECSController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\entity.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>D:\Work\URSA\Assets\URSA\Database\EntityDatabase.cs</string>
@@ -54,6 +63,12 @@
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\configurator\iconfiguratorsystem.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\ecs\initialization\initializedbehavior.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\ecs\initialization\initializedcomponent.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\scenemanagement\leveltransition.cs</string>

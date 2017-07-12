@@ -1,4 +1,4 @@
-﻿namespace URSA {
+﻿namespace URSA.ECS.Systems {
     using UnityEngine;
     using System;
     using System.Collections.Generic;

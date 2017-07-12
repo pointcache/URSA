@@ -1,10 +1,8 @@
 ﻿namespace URSA {
 
     using UnityEngine;
-    using System.Collections.Generic;
-    using URSA.ECS;
-    using URSA.Utility;
     using URSA.Utility.NotEditableString;
+    using URSA.ECS.Components;
 
     public class ComponentBase : MonoBehaviour {
         [NotEditableString]

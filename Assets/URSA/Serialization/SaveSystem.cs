@@ -14,10 +14,11 @@
 
     using URSA;
     using URSA.ECS;
-    using URSA.Blueprint;
+    using URSA.Serialization.Blueprints;
     using URSA.Internal;
     using URSA.Utility;
     using URSA.Database;
+    using URSA.ECS.Entity;
 
     public class SaveSystem : MonoBehaviour {
 

@@ -1,4 +1,4 @@
-﻿namespace URSA.ECS {
+﻿namespace URSA.ECS.Entity {
 
     using UnityEngine;
     using System;
@@ -8,10 +8,10 @@
 
     internal static class EntityManager {
 
-        internal static Dictionary<string, Entity> SceneEntities = new Dictionary<string, Entity>(1000);
-        internal static Dictionary<string, Entity> PersistentEntities = new Dictionary<string, Entity>(1000);
+        internal static Dictionary<string, URSA.Entity> SceneEntities = new Dictionary<string, URSA.Entity>(1000);
+        internal static Dictionary<string, URSA.Entity> PersistentEntities = new Dictionary<string, URSA.Entity>(1000);
 
-        internal static void RegisterEntity(Entity e) {
+        internal static void RegisterEntity(URSA.Entity e) {
             var persistent_root = e.transform.GetComponentInParent<PersistentDataSystem>();
             if (persistent_root.Null())
                 SceneEntities.Add(e.ID, e);
@@ -19,7 +19,7 @@
                 PersistentEntities.Add(e.ID, e);
         }
 
-        internal static void UnRegisterEntity(Entity e) {
+        internal static void UnRegisterEntity(URSA.Entity e) {
             SceneEntities.Remove(e.ID);
             PersistentEntities.Remove(e.ID);
         }

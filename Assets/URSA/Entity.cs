@@ -6,6 +6,8 @@
     using URSA.Utility;
     using URSA.Utility.NotEditableString;
     using URSA.Serialization;
+    using URSA.ECS.Entity;
+    using URSA.ECS.Components;
 
     public class Entity : MonoBehaviour {
 
@@ -81,6 +83,4 @@
             PersistentDataSystem.MakePersistent(this);
         }
     }
-
-
 }
