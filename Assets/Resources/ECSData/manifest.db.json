@@ -1,0 +1,10 @@
+{
+    "GameVersion": 0.001,
+    "entity_id_adress": {
+        "e6dd266d-871f-4138-a11b-648c841d0a4a": "Cube"
+    },
+    "entity_adress_id": {
+        "Cube": "e6dd266d-871f-4138-a11b-648c841d0a4a"
+    },
+    "$type": "URSA.Database.DatabaseManifest"
+}

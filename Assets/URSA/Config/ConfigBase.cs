@@ -1,21 +1,20 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
-using System.Collections.Generic;
-using URSA;
+﻿namespace URSA {
 
-public class ConfigBase : ComponentBase
-{
+    using UnityEngine;
+    using URSA.Config;
 
-    public override void OnEnable()
-    {
-        base.OnEnable();
-        ConfigSystem.RegisterConfig(this);
+    public class ConfigBase : MonoBehaviour {
+
+        public string FileName;
+
+        public void OnEnable() {
+            ConfigSystem.RegisterConfig(this);
+        }
+
+        public void OnDisable() {
+            ConfigSystem.UnregisterConfig(this);
+        }
     }
 
-    public override void OnDisable()
-    {
-        base.OnDisable();
-        ConfigSystem.UnregisterConfig(this);
-    }
+
 }
