@@ -12,7 +12,7 @@
         public override void OnBeforeSerialize(Type storageType, object instance) {
 
             CompRef cref = instance as CompRef;
-            ComponentBase comp = cref.Value;
+            ComponentBase comp = cref.target;
             if (comp != null) {
                 cref.isNull = false;
                 if (blueprint)
@@ -23,9 +23,11 @@
                 cref.component_ID = comp.ID;
                 cref.entityName = comp.Entity.name;
             }
-            else
+            else {
                 cref.isNull = true;
-            cref.setValueDirectly(null);
+
+            }
+            //cref.target = null;
         }
     }
 

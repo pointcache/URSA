@@ -255,13 +255,7 @@
                         else
                             comps.TryGetValue(compref.component_ID, out cbase);
                         if (cbase != null) {
-
-                            if (blueprintEditorMode) {
-
-                                compref.setValueDirectly(cbase);
-                            }
-                            else
-                                compref.setValueDirectly(cbase);
+                            compref.target = cbase;
                         }
                         else
                             Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);

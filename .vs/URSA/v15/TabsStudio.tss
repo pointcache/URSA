@@ -11,6 +11,18 @@
       <string>d:\work\ursa\assets\ursa\serialization\blueprint\blueprintloader.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\ComponentBase.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Serialization\CompRef.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Serialization\Editor\CompRefEditor.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Serialization\CompRefSerializationProcessor.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\config\configbase.cs</string>
     </ArrayOfString>
     <ArrayOfString>
@@ -18,6 +30,15 @@
     </ArrayOfString>
     <ArrayOfString>
       <string>D:\Work\URSA\Assets\URSA\Config\Editor\ConfigSystemTools.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Custom_rVars\CustomRVars.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Custom_rVars\Editor\CustomRVarsDrawers.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\ECSController.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\utility\pathutilities.cs</string>
@@ -29,10 +50,19 @@
       <string>d:\work\ursa\assets\ursa\utility\projectinfo.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\RVar\RVar.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\RVar\Editor\RVarDrawers.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\serialization\savesystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Utility\SerializationHelper.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\serializationhelper.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\Example\TestComponent.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>D:\Work\URSA\Assets\Example\TestConfig.cs</string>

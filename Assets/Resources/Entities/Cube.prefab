@@ -157,11 +157,17 @@ MonoBehaviour:
     SomeInt3: 0
     SomeInt4: 0
     componentReference:
-      value: {fileID: 0}
       entity_ID: 
       component_ID: 
       isNull: 0
       entityName: 
+      target: {fileID: 0}
+    SomeOtherComponent:
+      entity_ID: 
+      component_ID: 
+      isNull: 0
+      entityName: 
+      target: {fileID: 0}
 --- !u!114 &114999119771155386
 MonoBehaviour:
   m_ObjectHideFlags: 1

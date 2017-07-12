@@ -15,5 +15,8 @@ public class TestComponent : ComponentBase {
         public int SomeInt4;
 
         public CompRef componentReference = new CompRef();
+        public CompRef SomeOtherComponent = new CompRef();
+
     }
 }
+
