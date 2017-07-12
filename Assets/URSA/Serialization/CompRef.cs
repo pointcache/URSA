@@ -17,6 +17,8 @@
         [HideInInspector]
         public string entityName;
 
+        public ComponentBase target;
+
         public CompRef() : base() { }
         public CompRef(ComponentBase initialValue) : base(initialValue) { }
         public static implicit operator ComponentBase(CompRef var) {

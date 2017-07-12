@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Linq;
+using URSA.Serialization;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -47,6 +48,7 @@ public class RangeReactivePropertyAttribute : PropertyAttribute {
 // If you want to customize other specialized ReactiveProperty
 // [UnityEditor.CustomPropertyDrawer(typeof(YourSpecializedReactiveProperty))]
 // public class ExtendInspectorDisplayDrawer : InspectorDisplayDrawer { } 
+[UnityEditor.CustomPropertyDrawer(typeof(CompRef))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_ShaderColor))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_ShaderFloat))]
 [UnityEditor.CustomPropertyDrawer(typeof(r_Vector2))]

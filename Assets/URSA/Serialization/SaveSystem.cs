@@ -36,7 +36,7 @@
 
         public string EntitiesRoot = "Entities";
         public string FileName = "GameSave";
-        public string FolderPath = "Saves";
+        public string FolderName = "Saves";
         public string Extension = ".sav";
 
 
@@ -50,7 +50,7 @@
         public void SaveFile() {
             SaveObject save = CreateSaveObjectFromScene();
 
-            string directory = PathUtilities.CustomDataPath + "/" + FolderPath;
+            string directory = PathUtilities.CustomDataPath + "/" + FolderName;
 
             if (!Directory.Exists(directory)) {
                 Directory.CreateDirectory(directory);
@@ -83,7 +83,7 @@
                     root = rootGO.transform;
             }
 
-            this.OneFrameDelay(() => LoadFromSaveFile(PathUtilities.CustomDataPath + "/" + FolderPath + "/" + FileName + Extension, root));
+            this.OneFrameDelay(() => LoadFromSaveFile(PathUtilities.CustomDataPath + "/" + FolderName + "/" + FileName + Extension, root));
         }
 
 #if UNITY_EDITOR

@@ -13,29 +13,19 @@
         }
         public virtual void OnDisable() {
             ComponentPoolSystem.Unregister(this);
-            _entity = null;
+            entity = null;
         }
 
-        Entity _entity;
+        Entity entity;
         public Entity Entity
         {
             get {
-                if ((object)_entity == null)
-                    _entity = getEntityRecursive(transform);
-                return _entity;
+                if (((object)entity) == null)
+                    entity = GetComponentInParent<Entity>();
+                return entity;
             }
         }
-        Entity getEntityRecursive(Transform tr) {
-            if ((object)tr == null) {
-                return null;
-            }
-            Entity ec = tr.gameObject.GetComponent<Entity>();
-            if ((object)ec != null) {
-                return ec;
-            }
-            else
-                return getEntityRecursive(tr.parent);
-        }
-    }
+
+   }
     public abstract class SerializedData { }
 }
