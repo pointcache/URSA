@@ -45,7 +45,6 @@
         public static string ConfigFolderPath { get { return PathUtilities.CustomDataPath + "/" + instance.FolderName + "/"; } }
 
         private void OnEnable() {
-            Debug.Log("Creating configs directory at : " + ConfigFolderPath);
             if (!Directory.Exists(ConfigFolderPath)) {
                 Debug.Log("Creating configs directory at : " + ConfigFolderPath);
                 Directory.CreateDirectory(ConfigFolderPath);

@@ -84,22 +84,22 @@
             return register;
         }
 
-        public static RVar GetRvarFrom(string componentType, string variableName) {
-            var type = System.Type.GetType(componentType);
-            if (type == null) {
-                Debug.LogError("Cant find such component type.");
-                return null;
-            }
-            var comp = ComponentPoolSystem.GetFirstOf(type);
-            if (comp.GetType().IsSubclassOf(typeof(ConfigBase))) {
-                return type.GetField(variableName).GetValue(comp) as RVar;
-            }
-            else {
-                var data = type.GetField("data").GetValue(comp);
-                return data.GetType().GetField(variableName).GetValue(data) as RVar;
-            }
-
-        }
+       // public static RVar GetRvarFrom(string componentType, string variableName) {
+       //     var type = System.Type.GetType(componentType);
+       //     if (type == null) {
+       //         Debug.LogError("Cant find such component type.");
+       //         return null;
+       //     }
+       //     var comp = ComponentPoolSystem.GetFirstOf(type);
+       //     if (comp.GetType().IsSubclassOf(typeof(ConfigBase))) {
+       //         return type.GetField(variableName).GetValue(comp) as RVar;
+       //     }
+       //     else {
+       //         var data = type.GetField("data").GetValue(comp);
+       //         return data.GetType().GetField(variableName).GetValue(data) as RVar;
+       //     }
+       //
+       // }
     }
 
     [Serializable]

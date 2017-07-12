@@ -8,8 +8,14 @@
     using System.Collections.Generic;
     using URSA.Internal;
     using URSA.Database;
+    using URSA.Utility;
 
     public static class URSAEditorTools {
+
+        [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/OpenPersistentData", priority = 1)]
+        public static void OpenPersistentData() {
+            OpenInFileBrowser.Open(UnityEngine.Application.persistentDataPath);
+        }
 
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
         public static void UpdateEverything() {

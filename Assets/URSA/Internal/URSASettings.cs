@@ -27,7 +27,7 @@
 
         [Header("Database")]
         public string DatabaseRootFolder = "Entities";
-        public string DatabaseManifest = "DatabaseManifest.db";
+        public string DatabaseManifest = "manifest.db";
 
         [Header("Serialization")]
         public string CustomDataFolder = "CustomData";
