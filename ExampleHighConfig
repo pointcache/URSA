@@ -1,0 +1,19 @@
+{
+    "gameVersion": 0.001,
+    "type": "TestConfig",
+    "vars": {
+        "TestInt": {
+            "$content": 240,
+            "$type": "System.Int32"
+        },
+        "TestString": {
+            "$content": "High",
+            "$type": "System.String"
+        },
+        "TestFloatProp": {
+            "$content": 0.0,
+            "$type": "System.Single"
+        }
+    },
+    "$type": "URSA.ConfigSystem+ConfigInfo"
+}

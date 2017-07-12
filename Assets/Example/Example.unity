@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 84474798}
   - component: {fileID: 84474799}
+  - component: {fileID: 84474800}
   m_Layer: 0
   m_Name: GlobalSystems
   m_TagString: Untagged
@@ -132,6 +133,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Configs: {fileID: 0}
+--- !u!114 &84474800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84474797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26fd18e9e2c3604188c0396819025cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  SingleFileName: main
+  FolderName: Cfg
+  extension: .cfg
 --- !u!1 &621134626
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +251,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1638408593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1638408595}
+  - component: {fileID: 1638408594}
+  m_Layer: 0
+  m_Name: Config
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1638408594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638408593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80957b62ab4e072448fcd82979bf3f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FileName: ExampleLowConfig
+  TestInt: 234
+  TestString: 90
+--- !u!4 &1638408595
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638408593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16, y: 0.93853384, z: 16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1987081598
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +342,8 @@ Camera:
   m_GameObject: {fileID: 1987081598}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 0.75862074, b: 0.125, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

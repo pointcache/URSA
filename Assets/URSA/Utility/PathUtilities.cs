@@ -10,7 +10,7 @@
     public static class PathUtilities {
 
         public static string CustomDataPath {
-           get { return Application.dataPath + "/" + URSASettings.Current.CustomDataFolder; }
+           get { return Application.persistentDataPath + "/" + URSASettings.Current.CustomDataFolder; }
         }
 
         public static string DataPathWithoutAssets

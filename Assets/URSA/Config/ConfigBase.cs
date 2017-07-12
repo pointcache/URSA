@@ -1,12 +1,11 @@
 ﻿namespace URSA {
-    using UnityEngine;
-    using UnityEngine.UI;
-    using System;
-    using System.Collections.Generic;
-    using URSA;
 
+    using UnityEngine;
+    using URSA.Config;
 
     public class ConfigBase : MonoBehaviour {
+
+        public string FileName;
 
         public void OnEnable() {
             ConfigSystem.RegisterConfig(this);

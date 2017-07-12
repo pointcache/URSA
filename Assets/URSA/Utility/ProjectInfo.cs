@@ -7,11 +7,11 @@
     public class ProjectInfo : ScriptableObject {
 
         public static ProjectInfo _current;
-        public static ProjectInfo current
+        public static ProjectInfo Current
         {
             get {
                 if (_current == null)
-                    _current = Resources.Load("AdditionalData/ProjectInfo") as ProjectInfo;
+                    _current = Resources.Load(URSA.Internal.URSAConstants.PATH_ADDITIONAL_DATA +  "/ProjectInfo") as ProjectInfo;
                 return _current;
             }
         }

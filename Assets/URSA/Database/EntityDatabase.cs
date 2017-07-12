@@ -116,7 +116,7 @@
             HashSet<string> ids = new HashSet<string>();
 
             DatabaseManifest manifest = new DatabaseManifest();
-            manifest.GameVersion = ProjectInfo.current.Version;
+            manifest.GameVersion = ProjectInfo.Current.Version;
             var files = Directory.GetFiles(Application.dataPath + dbPath, "*.prefab", SearchOption.AllDirectories);
             var prefabs = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder + "/");
 

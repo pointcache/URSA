@@ -30,7 +30,7 @@
                 return null;
             Blueprint bp = new Blueprint();
             bp.SaveObject = SaveSystem.CreateSaveObjectFromTransform(transform);
-            bp.GameVersion = ProjectInfo.current.Version;
+            bp.GameVersion = ProjectInfo.Current.Version;
             bp.Name = gameObject.name;
             return bp;
         }

@@ -11,16 +11,31 @@
       <string>d:\work\ursa\assets\ursa\serialization\blueprint\blueprintloader.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Config\ConfigBase.cs</string>
+      <string>d:\work\ursa\assets\ursa\config\configbase.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\config\configsystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Config\Editor\ConfigSystemTools.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\utility\pathutilities.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\serialization\persistentdatasystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\utility\projectinfo.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\serialization\savesystem.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Utility\SerializationHelper.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>D:\Work\URSA\Assets\Example\TestConfig.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>

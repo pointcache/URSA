@@ -1,4 +1,4 @@
-﻿    namespace URSA {
+﻿namespace URSA.Config {
 
     using UnityEngine;
     using System;
@@ -16,17 +16,21 @@
         public static ConfigSystem instance
         {
             get {
-                if (!_instance) _instance = GameObject.FindObjectOfType<ConfigSystem>();
+                if (!_instance)
+                    _instance = GameObject.FindObjectOfType<ConfigSystem>();
                 return _instance;
             }
         }
         #endregion
-        public bool SingleFile;
-        public string CustomDataPath;
-        public string SingleFilePath = "configuration";
-        public string FolderPath = "Configs";
 
-        public List<DefaultFolder> DefaultFolders = new List<DefaultFolder>();
+        public Mode mode;
+        public enum Mode {
+            SingleConfigFile,
+            FilePerConfig
+        }
+
+        public string SingleFileName = "main";
+        public string FolderName = "Cfg";
 
         [Serializable]
         public class DefaultFolder {
@@ -34,195 +38,208 @@
             public string folder;
         }
 
-        public string specialfolderPath = "/Default";
         public string extension = ".cfg";
-        static Dictionary<string, ConfigInfo> current = new Dictionary<string, ConfigInfo>();
 
-       
-        public static IRVar GetVariable(string config, string variableName) {
-            ConfigInfo info;
-            current.TryGetValue(config, out info);
-            if (info != null) {
-                IRVar ivar;
-                info.vars.TryGetValue(variableName, out ivar);
-                if (ivar != null) {
-                    return ivar;
-                }
-                else
-                    return null;
+        private static Dictionary<Type, ConfigBase> m_configs = new Dictionary<Type, ConfigBase>();
+
+        public static string ConfigFolderPath { get { return PathUtilities.CustomDataPath + "/" + instance.FolderName + "/"; } }
+
+        private void OnEnable() {
+            Debug.Log("Creating configs directory at : " + ConfigFolderPath);
+            if (!Directory.Exists(ConfigFolderPath)) {
+                Debug.Log("Creating configs directory at : " + ConfigFolderPath);
+                Directory.CreateDirectory(ConfigFolderPath);
             }
-            else
-                return null;
         }
 
+        public static void RegisterConfig(ConfigBase cfg) {
+            m_configs.Add(cfg.GetType(), cfg);
+        }
+        public static void UnregisterConfig(ConfigBase cfg) {
+            m_configs.Remove(cfg.GetType());
+
+        }
 
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_SAVE)]
 #endif
         public static void Save() {
-            var sys = ConfigSystem.instance;
-            string path = PathUtilities.CustomDataPath;
-            if (sys.SingleFile) {
-                path = path + "/" + sys.SingleFilePath + sys.extension;
-                SerializationHelper.Serialize(current, path, true);
-            } else {
-                path = path + "/" + sys.FolderPath;
-                if (!Directory.Exists(path)) {
-                    Directory.CreateDirectory(path);
+
+            SingleFileConfig singleFileConfig = new SingleFileConfig();
+
+            foreach (var pair in m_configs) {
+                ConfigBase cfg = pair.Value;
+
+                ConfigInfo info = PackConfig(cfg);
+
+                string filename = String.IsNullOrEmpty(cfg.FileName) ? info.type.Name : cfg.FileName;
+
+                if (instance.mode == Mode.FilePerConfig) {
+                    string path = ConfigFolderPath + filename + instance.extension;
+                    SerializationHelper.Serialize(info, path, true);
                 }
-                foreach (var pair in current) {
-                    SerializationHelper.Serialize(pair.Value, path + "/" + pair.Value.filename + instance.extension, true);
+                else {
+                    singleFileConfig.configs.Add(filename, info);
                 }
+            }
+
+            if (instance.mode == Mode.SingleConfigFile) {
+                string path = ConfigFolderPath + instance.SingleFileName + instance.extension;
+                SerializationHelper.Serialize(singleFileConfig, path, true);
             }
         }
 
-        public static void LoadDefault<T>(string path) {
-            var sys = ConfigSystem.instance;
+        private static ConfigInfo PackConfig(ConfigBase cfg) {
+            //Create container
+            ConfigInfo info = new ConfigInfo(ProjectInfo.Current.Version, cfg.GetType());
+            var fields = info.type.GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
 
-            DefaultFolder folder = sys.DefaultFolders.FirstOrDefault(x => x.type == typeof(T).Name);
-            if(folder == null) {
-                Debug.LogError("Include the folder with proper type name of the config in default folders");
-                return;
+            //Packing 
+            foreach (var field in fields) {
+                string name = field.Name;
+                object value = field.GetValue(cfg);
+                info.vars.Add(name, value);
             }
 
-            path = PathUtilities.CustomDataPath + "/" + sys.FolderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
-            var loaded = SerializationHelper.Load<ConfigInfo>(path);
+            var properties = info.type.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
 
-            ConfigInfo info = current.FirstOrDefault(x => x.Value.type == loaded.type).Value;
+            foreach (var prop in properties) {
+                string name = prop.Name;
+                object value = prop.GetValue(cfg, null);
+                info.vars.Add(name, value);
+            }
 
-            ApplyLoadedConfig(info, loaded);
+            return info;
         }
 
-        public static void SaveDefault<T>(string path) where T : ConfigBase {
-            var sys = ConfigSystem.instance;
-            DefaultFolder folder = sys.DefaultFolders.FirstOrDefault(x => x.type == typeof(T).Name);
-            if(folder == null) {
-                Debug.LogError("Include the folder with proper type name of the config in default folders");
-                return;
+        public static void TrySaveSingle(ConfigBase cfg) {
+            string filename = String.IsNullOrEmpty(cfg.FileName) ? cfg.GetType().Name : cfg.FileName;
+            string path = "";
+            if (instance.mode == Mode.FilePerConfig) {
+                path = ConfigFolderPath + filename + instance.extension;
+                SerializationHelper.Serialize(PackConfig(cfg), path, true);
             }
-
-            path = PathUtilities.CustomDataPath + "/" + sys.FolderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
-
-            ConfigInfo config = current.FirstOrDefault(x => x.Value.type == typeof(T)).Value;
-            SerializationHelper.Serialize(config, path, true);
+            else {
+                path = ConfigFolderPath + instance.SingleFileName + instance.extension;
+                SingleFileConfig singleFileConfig = SerializationHelper.Load<SingleFileConfig>(path) as SingleFileConfig;
+                singleFileConfig.configs.Remove(filename);
+                singleFileConfig.configs.Add(filename, PackConfig(cfg));
+                SerializationHelper.Serialize(singleFileConfig, path, true);
+            }
         }
 
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_LOAD)]
 #endif
         public static void Load() {
-            var sys = ConfigSystem.instance;
-            string path = PathUtilities.CustomDataPath;
-            Dictionary<string, ConfigInfo> loadedDict = null;
-            if (sys.SingleFile) {
-                loadedDict = SerializationHelper.Load<Dictionary<string, ConfigInfo>>(path + "/" + sys.SingleFilePath + sys.extension);
-            } else {
-                if (Directory.Exists(path + "/" + sys.FolderPath)) {
-                    loadedDict = new Dictionary<string, ConfigInfo>();
-                    var Files = Directory.GetFiles(path + "/" + sys.FolderPath, "*.cfg");
-                    foreach (var file in Files) {
-                        var loadedFile = SerializationHelper.Load<ConfigInfo>(file);
-                        if (loadedFile == null) {
-                            Debug.LogError("Error on config deserialization: " + file);
-                            continue;
-                        }
-                        loadedDict.Add(loadedFile.name, loadedFile);
-                    }
+
+            SingleFileConfig singleFileConfig = null;
+            if (instance.mode == Mode.SingleConfigFile) {
+                string path = ConfigFolderPath + instance.SingleFileName + instance.extension;
+                singleFileConfig = SerializationHelper.Load<SingleFileConfig>(path) as SingleFileConfig;
+            }
+
+            foreach (var pair in m_configs) {
+                ConfigBase cfg = pair.Value;
+                string filename = String.IsNullOrEmpty(cfg.FileName) ? cfg.GetType().Name : cfg.FileName;
+                string path = ConfigFolderPath + filename + instance.extension;
+                if (!File.Exists(path))
+                    continue;
+
+                ConfigInfo info = null;
+                if (instance.mode == Mode.FilePerConfig)
+                    info = SerializationHelper.Load<ConfigInfo>(path);
+                else {
+                    singleFileConfig.configs.TryGetValue(filename, out info);
                 }
-            }
-            if (loadedDict == null) {
-                Debug.LogError("Saved Configs were not found");
-                return;
-            }
-            foreach (var pair in current) {
-                ConfigInfo info = pair.Value;
-                ConfigInfo loadedInfo;
-                loadedDict.TryGetValue(pair.Key, out loadedInfo);
-                if (loadedInfo == null) {
-                    Debug.LogError("Matching config was not found in loaded config file:" + pair.Key);
+                if (info == null) {
+                    Debug.LogError("Broken config file it seems : " + path);
                     continue;
                 }
-                ApplyLoadedConfig(info, loadedInfo);
+                LoadSingleConfig(info, cfg);
             }
         }
 
-        static void ApplyLoadedConfig(ConfigInfo info, ConfigInfo loadedInfo) {
-            foreach (var item in info.vars) {
-                IRVar cur = item.Value;
-                IRVar loaded = null;
-                loadedInfo.vars.TryGetValue(item.Key, out loaded);
-                if (loaded == null) {
-                    Debug.LogError("Matching variable:" + item.Key + " was not found in loaded config :" + loadedInfo.name);
-                    continue;
+        private static void LoadSingleConfig(ConfigInfo info, ConfigBase cfg) {
+            Type cfgtype = cfg.GetType();
+            var fields = cfgtype.GetFields(
+                System.Reflection.BindingFlags.Public |
+                System.Reflection.BindingFlags.Static |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.DeclaredOnly);
+
+            foreach (var field in fields) {
+                string name = field.Name;
+                object value = null;
+                info.vars.TryGetValue(field.Name, out value);
+
+                if (value != null) {
+                    field.SetValue(cfg, value);
                 }
-                cur.SetValue(loaded.GetValue());
+            }
+
+            var properties = cfgtype.GetProperties(
+                System.Reflection.BindingFlags.Public |
+                System.Reflection.BindingFlags.Static |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.DeclaredOnly);
+
+            foreach (var prop in properties) {
+                string name = prop.Name;
+                object value = null;
+                info.vars.TryGetValue(prop.Name, out value);
+
+                if (value != null) {
+                    prop.SetValue(cfg, value, null);
+                }
             }
         }
 
-        public static void RegisterConfig(ConfigBase cfg) {
-            Type t = cfg.GetType();
-            var attrs = t.GetCustomAttributes(typeof(ConfigAttribute), false);
-            if (attrs.Length == 0) {
-                Debug.LogError("A config file without ConfigAttribute is not allowed, add [Config()] to your config class.");
-                Debug.Break();
-                return;
+        public static void TryLoadSingle(ConfigBase cfg) {
+            SingleFileConfig singleFileConfig = null;
+            string path = "";
+            string filename = "";
+            filename = String.IsNullOrEmpty(cfg.FileName) ? cfg.GetType().Name : cfg.FileName;
+            if (instance.mode == Mode.SingleConfigFile) {
+                path = ConfigFolderPath + instance.SingleFileName + instance.extension;
+                singleFileConfig = SerializationHelper.Load<SingleFileConfig>(path) as SingleFileConfig;
             }
-            var cfgattr = attrs[0] as ConfigAttribute;
+            else {
+                path = ConfigFolderPath + filename + instance.extension;
+                if (!File.Exists(path))
+                    return;
+            }
             ConfigInfo info = null;
-            current.TryGetValue(t.Name, out info);
+            if (instance.mode == Mode.FilePerConfig)
+                info = SerializationHelper.Load<ConfigInfo>(path);
+            else {
+                singleFileConfig.configs.TryGetValue(filename, out info);
+            }
             if (info == null) {
-                info = new ConfigInfo();
-                info.description = cfgattr.Description;
-                info.filename = cfgattr.FileName;
-                info.name = t.Name;
-                info.gameVersion = ProjectInfo.current.Version;
-                info.type = t;
-            } else
-                Debug.LogError("Duplicate ConfigInfo found, are you creating duplicates?");
-            info.vars.Clear();
-            current.Add(t.Name, info);
-            var fields = t.GetFields();
-            if (fields.Length > 0) {
-                foreach (var f in fields) {
-                    if (f.FieldType.BaseType.BaseType == typeof(RVar)) {
-                        IRVar ivar = f.GetValue(cfg) as IRVar;
-                        //Console.RegisterVar(ivar, f);
-                        string name = f.Name;
-                        info.vars.Add(name, ivar);
-                    }
-                }
+                Debug.LogError("Broken config file it seems : " + path);
+                return;
             }
+            LoadSingleConfig(info, cfg);
         }
-        public static void UnregisterConfig(ConfigBase cfg) {
-            Type t = cfg.GetType();
-            ConfigInfo info = null;
-            current.TryGetValue(t.Name, out info);
-            if (info != null) {
-                current.Remove(t.Name);
-            }
-        }
+
+
+
         [Serializable]
         class ConfigInfo {
-            public string name;
-            public string filename;
-            public string description;
+            public ConfigInfo(float gameVersion, Type type) {
+                this.gameVersion = gameVersion;
+                this.type = type;
+            }
+
             public float gameVersion;
             public Type type;
-            public Dictionary<string, IRVar> vars = new Dictionary<string, IRVar>();
+            public Dictionary<string, object> vars = new Dictionary<string, object>();
         }
-    }
-    public class ConfigAttribute : Attribute {
-        public string FileName;
-        public string Description;
 
-        public ConfigAttribute(string filename) {
-            FileName = filename;
-            Description = "nondescript";
-        }
-        public ConfigAttribute(string filename, string description) {
-            FileName = filename;
-            Description = description;
+        class SingleFileConfig {
+            public Dictionary<string, ConfigInfo> configs = new Dictionary<string, ConfigInfo>();
         }
     }
+
 
 }
