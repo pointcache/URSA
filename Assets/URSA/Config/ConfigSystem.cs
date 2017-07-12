@@ -1,4 +1,4 @@
-﻿namespace URSA {
+﻿    namespace URSA {
 
     using UnityEngine;
     using System;
@@ -10,11 +10,6 @@
     using URSA.Internal;
     using URSA.Utility;
 #endif
-    public enum DataPath {
-        inRootFolder,
-        persistent,
-        custom
-    }
     public class ConfigSystem : MonoBehaviour {
         #region SINGLETON
         private static ConfigSystem _instance;
@@ -27,7 +22,6 @@
         }
         #endregion
         public bool SingleFile;
-        public DataPath Datapath;
         public string CustomDataPath;
         public string SingleFilePath = "configuration";
         public string FolderPath = "Configs";
@@ -44,28 +38,7 @@
         public string extension = ".cfg";
         static Dictionary<string, ConfigInfo> current = new Dictionary<string, ConfigInfo>();
 
-        static string getSystemPath() {
-            var sys = ConfigSystem.instance;
-            string path = String.Empty;
-            switch (sys.Datapath) {
-                case DataPath.persistent: {
-                        path = Application.persistentDataPath;
-                    }
-                    break;
-                case DataPath.inRootFolder: {
-                        path = Application.dataPath;
-                    }
-                    break;
-                case DataPath.custom: {
-                        path = sys.CustomDataPath;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return path + "/" + URSASettings.Current.CustomDataFolder;
-        }
-        
+       
         public static IRVar GetVariable(string config, string variableName) {
             ConfigInfo info;
             current.TryGetValue(config, out info);
@@ -88,7 +61,7 @@
 #endif
         public static void Save() {
             var sys = ConfigSystem.instance;
-            string path = getSystemPath();
+            string path = PathUtilities.CustomDataPath;
             if (sys.SingleFile) {
                 path = path + "/" + sys.SingleFilePath + sys.extension;
                 SerializationHelper.Serialize(current, path, true);
@@ -112,7 +85,7 @@
                 return;
             }
 
-            path = getSystemPath() + "/" + sys.FolderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
+            path = PathUtilities.CustomDataPath + "/" + sys.FolderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
             var loaded = SerializationHelper.Load<ConfigInfo>(path);
 
             ConfigInfo info = current.FirstOrDefault(x => x.Value.type == loaded.type).Value;
@@ -128,7 +101,7 @@
                 return;
             }
 
-            path = getSystemPath() + "/" + sys.FolderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
+            path = PathUtilities.CustomDataPath + "/" + sys.FolderPath + "/" + sys.specialfolderPath + "/" + folder.folder +"/"+ path + instance.extension;
 
             ConfigInfo config = current.FirstOrDefault(x => x.Value.type == typeof(T)).Value;
             SerializationHelper.Serialize(config, path, true);
@@ -139,7 +112,7 @@
 #endif
         public static void Load() {
             var sys = ConfigSystem.instance;
-            string path = getSystemPath();
+            string path = PathUtilities.CustomDataPath;
             Dictionary<string, ConfigInfo> loadedDict = null;
             if (sys.SingleFile) {
                 loadedDict = SerializationHelper.Load<Dictionary<string, ConfigInfo>>(path + "/" + sys.SingleFilePath + sys.extension);

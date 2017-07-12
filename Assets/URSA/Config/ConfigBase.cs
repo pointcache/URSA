@@ -6,15 +6,13 @@
     using URSA;
 
 
-    public class ConfigBase : ComponentBase {
+    public class ConfigBase : MonoBehaviour {
 
-        public override void OnEnable() {
-            base.OnEnable();
+        public void OnEnable() {
             ConfigSystem.RegisterConfig(this);
         }
 
-        public override void OnDisable() {
-            base.OnDisable();
+        public void OnDisable() {
             ConfigSystem.UnregisterConfig(this);
         }
     }

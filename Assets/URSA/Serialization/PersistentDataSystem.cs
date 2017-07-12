@@ -26,8 +26,6 @@
         #endregion
 
         public string FileName = "persistentGameData";
-        public DataPath datapath;
-        public string customDataPath;
         public string folderPath = "PersistenData";
         public string extension = ".data";
 
@@ -55,28 +53,6 @@
             instance.LoadFrom();
         }
 
-        static string getSystemPath() {
-            var sys = PersistentDataSystem.instance;
-            string path = String.Empty;
-            switch (sys.datapath) {
-                case DataPath.persistent: {
-                        path = Application.persistentDataPath;
-                    }
-                    break;
-                case DataPath.inRootFolder: {
-                        path = Application.dataPath;
-                    }
-                    break;
-                case DataPath.custom: {
-                        path = sys.customDataPath;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return path + "/" + URSASettings.Current.CustomDataFolder;
-        }
-
         public void SaveTo() {
             SaveObject file = SaveSystem.CreateSaveObjectFromPersistenData();
             PersistentDataInfo info = new PersistentDataInfo();
@@ -84,7 +60,7 @@
             info.creationDate = DateTime.Now;
             info.data = file;
 
-            string path = getSystemPath() + "/" + folderPath;
+            string path = PathUtilities.CustomDataPath + "/" + folderPath;
 
             if (!Directory.Exists(path)) {
                 Directory.CreateDirectory(path);
@@ -127,7 +103,7 @@
         }
 
         void completeLoad() {
-            string path = getSystemPath() + "/" + folderPath + "/" + FileName + extension;
+            string path = PathUtilities.CustomDataPath + "/" + folderPath + "/" + FileName + extension;
 
             if (File.Exists(path)) {
                 var info = SaveSystem.DeserializeAs<PersistentDataInfo>(path);

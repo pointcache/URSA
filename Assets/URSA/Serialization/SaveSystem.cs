@@ -36,8 +36,6 @@
 
         public string EntitiesRoot = "Entities";
         public string FileName = "GameSave";
-        public DataPath Datapath;
-        public string CustomDataPath;
         public string FolderPath = "Saves";
         public string Extension = ".sav";
 
@@ -52,7 +50,7 @@
         public void SaveFile() {
             SaveObject save = CreateSaveObjectFromScene();
 
-            string directory = getSystemPath() + "/" + FolderPath;
+            string directory = PathUtilities.CustomDataPath + "/" + FolderPath;
 
             if (!Directory.Exists(directory)) {
                 Directory.CreateDirectory(directory);
@@ -67,29 +65,6 @@
             persistent,
             blueprint
         }
-
-        static string getSystemPath() {
-            var sys = SaveSystem.Instance;
-            string path = String.Empty;
-            switch (sys.Datapath) {
-                case DataPath.persistent: {
-                        path = Application.persistentDataPath;
-                    }
-                    break;
-                case DataPath.inRootFolder: {
-                        path = Application.dataPath;
-                    }
-                    break;
-                case DataPath.custom: {
-                        path = sys.CustomDataPath;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return path + "/" + URSASettings.Current.CustomDataFolder;
-        }
-
 
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_SAVESTATE + URSAConstants.PATH_MENUITEM_SAVESTATE_LOAD)]
@@ -108,7 +83,7 @@
                     root = rootGO.transform;
             }
 
-            this.OneFrameDelay(() => LoadFromSaveFile(getSystemPath() + "/" + FolderPath + "/" + FileName + Extension, root));
+            this.OneFrameDelay(() => LoadFromSaveFile(PathUtilities.CustomDataPath + "/" + FolderPath + "/" + FileName + Extension, root));
         }
 
 #if UNITY_EDITOR
