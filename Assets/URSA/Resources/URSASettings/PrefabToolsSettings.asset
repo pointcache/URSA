@@ -1,31 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f57dd6b616d61c44805fce79d4589fa, type: 3}
-  m_Name: PrefabToolsSettings
-  m_EditorClassIdentifier: 
-  rootPath: GamePrefabs/
-  entity: ENTITY
-  static: STATIC
-  lights: LIGHT
-  volumes: VOLUME
-  fx: FX
-  npc: ENTITY/NPC
-  Ignore:
-  - Persistent
-  defaultNavmeshArea: 1
-  lv_static_root: StaticContent
-  lv_entities_root: DynamicContent
-  lv_entity: Entities
-  lv_static: Static
-  lv_lights: Lights
-  lv_volumes: Volumes
-  lv_fx: Fx
-  lv_npc: Npcs
+version https://git-lfs.github.com/spec/v1
+oid sha256:1aa3f02bfdbd082ce6abe3d0a9b79a836987a97a7bb8738a7165151ce345f692
+size 719
