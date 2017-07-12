@@ -1,4 +1,4 @@
-﻿namespace URSA.EntityDatabase.Editor   {
+﻿namespace URSA.Database.Editor   {
     using UnityEngine;
     using System;
     using System.Collections.Generic;
@@ -29,7 +29,7 @@
                 id_search = GUIUtility.systemCopyBuffer;
             }
             if (GUILayout.Button("Find")) {
-                var pref = Database.GetPrefab(id_search);
+                var pref = EntityDatabase.GetPrefab(id_search);
                 Selection.activeObject = pref;
             }
             GUILayout.EndHorizontal();

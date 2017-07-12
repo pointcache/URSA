@@ -1,4 +1,4 @@
-﻿namespace URSA.EntityDatabase {
+﻿namespace URSA.Database {
 
     using UnityEngine;
     using System;

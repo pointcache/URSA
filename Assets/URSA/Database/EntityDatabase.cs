@@ -1,4 +1,4 @@
-﻿namespace URSA.EntityDatabase {
+﻿namespace URSA.Database {
     using UnityEngine;
     using UnityEngine.UI;
     using System;
@@ -11,16 +11,16 @@
     using URSA.Utility;
 #endif
 
-    public class Database : MonoBehaviour {
+    public class EntityDatabase : MonoBehaviour {
 
 
         #region SINGLETON
-        private static Database _instance;
-        public static Database instance
+        private static EntityDatabase _instance;
+        public static EntityDatabase instance
         {
             get {
                 if (!_instance)
-                    _instance = GameObject.FindObjectOfType<Database>();
+                    _instance = GameObject.FindObjectOfType<EntityDatabase>();
                 return _instance;
             }
         }

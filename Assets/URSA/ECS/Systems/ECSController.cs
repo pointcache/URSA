@@ -8,7 +8,7 @@
     using URSA.SceneManagement;
     using URSA.ECS;
     using URSA.Utility;
-    using URSA.EntityDatabase;
+    using URSA.Database;
     using URSA.Configurator;
 
     public class ECSController : MonoBehaviour {
@@ -114,9 +114,10 @@
             if (globalInitialized)
                 return;
 
-            Configs.SetActive(true);
+            if (Configs)
+                Configs.SetActive(true);
             gameObject.AddComponent<ComponentPoolSystem>();
-            gameObject.AddComponent<Database>();
+            gameObject.AddComponent<EntityDatabase>();
 
             foreach (Transform tr in transform) {
                 if (tr.gameObject == Configs)
@@ -130,9 +131,10 @@
 
 
             OnInitialLoadPersistentData();
-
-            Configurator.ConfigureGlobal();
+            if (Configurator != null)
+                Configurator.ConfigureGlobal();
             globalInitialized = true;
+            var GlobalExecutor = gameObject.AddComponent<GlobalSystemsExecutor>();
             OnGlobalSystemsFullyInitialized();
         }
 
@@ -151,7 +153,8 @@
             }
 
             OnSystemsEnabled();
-            Configurator.ConfigureLocal();
+            if (Configurator != null)
+                Configurator.ConfigureLocal();
             FullyInitialized = true;
             OnFullyInitialized();
             SystemsExecutor.UpdateAllowed = true;

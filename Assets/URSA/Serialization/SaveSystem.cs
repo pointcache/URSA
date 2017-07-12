@@ -17,7 +17,7 @@
     using URSA.Blueprint;
     using URSA.Internal;
     using URSA.Utility;
-    using URSA.EntityDatabase;
+    using URSA.Database;
 
     public class SaveSystem : MonoBehaviour {
 
@@ -156,7 +156,7 @@
             Dictionary<EntityObject, Entity> toParent = new Dictionary<EntityObject, Entity>();
 
             foreach (var eobj in save.entities) {
-                var prefab = Database.GetPrefab(eobj.database_ID);
+                var prefab = EntityDatabase.GetPrefab(eobj.database_ID);
 
                 if (!prefab) {
                     Debug.LogError("When loading, database entity: " + eobj.database_ID + " was not found");
@@ -425,7 +425,7 @@
             Transform tr = entity.transform;
             eobj.database_ID = entity.database_ID;
             eobj.instance_ID = entity.instance_ID;
-            eobj.prefabPath = Database.GetPrefabPath(entity.database_ID);
+            eobj.prefabPath = EntityDatabase.GetPrefabPath(entity.database_ID);
 
             if (isBlueprint) {
                 eobj.position = root.InverseTransformPoint(tr.position);

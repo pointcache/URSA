@@ -7,17 +7,16 @@
     using URSA.SceneManagement.Editor;
     using System.Collections.Generic;
     using URSA.Internal;
-    using URSA.EntityDatabase;
+    using URSA.Database;
 
     public static class URSAEditorTools {
-
 
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + "/UpdateEverything", priority = 1)]
         public static void UpdateEverything() {
             var settings = URSASettings.Current;
 
             if (settings.RebuildDatabase)
-                Database.RebuildWithoutReloadOfTheScene();
+                EntityDatabase.RebuildWithoutReloadOfTheScene();
             if (settings.CollectSceneData)
                 ScenesSystem.CollectLevelsData();
             if (settings.SaveAndReloadScene) {

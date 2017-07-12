@@ -26,13 +26,7 @@
       <string>d:\work\ursa\assets\ursa\config\configsystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\EntityDatabase\Database.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\entitydatabase\databasemanifest.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\entitydatabase\editor\databasetools.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\Database\Database.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\systems\ecscontroller.cs</string>
@@ -41,19 +35,25 @@
       <string>d:\work\ursa\assets\ursa\ecs\entity\entity.cs</string>
     </ArrayOfString>
     <ArrayOfString>
+      <string>D:\Work\URSA\Assets\URSA\Database\EntityDatabase.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\ecs\entity\entitymanager.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\serialization\entityobject.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Utility\GameObjectUtilities.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\gameobjectutilities.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\utility\reorderablelist\editor\genericlistadaptor.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\ECS\Configurator\IConfiguratorSystem.cs</string>
+      <string>D:\Work\URSA\Assets\URSA\ECS\Systems\GlobalSystemsExecutor.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\ecs\configurator\iconfiguratorsystem.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\scenemanagement\leveltransition.cs</string>
@@ -65,10 +65,7 @@
       <string>d:\work\ursa\assets\ursa\utility\noteditablestring\noteditablestringdrawer.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Utility\PathUtilities.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>d:\work\ursa\assets\ursa\persistentdata\persistentdatasystem.cs</string>
+      <string>d:\work\ursa\assets\ursa\utility\pathutilities.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\utility\projectinfo.cs</string>
@@ -81,6 +78,9 @@
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\scenemanagement\scenedata.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\scenemanagement\scenedatacollector.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\scenemanagement\editor\scenessystem.cs</string>
@@ -98,13 +98,16 @@
       <string>d:\work\ursa\assets\ursa\ecs\systems\systemsexecutor.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Internal\URSAConstants.cs</string>
+      <string>D:\Work\URSA\Assets\Example\TestComponent.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>d:\work\ursa\assets\ursa\internal\ursaconstants.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>d:\work\ursa\assets\ursa\utility\editor\ursaeditortools.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>D:\Work\URSA\Assets\URSA\Internal\URSASettings.cs</string>
+      <string>d:\work\ursa\assets\ursa\internal\ursasettings.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
