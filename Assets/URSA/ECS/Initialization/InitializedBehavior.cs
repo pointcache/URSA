@@ -13,7 +13,6 @@
         public enum InitializationEvent {
             OnLoadLocalData,
             OnSystemsEnabled,
-            OnUiEnabled,
             OnFullyInitialized
         }
 

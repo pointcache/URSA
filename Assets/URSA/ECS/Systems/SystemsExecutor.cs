@@ -15,6 +15,7 @@
 
         private List<ExecutionObject> objects = new List<ExecutionObject>();
         private List<Transform> transforms = new List<Transform>();
+
         void OnEnable() {
             objects.Clear();
             transforms.Clear();
@@ -25,7 +26,7 @@
                 objects.Add(
                     new ExecutionObject() {
                         gameObject = transforms[i].gameObject,
-                        behavior = gameObject.GetComponent<SystemBase>()
+                        behavior = transforms[i].gameObject.GetComponent<SystemBase>()
                     });
             }
         }
@@ -64,8 +65,8 @@
         }
 
         private class ExecutionObject {
-            public bool IsValidForOrderedCall { get { return IsOrdered && IsActiveAndEnabled; } }
-            public bool IsOrdered { get { return behavior != null; } }
+            public bool IsValidForOrderedCall { get { return IsSystem && IsActiveAndEnabled; } }
+            public bool IsSystem { get { return behavior != null; } }
             public bool IsActiveAndEnabled { get { return gameObject.activeSelf && behavior.enabled; } }
             public GameObject gameObject;
             public SystemBase behavior;

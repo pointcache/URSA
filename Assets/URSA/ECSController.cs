@@ -123,16 +123,17 @@
             gameObject.AddComponent<EntityDatabase>();
             OnLoadGlobalData();
 
-            foreach (Transform tr in transform) {
-                if (tr.gameObject == Configs)
-                    continue;
-                if (tr.gameObject.activeSelf) {
-                    Debug.LogError("No direct children of InitializerSystem can be active before runtime.");
-                    Application.Quit();
+            if (transform.childCount > 0) {
+                foreach (Transform tr in transform) {
+                    if (tr.gameObject == Configs)
+                        continue;
+                    if (tr.gameObject.activeSelf) {
+                        Debug.LogError("No direct children of ECSController can be active before runtime.");
+                        Application.Quit();
+                    }
+                    tr.gameObject.SetActive(true);
                 }
-                tr.gameObject.SetActive(true);
             }
-
 
             if (Configurator != null)
                 Configurator.ConfigureGlobal();
@@ -148,7 +149,7 @@
 
             OnLoadLocalData();
 
-            var localSystems = GameObject.FindObjectOfType<SystemsExecutor>();
+            var localSystems = GameObject.FindObjectOfType<LocalSystemsExecutor>();
             if (localSystems) {
                 localSystems.RunOrderedOnEnable();
             }
