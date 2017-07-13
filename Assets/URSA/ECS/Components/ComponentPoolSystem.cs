@@ -121,8 +121,8 @@
     public class Pool<T> : Pool where T : ComponentBase {
         /// <summary>
         /// all components
-        /// </summary>
-        public static List<T> Сomponents = new List<T>(1000);
+        /// </summary>asd
+        public static List<T> Components = new List<T>(1000);
 
         static Dictionary<string, List<T>> entities = new Dictionary<string, List<T>>(1000);
 
@@ -155,17 +155,17 @@
         public static bool Empty
         {
             get {
-                return Сomponents.Count == 0 ? true : false;
+                return Components.Count == 0 ? true : false;
             }
         }
 
-        public static int Count { get { return Сomponents.Count; } }
+        public static int Count { get { return Components.Count; } }
 
         public static T Random
         {
             get {
                 if (Count > 1) {
-                    return Сomponents[UnityEngine.Random.Range(0, Count)];
+                    return Components[UnityEngine.Random.Range(0, Count)];
                 }
                 else {
                     return First;
@@ -185,7 +185,7 @@
         }
 
         public override void Register(ComponentBase comp) {
-            Сomponents.Add(comp as T);
+            Components.Add(comp as T);
             count++;
 
             //if entity exists
@@ -203,14 +203,14 @@
             if (OnAdded.GetInvocationList().Length > 1)
                 OnAdded(comp as T);
 
-            if (Сomponents != null && Сomponents.Count != 0)
-                first = Сomponents[0];
+            if (Components != null && Components.Count != 0)
+                first = Components[0];
             else
                 first = null;
         }
 
         public override void Unregister(ComponentBase comp) {
-            Сomponents.Remove(comp as T);
+            Components.Remove(comp as T);
             count--;
 
             URSA.Entity e = comp.Entity;
@@ -225,8 +225,8 @@
             if (OnRemoved.GetInvocationList().Length > 1)
                 OnRemoved(comp as T);
 
-            if (Сomponents != null && Сomponents.Count > 0)
-                first = Сomponents[0];
+            if (Components != null && Components.Count > 0)
+                first = Components[0];
             else
                 first = null;
         }
