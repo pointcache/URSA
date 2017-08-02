@@ -9,25 +9,33 @@
 
         public static bool blueprint;
 
+        public static List<CompRef> refs;
+
         public override void OnBeforeSerialize(Type storageType, object instance) {
 
             CompRef cref = instance as CompRef;
-            ComponentBase comp = cref.target;
+            ECSComponent comp = cref.component;
             if (comp != null) {
                 cref.isNull = false;
                 if (blueprint)
-                    cref.entity_ID = comp.Entity.blueprint_ID;
+                    cref.entity_ID = comp.Entity.blueprintID;
                 else
                     cref.entity_ID = comp.Entity.ID;
 
-                cref.component_ID = comp.ID;
+                cref.component_ID = comp.componentID;
                 cref.entityName = comp.Entity.name;
             }
             else {
                 cref.isNull = true;
 
             }
-            //cref.target = null;
+            cref.component = null;
+        }
+
+        public override void OnAfterDeserialize(Type storageType, object instance) {
+            base.OnAfterDeserialize(storageType, instance);
+
+            CompRefSerializationProcessor.refs.Add(instance as CompRef);
         }
     }
 

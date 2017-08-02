@@ -40,12 +40,12 @@
             var gl = GameObject.Find(URSAConstants.SYSTEMS_GLOBAL_NAME) as GameObject;
             if (!gl) {
                 if (settings.CustomGlobalSystemsPrefab) {
-                    gl = Helpers.SpawnEditor(settings.CustomGlobalSystemsPrefab);
+                    gl = GameObjectUtils.SpawnEditor(settings.CustomGlobalSystemsPrefab);
                 }
                 else if (settings.GlobalSystemsTemplate)
-                    gl = Helpers.SpawnEditor(settings.GlobalSystemsTemplate);
+                    gl = GameObjectUtils.SpawnEditor(settings.GlobalSystemsTemplate);
                 else
-                    gl = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_GLOBAL_NAME);
+                    gl = GameObjectUtils.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_GLOBAL_NAME);
                 Debug.Log(URSAConstants.SYSTEMS_GLOBAL_NAME + " spawned");
             }
             else
@@ -53,12 +53,12 @@
             var sc = GameObject.Find(URSAConstants.SYSTEMS_LOCAL_NAME) as GameObject;
             if (!sc) {
                 if (settings.CustomLocalSystemsPrefab) {
-                    sc = Helpers.SpawnEditor(settings.CustomLocalSystemsPrefab);
+                    sc = GameObjectUtils.SpawnEditor(settings.CustomLocalSystemsPrefab);
                 }
                 else if (settings.LocalSystemsTemplate)
-                    sc = Helpers.SpawnEditor(settings.LocalSystemsTemplate);
+                    sc = GameObjectUtils.SpawnEditor(settings.LocalSystemsTemplate);
                 else
-                    sc = Helpers.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_LOCAL_NAME);
+                    sc = GameObjectUtils.SpawnEditor("URSA/" + URSAConstants.SYSTEMS_LOCAL_NAME);
 
                 Debug.Log(URSAConstants.SYSTEMS_LOCAL_NAME + " spawned");
             }

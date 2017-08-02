@@ -11,7 +11,6 @@
     using URSA.Utility;
     using URSA.Database;
     using URSA.Configurator;
-    using URSA.ECS.Components;
 
     public class ECSController : MonoBehaviour {
 
@@ -20,16 +19,11 @@
         public static ECSController instance
         {
             get {
-                if (!_instance)
-                    _instance = GameObject.FindObjectOfType<ECSController>();
                 return _instance;
             }
         }
         #endregion
 
-
-
-        public static ECSController current;
 
         [SerializeField]
         private GameObject Configs;
@@ -68,12 +62,12 @@
 
         void OnEnable() {
 
-            if (current) {
+            if (_instance) {
                 Destroy(gameObject);
                 return;
             }
             else {
-                current = this;
+                _instance = this;
                 DontDestroyOnLoad(gameObject);
             }
 
@@ -108,6 +102,14 @@
                 OnFullyInitialized -= ToInitialize;
                 OnFullyInitialized += ToInitialize;
             }
+        }
+
+        public static void PauseExecution(bool pause) {
+            SystemsExecutor.UpdateAllowed = !pause;
+        }
+
+        public static void ResumeExecutionNextFrame() {
+            instance.OneFrameDelay(() => SystemsExecutor.UpdateAllowed = true);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {

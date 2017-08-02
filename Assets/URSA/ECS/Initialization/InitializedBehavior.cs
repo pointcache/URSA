@@ -9,14 +9,17 @@
     /// </summary>
     public class InitializedBehavior : MonoBehaviour {
 
-        public InitializationEvent onEvent = InitializationEvent.OnSystemsEnabled;
-        public enum InitializationEvent {
+        protected bool Initialized { get; set; }
+
+        [SerializeField]
+        private InitializationEvent onEvent = InitializationEvent.OnSystemsEnabled;
+        private enum InitializationEvent {
             OnLoadLocalData,
             OnSystemsEnabled,
             OnFullyInitialized
         }
 
-        public virtual void OnEnable() {
+        protected virtual void OnEnable() {
             if (!ECSController.FullyInitialized) {
                 switch (onEvent) {
                     case InitializationEvent.OnLoadLocalData:
@@ -36,7 +39,7 @@
                 DoInitialize();
         }
 
-        public virtual void OnDisable() {
+        protected virtual void OnDisable() {
             switch (onEvent) {
                 case InitializationEvent.OnLoadLocalData:
                     ECSController.OnLoadLocalData -= DoInitialize;
@@ -52,11 +55,12 @@
             }
         }
 
-        void DoInitialize() {
+        protected void DoInitialize() {
             Initialize();
+            Initialized = true;
         }
 
-        public virtual void Initialize() {
+        protected virtual void Initialize() {
 
         }
     }

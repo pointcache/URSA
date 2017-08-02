@@ -24,18 +24,7 @@
             return result;
         }
 
-        public static Vector3 GetDirectionFromScreenCenter(Vector3 position) {
-            return position - GetScreenCenterV3();
-        }
 
-        public static Vector3 GetScreenCenterV3() {
-            return new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        }
-
-        public static Vector3 GetScreenUpV3() {
-            Vector3 upmid = new Vector3(Screen.width / 2f, Screen.height, 0f);
-            return upmid - GetScreenCenterV3();
-        }
 
         public static Vector3 WithX(this Vector3 v, float x) {
             return new Vector3(x, v.y, v.z);

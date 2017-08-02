@@ -1,34 +1,35 @@
-﻿namespace URSA.Serialization {
+﻿namespace URSA {
 
 
     using UnityEngine;
     using System;
     using System.Collections.Generic;
     using FullSerializer;
+    using URSA.Serialization;
 
     [Serializable, fsObject(Processor = typeof(CompRefSerializationProcessor))]
     public class CompRef {
 
         [HideInInspector]
-        public string entity_ID;
+        public int entity_ID;
         [HideInInspector]
-        public string component_ID;
+        public int component_ID;
         [HideInInspector]
         public bool isNull;
         [HideInInspector]
         public string entityName;
 
-        public ComponentBase target;
+        public ECSComponent component;
 
-        public static implicit operator ComponentBase(CompRef var) {
-            return var.target;
+        public static implicit operator ECSComponent(CompRef var) {
+            return var.component;
         }
     }
 
-    public class CompRef<T> : CompRef where T : ComponentBase {
+    public class CompRef<T> : CompRef where T : ECSComponent {
 
         public static implicit operator T(CompRef<T> var) {
-            return var.target as T;
+            return var.component as T;
         }
     }
 }

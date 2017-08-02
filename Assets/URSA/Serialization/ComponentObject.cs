@@ -9,8 +9,8 @@
     [Serializable]
     public class ComponentObject 
     {
-        public string component_ID;
-
+        public int component_ID;
+        public bool initialized;
         public SerializedData data;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace URSA.ECS.Components {
+﻿namespace URSA {
 
     using UnityEngine;
     using System;
@@ -32,7 +32,7 @@
         [Tooltip("Read only!")]
         public List<Pool> pools_view = new List<Pool>();
 
-        public static ComponentBase GetFirstOf(Type type) {
+        public static ECSComponent GetFirstOf(Type type) {
             Pool pool;
             pools_dict.TryGetValue(type, out pool);
             if (pool == null)
@@ -44,7 +44,7 @@
         /// Register component in corresponding pool
         /// </summary>
         /// <param name="icomp"></param>
-        public static void Register(ComponentBase comp) {
+        public static void Register(ECSComponent comp) {
             Pool reg = null;
             Type t = comp.GetType();
             if (pools_dict.TryGetValue(t, out reg)) {
@@ -56,7 +56,7 @@
             }
         }
 
-        public static void Unregister(ComponentBase comp) {
+        public static void Unregister(ECSComponent comp) {
             Pool reg = null;
             Type t = comp.GetType();
             if (pools_dict.TryGetValue(t, out reg)) {
@@ -70,7 +70,7 @@
         /// <param name="t"></param>
         /// <returns></returns>
         public static Pool CreatePool(Type t) {
-            if (!typeof(ComponentBase).IsAssignableFrom(t)) {
+            if (!typeof(ECSComponent).IsAssignableFrom(t)) {
                 throw new Exception("Tried to create a pool with non Component type");
             }
             Type elementType = Type.GetType(t.ToString());
@@ -107,24 +107,24 @@
         public string Name;
         public int count;
 
-        public virtual void Register(ComponentBase comp) { }
+        public virtual void Register(ECSComponent comp) { }
 
-        public virtual void Unregister(ComponentBase comp) { }
+        public virtual void Unregister(ECSComponent comp) { }
 
-        public virtual ComponentBase GetFirst() { return null; }
+        public virtual ECSComponent GetFirst() { return null; }
     }
 
     /// <summary>
     /// A concrete generic implementation of the pool, mixes static components with dynamic
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Pool<T> : Pool where T : ComponentBase {
+    public class Pool<T> : Pool where T : ECSComponent {
         /// <summary>
         /// all components
-        /// </summary>asd
+        /// </summary>
         public static List<T> Components = new List<T>(1000);
 
-        static Dictionary<string, List<T>> entities = new Dictionary<string, List<T>>(1000);
+        static Dictionary<int, List<T>> entities = new Dictionary<int, List<T>>(1000);
 
         private static T first;
         public static T First
@@ -144,13 +144,25 @@
             }
         }
 
-        public override ComponentBase GetFirst() {
+        public override ECSComponent GetFirst() {
             return First;
         }
 
         public static event Action<T> OnAdded = delegate { };
 
         public static event Action<T> OnRemoved = delegate { };
+
+        public static void RunMethodOnEach(Action<T> method) {
+            int count = Count;
+            for (int i = count - 1; i > -1 ; i--) {
+                method(Components[i]);
+            }
+        }
+
+        public static void RunMethodOnEachAndSubscribe(Action<T> method) {
+            RunMethodOnEach(method);
+            OnAdded += method;
+        }
 
         public static bool Empty
         {
@@ -173,18 +185,16 @@
             }
         }
 
-        public static T GetComponent(string entityID) {
+        public static T GetComponent(int entityID) {
             List<T> list = null;
             entities.TryGetValue(entityID, out list);
 
-            if (list == null)
-                return null;
-            if (list.Count == 0)
+            if (list == null || list.Count == 0)
                 return null;
             return list[0];
         }
 
-        public override void Register(ComponentBase comp) {
+        public override void Register(ECSComponent comp) {
             Components.Add(comp as T);
             count++;
 
@@ -197,7 +207,7 @@
                     list = new List<T>(100);
                     entities.Add(e.ID, list);
                 }
-                list.Add(comp as T);
+                list.Add(comp as T);    
             }
 
             if (OnAdded.GetInvocationList().Length > 1)
@@ -209,7 +219,7 @@
                 first = null;
         }
 
-        public override void Unregister(ComponentBase comp) {
+        public override void Unregister(ECSComponent comp) {
             Components.Remove(comp as T);
             count--;
 
@@ -229,6 +239,11 @@
                 first = Components[0];
             else
                 first = null;
+        }
+
+        public static void DestroyAll() {
+            while (Count > 0)
+                GameObject.Destroy(First);
         }
     }
 }

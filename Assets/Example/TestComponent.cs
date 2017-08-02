@@ -4,7 +4,7 @@ using UnityEngine;
 using URSA;
 using URSA.Serialization;
 
-public class TestComponent : ComponentBase {
+public class TestComponent : ECSComponent {
 
     public Data data = new Data();
     [System.Serializable]

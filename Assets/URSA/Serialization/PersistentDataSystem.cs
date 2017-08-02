@@ -44,7 +44,7 @@
 
         private void OnEnable() {
             if (!persistentDataRoot) {
-                var go = transform.FindChild("PersistentData");
+                var go = transform.Find("PersistentData");
                 if (!go) {
                     persistentDataRoot = new GameObject("PersistentData").transform;
                     GameObject.DontDestroyOnLoad(persistentDataRoot);

@@ -16,7 +16,7 @@
             }
         }
 
-        public float Version = 0.0f;
+        public int Version = 0;
     }
 
 }

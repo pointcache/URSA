@@ -4,29 +4,30 @@
     using System.Collections.Generic;
     using URSA.ECS;
     using URSA.Utility;
-    using URSA.Utility.NotEditableString;
+
     using URSA.Serialization;
     using URSA.ECS.Entity;
-    using URSA.ECS.Components;
 
     public class Entity : MonoBehaviour {
 
-        [NotEditableString]
-        public string database_ID;
-        [NotEditableString]
-        public string instance_ID;
+        [NotEditableInt]
+        public int entityID;
+        [NotEditableInt]
+        public int instanceID;
+        [NotEditableInt]
+        public int blueprintID;
 
-        [NotEditableString]
-        public string blueprint_ID;
-        public string ID
+
+        public int ID
         {
             get {
-                if (String.IsNullOrEmpty(instance_ID)) {
-                    instance_ID = EntityManager.GetUniqieID();
+                if (instanceID == 0) {
+                    instanceID = EntityManager.GetUniqieInstanceID();
                 }
-                return instance_ID;
+                return instanceID;
             }
         }
+
 #if UNITY_EDITOR
         private void Reset() {
             for (int i = 0; i < 50; i++) {
@@ -34,13 +35,16 @@
             }
         }
 #endif
-        void OnEnable() {
+        private void OnEnable() {
             EntityManager.RegisterEntity(this);
+            AddEntityReferenceToColliders();
         }
-        void OnDisable() {
+
+        private void OnDisable() {
             EntityManager.UnRegisterEntity(this);
         }
-        public T GetEntityComponent<T>() where T : ComponentBase {
+
+        public T GetEntityComponent<T>() where T : ECSComponent {
             T c = Pool<T>.GetComponent(ID);
             //HACK this shit is due to the fact that some components in entity will be enabled before others,
             //so on initialization you wont be able to get references to them through the pool, will fix later
@@ -57,28 +61,57 @@
         }
 
         /// <summary>
+        /// TODO optimize this shit
         /// Not the most performant way but will do for now.
         /// </summary>
         /// <returns></returns>
-        public List<ComponentBase> GetAllEntityComponents() {
-            List<ComponentBase> comps = new List<ComponentBase>();
-            comps.AddRange(GetComponents<ComponentBase>());
-            getAllCompsRecursive(transform, comps);
+        public void GetAllEntityComponents(List<ECSComponent> comps) {
+
+            comps.AddRange(GetComponents<ECSComponent>());
             foreach (Transform t in transform) {
                 getAllCompsRecursive(t, comps);
             }
-            return comps;
         }
-        void getAllCompsRecursive(Transform tr, List<ComponentBase> comps) {
+
+
+        private void getAllCompsRecursive(Transform tr, List<ECSComponent> comps) {
             if (tr.GetComponent<Entity>())
                 return;
             else {
-                comps.AddRange(tr.GetComponents<ComponentBase>());
+                comps.AddRange(tr.GetComponents<ECSComponent>());
                 foreach (Transform t in tr) {
                     getAllCompsRecursive(t, comps);
                 }
             }
         }
+        private void AddEntityReferenceToColliders() {
+
+            Transform tr = transform;
+
+            int count = tr.childCount;
+
+            for (int i = 0; i < count; i++) {
+
+                AddEntityReferenceToCollidersRecursive(tr.GetChild(i));
+
+            }
+
+        }
+
+        private void AddEntityReferenceToCollidersRecursive(Transform tr) {
+
+            int count = tr.childCount;
+
+            for (int i = 0; i < count; i++) {
+
+                AddEntityReferenceToCollidersRecursive(tr.GetChild(i));
+
+            }
+
+            if (tr.GetComponent<Collider>())
+                tr.gameObject.AddComponent<EntityReference>();
+        }
+
         public void MakePersistent() {
             PersistentDataSystem.MakePersistent(this);
         }

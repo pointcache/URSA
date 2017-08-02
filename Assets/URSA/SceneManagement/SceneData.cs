@@ -5,17 +5,24 @@
     using System.Linq;
     using UnityEngine.SceneManagement;
     using URSA.Utility;
-    using URSA.Utility.NotEditableString;
 
     public class SceneData : ScriptableObject {
 
+#if UNITY_EDITOR
+        [NotEditableInt]
+#endif 
+        public int ID;
+#if UNITY_EDITOR
         [NotEditableString]
-        public string ID;
-        [NotEditableString]
+#endif 
         public string scene;
+#if UNITY_EDITOR
         [NotEditableString]
+#endif 
         public string scenePath;
+#if UNITY_EDITOR
         [NotEditableString]
+#endif 
         public string sceneManagerPath;
 
         public string levelname;

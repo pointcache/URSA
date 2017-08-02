@@ -104,6 +104,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33810946081032438
 MeshFilter:
@@ -150,24 +151,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0a76465ad0bbd4193e581d34f4998d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 6af92e4d-fc94-4ef0-a63b-f5d9d287b386
+  componentID: 1
   data:
     SomeInt: 0
     SomeInt2: 0
     SomeInt3: 0
     SomeInt4: 0
     componentReference:
-      entity_ID: 
-      component_ID: 
+      entity_ID: 0
+      component_ID: 0
       isNull: 0
       entityName: 
-      target: {fileID: 0}
+      component: {fileID: 0}
     SomeOtherComponent:
-      entity_ID: 
-      component_ID: 
+      entity_ID: 0
+      component_ID: 0
       isNull: 0
       entityName: 
-      target: {fileID: 0}
+      component: {fileID: 0}
 --- !u!114 &114999119771155386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,6 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aee4fc5696acc4e97976ac419cdc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database_ID: e6dd266d-871f-4138-a11b-648c841d0a4a
-  instance_ID: 
-  blueprint_ID: 
+  entityID: 2
+  instanceID: 0
+  blueprintID: 0

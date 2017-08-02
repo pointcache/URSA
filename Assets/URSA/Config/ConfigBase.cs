@@ -7,11 +7,11 @@
 
         public string FileName;
 
-        public void OnEnable() {
+        protected virtual void OnEnable() {
             ConfigSystem.RegisterConfig(this);
         }
 
-        public void OnDisable() {
+        protected virtual void OnDisable() {
             ConfigSystem.UnregisterConfig(this);
         }
     }

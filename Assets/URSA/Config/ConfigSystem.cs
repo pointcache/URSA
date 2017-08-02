@@ -7,9 +7,9 @@
     using System.Linq;
 #if UNITY_EDITOR
     using UnityEditor;
+#endif
     using URSA.Internal;
     using URSA.Utility;
-#endif
     public class ConfigSystem : MonoBehaviour {
         #region SINGLETON
         private static ConfigSystem _instance;

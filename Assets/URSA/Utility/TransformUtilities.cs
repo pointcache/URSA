@@ -49,10 +49,12 @@
             int count = list.Count;
             for (int i = 0; i < count; i++) {
 #if UNITY_EDITOR
-                GameObject.DestroyImmediate(list[i].gameObject);
+                if(!Application.isPlaying)
+                    GameObject.DestroyImmediate(list[i].gameObject);
+                else
+                     GameObject.Destroy(list[i].gameObject);
 #else
             GameObject.Destroy(list[i].gameObject);
-
 #endif
             }
         }
@@ -106,6 +108,33 @@
                 if (result != null)
                     return result;
             }
+            return null;
+        }
+
+        /// <summary>
+        /// Deep search, returns first found
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="Tag"></param>
+        /// <returns></returns>
+        public static Transform FindChildWithTag(this Transform transform, string Tag) {
+
+            Transform result = null;
+
+            foreach (Transform tr in transform) {
+                if (tr.tag == Tag)
+                    result = tr;
+            }
+
+            if (result != null)
+                return result;
+
+            foreach (Transform child in transform) {
+                result = child.FindChildWithTag(Tag);
+                if (result != null)
+                    return result;
+            }
+
             return null;
         }
 

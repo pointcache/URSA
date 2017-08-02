@@ -14,6 +14,6 @@
         /// <summary>
         /// entity id, (component persistent ID, component)
         /// </summary>
-        public Dictionary<string, Dictionary<string, ComponentObject>> components = new Dictionary<string, Dictionary<string, ComponentObject>>();
+        public Dictionary<int, Dictionary<int, ComponentObject>> components = new Dictionary<int, Dictionary<int, ComponentObject>>();
     }
 }

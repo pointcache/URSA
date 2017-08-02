@@ -17,16 +17,16 @@
 
         }
 
-        string id_search = "paste id";
-        string scene_search = "paste id";
-        string name_search = "paste name";
+        int id_search = 0;
+        int scene_search = 0;
+        string  name_search = "name";
 
         void OnGUI() {
             GUILayout.Label("Search entity by id");
             GUILayout.BeginHorizontal();
-            id_search = GUILayout.TextArea(id_search);
+            id_search = EditorGUILayout.IntField(id_search);
             if (GUILayout.Button("Paste")) {
-                id_search = GUIUtility.systemCopyBuffer;
+                id_search = Convert.ToInt16(GUIUtility.systemCopyBuffer);
             }
             if (GUILayout.Button("Find")) {
                 var pref = EntityDatabase.GetPrefab(id_search);
@@ -37,15 +37,15 @@
 
             GUILayout.Label("Search entities in scene by id");
             GUILayout.BeginHorizontal();
-            scene_search = GUILayout.TextArea(scene_search);
+            scene_search = EditorGUILayout.IntField(scene_search);
             if (GUILayout.Button("Paste")) {
-                scene_search = GUIUtility.systemCopyBuffer;
+                scene_search = Convert.ToInt16(GUIUtility.systemCopyBuffer);
             }
             if (GUILayout.Button("Find")) {
                 List<GameObject> selection = new List<GameObject>();
                 var entities = GameObject.FindObjectsOfType<Entity>();
                 foreach (var e in entities) {
-                    if (e.database_ID == scene_search) {
+                    if (e.entityID == scene_search) {
                         selection.Add(e.gameObject);
                     }
                 }

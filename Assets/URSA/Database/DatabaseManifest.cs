@@ -8,8 +8,8 @@
     public class DatabaseManifest {
 
         public float GameVersion;
-        public Dictionary<string, string> entity_id_adress = new Dictionary<string, string>();
-        public Dictionary<string, string> entity_adress_id = new Dictionary<string, string>();
+        public Dictionary<int, string> entity_id_adress = new Dictionary<int, string>();
+        public Dictionary<string, int> entity_adress_id = new Dictionary<string, int>();
 
     }
 

@@ -5,6 +5,50 @@
 
     public static class CollectionUtilities {
 
+
+        public static int GetFirstEntityComponent<T>(this List<Entity> list, out T component) where T : ECSComponent {
+            int count = list.Count;
+            for (int i = 0; i < count; i++) {
+                component = list[i].GetEntity().GetEntityComponent<T>();
+                if (!component.Null())
+                    return i;
+            }
+            component = null;
+            return -1;
+        }
+
+        public static List<T> GetPopulatedListValType<T>(int amount) {
+            List<T> list = new List<T>(amount);
+            for (int i = 0; i < amount; i++) {
+                list.Add(default(T));
+            }
+            return list;
+        }
+
+        public static List<T> GetPopulatedListRefType<T>(int amount) where T : new() {
+            List<T> list = new List<T>(amount);
+            for (int i = 0; i < amount; i++) {
+                list.Add(new T());
+            }
+            return list;
+        }
+
+        public static Stack<T> GetPopulatedStackRefType<T>(int amount) where T : new() {
+            Stack<T> stack = new Stack<T>(amount);
+            for (int i = 0; i < amount; i++) {
+                stack.Push(new T());
+            }
+            return stack;
+        }
+
+        public static Stack<T> GetPopulatedStackValType<T>(int amount) {
+            Stack<T> stack = new Stack<T>(amount);
+            for (int i = 0; i < amount; i++) {
+                stack.Push(default(T));
+            }
+            return stack;
+        }
+
         private static System.Random rng = new System.Random();
 
         public static void Shuffle<T>(this IList<T> list) {

@@ -22,21 +22,85 @@
     }
 
 
-    public static class Helpers {
+    public static class GameObjectUtils {
 
-        public static string GetUniqueID(HashSet<string> set) {
-            Guid guid = Guid.NewGuid();
-            string id = guid.ToString();
+        public static int GetUniqueID(HashSet<int> set) {
+            int id = set.Count+1;
+
+            if (set.Contains(id)) {
+                id = GetUniqueIDRecursive(set, id);
+            }
+            set.Add(id);
+            return id;
+        }
+
+        private static int GetUniqueIDRecursive(HashSet<int> set, int previous) {
+            int id = previous+1;
             if (set.Contains(id))
-                return GetUniqueID(set);
+                return GetUniqueIDRecursive(set, id);
             else
                 return id;
         }
 
-        public static void SetCanvasGroupInteractions(this GameObject go, bool state) {
-            var cg = go.GetComponent<CanvasGroup>();
-            cg.interactable = state;
-            cg.blocksRaycasts = state;
+        public static Entity GetEntity(this Collider collider) {
+
+            var entity = collider.GetComponent(typeof(Entity)) as Entity;
+
+            if (((object)entity) != null)
+                return entity;
+
+            var reference = collider.GetComponent(typeof(EntityReference)) as EntityReference;
+            if (((object)reference) != null)
+                return reference.Entity;
+
+            return collider.GetComponentInParent(typeof(Entity)) as Entity;
+
+        }
+
+        public static Entity GetEntity(this Component comp) {
+            return comp.GetComponentInParent(typeof(Entity)) as Entity;
+        }
+
+        public static Entity GetEntity(this GameObject go) {
+            return go.GetComponentInParent(typeof(Entity)) as Entity;
+        }
+
+        public static void RunOnEachOfType<T>(this GameObject go, Action<T> action) where T : Component {
+
+            var comp = go.GetComponent<T>();
+            if(((object)comp)!=null)
+                action(comp);
+
+            Transform tr = go.transform;
+            int childcount = tr.childCount;
+
+            if(childcount > 0) {
+
+                for (int i = 0; i < childcount; i++) {
+
+                    _runOnEachOfType<T>(tr.GetChild(i), action);
+
+                }
+            }
+        }
+
+        private static void _runOnEachOfType<T>(Transform tr, Action<T> action) where T : Component {
+
+            int childcount = tr.childCount;
+
+            if(childcount > 0) {
+
+                for (int i = 0; i < childcount; i++) {
+
+                    _runOnEachOfType<T>(tr.GetChild(i), action);
+
+                }
+            }
+
+            var comp = tr.gameObject.GetComponent<T>();
+            if(((object)comp)!=null)
+                action(comp);
+
         }
 
 #if UNITY_EDITOR
@@ -113,6 +177,9 @@
         public static GameObject Spawn(string path, bool startDisabled) {
             bool initstate;
             var pref = Resources.Load(path) as GameObject;
+            if (pref == null) {
+                Debug.LogError("Did not find prefab by path: " + path);
+            }
             initstate = pref.activeSelf;
             if (startDisabled)
                 pref.gameObject.SetActive(false);
@@ -171,7 +238,9 @@
 
 
         public delegate object ObjectActivator();
+
         public static ObjectActivator CreateCtor(Type type) {
+
             if (type == null) {
                 Debug.LogError("ObjectActivator: tried to create null type, fail.");
             }
@@ -182,6 +251,7 @@
             ilGenerator.Emit(OpCodes.Newobj, emptyConstructor);
             ilGenerator.Emit(OpCodes.Ret);
             return (ObjectActivator)dynamicMethod.CreateDelegate(typeof(ObjectActivator));
+
         }
 
         /// <summary>

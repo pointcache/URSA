@@ -92,19 +92,19 @@
             SceneDataCollector collector = Resources.Load(URSAConstants.PATH_ADDITIONAL_DATA + "/SceneDataCollector") as SceneDataCollector;
             collector.scenes.Clear();
 
-            HashSet<string> set = new HashSet<string>();
+            HashSet<int> set = new HashSet<int>();
 
             var scenedatas = AssetDatabase.FindAssets("t:SceneData");
             foreach (var s in scenedatas) {
                 SceneData scenedata = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(SceneData)) as SceneData;
-                if (scenedata.ID == "" || scenedata.ID == null) {
-                    scenedata.ID = Helpers.GetUniqueID(set);
+                if (scenedata.ID == 0) {
+                    scenedata.ID = GameObjectUtils.GetUniqueID(set);
                 }
                 set.Add(scenedata.ID);
                 collector.scenes.Add(scenedata);
                 string path = AssetDatabase.GetAssetPath(scenedata);
                 path = Directory.GetParent(path).ToString();
-                scenedata.scenePath = path.Replace("Assets/", "") + "/" + scenedata.scene;
+                scenedata.scenePath = path.Replace("Assets\\", "") + "/" + scenedata.scene;
                 scenedata.sceneManagerPath = "Assets/" + scenedata.scenePath + ".unity";
                 string absolutepath = Application.dataPath + "/" + scenedata.scenePath + ".unity";
                 var scene = File.Exists(absolutepath);

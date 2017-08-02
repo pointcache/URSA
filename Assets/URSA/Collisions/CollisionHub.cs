@@ -6,7 +6,7 @@
 
     //https://github.com/pointcache/URSA/wiki/Collision-Hub
 
-    public static class CollisionHub<T> where T : ComponentBase {
+    public static class CollisionHub<T> where T : ECSComponent {
 
         public static event Action<T, Collision> OnCollisionEnter = delegate { };
         public static event Action<T, Collision> OnCollisionStay = delegate { };

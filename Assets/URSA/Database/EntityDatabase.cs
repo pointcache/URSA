@@ -7,9 +7,9 @@
 #if UNITY_EDITOR
     using UnityEditor;
     using UnityEditor.SceneManagement;
+#endif
     using URSA.Internal;
     using URSA.Utility;
-#endif
 
     public class EntityDatabase : MonoBehaviour {
 
@@ -28,8 +28,8 @@
 
         static List<GameObject> prefabObjects = new List<GameObject>(1000);
 
-        static Dictionary<string, Entity> entities = new Dictionary<string, Entity>(1000);
-        static Dictionary<string, HashSet<string>> Components = new Dictionary<string, HashSet<string>>(10000);
+        static Dictionary<int, Entity> entities = new Dictionary<int, Entity>(1000);
+        static Dictionary<int, HashSet<int>> Components = new Dictionary<int, HashSet<int>>(10000);
 
         static DatabaseManifest _manifest;
         static DatabaseManifest manifest
@@ -52,8 +52,8 @@
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_DATABASE + URSAConstants.PATH_MENUITEM_DATABASE_REBUILD)]
         public static void Rebuild() {
             prefabObjects = new List<GameObject>(1000);
-            entities = new Dictionary<string, Entity>(1000);
-            Components = new Dictionary<string, HashSet<string>>(10000);
+            entities = new Dictionary<int, Entity>(1000);
+            Components = new Dictionary<int, HashSet<int>>(10000);
 
             assign_ids_entities();
             assign_ids_components();
@@ -64,8 +64,8 @@
 
         public static void RebuildWithoutReloadOfTheScene() {
             prefabObjects = new List<GameObject>(1000);
-            entities = new Dictionary<string, Entity>(1000);
-            Components = new Dictionary<string, HashSet<string>>(10000);
+            entities = new Dictionary<int, Entity>(1000);
+            Components = new Dictionary<int, HashSet<int>>(10000);
             assign_ids_entities();
             assign_ids_components();
 
@@ -76,18 +76,23 @@
         /// Very careful with this one
         /// </summary>
 #if UNITY_EDITOR
-        //[MenuItem("temp/clear ids")]
-#endif
+        [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_DATABASE + "/Danger/Clear all ids(commit before you do it)")]
         public static void clear_all_entity_IDs() {
+
             var prefabs = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder + "/");
+
 
             foreach (var p in prefabs) {
                 var ent = ((GameObject)p).GetComponent<Entity>();
+                Undo.RegisterCompleteObjectUndo(ent, "Clearing Entity Ids");
                 if (ent) {
-                    ent.database_ID = "";
+                    ent.entityID = 0;
                 }
+                EditorUtility.SetDirty(p);
             }
+
         }
+#endif
 
         static string dbPath
         {
@@ -100,7 +105,7 @@
             return GetPrefab(GetPrefabID(path));
         }
 
-        public static GameObject GetPrefab(string id) {
+        public static GameObject GetPrefab(int id) {
             string path = "";
             string idPath = "";
             manifest.entity_id_adress.TryGetValue(id, out idPath);
@@ -110,10 +115,11 @@
                 return null;
             return Resources.Load(path) as GameObject;
         }
+#if UNITY_EDITOR
 
         static void assign_ids_entities() {
 
-            HashSet<string> ids = new HashSet<string>();
+            HashSet<int> ids = new HashSet<int>();
 
             DatabaseManifest manifest = new DatabaseManifest();
             manifest.GameVersion = ProjectInfo.Current.Version;
@@ -122,12 +128,18 @@
 
             foreach (var p in prefabs) {
                 var ent = ((GameObject)p).GetComponent<Entity>();
+                Undo.RegisterCompleteObjectUndo(ent, "Assigning new ids");
+
                 if (ent)
-                    ids.Add(ent.database_ID);
+                    ids.Add(ent.entityID);
+
+                EditorUtility.SetDirty(p);
+
             }
 
             foreach (var f in files) {
-                string adress = f.Remove(0, f.IndexOf(dbPath) + dbPath.Length);
+                string pathfixed = f.Replace("\\", "/");
+                string adress = pathfixed.Remove(0, pathfixed.IndexOf(dbPath) + dbPath.Length);
                 adress = adress.Replace(".prefab", string.Empty);
 
                 var prefab = Resources.Load(URSASettings.Current.DatabaseRootFolder + "/" + adress) as GameObject;
@@ -137,32 +149,34 @@
                     continue;
                 }
 
-                if (entity.database_ID == "" || entity.database_ID == null) {
-                    entity.database_ID = Helpers.GetUniqueID(ids);
+                if (entity.entityID == 0) {
+                    entity.entityID = GameObjectUtils.GetUniqueID(ids);
                 }
-                if (entity.instance_ID != "" || entity.instance_ID != null) {
-                    entity.instance_ID = string.Empty;
+                if (entity.instanceID != 0) {
+                    entity.instanceID = 0;
                 }
-                if (entity.blueprint_ID != "" || entity.blueprint_ID != null) {
-                    entity.blueprint_ID = string.Empty;
+                if (entity.blueprintID != 0) {
+                    entity.blueprintID = 0;
                 }
 
                 adress = adress.Replace("\\", "/");
 
-                if (manifest.entity_id_adress.ContainsKey(entity.database_ID)) {
-                    Debug.LogError("Trying to add entity with the same id: " + entity.database_ID);
+                if (manifest.entity_id_adress.ContainsKey(entity.entityID)) {
+                    Debug.LogError("Trying to add entity with the same id: " + entity.entityID);
                 }
                 else {
-                    manifest.entity_id_adress.Add(entity.database_ID, adress);
-                    manifest.entity_adress_id.Add(adress, entity.database_ID);
+                    manifest.entity_id_adress.Add(entity.entityID, adress);
+                    manifest.entity_adress_id.Add(adress, entity.entityID);
 
                 }
             }
+
 
             SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.Current.DatabaseManifest + ".json", true);
         }
 
         static void assign_ids_components() {
+
             var allData = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder);
             prefabObjects = new List<GameObject>(1000);
             foreach (var item in allData) {
@@ -174,41 +188,39 @@
                 }
 
                 prefabObjects.Add(go);
-                entities.Add(entity.database_ID, entity);
+                entities.Add(entity.entityID, entity);
 
-                ComponentBase[] components = go.GetComponentsInChildren<ComponentBase>();
-                HashSet<string> comps_in_entity = null;
-                Components.TryGetValue(entity.database_ID, out comps_in_entity);
+                ECSComponent[] components = go.GetComponentsInChildren<ECSComponent>();
+                HashSet<int> comps_in_entity = null;
+                Components.TryGetValue(entity.entityID, out comps_in_entity);
 
                 if (comps_in_entity == null)
-                    comps_in_entity = new HashSet<string>();
+                    comps_in_entity = new HashSet<int>();
 
                 foreach (var c in components) {
-                    if (c.ID == string.Empty || c.ID == null) {
-                        c.ID = Helpers.GetUniqueID(comps_in_entity);
+                    if (c.componentID == 0) {
+                        c.componentID = GameObjectUtils.GetUniqueID(comps_in_entity);
                     }
-                    comps_in_entity.Add(c.ID);
+                    comps_in_entity.Add(c.componentID);
                 }
             }
         }
+#endif
 
-
-
-
-        internal static string GetPrefabPath(string database_ID) {
+        internal static string GetPrefabPath(int databaseID) {
             string result = "";
-            manifest.entity_id_adress.TryGetValue(database_ID, out result);
+            manifest.entity_id_adress.TryGetValue(databaseID, out result);
             if (result == "") {
-                Debug.LogError("Entity by id: " + database_ID + " not found in manifest.");
+                Debug.LogError("Entity by id: " + databaseID + " not found in manifest.");
                 Debug.LogError("Dont forget to update the database.");
 
             }
             return result;
         }
-        internal static string GetPrefabID(string path) {
-            string result = "";
+        internal static int GetPrefabID(string path) {
+            int result = 0;
             manifest.entity_adress_id.TryGetValue(path, out result);
-            if (result == "") {
+            if (result == 0) {
                 Debug.LogError("Entity by path: " + path + " not found in manifest.");
                 Debug.LogError("Dont forget to update the database.");
 

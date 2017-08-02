@@ -1,4 +1,5 @@
 ﻿namespace URSA.ECS.Systems {
+
     using UnityEngine;
     using System;
     using System.Collections.Generic;
@@ -12,4 +13,5 @@
     public class LocalSystemsExecutor : SystemsExecutor {
 
     }
+
 }

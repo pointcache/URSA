@@ -26,7 +26,7 @@
                 objects.Add(
                     new ExecutionObject() {
                         gameObject = transforms[i].gameObject,
-                        behavior = transforms[i].gameObject.GetComponent<SystemBase>()
+                        behavior = transforms[i].gameObject.GetComponent<ECSSystem>()
                     });
             }
         }
@@ -37,39 +37,39 @@
             for (int i = 0; i < count; i++) {
                 objects[i].gameObject.SetActive(true);
                 if (objects[i].IsValidForOrderedCall) {
-                    objects[i].behavior.OrderedOnEnable();
+                        objects[i].behavior.OrderedOnEnable();
                 }
             }
         }
 
         void FixedUpdate() {
-            if (UpdateAllowed) {
+            if (SystemsExecutor.UpdateAllowed) {
                 int count = objects.Count;
                 for (int i = 0; i < count; i++) {
                     if (objects[i].IsValidForOrderedCall) {
-                        objects[i].behavior.OrderedFixedUpdate();
+                            objects[i].behavior.OrderedFixedUpdate();
                     }
                 }
             }
         }
 
         void Update() {
-            if (UpdateAllowed) {
+            if (SystemsExecutor.UpdateAllowed) {
                 int count = objects.Count;
                 for (int i = 0; i < count; i++) {
                     if (objects[i].IsValidForOrderedCall) {
-                        objects[i].behavior.OrderedUpdate();
+                            objects[i].behavior.OrderedUpdate();
                     }
                 }
             }
         }
 
         private class ExecutionObject {
-            public bool IsValidForOrderedCall { get { return IsSystem && IsActiveAndEnabled; } }
+            public bool IsValidForOrderedCall { get { return IsSystem && IsActiveAndEnabled && behavior.enabled; } }
             public bool IsSystem { get { return behavior != null; } }
             public bool IsActiveAndEnabled { get { return gameObject.activeSelf && behavior.enabled; } }
             public GameObject gameObject;
-            public SystemBase behavior;
+            public ECSSystem behavior;
         }
     }
 }

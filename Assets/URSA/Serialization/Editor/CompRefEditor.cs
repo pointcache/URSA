@@ -8,7 +8,7 @@
     public class CompRefDrawer : PropertyDrawer {
         public override void OnGUI(Rect position, UnityEditor.SerializedProperty property, GUIContent label) {
             EditorGUI.BeginChangeCheck();
-            var targetSerializedProperty = property.FindPropertyRelative("target");
+            var targetSerializedProperty = property.FindPropertyRelative("component");
             UnityEditor.EditorGUI.PropertyField(position, targetSerializedProperty, label, includeChildren: true);
             EditorGUI.EndChangeCheck();
         }
