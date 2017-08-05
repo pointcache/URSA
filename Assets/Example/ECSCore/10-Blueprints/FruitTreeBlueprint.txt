@@ -1,0 +1,413 @@
+{
+    "GameVersion": 0.0,
+    "Name": "Blurprint Loader",
+    "SaveObject": {
+        "isBlueprint": true,
+        "entities": [
+            {
+                "database_ID": 6,
+                "instance_ID": 0,
+                "blueprint_ID": 1,
+                "parentName": "null",
+                "gameObjectName": "Tree",
+                "prefabPath": "Tree",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 2,
+                "parentName": "null",
+                "gameObjectName": "Fruit",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": -2.355957,
+                    "y": 2.878448,
+                    "z": -0.133653
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 3,
+                "parentName": "null",
+                "gameObjectName": "Fruit (1)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": -1.59,
+                    "y": 1.04,
+                    "z": -1.61
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 4,
+                "parentName": "null",
+                "gameObjectName": "Fruit (2)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": -0.13,
+                    "y": 2.19,
+                    "z": -1.95
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 5,
+                "parentName": "null",
+                "gameObjectName": "Fruit (3)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": -1.71,
+                    "y": 2.19,
+                    "z": -1.01
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 6,
+                "parentName": "null",
+                "gameObjectName": "Fruit (4)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": -1.37,
+                    "y": 2.19,
+                    "z": 0.78
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 7,
+                "parentName": "null",
+                "gameObjectName": "Fruit (5)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": 0.01999998,
+                    "y": 2.19,
+                    "z": 1.46
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 8,
+                "parentName": "null",
+                "gameObjectName": "Fruit (6)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": 1.12,
+                    "y": 3.85,
+                    "z": 0.61
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 9,
+                "parentName": "null",
+                "gameObjectName": "Fruit (7)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": 1.12,
+                    "y": 1.22,
+                    "z": -0.24
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            {
+                "database_ID": 7,
+                "instance_ID": 0,
+                "blueprint_ID": 10,
+                "parentName": "null",
+                "gameObjectName": "Fruit (8)",
+                "prefabPath": "Fruit",
+                "parentIsComponent": false,
+                "parentIsEntity": false,
+                "parent_entity_ID": 0,
+                "parent_component_ID": 0,
+                "position": {
+                    "x": 0.52,
+                    "y": 3.81,
+                    "z": -1.45
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            }
+        ],
+        "comprefs": [],
+        "components": [
+            {
+                "Key": 2,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 3,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 4,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 5,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 6,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 7,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 8,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 9,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Key": 10,
+                "Value": [
+                    {
+                        "Key": 1,
+                        "Value": {
+                            "component_ID": 1,
+                            "initialized": false,
+                            "enabled": true,
+                            "data": {
+                                "size": 0.0,
+                                "growthRate": 0.0,
+                                "minGrowthRate": 0.1,
+                                "maxGrowthRate": 1.0,
+                                "$type": "FruitComponent10+Data"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "$type": "URSA.Serialization.Blueprints.Blueprint"
+}

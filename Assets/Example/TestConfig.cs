@@ -6,6 +6,13 @@ using URSA;
 public class TestConfig : ConfigBase {
 
     public int TestInt = 120;
-    public float TestFloatProp { get; set; }
+
+    public float TestFloatProp
+    {
+        get;
+        set;
+    }
+
     public string TestString = "somestring";
+
 }

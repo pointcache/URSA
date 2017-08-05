@@ -123,10 +123,13 @@
 
             DatabaseManifest manifest = new DatabaseManifest();
             manifest.GameVersion = ProjectInfo.Current.Version;
-            var files = Directory.GetFiles(Application.dataPath + dbPath, "*.prefab", SearchOption.AllDirectories);
-            var prefabs = Resources.LoadAll(URSASettings.Current.DatabaseRootFolder + "/");
+            string resfolder = "Resources/" + URSASettings.Current.DatabaseRootFolder + "/";
+
+
+            var prefabs = Resources.LoadAll("", typeof(GameObject));
 
             foreach (var p in prefabs) {
+
                 var ent = ((GameObject)p).GetComponent<Entity>();
                 Undo.RegisterCompleteObjectUndo(ent, "Assigning new ids");
 
@@ -137,13 +140,27 @@
 
             }
 
-            foreach (var f in files) {
-                string pathfixed = f.Replace("\\", "/");
-                string adress = pathfixed.Remove(0, pathfixed.IndexOf(dbPath) + dbPath.Length);
-                adress = adress.Replace(".prefab", string.Empty);
+            var files = Directory.GetFiles(Application.dataPath, "*.prefab", SearchOption.AllDirectories);
 
-                var prefab = Resources.Load(URSASettings.Current.DatabaseRootFolder + "/" + adress) as GameObject;
+
+            foreach (var f in files) {
+
+                string pathfixed = f.Replace("\\", "/");
+
+                if (!pathfixed.Contains(dbPath))
+                    continue;
+
+                int index = pathfixed.IndexOf("/Assets/");
+                string adress = pathfixed.Remove(0, index + 1);
+
+                //adress = adress;
+
+                var prefab = AssetDatabase.LoadAssetAtPath(adress, typeof(GameObject)) as GameObject;
+
+                // Resources.Load(URSASettings.Current.DatabaseRootFolder + "/" + adress) as GameObject;
+
                 var entity = prefab.GetComponent<Entity>();
+
                 if (!entity) {
                     Debug.LogError("Database: GameObject without entity found, skipping.", prefab);
                     continue;
@@ -152,25 +169,31 @@
                 if (entity.entityID == 0) {
                     entity.entityID = GameObjectUtils.GetUniqueID(ids);
                 }
+
                 if (entity.instanceID != 0) {
                     entity.instanceID = 0;
                 }
+
                 if (entity.blueprintID != 0) {
                     entity.blueprintID = 0;
                 }
 
-                adress = adress.Replace("\\", "/");
+                int resIndex = adress.IndexOf(resfolder);
+                string entityResourcePath = adress.Replace(".prefab", string.Empty).Remove(0, resIndex + resfolder.Length);
+
+                if (manifest.entity_adress_id.ContainsKey(entityResourcePath)) {
+                    Debug.LogError("Sadly duplicate Entity names are not allowed as they will no be uniquely identifiable on runtime.", entity);
+                    continue;
+                }
 
                 if (manifest.entity_id_adress.ContainsKey(entity.entityID)) {
-                    Debug.LogError("Trying to add entity with the same id: " + entity.entityID);
+                    Debug.LogError("Trying to add entity with the same id: " + entity.entityID, entity.gameObject);
                 }
                 else {
-                    manifest.entity_id_adress.Add(entity.entityID, adress);
-                    manifest.entity_adress_id.Add(adress, entity.entityID);
-
+                    manifest.entity_id_adress.Add(entity.entityID, entityResourcePath);
+                    manifest.entity_adress_id.Add(entityResourcePath, entity.entityID);
                 }
             }
-
 
             SerializationHelper.Serialize(manifest, Application.dataPath + "/Resources/" + URSAConstants.PATH_ADDITIONAL_DATA + "/" + URSASettings.Current.DatabaseManifest + ".json", true);
         }

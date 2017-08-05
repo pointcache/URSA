@@ -30,7 +30,41 @@
         public static Dictionary<Type, Pool> pools_dict = new Dictionary<Type, Pool>(100);
 
         [Tooltip("Read only!")]
-        public List<Pool> pools_view = new List<Pool>();
+        public List<PoolView> PoolViews = new List<PoolView>();
+
+        [Serializable]
+        public class PoolView {
+
+            [NotEditableString]
+            public string Name;
+            public List<CompRef> Components = new List<CompRef>();
+            private Dictionary<ECSComponent, CompRef> comp_ref = new Dictionary<ECSComponent, CompRef>();
+
+            public PoolView(Pool pool) {
+                Name = pool.Name;
+                pool.BaseOnAdded += OnAdded;
+                pool.BaseOnRemoved += OnRemoved;
+                foreach (var comp in pool.BaseComponents) {
+                    OnAdded(comp);
+                }
+            }
+
+            void OnAdded(ECSComponent comp) {
+                CompRef cref = new CompRef();
+                cref.component = comp;
+                comp_ref.Add(comp, cref);
+                Components.Add(cref);
+            }
+
+            void OnRemoved(ECSComponent comp) {
+                CompRef cref;
+                comp_ref.TryGetValue(comp, out cref);
+                if(cref != null) {
+                    Components.Remove(cref);
+                }
+            }
+
+        }
 
         public static ECSComponent GetFirstOf(Type type) {
             Pool pool;
@@ -75,31 +109,31 @@
             }
             Type elementType = Type.GetType(t.ToString());
             Type[] types = new Type[] { elementType };
-            Type listType = typeof(Pool<>);
-            Type genericType = listType.MakeGenericType(types);
-            Pool register = (Pool)Activator.CreateInstance(genericType);
-            pools_dict.Add(t, register);
-            register.Name = t.Name;
-            instance.pools_view.Add(register);
-            return register;
+            Type poolType = typeof(Pool<>);
+            Type genericType = poolType.MakeGenericType(types);
+            Pool pool = (Pool)Activator.CreateInstance(genericType);
+            pools_dict.Add(t, pool);
+            pool.Name = t.Name;
+            instance.PoolViews.Add(new PoolView(pool));
+            return pool;
         }
 
-       // public static RVar GetRvarFrom(string componentType, string variableName) {
-       //     var type = System.Type.GetType(componentType);
-       //     if (type == null) {
-       //         Debug.LogError("Cant find such component type.");
-       //         return null;
-       //     }
-       //     var comp = ComponentPoolSystem.GetFirstOf(type);
-       //     if (comp.GetType().IsSubclassOf(typeof(ConfigBase))) {
-       //         return type.GetField(variableName).GetValue(comp) as RVar;
-       //     }
-       //     else {
-       //         var data = type.GetField("data").GetValue(comp);
-       //         return data.GetType().GetField(variableName).GetValue(data) as RVar;
-       //     }
-       //
-       // }
+        // public static RVar GetRvarFrom(string componentType, string variableName) {
+        //     var type = System.Type.GetType(componentType);
+        //     if (type == null) {
+        //         Debug.LogError("Cant find such component type.");
+        //         return null;
+        //     }
+        //     var comp = ComponentPoolSystem.GetFirstOf(type);
+        //     if (comp.GetType().IsSubclassOf(typeof(ConfigBase))) {
+        //         return type.GetField(variableName).GetValue(comp) as RVar;
+        //     }
+        //     else {
+        //         var data = type.GetField("data").GetValue(comp);
+        //         return data.GetType().GetField(variableName).GetValue(data) as RVar;
+        //     }
+        //
+        // }
     }
 
     [Serializable]
@@ -112,6 +146,12 @@
         public virtual void Unregister(ECSComponent comp) { }
 
         public virtual ECSComponent GetFirst() { return null; }
+
+        public Action<ECSComponent> BaseOnAdded;
+
+        public Action<ECSComponent> BaseOnRemoved;
+
+        public List<ECSComponent> BaseComponents = new List<ECSComponent>();
     }
 
     /// <summary>
@@ -122,7 +162,11 @@
         /// <summary>
         /// all components
         /// </summary>
-        public static List<T> Components = new List<T>(1000);
+        private static List<T> components = new List<T>(1000);
+        public static List<T> Components
+        {
+            get { return components; }
+        }
 
         static Dictionary<int, List<T>> entities = new Dictionary<int, List<T>>(1000);
 
@@ -154,8 +198,8 @@
 
         public static void RunMethodOnEach(Action<T> method) {
             int count = Count;
-            for (int i = count - 1; i > -1 ; i--) {
-                method(Components[i]);
+            for (int i = count - 1; i > -1; i--) {
+                method(components[i]);
             }
         }
 
@@ -167,17 +211,17 @@
         public static bool Empty
         {
             get {
-                return Components.Count == 0 ? true : false;
+                return components.Count == 0 ? true : false;
             }
         }
 
-        public static int Count { get { return Components.Count; } }
+        public static int Count { get { return components.Count; } }
 
         public static T Random
         {
             get {
                 if (Count > 1) {
-                    return Components[UnityEngine.Random.Range(0, Count)];
+                    return components[UnityEngine.Random.Range(0, Count)];
                 }
                 else {
                     return First;
@@ -195,7 +239,8 @@
         }
 
         public override void Register(ECSComponent comp) {
-            Components.Add(comp as T);
+            components.Add(comp as T);
+            BaseComponents.Add(comp);
             count++;
 
             //if entity exists
@@ -207,20 +252,26 @@
                     list = new List<T>(100);
                     entities.Add(e.ID, list);
                 }
-                list.Add(comp as T);    
+                list.Add(comp as T);
+
             }
 
-            if (OnAdded.GetInvocationList().Length > 1)
+            //TODO Clean this up, generates garbage
+            if (OnAdded.GetInvocationList().Length > 1) {
                 OnAdded(comp as T);
+            }
+            if (BaseOnAdded != null)
+                    BaseOnAdded(comp);
 
-            if (Components != null && Components.Count != 0)
-                first = Components[0];
+            if (components != null && components.Count != 0)
+                first = components[0];
             else
                 first = null;
         }
 
         public override void Unregister(ECSComponent comp) {
-            Components.Remove(comp as T);
+            components.Remove(comp as T);
+            BaseComponents.Remove(comp);
             count--;
 
             URSA.Entity e = comp.Entity;
@@ -232,11 +283,15 @@
                 }
             }
 
-            if (OnRemoved.GetInvocationList().Length > 1)
+            if (OnRemoved.GetInvocationList().Length > 1) {
                 OnRemoved(comp as T);
+            }
 
-            if (Components != null && Components.Count > 0)
-                first = Components[0];
+            if (BaseOnRemoved != null)
+                    BaseOnRemoved(comp);
+
+            if (components != null && components.Count > 0)
+                first = components[0];
             else
                 first = null;
         }

@@ -3,11 +3,41 @@
     "entity_id_adress": [
         {
             "Key": 2,
+            "Value": "SerializedEntity07"
+        },
+        {
+            "Key": 3,
+            "Value": "SerializedEntity08"
+        },
+        {
+            "Key": 5,
+            "Value": "Ball"
+        },
+        {
+            "Key": 7,
+            "Value": "Fruit"
+        },
+        {
+            "Key": 6,
+            "Value": "Tree"
+        },
+        {
+            "Key": 8,
             "Value": "Cube"
+        },
+        {
+            "Key": 9,
+            "Value": "Sphere"
         }
     ],
     "entity_adress_id": {
-        "Cube": 2
+        "SerializedEntity07": 2,
+        "SerializedEntity08": 3,
+        "Ball": 5,
+        "Fruit": 7,
+        "Tree": 6,
+        "Cube": 8,
+        "Sphere": 9
     },
     "$type": "URSA.Database.DatabaseManifest"
 }

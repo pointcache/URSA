@@ -5,15 +5,19 @@
     using System.Collections.Generic;
     using URSA.Utility;
     using URSA.Serialization;
+    using URSA;
 
     internal static class EntityManager {
 
         internal static Dictionary<int, URSA.Entity> SceneEntities = new Dictionary<int, URSA.Entity>(1000);
         internal static Dictionary<int, URSA.Entity> PersistentEntities = new Dictionary<int, URSA.Entity>(1000);
 
+        internal static event Action<Entity> OnAdded;
+        internal static event Action<Entity> OnRemoved;
+
         private static HashSet<int> registeredEntitiesIDs = new HashSet<int>();
         
-        internal static void RegisterEntity(URSA.Entity e) {
+        internal static void RegisterEntity(Entity e) {
             var persistent_root = e.transform.GetComponentInParent<PersistentDataSystem>();
             if (persistent_root.Null()) {
                 if (SceneEntities.ContainsKey(e.ID)) {
@@ -30,11 +34,16 @@
                 }
                 PersistentEntities.Add(e.ID, e);
             }
+
+            if (OnAdded != null)
+                OnAdded(e);
         }
 
-        internal static void UnRegisterEntity(URSA.Entity e) {
+        internal static void UnRegisterEntity(Entity e) {
             SceneEntities.Remove(e.ID);
             PersistentEntities.Remove(e.ID);
+            if (OnRemoved != null)
+                OnRemoved(e);
         }
 
         internal static int GetUniqieInstanceID() {
@@ -58,7 +67,7 @@
                 return null;
             if ((object)component.Entity == null)
                 return null;
-            return component.Entity.GetEntityComponent<T>();
+            return component.Entity.GetECSComponent<T>();
         }
     }
 

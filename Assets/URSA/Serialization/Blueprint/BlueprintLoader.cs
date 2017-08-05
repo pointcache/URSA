@@ -10,11 +10,11 @@
     public class BlueprintLoader : MonoBehaviour {
 
         [Tooltip("Used to work with blueprints in editor")]
-        public bool DisableOnStart;
         public TextAsset Blueprint;
-        public bool LoadOnEnableAndSelfDestruct;
+        public bool LoadOnEnable;
+        public bool SelfDestructAfterLoad;
+        [Tooltip("Unboxed blueprint entities will be dumped in the scene")]
         public bool DontParent;
-        public bool SupressWarning;
 
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_BLUEPRINT + URSAConstants.PATH_MENUITEM_BLUEPRINT_NEW)]
@@ -29,7 +29,7 @@
             if (transform.childCount == 0)
                 return null;
             Blueprint bp = new Blueprint();
-            bp.SaveObject = SaveSystem.CreateSaveObjectFromTransform(transform);
+            bp.SaveObject = SaveSystem.CreateBlueprintFromTransform(transform);
             bp.GameVersion = ProjectInfo.Current.Version;
             bp.Name = gameObject.name;
             return bp;
@@ -45,18 +45,13 @@
         }
 
         public void OnEnable() {
-            if (DisableOnStart) {
-                gameObject.SetActive(false);
-                return;
+            if (transform.childCount > 0) {
+                transform.DestroyChildren();
             }
-            if (transform.childCount > 0 && !SupressWarning) {
-                Debug.LogError("You can't have unboxed blueprints on the start of the game, make sure blueprints are cleared before the launch.");
-                Debug.Break();
+            if(LoadOnEnable)
+            Load();
 
-            }
-
-            if (LoadOnEnableAndSelfDestruct) {
-                Load();
+            if (SelfDestructAfterLoad) {
                 Destroy(this);
             }
         }

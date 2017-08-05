@@ -59,6 +59,12 @@
 
         }
 
+        public static T GetConfig<T>() where T : ConfigBase {
+            ConfigBase cfg;
+            m_configs.TryGetValue(typeof(T), out cfg);
+            return cfg as T;
+        }
+
 #if UNITY_EDITOR
         [MenuItem(URSAConstants.PATH_MENUITEM_ROOT + URSAConstants.PATH_MENUITEM_CONFIG + URSAConstants.PATH_MENUITEM_CONFIG_SAVE)]
 #endif

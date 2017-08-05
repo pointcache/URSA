@@ -104,7 +104,7 @@
                 collector.scenes.Add(scenedata);
                 string path = AssetDatabase.GetAssetPath(scenedata);
                 path = Directory.GetParent(path).ToString();
-                scenedata.scenePath = path.Replace("Assets\\", "") + "/" + scenedata.scene;
+                scenedata.scenePath = path.Replace("Assets/", "") + "/" + scenedata.scene;
                 scenedata.sceneManagerPath = "Assets/" + scenedata.scenePath + ".unity";
                 string absolutepath = Application.dataPath + "/" + scenedata.scenePath + ".unity";
                 var scene = File.Exists(absolutepath);

@@ -34,7 +34,7 @@
         public const string PATH_MENUITEM_CONFIG_LOAD = "/Load";
 
         public const string PATH_MENUITEM_LEVELS = "/SceneManagement";
-        public const string PATH_MENUITEM_TOOLS = "/ECSTools";
+        public const string PATH_MENUITEM_TOOLS = "/Utilities";
 
         public const string PATH_MENUITEM_BLUEPRINT = "/Blueprints";
         public const string PATH_MENUITEM_BLUEPRINT_NEW = "/New";

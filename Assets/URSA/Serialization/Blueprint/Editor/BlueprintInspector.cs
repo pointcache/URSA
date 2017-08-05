@@ -11,12 +11,12 @@
         public override void OnInspectorGUI() {
             BlueprintLoader t = target as BlueprintLoader;
 
-            if (t.transform.childCount > 0) {
+            if (t.Blueprint == null) {
                 GUIStyle style = GUI.skin.GetStyle("Label");
                 Color c = style.normal.textColor;
                 style.normal.textColor = Color.red;
 
-                GUILayout.Label("CLEAR CHILDREN BEFORE LAUNCHING THE GAME", style);
+                GUILayout.Label("THE BLUEPRINT IS NULL", style);
                 style.normal.textColor = c;
             }
 
@@ -41,7 +41,11 @@
                 t.Load();
             }
             if (GUILayout.Button("Clear")) {
-                t.transform.DestroyChildren();
+                if(t.Blueprint == null) {
+                    Debug.LogError("Clearing without blueprint will result in data loss, can't do that.");
+                }
+                else
+                    t.transform.DestroyChildren();
             }
             GUILayout.EndHorizontal();
 
@@ -58,7 +62,9 @@
             var bp = t.Save();
             SerializationHelper.Serialize(bp, path, true);
             AssetDatabase.Refresh();
-            t.Blueprint = Resources.Load(path.ClearPathToResources().RemoveExtension()) as TextAsset;
+            string assetpath = path.Remove(0, path.IndexOf("Assets/"));
+            t.Blueprint = AssetDatabase.LoadAssetAtPath(assetpath, typeof(TextAsset)) as TextAsset;
+            //t.Blueprint = Resources.Load(path.ClearPathToResources().RemoveExtension()) as TextAsset;
         }
     }
 

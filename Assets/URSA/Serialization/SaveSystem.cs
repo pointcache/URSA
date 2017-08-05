@@ -235,6 +235,7 @@
                             if (cobj != null) {
                                 SetDataForComponent(component, cobj.data);
                                 initializedfield.SetValue(component, cobj.initialized);
+                                component.enabled = cobj.enabled;
                             }
 
                             //Storing for later reference injection
@@ -253,32 +254,36 @@
                     entity.instanceID = 0;
                 prefab.SetActive(prefabState);
                 entity.gameObject.SetActive(true);
+                //HACK change this to something like interface.
+                entity.gameObject.BroadcastMessage("OnDeserialized", SendMessageOptions.DontRequireReceiver);
+
             }
 
+            if (CompRefSerializationProcessor.refs != null && CompRefSerializationProcessor.refs.Count > 0) {
+                foreach (var compref in CompRefSerializationProcessor.refs) {
+                    if (!compref.isNull) {
+                        Dictionary<int, ECSComponent> comps = null;
+                        ECSComponent cbase = null;
 
-            foreach (var compref in CompRefSerializationProcessor.refs) {
-                if (!compref.isNull) {
-                    Dictionary<int, ECSComponent> comps = null;
-                    ECSComponent cbase = null;
-
-                    if (save.isBlueprint)
-                        bp_parent_component.TryGetValue(compref.entity_ID, out comps);
-                    else
-                        allComps.TryGetValue(compref.entity_ID, out comps);
-
-                    if (comps != null) {
                         if (save.isBlueprint)
-                            bp_parent_component[compref.entity_ID].TryGetValue(compref.component_ID, out cbase);
+                            bp_parent_component.TryGetValue(compref.entity_ID, out comps);
                         else
-                            comps.TryGetValue(compref.component_ID, out cbase);
-                        if (cbase != null) {
-                            compref.component = cbase;
+                            allComps.TryGetValue(compref.entity_ID, out comps);
+
+                        if (comps != null) {
+                            if (save.isBlueprint)
+                                bp_parent_component[compref.entity_ID].TryGetValue(compref.component_ID, out cbase);
+                            else
+                                comps.TryGetValue(compref.component_ID, out cbase);
+                            if (cbase != null) {
+                                compref.component = cbase;
+                            }
+                            else
+                                Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);
                         }
                         else
-                            Debug.LogError("CompRef linker could not find component with id: " + compref.component_ID + " on entity: " + compref.entityName);
+                            Debug.LogError("CompRef linker could not find entity with id: " + compref.entity_ID + " on entity: " + compref.entityName);
                     }
-                    else
-                        Debug.LogError("CompRef linker could not find entity with id: " + compref.entity_ID + " on entity: " + compref.entityName);
                 }
             }
 #if UNITY_EDITOR
@@ -349,14 +354,34 @@
         public static SaveObject CreateSaveObjectFromPersistenData() {
             return createSaveFrom(SaveObjectType.persistent, null);
         }
-        //creates a file containing all entities in scene, ignoring any scene specifics
+        
+        /// <summary>
+        /// Save file with all non persistent entities in the scene
+        /// </summary>
+        /// <returns></returns>
         public static SaveObject CreateSaveObjectFromScene() {
             return createSaveFrom(SaveObjectType.scene, null);
         }
 
-        //creates a file containing all entities in scene, ignoring any scene specifics
-        public static SaveObject CreateSaveObjectFromTransform(Transform tr) {
+        /// <summary>
+        /// Creates a blueprint object from a set of entities
+        /// </summary>
+        /// <param name="tr"></param>
+        /// <returns></returns>
+        public static SaveObject CreateBlueprintFromTransform(Transform tr) {
             return createSaveFrom(SaveObjectType.blueprint, tr);
+        }
+
+        /// <summary>
+        /// Creates a file with single entity
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static SaveObject CreateSaveObjectFromEntity(Entity entity) {
+
+            SaveObject file = new SaveObject();
+
+            return PackSingleEntityAsBlueprint(file, entity);
         }
 
         static SaveObject createSaveFrom(SaveObjectType from, Transform root) {
@@ -384,6 +409,15 @@
             }
 
             return file;
+        }
+
+        static SaveObject PackSingleEntityAsBlueprint(SaveObject file, Entity entity) {
+
+
+            ProcessEntity(file, entity, null, null);
+
+            return file;
+
         }
 
         static SaveObject PackBlueprint(SaveObject file, Transform root) {
@@ -466,7 +500,7 @@
 
             getComponentsSwapList.Clear();
 
-            entity.GetAllEntityComponents(getComponentsSwapList);
+            entity.GetAllECSComponents(getComponentsSwapList);
 
             foreach (var comp in getComponentsSwapList) {
                 if (comp.componentID == 0) {
@@ -479,6 +513,7 @@
                 cobj.component_ID = comp.componentID;
                 cobj.data = GetDataFromComponent(comp);
                 cobj.initialized = comp.Initialized;
+                cobj.enabled = comp.enabled;
 
                 Dictionary<int, ComponentObject> entityComponents = null;
                 if (isBlueprint)

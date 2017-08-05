@@ -9,7 +9,7 @@
         public static int GetFirstEntityComponent<T>(this List<Entity> list, out T component) where T : ECSComponent {
             int count = list.Count;
             for (int i = 0; i < count; i++) {
-                component = list[i].GetEntity().GetEntityComponent<T>();
+                component = list[i].GetEntity().GetECSComponent<T>();
                 if (!component.Null())
                     return i;
             }
