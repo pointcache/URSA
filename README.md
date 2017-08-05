@@ -5,7 +5,8 @@
 Ursa just went through big cuts in size and complexity.
 
 
-# Please proceed to Wiki to learn more.
+# Open tutorials folder in the project, it has pretty good examples.
+
 URSA is an ECS framework integrated into Unity.
 It doesn't use a separate backend, and works on top of unity components in a very simple manner.
 URSA streamlines typically complex gamedev tasks like managing initialization and serialization.
