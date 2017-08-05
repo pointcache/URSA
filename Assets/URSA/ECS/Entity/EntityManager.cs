@@ -17,6 +17,11 @@
 
         private static HashSet<int> registeredEntitiesIDs = new HashSet<int>();
         
+        public static void MarkPersistent(Entity e) {
+            SceneEntities.Remove(e.entityID);
+            PersistentEntities.Add(e.entityID, e);
+        }
+
         internal static void RegisterEntity(Entity e) {
             var persistent_root = e.transform.GetComponentInParent<PersistentDataSystem>();
             if (persistent_root.Null()) {

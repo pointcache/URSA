@@ -152,7 +152,7 @@
                 tr.gameObject.AddComponent<EntityReference>();
         }
 
-        public void SetPersistent() {
+        public void MakePersistent() {
             PersistentDataSystem.MakePersistent(this);
         }
     }

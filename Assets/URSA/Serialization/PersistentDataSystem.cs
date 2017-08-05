@@ -9,6 +9,7 @@
     using URSA.Serialization.Blueprints;
     using URSA.Internal;
     using URSA.Utility;
+    using URSA.ECS.Entity;
 
     public class PersistentDataSystem : MonoBehaviour {
 
@@ -42,19 +43,28 @@
         [SerializeField]
         private Transform persistentDataRoot;
 
-        private void OnEnable() {
-            if (!persistentDataRoot) {
-                var go = transform.Find("PersistentData");
-                if (!go) {
+        public Transform PersistentDataRoot
+        {
+            get {
+                if (!persistentDataRoot) {
                     persistentDataRoot = new GameObject("PersistentData").transform;
                     GameObject.DontDestroyOnLoad(persistentDataRoot);
                 }
+                return persistentDataRoot;
             }
         }
 
+        private void OnEnable() {
+        }
+
         public static void MakePersistent(Entity entity) {
+
             UnityEngine.Object.DontDestroyOnLoad(entity.gameObject);
-            entity.transform.parent = instance.persistentDataRoot;
+
+            entity.transform.parent = instance.PersistentDataRoot;
+
+            EntityManager.MarkPersistent(entity);
+
         }
 
 
@@ -75,6 +85,7 @@
         }
 
         public void SaveTo() {
+
             SaveObject file = SaveSystem.CreateSaveObjectFromPersistenData();
             PersistentDataInfo info = new PersistentDataInfo();
             info.profileName = "profile";
@@ -88,6 +99,7 @@
             }
 
             SerializationHelper.Serialize(info, path + "/" + FileName + extension, true);
+
         }
 
         public void LoadFrom() {

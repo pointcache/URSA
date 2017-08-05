@@ -133,7 +133,6 @@
                         Debug.LogError("No direct children of ECSController can be active before runtime.");
                         Application.Quit();
                     }
-                    tr.gameObject.SetActive(true);
                 }
             }
 
@@ -141,7 +140,10 @@
                 Configurator.ConfigureGlobal();
             globalInitialized = true;
 
-            gameObject.AddComponent<GlobalSystemsExecutor>();
+            var executor = gameObject.AddComponent<GlobalSystemsExecutor>();
+
+            executor.RunOrderedOnEnable();
+
             OnGlobalSystemsFullyInitialized();
         }
 

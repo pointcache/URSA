@@ -28,6 +28,10 @@
         {
             "Key": 9,
             "Value": "Sphere"
+        },
+        {
+            "Key": 10,
+            "Value": "PlayerProfile"
         }
     ],
     "entity_adress_id": {
@@ -37,7 +41,8 @@
         "Fruit": 7,
         "Tree": 6,
         "Cube": 8,
-        "Sphere": 9
+        "Sphere": 9,
+        "PlayerProfile": 10
     },
     "$type": "URSA.Database.DatabaseManifest"
 }

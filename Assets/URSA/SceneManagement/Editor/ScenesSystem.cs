@@ -18,8 +18,8 @@
         public static event Action<SceneAsset, SceneData> OnSceneDataCreated = delegate { };
         public static event Action<SceneData> OnSceneDataCollected = delegate { };
 
-        private const string SaveSystem_MENU = "Assets/SaveSystem/";
-        private const string LEVELDATA_NEW = "New Data";
+        private const string SaveSystem_MENU = "Assets/SceneData/";
+        private const string LEVELDATA_NEW = "New";
 
 
         [MenuItem(SaveSystem_MENU + LEVELDATA_NEW)]

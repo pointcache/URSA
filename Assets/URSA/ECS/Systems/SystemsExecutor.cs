@@ -37,7 +37,7 @@
             for (int i = 0; i < count; i++) {
                 objects[i].gameObject.SetActive(true);
                 if (objects[i].IsValidForOrderedCall) {
-                        objects[i].behavior.OrderedOnEnable();
+                    objects[i].behavior.OrderedOnEnable();
                 }
             }
         }
@@ -47,7 +47,7 @@
                 int count = objects.Count;
                 for (int i = 0; i < count; i++) {
                     if (objects[i].IsValidForOrderedCall) {
-                            objects[i].behavior.OrderedFixedUpdate();
+                        objects[i].behavior.OrderedFixedUpdate();
                     }
                 }
             }
@@ -58,7 +58,7 @@
                 int count = objects.Count;
                 for (int i = 0; i < count; i++) {
                     if (objects[i].IsValidForOrderedCall) {
-                            objects[i].behavior.OrderedUpdate();
+                        objects[i].behavior.OrderedUpdate();
                     }
                 }
             }

@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 84474798}
   - component: {fileID: 84474799}
+  - component: {fileID: 84474800}
   m_Layer: 0
   m_Name: GlobalSystems
   m_TagString: Untagged
@@ -262,7 +263,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 899303419}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -278,6 +280,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Configs: {fileID: 0}
+--- !u!114 &84474800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84474797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b3526fdbe1f4f40a3c30b75a485a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FileName: persistentGameData
+  FolderName: PersistenData
+  extension: .data
+  persistentDataRoot: {fileID: 0}
+--- !u!1 &114388689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 114388690}
+  - component: {fileID: 114388692}
+  - component: {fileID: 114388691}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &114388690
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 114388689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1829003233}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &114388691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 114388689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 60
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: << Back
+--- !u!222 &114388692
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 114388689}
 --- !u!4 &240857346 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4123267822758890, guid: a555ddfc6c09f544ba490120bdde0f70,
@@ -361,7 +452,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 309963990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -2.9, z: 7.5}
+  m_LocalPosition: {x: -23.1, y: -2.9, z: 22.1}
   m_LocalScale: {x: 2.82605, y: 2.826051, z: 2.826051}
   m_Children: []
   m_Father: {fileID: 0}
@@ -735,6 +826,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &899303418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 899303419}
+  - component: {fileID: 899303420}
+  m_Layer: 0
+  m_Name: PlayerProfileSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &899303419
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899303418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 84474798}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899303420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899303418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b336cd47494e14b9713c55316b7f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DrawGizmos: 1
+  profilePrefab: {fileID: 1320773887677502, guid: c76296f8b93cda34a8eccd09f976986c,
+    type: 2}
 --- !u!1 &1023540820
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,8 +901,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -103, y: 746.5}
-  m_SizeDelta: {x: 1199, y: 360.7}
+  m_AnchoredPosition: {x: 200, y: 543.6}
+  m_SizeDelta: {x: 1199, y: 766.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023540822
 MonoBehaviour:
@@ -802,9 +936,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ECSComponents have some specific events. \nOnEnable and OnDisable are used
-    to register the component in Pool<T>, so disabled components won't be accessible
-    through the pool, this is intended and clean behavior.\n"
+  m_Text: 'Loading happens through ECSController, switching scene will trigger local
+    systems initialization, and cleanup. Please study ECSController initialization
+    sequences to understand what happens.
+
+
+    Creating new Scene data is easy, just right click a scene file and SceneData /
+    New .
+
+
+    It is intended for you to modify scene data class to contain information you need.
+
+
+    When switching scenes through ECSController you can create a SceneTransition object
+    with target scenedata and target entry point.'
 --- !u!222 &1023540823
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -928,7 +1073,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4123267822758890, guid: a555ddfc6c09f544ba490120bdde0f70, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -21.62
       objectReference: {fileID: 0}
     - target: {fileID: 4123267822758890, guid: a555ddfc6c09f544ba490120bdde0f70, type: 2}
       propertyPath: m_LocalPosition.y
@@ -936,7 +1081,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4123267822758890, guid: a555ddfc6c09f544ba490120bdde0f70, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 10.27
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 4123267822758890, guid: a555ddfc6c09f544ba490120bdde0f70, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1223,6 +1368,7 @@ RectTransform:
   m_Children:
   - {fileID: 1023540821}
   - {fileID: 1892925481}
+  - {fileID: 1829003233}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1231,6 +1377,141 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1829003232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1829003233}
+  - component: {fileID: 1829003236}
+  - component: {fileID: 1829003235}
+  - component: {fileID: 1829003234}
+  - component: {fileID: 1829003237}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1829003233
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829003232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 114388690}
+  m_Father: {fileID: 1785889868}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 591, y: -167}
+  m_SizeDelta: {x: 336.1, y: 64.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1829003234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829003232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1829003235}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1829003237}
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1829003235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829003232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1829003236
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829003232}
+--- !u!114 &1829003237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829003232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2245516e7e68f2f42b63c51c2ea92adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenedata: {fileID: 11400000, guid: d53e0b0336527f742af60c99d6528365, type: 2}
 --- !u!1001 &1871048411
 Prefab:
   m_ObjectHideFlags: 0
@@ -1381,7 +1662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1892925481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1397,8 +1678,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -136.2, y: 323.9}
-  m_SizeDelta: {x: 1127.3, y: 557.9}
+  m_AnchoredPosition: {x: -136.2, y: 347.4}
+  m_SizeDelta: {x: 1127.3, y: 511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1892925482
 MonoBehaviour:
@@ -1432,16 +1713,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Initialize() method, which is called once in the whole object lifetime.
-    Even after you load the game this wont be called, use it to populate the serialized
-    data from database and do other things to set it up.
+  m_Text: 'Any entity can be marked as persistent Entity.MakePersistent(), which will
+    move the entity under PersistenDataSystem. You can use PersistentDataSystem to
+    save and load persistent data, swapping profiles for example.
 
 
-    OnDeserialized() is called every time you load any save file with this component
-    (save, blueprint). Use it to initialize objects appearance for example.
+    Press play and look for PersistenData, its the transform that is used to identify
+    persistent entities. Use PersistentData / Load to see how it loads a modified
+    player profile from a file.
 
 
-    Check the FruitComponent to see how both are used.'
+    Persistent components are accessed through Pool the same way.
+
+'
 --- !u!222 &1892925483
 CanvasRenderer:
   m_ObjectHideFlags: 0
