@@ -2,7 +2,8 @@
 ![https://github.com/pointcache/URSA/wiki/Home/](http://i.imgur.com/WNNeEoa.png)
 [![GitHub issues](https://img.shields.io/badge/thermal-underpants-brightgreen.svg)](https://github.com/pointcache/URSA/issues)  [![GitHub issues](https://img.shields.io/github/issues/pointcache/URSA.svg)](https://github.com/pointcache/URSA/issues)  ![License MIT](https://img.shields.io/badge/license-MIT-green.svg)  ![tested on unity](https://img.shields.io/badge/unity-2017.1-blue.svg)  
 
-Ursa just went through big cuts in size and complexity.
+
+#[Deprecated, unmaintained, silly]
 
 
 # Open tutorials folder in the project, it has pretty good examples.
